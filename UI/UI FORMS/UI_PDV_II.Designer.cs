@@ -30,16 +30,16 @@ namespace Sistema.UI.UI_FORMS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
@@ -49,6 +49,15 @@ namespace Sistema.UI.UI_FORMS
             this.lb_Data = new System.Windows.Forms.Label();
             this.lb_Horario = new System.Windows.Forms.Label();
             this.dg_Itens = new System.Windows.Forms.DataGridView();
+            this.col_Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_ID_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Descricao_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_ValorCusto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_InfoAdicional1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pBox_Imagen_Principal = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dg_GrupoNivel = new System.Windows.Forms.DataGridView();
@@ -59,15 +68,6 @@ namespace Sistema.UI.UI_FORMS
             this.label2 = new System.Windows.Forms.Label();
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnTodos = new System.Windows.Forms.Button();
-            this.col_Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_ID_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Descricao_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_ValorCusto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_InfoAdicional1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dg_Itens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_Imagen_Principal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_GrupoNivel)).BeginInit();
@@ -200,38 +200,141 @@ namespace Sistema.UI.UI_FORMS
             this.col_ValorTotal,
             this.Col_ValorCusto,
             this.col_InfoAdicional1});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dg_Itens.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dg_Itens.DefaultCellStyle = dataGridViewCellStyle18;
             this.dg_Itens.Location = new System.Drawing.Point(4, 75);
             this.dg_Itens.Margin = new System.Windows.Forms.Padding(4);
             this.dg_Itens.MultiSelect = false;
             this.dg_Itens.Name = "dg_Itens";
             this.dg_Itens.ReadOnly = true;
             this.dg_Itens.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_Itens.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_Itens.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dg_Itens.RowHeadersVisible = false;
             this.dg_Itens.RowHeadersWidth = 60;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dg_Itens.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dg_Itens.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dg_Itens.RowTemplate.Height = 60;
             this.dg_Itens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dg_Itens.Size = new System.Drawing.Size(593, 524);
             this.dg_Itens.StandardTab = true;
             this.dg_Itens.TabIndex = 11;
+            // 
+            // col_Item
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.col_Item.DefaultCellStyle = dataGridViewCellStyle11;
+            this.col_Item.HeaderText = "col_Item";
+            this.col_Item.Name = "col_Item";
+            this.col_Item.ReadOnly = true;
+            this.col_Item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_Item.Width = 30;
+            // 
+            // col_ID_Produto
+            // 
+            this.col_ID_Produto.DataPropertyName = "ID_Produto";
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.col_ID_Produto.DefaultCellStyle = dataGridViewCellStyle12;
+            this.col_ID_Produto.HeaderText = "CÓD.";
+            this.col_ID_Produto.Name = "col_ID_Produto";
+            this.col_ID_Produto.ReadOnly = true;
+            this.col_ID_Produto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_ID_Produto.Visible = false;
+            this.col_ID_Produto.Width = 40;
+            // 
+            // col_Descricao_Produto
+            // 
+            this.col_Descricao_Produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_Descricao_Produto.DataPropertyName = "DescricaoProduto";
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.col_Descricao_Produto.DefaultCellStyle = dataGridViewCellStyle13;
+            this.col_Descricao_Produto.HeaderText = "PRODUTO";
+            this.col_Descricao_Produto.Name = "col_Descricao_Produto";
+            this.col_Descricao_Produto.ReadOnly = true;
+            this.col_Descricao_Produto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // col_Quantidade
+            // 
+            this.col_Quantidade.DataPropertyName = "Quantidade";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.col_Quantidade.DefaultCellStyle = dataGridViewCellStyle14;
+            this.col_Quantidade.HeaderText = "QUANT.";
+            this.col_Quantidade.Name = "col_Quantidade";
+            this.col_Quantidade.ReadOnly = true;
+            this.col_Quantidade.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_Quantidade.Visible = false;
+            this.col_Quantidade.Width = 50;
+            // 
+            // col_Valor
+            // 
+            this.col_Valor.DataPropertyName = "ValorFinal";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle15.Format = "N2";
+            this.col_Valor.DefaultCellStyle = dataGridViewCellStyle15;
+            this.col_Valor.HeaderText = "VALOR";
+            this.col_Valor.Name = "col_Valor";
+            this.col_Valor.ReadOnly = true;
+            this.col_Valor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_Valor.Visible = false;
+            this.col_Valor.Width = 75;
+            // 
+            // col_Desconto
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle16.Format = "N2";
+            dataGridViewCellStyle16.NullValue = null;
+            this.col_Desconto.DefaultCellStyle = dataGridViewCellStyle16;
+            this.col_Desconto.HeaderText = "DESC.";
+            this.col_Desconto.Name = "col_Desconto";
+            this.col_Desconto.ReadOnly = true;
+            this.col_Desconto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_Desconto.Visible = false;
+            this.col_Desconto.Width = 75;
+            // 
+            // col_ValorTotal
+            // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle17.Format = "N2";
+            this.col_ValorTotal.DefaultCellStyle = dataGridViewCellStyle17;
+            this.col_ValorTotal.HeaderText = "TOTAL";
+            this.col_ValorTotal.Name = "col_ValorTotal";
+            this.col_ValorTotal.ReadOnly = true;
+            this.col_ValorTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.col_ValorTotal.Width = 120;
+            // 
+            // Col_ValorCusto
+            // 
+            this.Col_ValorCusto.HeaderText = "Col_ValorCusto";
+            this.Col_ValorCusto.Name = "Col_ValorCusto";
+            this.Col_ValorCusto.ReadOnly = true;
+            this.Col_ValorCusto.Visible = false;
+            // 
+            // col_InfoAdicional1
+            // 
+            this.col_InfoAdicional1.HeaderText = "col_InfoAdicional1";
+            this.col_InfoAdicional1.Name = "col_InfoAdicional1";
+            this.col_InfoAdicional1.ReadOnly = true;
+            this.col_InfoAdicional1.Visible = false;
             // 
             // pBox_Imagen_Principal
             // 
@@ -311,9 +414,10 @@ namespace Sistema.UI.UI_FORMS
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(604, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 55);
+            this.label2.Size = new System.Drawing.Size(226, 55);
             this.label2.TabIndex = 16;
-            this.label2.Text = "label2";
+            this.label2.Text = "Categoria";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnAnterior
             // 
@@ -346,109 +450,6 @@ namespace Sistema.UI.UI_FORMS
             this.btnTodos.Text = "TODOS";
             this.btnTodos.UseVisualStyleBackColor = false;
             this.btnTodos.Click += new System.EventHandler(this.btnTodos_Click);
-            // 
-            // col_Item
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.col_Item.DefaultCellStyle = dataGridViewCellStyle1;
-            this.col_Item.HeaderText = "col_Item";
-            this.col_Item.Name = "col_Item";
-            this.col_Item.ReadOnly = true;
-            this.col_Item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.col_Item.Width = 30;
-            // 
-            // col_ID_Produto
-            // 
-            this.col_ID_Produto.DataPropertyName = "ID_Produto";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.col_ID_Produto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.col_ID_Produto.HeaderText = "CÓD.";
-            this.col_ID_Produto.Name = "col_ID_Produto";
-            this.col_ID_Produto.ReadOnly = true;
-            this.col_ID_Produto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.col_ID_Produto.Visible = false;
-            this.col_ID_Produto.Width = 40;
-            // 
-            // col_Descricao_Produto
-            // 
-            this.col_Descricao_Produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_Descricao_Produto.DataPropertyName = "DescricaoProduto";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.col_Descricao_Produto.DefaultCellStyle = dataGridViewCellStyle3;
-            this.col_Descricao_Produto.HeaderText = "PRODUTO";
-            this.col_Descricao_Produto.Name = "col_Descricao_Produto";
-            this.col_Descricao_Produto.ReadOnly = true;
-            this.col_Descricao_Produto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // col_Quantidade
-            // 
-            this.col_Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.col_Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
-            this.col_Quantidade.HeaderText = "QUANT.";
-            this.col_Quantidade.Name = "col_Quantidade";
-            this.col_Quantidade.ReadOnly = true;
-            this.col_Quantidade.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.col_Quantidade.Visible = false;
-            this.col_Quantidade.Width = 50;
-            // 
-            // col_Valor
-            // 
-            this.col_Valor.DataPropertyName = "ValorFinal";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.Format = "N2";
-            this.col_Valor.DefaultCellStyle = dataGridViewCellStyle5;
-            this.col_Valor.HeaderText = "VALOR";
-            this.col_Valor.Name = "col_Valor";
-            this.col_Valor.ReadOnly = true;
-            this.col_Valor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.col_Valor.Visible = false;
-            this.col_Valor.Width = 75;
-            // 
-            // col_Desconto
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.col_Desconto.DefaultCellStyle = dataGridViewCellStyle6;
-            this.col_Desconto.HeaderText = "DESC.";
-            this.col_Desconto.Name = "col_Desconto";
-            this.col_Desconto.ReadOnly = true;
-            this.col_Desconto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.col_Desconto.Visible = false;
-            this.col_Desconto.Width = 75;
-            // 
-            // col_ValorTotal
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.Format = "N2";
-            this.col_ValorTotal.DefaultCellStyle = dataGridViewCellStyle7;
-            this.col_ValorTotal.HeaderText = "TOTAL";
-            this.col_ValorTotal.Name = "col_ValorTotal";
-            this.col_ValorTotal.ReadOnly = true;
-            this.col_ValorTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.col_ValorTotal.Width = 120;
-            // 
-            // Col_ValorCusto
-            // 
-            this.Col_ValorCusto.HeaderText = "Col_ValorCusto";
-            this.Col_ValorCusto.Name = "Col_ValorCusto";
-            this.Col_ValorCusto.ReadOnly = true;
-            this.Col_ValorCusto.Visible = false;
-            // 
-            // col_InfoAdicional1
-            // 
-            this.col_InfoAdicional1.HeaderText = "col_InfoAdicional1";
-            this.col_InfoAdicional1.Name = "col_InfoAdicional1";
-            this.col_InfoAdicional1.ReadOnly = true;
-            this.col_InfoAdicional1.Visible = false;
             // 
             // UI_PDV_II
             // 
