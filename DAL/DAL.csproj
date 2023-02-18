@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{984161FA-EF26-4908-8F7D-F0FB712C207C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sistema.DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>..\..\..\..\Visual Studio 2015\Projects\_Clever Sistemas\Clever Ribbon\Link e DLL\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DLL\DAL_Equipamento.cs" />
+    <Compile Include="DLL\Conexao.cs" />
+    <Compile Include="DLL\DAL_FichaProducao.cs" />
+    <Compile Include="DLL\DAL_FolhaPagto.cs" />
+    <Compile Include="DLL\DAL_GrupoNivel.cs" />
+    <Compile Include="DLL\DAL_Orcamento.cs" />
+    <Compile Include="DLL\DAL_Sistema.cs" />
+    <Compile Include="DLL\DAL_Backup.cs" />
+    <Compile Include="DLL\DAL_Banco.cs" />
+    <Compile Include="DLL\DAL_Boleto.cs" />
+    <Compile Include="DLL\DAL_Cartao.cs" />
+    <Compile Include="DLL\DAL_CFOP.cs" />
+    <Compile Include="DLL\DAL_Cheque.cs" />
+    <Compile Include="DLL\DAL_ControleDoc.cs" />
+    <Compile Include="DLL\DAL_CPagar.cs" />
+    <Compile Include="DLL\DAL_CReceber.cs" />
+    <Compile Include="DLL\DAL_FluxoCaixa.cs" />
+    <Compile Include="DLL\DAL_Grade.cs" />
+    <Compile Include="DLL\DAL_Grupo.cs" />
+    <Compile Include="DLL\DAL_Imagem.cs" />
+    <Compile Include="DLL\DAL_Imposto.cs" />
+    <Compile Include="DLL\DAL_Municipio.cs" />
+    <Compile Include="DLL\DAL_NCM.cs" />
+    <Compile Include="DLL\DAL_NF.cs" />
+    <Compile Include="DLL\DAL_NF_TipoEmissao.cs" />
+    <Compile Include="DLL\DAL_Pagamento.cs" />
+    <Compile Include="DLL\DAL_Pessoa.cs" />
+    <Compile Include="DLL\DAL_OS.cs" />
+    <Compile Include="DLL\DAL_PlanoConta.cs" />
+    <Compile Include="DLL\DAL_Produto.cs" />
+    <Compile Include="DLL\DAL_TabelaValor.cs" />
+    <Compile Include="DLL\DAL_Usuario.cs" />
+    <Compile Include="DLL\DAL_Email.cs" />
+    <Compile Include="DLL\DAL_Imovel.cs" />
+    <Compile Include="DLL\DAL_Mobile.cs" />
+    <Compile Include="DLL\DAL_Parametro.cs" />
+    <Compile Include="DLL\DAL_Venda.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{C0DF715F-4C58-4930-8A98-88F02BCCDA50}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTIL\UTIL.csproj">
+      <Project>{7217001e-23f9-4dcb-8058-f40f10977429}</Project>
+      <Name>UTIL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

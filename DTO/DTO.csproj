@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C0DF715F-4C58-4930-8A98-88F02BCCDA50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sistema.DTO</RootNamespace>
+    <AssemblyName>DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>..\..\..\..\Visual Studio 2015\Projects\_Clever Sistemas\Clever Ribbon\Link e DLL\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ESTRUTURA\DTO_Locacao_Produto.cs" />
+    <Compile Include="ESTRUTURA\DTO_FichaProducao.cs" />
+    <Compile Include="ESTRUTURA\DTO_Orcamento.cs" />
+    <Compile Include="ESTRUTURA\DTO_Cartao.cs" />
+    <Compile Include="ESTRUTURA\DTO_OS.cs" />
+    <Compile Include="ESTRUTURA\DTO_Backup.cs" />
+    <Compile Include="ESTRUTURA\DTO_Banco.cs" />
+    <Compile Include="ESTRUTURA\DTO_Boleto.cs" />
+    <Compile Include="ESTRUTURA\DTO_CFe_SAT.cs" />
+    <Compile Include="ESTRUTURA\DTO_NF-e_Utilitarios.cs" />
+    <Compile Include="ESTRUTURA\DTO_CFOP.cs" />
+    <Compile Include="ESTRUTURA\DTO_Cheque.cs" />
+    <Compile Include="ESTRUTURA\DTO_ControleDoc.cs" />
+    <Compile Include="ESTRUTURA\DTO_FolhaPagto.cs" />
+    <Compile Include="ESTRUTURA\DTO_Grade.cs" />
+    <Compile Include="ESTRUTURA\DTO_GrupoNivel.cs" />
+    <Compile Include="ESTRUTURA\DTO_Grupo.cs" />
+    <Compile Include="ESTRUTURA\DTO_Imagem.cs" />
+    <Compile Include="ESTRUTURA\DTO_Imposto.cs" />
+    <Compile Include="ESTRUTURA\DTO_Email.cs" />
+    <Compile Include="ESTRUTURA\DTO_Financeiro.cs" />
+    <Compile Include="ESTRUTURA\DTO_Mobile.cs" />
+    <Compile Include="ESTRUTURA\DTO_Municipio.cs" />
+    <Compile Include="ESTRUTURA\DTO_NCM.cs" />
+    <Compile Include="ESTRUTURA\DTO_NF.cs" />
+    <Compile Include="ESTRUTURA\DTO_NF_TipoEmissao.cs" />
+    <Compile Include="ESTRUTURA\DTO_Pagamento.cs" />
+    <Compile Include="ESTRUTURA\DTO_Pessoa.cs" />
+    <Compile Include="ESTRUTURA\DTO_PlanoConta.cs" />
+    <Compile Include="ESTRUTURA\DTO_Produto.cs" />
+    <Compile Include="ESTRUTURA\DTO_Produto_Item.cs" />
+    <Compile Include="ESTRUTURA\DTO_Sistema.cs" />
+    <Compile Include="ESTRUTURA\DTO_TabelaValor.cs" />
+    <Compile Include="ESTRUTURA\DTO_Usuario.cs" />
+    <Compile Include="ESTRUTURA\DTO_Imovel.cs" />
+    <Compile Include="ESTRUTURA\DTO_Locacao.cs" />
+    <Compile Include="ESTRUTURA\DTO_Parametro.cs" />
+    <Compile Include="ESTRUTURA\DTO_Venda.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ESTRUTURA\DTO_Data.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UTIL\UTIL.csproj">
+      <Project>{7217001e-23f9-4dcb-8058-f40f10977429}</Project>
+      <Name>UTIL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

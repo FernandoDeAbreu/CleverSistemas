@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{49DA66C0-B527-45E0-AD0C-02677ECC620E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sistema.BLL</RootNamespace>
+    <AssemblyName>BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>..\..\..\..\Visual Studio 2015\Projects\_Clever Sistemas\Clever Ribbon\Link e DLL\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BD_TesteDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_TesteDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\BLL_Combustivel.cs" />
+    <Compile Include="DLL\BLL_FichaProducao.cs" />
+    <Compile Include="DLL\BLL_Orcamento.cs" />
+    <Compile Include="DLL\BLL_Backup.cs" />
+    <Compile Include="DLL\BLL_Banco.cs" />
+    <Compile Include="DLL\BLL_Boleto.cs" />
+    <Compile Include="DLL\BLL_Cartao.cs" />
+    <Compile Include="DLL\BLL_CFOP.cs" />
+    <Compile Include="DLL\BLL_Cheque.cs" />
+    <Compile Include="DLL\BLL_ControleDoc.cs" />
+    <Compile Include="DLL\BLL_CPagar.cs" />
+    <Compile Include="DLL\BLL_CReceber.cs" />
+    <Compile Include="DLL\BLL_FluxoCaixa.cs" />
+    <Compile Include="DLL\BLL_FolhaPagto.cs" />
+    <Compile Include="DLL\BLL_Grade.cs" />
+    <Compile Include="DLL\BLL_GrupoNivel.cs" />
+    <Compile Include="DLL\BLL_Grupo.cs" />
+    <Compile Include="DLL\BLL_Imagem.cs" />
+    <Compile Include="DLL\BLL_Imposto.cs" />
+    <Compile Include="DLL\BLL_Municipio.cs" />
+    <Compile Include="DLL\BLL_NCM.cs" />
+    <Compile Include="DLL\BLL_NF.cs" />
+    <Compile Include="DLL\BLL_NF_TipoEmissao.cs" />
+    <Compile Include="DLL\BLL_Pagamento.cs" />
+    <Compile Include="DLL\BLL_Pessoa.cs" />
+    <Compile Include="DLL\BLL_PlanoConta.cs" />
+    <Compile Include="DLL\BLL_OS.cs" />
+    <Compile Include="DLL\BLL_Produto.cs" />
+    <Compile Include="DLL\BLL_Sintegra.cs" />
+    <Compile Include="DLL\BLL_Sistema.cs" />
+    <Compile Include="DLL\BLL_TabelaValor.cs" />
+    <Compile Include="DLL\BLL_Usuario.cs" />
+    <Compile Include="DLL\BLL_Email.cs" />
+    <Compile Include="DLL\BLL_Imovel.cs" />
+    <Compile Include="DLL\BLL_Mobile.cs" />
+    <Compile Include="DLL\BLL_Parametro.cs" />
+    <Compile Include="DLL\BLL_Venda.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{984161FA-EF26-4908-8F7D-F0FB712C207C}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{C0DF715F-4C58-4930-8A98-88F02BCCDA50}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTIL\UTIL.csproj">
+      <Project>{7217001e-23f9-4dcb-8058-f40f10977429}</Project>
+      <Name>UTIL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="BD_TesteDataSet.xsc">
+      <DependentUpon>BD_TesteDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BD_TesteDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BD_TesteDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BD_TesteDataSet.xss">
+      <DependentUpon>BD_TesteDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

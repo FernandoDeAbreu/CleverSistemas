@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+using Sistema.DTO;
+using Sistema.DAL;
+using Sistema.UTIL;
+
+namespace Sistema.BLL.DLL
+{
+    class BLL_Combustivel
+    {
+    }
+}

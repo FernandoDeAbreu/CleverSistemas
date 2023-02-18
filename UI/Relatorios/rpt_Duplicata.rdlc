@@ -1,0 +1,2368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Rectangle Name="rectangle2">
+        <ReportItems>
+          <Textbox Name="textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Logradouro.Value, "ds_InfoEmitente") &amp; ", " &amp; First(Fields!NumeroEndereco.Value, "ds_InfoEmitente") &amp; " - " &amp; First(Fields!Bairro.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.09525cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.4709cm</Height>
+            <Width>9.31216cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="CEP: " &amp; First(Fields!CEP.Value, "ds_InfoEmitente") &amp; " - " &amp;  First(Fields!Municipio.Value, "ds_InfoEmitente") &amp; "-" &amp; First(Fields!UF.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox2</rd:DefaultName>
+            <Top>0.6111cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.4709cm</Height>
+            <Width>9.32407cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="FONE: (" &amp; First(Fields!DDD.Value, "ds_InfoEmitente") &amp; ") " &amp; First(Fields!NumeroTelefone.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox3</rd:DefaultName>
+            <Top>1.1402cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.47619cm</Height>
+            <Width>9.31877cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="CNPJ: " &amp; First(Fields!CNPJ_CPF.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox4</rd:DefaultName>
+            <Top>1.67724cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.4709cm</Height>
+            <Width>9.32936cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="IE_RG">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="INSCRIÇÃO ESTADUAL: " &amp; First(Fields!IE_RG.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>IE_RG</rd:DefaultName>
+            <Top>2.2156cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.46031cm</Height>
+            <Width>9.33466cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Data da Emissão: " &amp; Parameters!DataEmissao.Value</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox17</rd:DefaultName>
+            <Top>3.03175cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.47619cm</Height>
+            <Width>9.3082cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>0.75cm</Top>
+        <Left>10.44709cm</Left>
+        <Height>3.64683cm</Height>
+        <Width>9.75cm</Width>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle1">
+        <ReportItems>
+          <Image Name="image1">
+            <Source>Database</Source>
+            <Value>=First(Fields!Imagem_rpt.Value, "ds_InfoEmitente")</Value>
+            <MIMEType>image/jpeg</MIMEType>
+            <Sizing>Fit</Sizing>
+            <Top>0.32938cm</Top>
+            <Left>2.85725cm</Left>
+            <Height>2cm</Height>
+            <Width>4cm</Width>
+            <Style>
+              <Border />
+            </Style>
+          </Image>
+          <Textbox Name="Nome_Razao">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Nome_Razao.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Nome_Razao</rd:DefaultName>
+            <Top>2.73543cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.52646cm</Height>
+            <Width>9.25cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>0.75cm</Top>
+        <Left>0.5cm</Left>
+        <Height>3.63492cm</Height>
+        <Width>9.75cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle3">
+        <ReportItems>
+          <Line Name="line1">
+            <Top>0.25cm</Top>
+            <Left>2.75cm</Left>
+            <Height>7.25cm</Height>
+            <Width>0cm</Width>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>4.5cm</Top>
+        <Left>0.5cm</Left>
+        <Height>7.80291cm</Height>
+        <Width>3.75cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle4">
+        <ReportItems>
+          <Textbox Name="textbox5">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Fatura Nº </Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox5</rd:DefaultName>
+            <Top>0.13228cm</Top>
+            <Left>0.19444cm</Left>
+            <Height>0.5cm</Height>
+            <Width>1.55556cm</Width>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox6">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Fatura Valor</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.125cm</Top>
+            <Left>2.25cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox7">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Duplicata Nº </Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.125cm</Top>
+            <Left>5.25cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox8">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Vencimento</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.125cm</Top>
+            <Left>8.75cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="line2">
+            <Left>2cm</Left>
+            <Height>0.75cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="line3">
+            <Left>5cm</Left>
+            <Height>0.75cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="line4">
+            <Left>8.13227cm</Left>
+            <Height>0.75cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>4.5cm</Top>
+        <Left>4.5cm</Left>
+        <Height>0.75cm</Height>
+        <Width>11.75cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <BackgroundColor>Gainsboro</BackgroundColor>
+        </Style>
+      </Rectangle>
+      <Textbox Name="textbox9">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!NumeroFatura.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox9</rd:DefaultName>
+        <Top>5.5cm</Top>
+        <Left>4.64418cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>1.74603cm</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox10">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="R$ " &amp; Parameters!Valor.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>5.5cm</Top>
+        <Left>6.75cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>2.43518cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border />
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox11">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!NumeroDuplicata.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>5.5cm</Top>
+        <Left>9.75cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>2.43518cm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox12">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!Vencimento.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>5.5cm</Top>
+        <Left>13.31746cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>2.43518cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Rectangle Name="rectangle6">
+        <ReportItems>
+          <Textbox Name="textbox14">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>= "Observações: " &amp; Parameters!Observacao.Value</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox14</rd:DefaultName>
+            <Top>0.5cm</Top>
+            <Left>0.14418cm</Left>
+            <Height>0.60582cm</Height>
+            <Width>11.35582cm</Width>
+            <Style>
+              <Border />
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>6.31481cm</Top>
+        <Left>4.5cm</Left>
+        <Height>1.24339cm</Height>
+        <Width>11.75cm</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle7">
+        <ReportItems>
+          <Textbox Name="textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Para uso da Instituição Financeira</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox13</rd:DefaultName>
+            <Top>0.10582cm</Top>
+            <Left>0.35582cm</Left>
+            <Height>2.82936cm</Height>
+            <Width>3cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>4.5cm</Top>
+        <Left>16.47355cm</Left>
+        <Height>3.06878cm</Height>
+        <Width>3.73016cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle8">
+        <ReportItems>
+          <Textbox Name="Descricao">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Nome Sacado: " &amp; First(Fields!Descricao.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Descricao</rd:DefaultName>
+            <Top>0.07937cm</Top>
+            <Left>0.27646cm</Left>
+            <Height>0.5291cm</Height>
+            <Width>15.22355cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Logradouro">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Endereço: " &amp; First(Fields!Logradouro.Value, "ds_Pessoa_Pessoa") &amp; ", " &amp; First(Fields!NumeroEndereco.Value, "ds_Pessoa_Pessoa") &amp; " - " &amp; First(Fields!Bairro.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Logradouro</rd:DefaultName>
+            <Top>0.62963cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.55556cm</Height>
+            <Width>15.25cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NomeMunicipio">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Município: " &amp; First(Fields!NomeMunicipio.Value, "ds_Pessoa_Pessoa") &amp;  "-" &amp; First(Fields!Sigla.Value, "ds_Pessoa_Pessoa") &amp; " - CEP: " &amp; First(Fields!CEP.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NomeMunicipio</rd:DefaultName>
+            <Top>1.20899cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.55556cm</Height>
+            <Width>15.25cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Municipio">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Praça de Pagto: " &amp; First(Fields!Municipio.Value, "ds_InfoEmitente") &amp; "-" &amp; First(Fields!UF.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Municipio</rd:DefaultName>
+            <Top>2.59127cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.55556cm</Height>
+            <Width>15.25cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CNPJ_CPF">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="CNPJ/CPF: " &amp; First(Fields!CNPJ_CPF.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CNPJ_CPF</rd:DefaultName>
+            <Top>1.77646cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.5cm</Height>
+            <Width>13.5cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>7.69709cm</Top>
+        <Left>4.5cm</Left>
+        <Height>3.25265cm</Height>
+        <Width>15.75cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle9">
+        <ReportItems>
+          <Textbox Name="textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="(" &amp; Parameters!ValorExtenso.Value &amp; ")"</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox15</rd:DefaultName>
+            <Top>0.14418cm</Top>
+            <Left>0.19709cm</Left>
+            <Height>1.01455cm</Height>
+            <Width>13.35582cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>11.05291cm</Top>
+        <Left>6.5cm</Left>
+        <Height>1.24339cm</Height>
+        <Width>13.74074cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Textbox Name="textbox16">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Valor por Extenso</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox16</rd:DefaultName>
+        <Top>11.05291cm</Top>
+        <Left>4.46825cm</Left>
+        <Height>1.24339cm</Height>
+        <Width>2.01058cm</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Rectangle Name="rectangle10">
+        <ReportItems>
+          <Textbox Name="textbox21">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Assinatura do Sacado</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.96297cm</Top>
+            <Left>13.5cm</Left>
+            <Height>0.4365cm</Height>
+            <Width>5.25cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox18">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Em___/____/___</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox18</rd:DefaultName>
+            <Top>0.11772cm</Top>
+            <Left>0.30291cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>3.25cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Data do Aceite</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox19</rd:DefaultName>
+            <Top>0.80291cm</Top>
+            <Left>0.63228cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.53968cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox20">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Reconheço(emos) a exatidão desta Duplicata de Venda Mercantil na importância acima,que pagarei(emos) à " &amp;  First(Fields!Nome_Razao.Value, "ds_InfoEmitente") &amp; " ou à sua ordem, na praça e vencimento indicados."</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox20</rd:DefaultName>
+            <Top>0.06481cm</Top>
+            <Left>3.75cm</Left>
+            <Height>0.68519cm</Height>
+            <Width>10.5cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="line8">
+            <Top>0.88228cm</Top>
+            <Left>13cm</Left>
+            <Height>0cm</Height>
+            <Width>6.35185cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>12.39418cm</Top>
+        <Left>0.5cm</Left>
+        <Height>1.5cm</Height>
+        <Width>19.74074cm</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle19">
+        <ReportItems>
+          <Textbox Name="textbox43">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Logradouro.Value, "ds_InfoEmitente") &amp; ", " &amp; First(Fields!NumeroEndereco.Value, "ds_InfoEmitente") &amp; " - " &amp; First(Fields!Bairro.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.15875cm</Top>
+            <Left>0.20767cm</Left>
+            <Height>0.4709cm</Height>
+            <Width>9.31216cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox45">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="CEP: " &amp; First(Fields!CEP.Value, "ds_InfoEmitente") &amp; " - " &amp;  First(Fields!Municipio.Value, "ds_InfoEmitente") &amp; "-" &amp; First(Fields!UF.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox2</rd:DefaultName>
+            <Top>0.68381cm</Top>
+            <Left>0.20767cm</Left>
+            <Height>0.4709cm</Height>
+            <Width>9.32407cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox46">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="FONE: (" &amp; First(Fields!DDD.Value, "ds_InfoEmitente") &amp; ") " &amp; First(Fields!NumeroTelefone.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox3</rd:DefaultName>
+            <Top>1.21291cm</Top>
+            <Left>0.20767cm</Left>
+            <Height>0.47619cm</Height>
+            <Width>9.31877cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox47">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="CNPJ: " &amp; First(Fields!CNPJ_CPF.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox4</rd:DefaultName>
+            <Top>1.74995cm</Top>
+            <Left>0.20767cm</Left>
+            <Height>0.4709cm</Height>
+            <Width>9.32936cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="IE_RG2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="INSCRIÇÃO ESTADUAL: " &amp; First(Fields!IE_RG.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>IE_RG</rd:DefaultName>
+            <Top>2.28831cm</Top>
+            <Left>0.20767cm</Left>
+            <Height>0.49206cm</Height>
+            <Width>9.33466cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox48">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Data da Emissão: " &amp; Parameters!DataEmissao.Value</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox17</rd:DefaultName>
+            <Top>3.04582cm</Top>
+            <Left>0.2209cm</Left>
+            <Height>0.47619cm</Height>
+            <Width>9.3082cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>15.10582cm</Top>
+        <Left>10.44709cm</Left>
+        <Height>3.64901cm</Height>
+        <Width>9.75cm</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle18">
+        <ReportItems>
+          <Image Name="image2">
+            <Source>Database</Source>
+            <Value>=First(Fields!Imagem_rpt.Value, "ds_InfoEmitente")</Value>
+            <MIMEType>image/jpeg</MIMEType>
+            <Sizing>Fit</Sizing>
+            <Top>0.17063cm</Top>
+            <Left>2cm</Left>
+            <Height>2.5cm</Height>
+            <Width>5.5cm</Width>
+            <Style>
+              <Border />
+            </Style>
+          </Image>
+          <Textbox Name="textbox44">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Nome_Razao.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.89418cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.52646cm</Height>
+            <Width>9.25cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>15.10582cm</Top>
+        <Left>0.5cm</Left>
+        <Height>3.63492cm</Height>
+        <Width>9.75cm</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle17">
+        <ReportItems>
+          <Line Name="line13">
+            <Top>0.25cm</Top>
+            <Left>2.75cm</Left>
+            <Height>7.25cm</Height>
+            <Width>0cm</Width>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>18.85582cm</Top>
+        <Left>0.5cm</Left>
+        <Height>7.80291cm</Height>
+        <Width>3.75cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle16">
+        <ReportItems>
+          <Textbox Name="textbox42">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Fatura Nº </Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.13228cm</Top>
+            <Left>0.19444cm</Left>
+            <Height>0.5cm</Height>
+            <Width>1.55556cm</Width>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox41">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Fatura Valor</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.125cm</Top>
+            <Left>2.25cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox40">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Duplicata Nº </Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.125cm</Top>
+            <Left>5.25cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox39">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Vencimento</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.125cm</Top>
+            <Left>8.75cm</Left>
+            <Height>0.5cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <BackgroundColor>Gainsboro</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="line12">
+            <Left>2cm</Left>
+            <Height>0.75cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="line11">
+            <Left>5cm</Left>
+            <Height>0.75cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="line10">
+            <Left>8.13227cm</Left>
+            <Height>0.75cm</Height>
+            <Width>0cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>18.88757cm</Top>
+        <Left>4.5cm</Left>
+        <Height>0.75cm</Height>
+        <Width>11.75cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <BackgroundColor>Gainsboro</BackgroundColor>
+        </Style>
+      </Rectangle>
+      <Textbox Name="textbox38">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!NumeroFatura.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>19.85582cm</Top>
+        <Left>4.64418cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>1.74603cm</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox37">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="R$ " &amp; Parameters!Valor.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>19.85582cm</Top>
+        <Left>6.75cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>2.43518cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox36">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!NumeroDuplicata.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>19.85582cm</Top>
+        <Left>9.75cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>2.43518cm</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox35">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!Vencimento.Value</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>19.85582cm</Top>
+        <Left>13.31746cm</Left>
+        <Height>0.50265cm</Height>
+        <Width>2.43518cm</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border />
+        </Style>
+      </Textbox>
+      <Rectangle Name="rectangle15">
+        <ReportItems>
+          <Textbox Name="textbox34">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>= "Observações: " &amp; Parameters!Observacao.Value</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.5cm</Top>
+            <Left>0.14418cm</Left>
+            <Height>0.60582cm</Height>
+            <Width>11.35582cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>20.67063cm</Top>
+        <Left>4.5cm</Left>
+        <Height>1.24339cm</Height>
+        <Width>11.75cm</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle14">
+        <ReportItems>
+          <Textbox Name="textbox33">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Para uso da Instituição Financeira</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.10582cm</Top>
+            <Left>0.35582cm</Left>
+            <Height>2.82936cm</Height>
+            <Width>3cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>18.85582cm</Top>
+        <Left>16.47355cm</Left>
+        <Height>3.06878cm</Height>
+        <Width>3.73016cm</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle13">
+        <ReportItems>
+          <Textbox Name="textbox32">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Nome Sacado: " &amp; First(Fields!Descricao.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.07937cm</Top>
+            <Left>0.27646cm</Left>
+            <Height>0.5291cm</Height>
+            <Width>15.22355cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox31">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Endereço: " &amp; First(Fields!Logradouro.Value, "ds_Pessoa_Pessoa") &amp; ", " &amp; First(Fields!NumeroEndereco.Value, "ds_Pessoa_Pessoa") &amp; " - " &amp; First(Fields!Bairro.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.62963cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.55556cm</Height>
+            <Width>15.25cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox30">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Município: " &amp; First(Fields!NomeMunicipio.Value, "ds_Pessoa_Pessoa") &amp;  "-" &amp; First(Fields!Sigla.Value, "ds_Pessoa_Pessoa") &amp; " - CEP: " &amp; First(Fields!CEP.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.20899cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.55556cm</Height>
+            <Width>15.25cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox29">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Praça de Pagto: " &amp; First(Fields!Municipio.Value, "ds_InfoEmitente") &amp; "-" &amp; First(Fields!UF.Value, "ds_InfoEmitente")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.59127cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.55556cm</Height>
+            <Width>15.25cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox28">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="CNPJ/CPF: " &amp; First(Fields!CNPJ_CPF.Value, "ds_Pessoa_Pessoa")</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.77646cm</Top>
+            <Left>0.25cm</Left>
+            <Height>0.5cm</Height>
+            <Width>13.5cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>22.05291cm</Top>
+        <Left>4.5cm</Left>
+        <Height>3.25265cm</Height>
+        <Width>15.75cm</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Rectangle Name="rectangle12">
+        <ReportItems>
+          <Textbox Name="textbox27">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="(" &amp; Parameters!ValorExtenso.Value &amp; ")"</Value>
+                    <Style>
+                      <FontFamily>microsoft tai Le</FontFamily>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.14418cm</Top>
+            <Left>0.19709cm</Left>
+            <Height>1.01455cm</Height>
+            <Width>13.35582cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <DataElementOutput>ContentsOnly</DataElementOutput>
+        <Top>25.40873cm</Top>
+        <Left>6.53175cm</Left>
+        <Height>1.24339cm</Height>
+        <Width>13.70899cm</Width>
+        <ZIndex>25</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+      <Textbox Name="textbox26">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Valor por Extenso</Value>
+                <Style>
+                  <FontFamily>microsoft tai Le</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>25.40873cm</Top>
+        <Left>4.5cm</Left>
+        <Height>1.24339cm</Height>
+        <Width>2.01058cm</Width>
+        <ZIndex>26</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="line17">
+        <Top>14.5cm</Top>
+        <Left>0.25cm</Left>
+        <Height>0cm</Height>
+        <Width>20.5cm</Width>
+        <ZIndex>27</ZIndex>
+        <Style>
+          <Border>
+            <Style>Dashed</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line23">
+        <Top>5.2832cm</Top>
+        <Left>4.5cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line24">
+        <Top>5.2832cm</Top>
+        <Left>6.49499cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line25">
+        <Top>5.2832cm</Top>
+        <Left>9.5cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line26">
+        <Top>5.2832cm</Top>
+        <Left>12.63227cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>31</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line27">
+        <Top>5.2832cm</Top>
+        <Left>16.25cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>32</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line28">
+        <Top>19.66202cm</Top>
+        <Left>4.49008cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>33</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line29">
+        <Top>19.66202cm</Top>
+        <Left>6.50091cm</Left>
+        <Height>0.98954cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>34</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line30">
+        <Top>19.63027cm</Top>
+        <Left>9.50592cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>35</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line31">
+        <Top>19.66202cm</Top>
+        <Left>12.63819cm</Left>
+        <Height>0.98954cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>36</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Line Name="Line32">
+        <Top>19.63027cm</Top>
+        <Left>16.25cm</Left>
+        <Height>1.02129cm</Height>
+        <Width>0cm</Width>
+        <ZIndex>37</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+    </ReportItems>
+    <Height>29cm</Height>
+    <Style />
+  </Body>
+  <Width>21cm</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="RelatoriosDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>1843a302-af15-47a9-8205-4fb5a93f72f7</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ds_InfoEmitente">
+      <Query>
+        <DataSourceName>RelatoriosDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nome_Razao">
+          <DataField>Nome_Razao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NomeFantasia">
+          <DataField>NomeFantasia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CNPJ_CPF">
+          <DataField>CNPJ_CPF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IE_RG">
+          <DataField>IE_RG</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descricao1">
+          <DataField>Descricao1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descricao2">
+          <DataField>Descricao2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descricao3">
+          <DataField>Descricao3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DescricaoGrupo">
+          <DataField>DescricaoGrupo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Informacao">
+          <DataField>Informacao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Imagem_rpt">
+          <DataField>Imagem_rpt</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="Logradouro">
+          <DataField>Logradouro</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NumeroEndereco">
+          <DataField>NumeroEndereco</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Bairro">
+          <DataField>Bairro</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CEP">
+          <DataField>CEP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DDD">
+          <DataField>DDD</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NumeroTelefone">
+          <DataField>NumeroTelefone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Municipio">
+          <DataField>Municipio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UF">
+          <DataField>UF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Complemento">
+          <DataField>Complemento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CEI">
+          <DataField>CEI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ds_Pessoa</rd:DataSetName>
+        <rd:SchemaPath>D:\PROJETOS\Projetos C#\Relatorios\Relatorios\ESTRUTURAS\ds_Pessoa.xsd</rd:SchemaPath>
+        <rd:TableName>Empresa</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="ds_Pessoa_Pessoa">
+      <Query>
+        <DataSourceName>RelatoriosDataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descricao">
+          <DataField>Descricao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NomeFantasia">
+          <DataField>NomeFantasia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CNPJ_CPF">
+          <DataField>CNPJ_CPF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IE_RG">
+          <DataField>IE_RG</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Logradouro">
+          <DataField>Logradouro</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NumeroEndereco">
+          <DataField>NumeroEndereco</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Bairro">
+          <DataField>Bairro</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NomeMunicipio">
+          <DataField>NomeMunicipio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Sigla">
+          <DataField>Sigla</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CEP">
+          <DataField>CEP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DDD">
+          <DataField>DDD</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NumeroTelefone">
+          <DataField>NumeroTelefone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Referencia">
+          <DataField>Referencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Mensalidade">
+          <DataField>Mensalidade</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Vencimento">
+          <DataField>Vencimento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descricao1">
+          <DataField>Descricao1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descricao2">
+          <DataField>Descricao2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Descricao3">
+          <DataField>Descricao3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Conjuge">
+          <DataField>Conjuge</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CPF_Conjuge">
+          <DataField>CPF_Conjuge</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Profissao_Conjuge">
+          <DataField>Profissao_Conjuge</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Complemento">
+          <DataField>Complemento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RG_Conjuge">
+          <DataField>RG_Conjuge</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>ds_Pessoa</rd:DataSetName>
+        <rd:SchemaPath>D:\PROJETOS\Projetos C#\Relatorios\Relatorios\ESTRUTURAS\ds_Pessoa.xsd</rd:SchemaPath>
+        <rd:TableName>Info_Completo</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="NumeroFatura">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Valor">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ValorExtenso">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="NumeroDuplicata">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Vencimento">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Observacao">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DataEmissao">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>7922ac84-f333-4424-b302-dcdb74400a18</rd:ReportID>
+</Report>
