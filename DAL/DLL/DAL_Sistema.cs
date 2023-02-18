@@ -12,7 +12,7 @@ namespace Sistema.DAL
     {
         //ULTIMA ALTERAÇÃO: 06/03/2017
 
-        public int UltimaVersao = 254;
+        public int UltimaVersao = 256;
 
         #region VARIAVEIS DIVERSAS
         Conexao conexao;
@@ -10123,60 +10123,81 @@ namespace Sistema.DAL
                     #region 250
                     case 250:
 
-                        sql = "ALTER TABLE locProduto ADD status nvarchar ";
-                        cmd.CommandText = sql;
-                        conexao.Executa_Comando(cmd);
+                        //sql = "ALTER TABLE locProduto ADD status nvarchar ";
+                        //cmd.CommandText = sql;
+                        //conexao.Executa_Comando(cmd);
 
                         break;
                     #endregion
                     #region 251
                     case 251:
 
-                        sql = "ALTER TABLE Usuario ADD PosicaoMenu nvarchar(20) ";
-                        cmd.CommandText = sql;
-                        conexao.Executa_Comando(cmd);
+                        //sql = "ALTER TABLE Usuario ADD PosicaoMenu nvarchar(20) ";
+                        //cmd.CommandText = sql;
+                        //conexao.Executa_Comando(cmd);
 
                         break;
                     #endregion
                     #region 252
                     case 252:
 
-                        sql = "ALTER TABLE Usuario ADD PosicaoMenu nvarchar(20) ";
-                        cmd.CommandText = sql;
-                        conexao.Executa_Comando(cmd);
+                        //sql = "ALTER TABLE Usuario ADD PosicaoMenu nvarchar(20) ";
+                        //cmd.CommandText = sql;
+                        //conexao.Executa_Comando(cmd);
 
                         break;
                     #endregion
                     #region 253
                     case 253:
 
-                        sql = "CREATE TABLE Frota_Combustivel ( ";
-                        sql += "ID int IDENTITY PRIMARY KEY, ";
-                        sql += "Descricao nvarchar(60))";
-                        cmd.CommandText = sql;
-                        conexao.Executa_Comando(cmd);
+                        //sql = "CREATE TABLE Frota_Combustivel ( ";
+                        //sql += "ID int IDENTITY PRIMARY KEY, ";
+                        //sql += "Descricao nvarchar(60))";
+                        //cmd.CommandText = sql;
+                        //conexao.Executa_Comando(cmd);
 
                         break;
                     #endregion
                     #region 254
                     case 254:
 
-                        sql = "CREATE TABLE FROTA_VEICULO ( ";
-                        sql += "ID int IDENTITY PRIMARY KEY, ";
-                        sql += "RENAVAM nvarchar(60))";
-                        sql += "RNTRC   nvarchar(60))";
-                        sql += "PLACA   nvarchar(60))";
-                        sql += "ANOMOD  nvarchar(60))";
-                        sql += "ANOFAB  nvarchar(60))";
-                        sql += "CHASSI  nvarchar(60))";
-                        sql += "MARCA_MODELO nvarchar(60))";
-                        sql += "KMINI   nvarchar(60))";
-                        sql += "KMATUAL nvarchar(60))";                      
+                        //sql = "CREATE TABLE FROTA_VEICULO ( ";
+                        //sql += "ID int IDENTITY PRIMARY KEY, ";
+                        //sql += "RENAVAM nvarchar(60))";
+                        //sql += "RNTRC   nvarchar(60))";
+                        //sql += "PLACA   nvarchar(60))";
+                        //sql += "ANOMOD  nvarchar(60))";
+                        //sql += "ANOFAB  nvarchar(60))";
+                        //sql += "CHASSI  nvarchar(60))";
+                        //sql += "MARCA_MODELO nvarchar(60))";
+                        //sql += "KMINI   nvarchar(60))";
+                        //sql += "KMATUAL nvarchar(60))";                      
+                        //cmd.CommandText = sql;
+                        //conexao.Executa_Comando(cmd);
+
+                        break;
+                    #endregion
+                    #region 255
+                    case 255:
+
+                        sql = "ALTER TABLE VENDA ";
+                        sql += "ADD SEQVENDA VARCHAR(20) ";
                         cmd.CommandText = sql;
                         conexao.Executa_Comando(cmd);
 
                         break;
-                        #endregion
+                    #endregion
+                    #region 256
+                    case 256:
+
+                        sql = "CREATE TABLE Venda_Sequencia (";
+                        sql += "ID int IDENTITY PRIMARY KEY, ";
+                        sql += "SEQ int	)";
+                        cmd.CommandText = sql;
+                        conexao.Executa_Comando(cmd);
+
+                        break;
+                    #endregion
 
                 }
                 cmd.CommandText = "UPDATE Versao SET BD = " + intVersao;

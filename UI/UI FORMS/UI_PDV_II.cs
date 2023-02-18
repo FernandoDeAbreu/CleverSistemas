@@ -11,10 +11,11 @@ using Sistema.DTO;
 using Sistema.BLL;
 using Sistema.UTIL;
 using System.Drawing.Printing;
-using Microsoft.Win32;
 using System.IO;
 using System.Data.SqlClient;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Text;
 
 namespace Sistema.UI.UI_FORMS
 {
@@ -28,6 +29,7 @@ namespace Sistema.UI.UI_FORMS
         public string pagamentoEfetuado;
         public string Moeda;
         string descricaoGrupo;
+        string contadorDeVendas = "";
         public UI_PDV_II()
         {
             InitializeComponent();
@@ -99,65 +101,6 @@ namespace Sistema.UI.UI_FORMS
                     this.Region = new System.Drawing.Region(gp);
                 }
             }
-        }
-        private void carregarGridx()
-        {
-
-            this.flowLayoutPanel1.Controls.Clear();
-
-          
-            SqlCommand cmd = new SqlCommand(
-              " SELECT * FROM V_Produto_Venda where DescricaoGrupo " + descricaoGrupo + "", sqlConn);
-
-
-            sqlConn.Open();
-
-            SqlDataReader dr = cmd.ExecuteReader();
-          
-            while (dr.Read())
-            {
-                Button b = new Button();
-
-                b.Click += new EventHandler(b_Click);
-
-                b.Name = dr["ID"].ToString();
-                b.Text = dr["DESCRICAO"].ToString();
-
-                //string myFile = dr["IMAGEM"].ToString();
-                //Image newImage = Image.FromFile(myFile);
-                //b.BackgroundImage = newImage;
-
-                try
-                {
-                    byte[] bits = (byte[])(dr["IMAGEM"]);
-                    MemoryStream memorybits = new MemoryStream(bits);
-                    Bitmap ImagemConvertida = new Bitmap(memorybits);
-                    b.BackgroundImage = ImagemConvertida;
-                }
-                catch (Exception)
-                {
-                    b.BackgroundImage = null;
-                }
-
-                b.BackColor = System.Drawing.Color.White;
-                b.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-
-                b.FlatAppearance.BorderSize = 0;
-                b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-
-                b.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-                b.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-                b.ForeColor = System.Drawing.Color.Black;
-
-                b.Size = new System.Drawing.Size(145, 145);
-
-                b.Margin = new System.Windows.Forms.Padding(15);
-                b.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-
-                this.flowLayoutPanel1.Controls.Add(b);
-            }
-
-            sqlConn.Close();
         }
         private void carregarGrid()
         {
@@ -373,6 +316,7 @@ namespace Sistema.UI.UI_FORMS
             
             Limpa_Campos();
             pesquisarGrupoNivel();
+            retornarSeqVenda();
            // carregarGrid();
 
 
@@ -482,7 +426,7 @@ namespace Sistema.UI.UI_FORMS
 
             ReportParameter p1 = new ReportParameter("FormaPagto", Financeiro);
             ReportParameter p2 = new ReportParameter("TotalPedido", util_dados.ConfigNumDecimal(lblTotal.Text, 3));
-            ReportParameter p3 = new ReportParameter("Vendedor", "");
+            ReportParameter p3 = new ReportParameter("Vendedor", contadorDeVendas);
 
             rpt.DataSources.Add(ds_Empresa);
             rpt.DataSources.Add(ds_Pedido);
@@ -724,10 +668,6 @@ namespace Sistema.UI.UI_FORMS
             }
             totalizador();
         }
-        private void gravarVendaItem()
-        {
-            throw new NotImplementedException();
-        }
         private void retornaUltimaVenda()
         {
             SqlCommand cmd = new SqlCommand("SELECT MAX(ID) FROM VENDA", sqlConn);
@@ -744,8 +684,52 @@ namespace Sistema.UI.UI_FORMS
 
             sqlConn.Close();
         }
+        private void gravarSeqVenda()
+        {
+            //definição do comando sql
+            string sql = "UPDATE Venda_Sequencia SET SEQ = SEQ+1";
+
+            SqlCommand comando = new SqlCommand(sql, sqlConn);
+           
+            sqlConn.Open();
+            comando.ExecuteNonQuery();
+            sqlConn.Close();
+
+        }
+        private void zerarSeqVenda()
+        {
+            //definição do comando sql
+            string sql = "UPDATE Venda_Sequencia SET SEQ = 1";
+
+            SqlCommand comando = new SqlCommand(sql, sqlConn);
+
+            sqlConn.Open();
+            comando.ExecuteNonQuery();
+            sqlConn.Close();
+
+        }
+        private void retornarSeqVenda()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Venda_Sequencia", sqlConn);
+
+            sqlConn.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+
+            while (dr.Read())
+            {
+                contadorDeVendas = dr[1].ToString();
+                label1.Text = "Venda Balcão Nº " + contadorDeVendas;
+
+            }
+
+            sqlConn.Close();
+
+        }
         private void gravarVenda()
         {
+
             //definição do comando sql
             string sql = " INSERT INTO VENDA     ( ID_EMPRESA             " +
                                                 " ,TIPOPESSOA             " +
@@ -767,7 +751,8 @@ namespace Sistema.UI.UI_FORMS
                                                 " ,ID_Usuario_Conferencia " +
                                                 " ,CPF_CNPJ               " +
                                                 " ,ID_NFe                 " +
-                                                " ,ID_CFe )               " +
+                                                " ,ID_CFe                 " +
+                                                " ,SEQVENDA )               " +
                                                 " VALUES (                " +
                                                 "  @ID_EMPRESA             " +
                                                 " ,@TIPOPESSOA             " +
@@ -789,7 +774,8 @@ namespace Sistema.UI.UI_FORMS
                                                 " ,@ID_Usuario_Conferencia " +
                                                 " ,@CPF_CNPJ               " +
                                                 " ,@ID_NFe                 " +
-                                                " ,@ID_CFe  )              ";
+                                                " ,@ID_CFe                 " +
+                                                " ,@SEQVENDA  )            ";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
             comando.Parameters.Add(new SqlParameter("ID_EMPRESA"            , "1"));
@@ -813,6 +799,7 @@ namespace Sistema.UI.UI_FORMS
             comando.Parameters.Add(new SqlParameter("CPF_CNPJ"              , ""));
             comando.Parameters.Add(new SqlParameter("ID_NFe"                , ""));
             comando.Parameters.Add(new SqlParameter("ID_CFe"                , ""));
+            comando.Parameters.Add(new SqlParameter("SEQVENDA"              , contadorDeVendas));
 
 
             sqlConn.Open();
@@ -976,6 +963,8 @@ namespace Sistema.UI.UI_FORMS
 
                 if (pagamentoEfetuado == "SIM")
                 {
+                    gravarSeqVenda();
+                    retornarSeqVenda();
                     gravarVenda();
                     retornaUltimaVenda();
                    
@@ -983,6 +972,7 @@ namespace Sistema.UI.UI_FORMS
                     gravarCReceber();
                     Imprime(Convert.ToInt32(idUltimaVenda));
                     Limpa_Campos();
+                    retornarSeqVenda();
                 }
             }
             
@@ -990,11 +980,6 @@ namespace Sistema.UI.UI_FORMS
         private void UI_PDV_II_KeyDown(object sender, KeyEventArgs e)
         {
            
-        }
-        private void tboxComandos_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F2)
-                ResumoVenda();
         }
         private void btnProximo_Click(object sender, EventArgs e)
         {
@@ -1054,10 +1039,13 @@ namespace Sistema.UI.UI_FORMS
             descricaoGrupo = " <> '' ";
             carregarGrid();
         }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Deseja Zerar Sequencia de vendas?","Clever Sistemas",  MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                zerarSeqVenda();
+                retornarSeqVenda();
+            }
         }
     }
 }
