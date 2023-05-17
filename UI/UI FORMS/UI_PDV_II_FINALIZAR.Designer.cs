@@ -52,9 +52,8 @@ namespace Sistema.UI.UI_FORMS
             this.tboxValorPago = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnFinalizar = new System.Windows.Forms.Button();
-            this.btnCartao = new System.Windows.Forms.RadioButton();
-            this.btnPix = new System.Windows.Forms.RadioButton();
-            this.btnDinheiro = new System.Windows.Forms.RadioButton();
+            this.CboxFormaPagamento = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -253,14 +252,16 @@ namespace Sistema.UI.UI_FORMS
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(18, 211);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 30);
+            this.label1.Size = new System.Drawing.Size(115, 30);
             this.label1.TabIndex = 17;
-            this.label1.Text = "Valor Total";
+            this.label1.Text = "Valor total";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.CboxFormaPagamento);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.label4);
@@ -271,9 +272,6 @@ namespace Sistema.UI.UI_FORMS
             this.panel1.Controls.Add(this.tboxValorTotal);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnFinalizar);
-            this.panel1.Controls.Add(this.btnCartao);
-            this.panel1.Controls.Add(this.btnPix);
-            this.panel1.Controls.Add(this.btnDinheiro);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -370,6 +368,7 @@ namespace Sistema.UI.UI_FORMS
             this.tboxValorPago.Font = new System.Drawing.Font("Times New Roman", 48F, System.Drawing.FontStyle.Bold);
             this.tboxValorPago.Location = new System.Drawing.Point(18, 361);
             this.tboxValorPago.Name = "tboxValorPago";
+            this.tboxValorPago.ReadOnly = true;
             this.tboxValorPago.Size = new System.Drawing.Size(533, 81);
             this.tboxValorPago.TabIndex = 18;
             this.tboxValorPago.Text = "0,00";
@@ -383,9 +382,9 @@ namespace Sistema.UI.UI_FORMS
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(18, 328);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 30);
+            this.label2.Size = new System.Drawing.Size(119, 30);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Valor Pago";
+            this.label2.Text = "Valor pago";
             // 
             // btnFinalizar
             // 
@@ -403,62 +402,32 @@ namespace Sistema.UI.UI_FORMS
             this.btnFinalizar.UseVisualStyleBackColor = false;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
-            // btnCartao
+            // CboxFormaPagamento
             // 
-            this.btnCartao.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnCartao.BackColor = System.Drawing.Color.Gray;
-            this.btnCartao.FlatAppearance.BorderSize = 0;
-            this.btnCartao.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
-            this.btnCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCartao.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold);
-            this.btnCartao.ForeColor = System.Drawing.Color.White;
-            this.btnCartao.Location = new System.Drawing.Point(379, 85);
-            this.btnCartao.Name = "btnCartao";
-            this.btnCartao.Size = new System.Drawing.Size(176, 116);
-            this.btnCartao.TabIndex = 2;
-            this.btnCartao.TabStop = true;
-            this.btnCartao.Text = "Cartão";
-            this.btnCartao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnCartao.UseVisualStyleBackColor = false;
-            this.btnCartao.CheckedChanged += new System.EventHandler(this.btnCartao_CheckedChanged);
+            this.CboxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboxFormaPagamento.Font = new System.Drawing.Font("Segoe UI Semibold", 35F, System.Drawing.FontStyle.Bold);
+            this.CboxFormaPagamento.FormattingEnabled = true;
+            this.CboxFormaPagamento.Items.AddRange(new object[] {
+            "Dinheiro",
+            "PIX",
+            "Cartão de Crédito",
+            "Cartão de Débito"});
+            this.CboxFormaPagamento.Location = new System.Drawing.Point(15, 123);
+            this.CboxFormaPagamento.Name = "CboxFormaPagamento";
+            this.CboxFormaPagamento.Size = new System.Drawing.Size(540, 70);
+            this.CboxFormaPagamento.TabIndex = 26;
+            this.CboxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.CboxFormaPagamento_SelectedValueChanged);
             // 
-            // btnPix
+            // label5
             // 
-            this.btnPix.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnPix.BackColor = System.Drawing.Color.Gray;
-            this.btnPix.FlatAppearance.BorderSize = 0;
-            this.btnPix.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
-            this.btnPix.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPix.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold);
-            this.btnPix.ForeColor = System.Drawing.Color.White;
-            this.btnPix.Location = new System.Drawing.Point(197, 85);
-            this.btnPix.Name = "btnPix";
-            this.btnPix.Size = new System.Drawing.Size(176, 116);
-            this.btnPix.TabIndex = 1;
-            this.btnPix.TabStop = true;
-            this.btnPix.Text = "PIX";
-            this.btnPix.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnPix.UseVisualStyleBackColor = false;
-            this.btnPix.CheckedChanged += new System.EventHandler(this.btnPix_CheckedChanged);
-            // 
-            // btnDinheiro
-            // 
-            this.btnDinheiro.Appearance = System.Windows.Forms.Appearance.Button;
-            this.btnDinheiro.BackColor = System.Drawing.Color.Gray;
-            this.btnDinheiro.FlatAppearance.BorderSize = 0;
-            this.btnDinheiro.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
-            this.btnDinheiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDinheiro.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold);
-            this.btnDinheiro.ForeColor = System.Drawing.Color.White;
-            this.btnDinheiro.Location = new System.Drawing.Point(15, 85);
-            this.btnDinheiro.Name = "btnDinheiro";
-            this.btnDinheiro.Size = new System.Drawing.Size(176, 116);
-            this.btnDinheiro.TabIndex = 0;
-            this.btnDinheiro.TabStop = true;
-            this.btnDinheiro.Text = "Dinheiro";
-            this.btnDinheiro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDinheiro.UseVisualStyleBackColor = false;
-            this.btnDinheiro.CheckedChanged += new System.EventHandler(this.btnDinheiro_CheckedChanged);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(18, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(225, 30);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Forma de pagamento";
             // 
             // UI_PDV_II_FINALIZAR
             // 
@@ -470,6 +439,7 @@ namespace Sistema.UI.UI_FORMS
             this.Name = "UI_PDV_II_FINALIZAR";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UI_PDV_II_FINALIZAR";
+            this.Load += new System.EventHandler(this.UI_PDV_II_FINALIZAR_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -492,9 +462,6 @@ namespace Sistema.UI.UI_FORMS
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton btnCartao;
-        private System.Windows.Forms.RadioButton btnPix;
-        private System.Windows.Forms.RadioButton btnDinheiro;
         private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tboxTroco;
@@ -505,5 +472,7 @@ namespace Sistema.UI.UI_FORMS
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.TextBox tboxValorTotal;
+        private System.Windows.Forms.ComboBox CboxFormaPagamento;
+        private System.Windows.Forms.Label label5;
     }
 }
