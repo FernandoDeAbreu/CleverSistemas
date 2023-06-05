@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cb_TipoPessoa = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
@@ -96,7 +96,6 @@
             this.TabPage1.Controls.Add(this.cb_Situacao);
             this.TabPage1.Controls.Add(this.label1);
             this.TabPage1.Controls.Add(this.bt_Excluir);
-            this.TabPage1.Controls.Add(this.bt_Cancela);
             this.TabPage1.Controls.Add(this.cb_TipoPessoa);
             this.TabPage1.Controls.Add(this.label45);
             this.TabPage1.Controls.Add(this.label46);
@@ -250,6 +249,7 @@
             this.gb_Itens.Controls.Add(this.label2);
             this.gb_Itens.Controls.Add(this.dg_Itens);
             this.gb_Itens.Controls.Add(this.txt_ID);
+            this.gb_Itens.Controls.Add(this.bt_Cancela);
             this.gb_Itens.Location = new System.Drawing.Point(7, 350);
             this.gb_Itens.Name = "gb_Itens";
             this.gb_Itens.Size = new System.Drawing.Size(924, 269);
@@ -267,7 +267,7 @@
             this.txt_Informacao.MaxLength = 2000;
             this.txt_Informacao.Multiline = true;
             this.txt_Informacao.Name = "txt_Informacao";
-            this.txt_Informacao.Size = new System.Drawing.Size(848, 45);
+            this.txt_Informacao.Size = new System.Drawing.Size(695, 45);
             this.txt_Informacao.TabIndex = 32;
             this.txt_Informacao.Tag = "T";
             // 
@@ -331,9 +331,9 @@
             // col_Quantidade
             // 
             this.col_Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N3";
-            this.col_Quantidade.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N3";
+            this.col_Quantidade.DefaultCellStyle = dataGridViewCellStyle1;
             this.col_Quantidade.HeaderText = "Quant.";
             this.col_Quantidade.Name = "col_Quantidade";
             this.col_Quantidade.ReadOnly = true;
@@ -342,9 +342,9 @@
             // col_ValorUnitario
             // 
             this.col_ValorUnitario.DataPropertyName = "ValorVenda";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            this.col_ValorUnitario.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.col_ValorUnitario.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_ValorUnitario.HeaderText = "Vlr. Unit.";
             this.col_ValorUnitario.Name = "col_ValorUnitario";
             this.col_ValorUnitario.ReadOnly = true;
@@ -353,9 +353,9 @@
             // col_Desconto
             // 
             this.col_Desconto.DataPropertyName = "Desconto";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            this.col_Desconto.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            this.col_Desconto.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_Desconto.HeaderText = "Desconto";
             this.col_Desconto.Name = "col_Desconto";
             this.col_Desconto.ReadOnly = true;
@@ -364,9 +364,9 @@
             // col_Acrescimo
             // 
             this.col_Acrescimo.DataPropertyName = "Acrescimo";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            this.col_Acrescimo.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            this.col_Acrescimo.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_Acrescimo.HeaderText = "Acréscimo";
             this.col_Acrescimo.Name = "col_Acrescimo";
             this.col_Acrescimo.ReadOnly = true;
@@ -375,9 +375,9 @@
             // col_ValorFinal
             // 
             this.col_ValorFinal.DataPropertyName = "ValorTotal";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            this.col_ValorFinal.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            this.col_ValorFinal.DefaultCellStyle = dataGridViewCellStyle5;
             this.col_ValorFinal.HeaderText = "Vlr. Final";
             this.col_ValorFinal.Name = "col_ValorFinal";
             this.col_ValorFinal.ReadOnly = true;
@@ -563,10 +563,10 @@
             this.bt_Cancela.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Cancela.Image = global::Sistema.UI.Properties.Resources.bt_Apagar;
             this.bt_Cancela.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_Cancela.Location = new System.Drawing.Point(1010, 358);
+            this.bt_Cancela.Location = new System.Drawing.Point(778, 216);
             this.bt_Cancela.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.bt_Cancela.Name = "bt_Cancela";
-            this.bt_Cancela.Size = new System.Drawing.Size(141, 50);
+            this.bt_Cancela.Size = new System.Drawing.Size(141, 45);
             this.bt_Cancela.TabIndex = 40;
             this.bt_Cancela.Text = "CANCELAR\r\nVENDA";
             this.bt_Cancela.UseVisualStyleBackColor = false;
@@ -643,7 +643,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(950, 700);
             this.ControlBox = false;
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "UI_Venda_Manutacao";
             this.Load += new System.EventHandler(this.UI_Venda_Manutacao_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UI_Venda_Manutacao_KeyDown);

@@ -1,34 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Sistema.DTO;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using Sistema.DTO;
-using Sistema.UTIL;
 
 namespace Sistema.DAL
 {
     public class DAL_CReceber
     {
         #region VARIAVEIS DIVERSAS
-        Conexao conexao;
 
-        string sql;
+        private Conexao conexao;
+
+        private string sql;
 
         private SqlCommand cmd;
-        #endregion
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_CReceber CReceber;
-        #endregion
+
+        private DTO_CReceber CReceber;
+
+        #endregion ESTRUTURA
 
         #region CONSTRUTOR
+
         public DAL_CReceber(DTO_CReceber _CReceber)
         {
             CReceber = _CReceber;
         }
-        #endregion
+
+        #endregion CONSTRUTOR
 
         public int Grava()
         {
@@ -553,7 +555,7 @@ namespace Sistema.DAL
             try
             {
                 conexao.Abre_Conexao();
-                
+
                 //CASE WHEN devido a PK
 
                 sql = "SELECT ";

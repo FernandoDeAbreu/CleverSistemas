@@ -1,28 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Sistema.DTO;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using Sistema.DTO;
-using Sistema.UTIL;
 
 namespace Sistema.DAL
 {
     public class DAL_Venda
     {
         #region VARIAVEIS DIVERSAS
-        Conexao conexao;
-        string sql;
-        SqlCommand cmd;
-        #endregion
+
+        private Conexao conexao;
+        private string sql;
+        private SqlCommand cmd;
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_Venda Venda;
-        DTO_Produto_Item Item;
-        #endregion
+
+        private DTO_Venda Venda;
+        private DTO_Produto_Item Item;
+
+        #endregion ESTRUTURA
 
         #region CONSTRUTORES
+
         public DAL_Venda(DTO_Venda _Venda)
         {
             this.Venda = _Venda;
@@ -32,7 +33,8 @@ namespace Sistema.DAL
         {
             Item = _Item;
         }
-        #endregion
+
+        #endregion CONSTRUTORES
 
         public int Grava()
         {
@@ -120,6 +122,7 @@ namespace Sistema.DAL
                 }
 
                 #region GRAVA ITEM
+
                 if (Venda.Item != null && Venda.Item.Count > 0)
                     for (int i = 0; i <= Venda.Item.Count - 1; i++)
                     {
@@ -173,7 +176,8 @@ namespace Sistema.DAL
                         }
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion GRAVA ITEM
 
                 conexao.Commit_Conexao();
 
@@ -185,12 +189,14 @@ namespace Sistema.DAL
                 cmd.Parameters.Clear();
 
                 #region RetornaID
+
                 sql = "SELECT MAX(ID) AS ID FROM Venda";
                 int aux_ID = Convert.ToInt32(conexao.Consulta(sql).Rows[0]["ID"]);
                 sql = " DBCC CHECKIDENT(Venda, RESEED, " + aux_ID + ")";
                 cmd.CommandText = sql;
                 conexao.Executa_Comando(cmd);
-                #endregion
+
+                #endregion RetornaID
 
                 throw new Exception(ex.Message);
             }
@@ -460,6 +466,7 @@ namespace Sistema.DAL
                 conexao.Executa_Comando(cmd);
 
                 #region RETORNA ESTOQUE
+
                 if (Venda.Item != null && Venda.Item.Count > 0)
                     for (int i = 0; i <= Venda.Item.Count - 1; i++)
                         if (Venda.Item[i].ID != 0)
@@ -491,7 +498,8 @@ namespace Sistema.DAL
                                 conexao.Executa_Comando(cmd);
                             }
                         }
-                #endregion
+
+                #endregion RETORNA ESTOQUE
 
                 cmd = new SqlCommand();
                 sql = "UPDATE Venda_Item SET ";
@@ -500,6 +508,15 @@ namespace Sistema.DAL
                 sql += "ID_Venda = @ID ";
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@ID", Venda.ID);
+
+                conexao.Executa_Comando(cmd);
+
+                sql = "DELETE FROM ";
+                sql += "CReceber ";
+                sql += "WHERE ";
+                sql += "ID_Venda = @ID_Venda ";
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@ID_Venda", Venda.ID);
 
                 conexao.Executa_Comando(cmd);
             }
@@ -1306,7 +1323,6 @@ namespace Sistema.DAL
                     sql += "GROUP BY P.Nome_Razao, PV.ID_Venda, PV.Data, PV.DataFatura ";
 
                 return conexao.Consulta(sql);
-
             }
             catch (Exception ex)
             {
@@ -1379,6 +1395,7 @@ namespace Sistema.DAL
                 conexao.Executa_Comando(cmd);
 
                 #region RETORNA ESTOQUE
+
                 if (Venda.Item != null && Venda.Item.Count > 0)
                     for (int i = 0; i <= Venda.Item.Count - 1; i++)
                         if (Venda.Item[i].ID != 0)
@@ -1410,7 +1427,8 @@ namespace Sistema.DAL
                                 conexao.Executa_Comando(cmd);
                             }
                         }
-                #endregion
+
+                #endregion RETORNA ESTOQUE
 
                 cmd = new SqlCommand();
                 sql = "DELETE FROM ";
@@ -1496,23 +1514,29 @@ namespace Sistema.DAL
     public class DAL_Venda_Mobile
     {
         #region VARIAVEIS DIVERSAS
-        Conexao conexao;
-        SqlCommand cmd;
 
-        string sql;
-        string msg;
-        #endregion
+        private Conexao conexao;
+        private SqlCommand cmd;
+
+        private string sql;
+        private string msg;
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_Mobile Mobile;
-        #endregion
+
+        private DTO_Mobile Mobile;
+
+        #endregion ESTRUTURA
 
         #region CONSTRUTOR
+
         public DAL_Venda_Mobile(DTO_Mobile _Mobile)
         {
             this.Mobile = _Mobile;
         }
-        #endregion
+
+        #endregion CONSTRUTOR
 
         public DataTable Busca()
         {
