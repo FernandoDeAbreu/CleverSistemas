@@ -1,34 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Sistema.DTO;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using Sistema.DTO;
-using Sistema.UTIL;
 
 namespace Sistema.DAL
 {
     public class DAL_Pagamento
     {
         #region VARIAVEIS DIVERSAS
-        Conexao conexao;
-        SqlCommand cmd;
 
-        string sql;
-        string msg;
-        #endregion
+        private Conexao conexao;
+        private SqlCommand cmd;
+
+        private string sql;
+        private string msg;
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_Pagamento Pagamento;
-        #endregion
+
+        private DTO_Pagamento Pagamento;
+
+        #endregion ESTRUTURA
 
         #region CONSTRUTOR
+
         public DAL_Pagamento(DTO_Pagamento _Pagamento)
         {
             this.Pagamento = _Pagamento;
         }
-        #endregion
+
+        #endregion CONSTRUTOR
 
         public int Grava()
         {
@@ -40,6 +42,7 @@ namespace Sistema.DAL
                 conexao.Begin_Conexao();
 
                 #region LANÇA PAGAMENTO
+
                 if (Pagamento.ID == 0)
                 {
                     sql = "INSERT INTO ";
@@ -80,9 +83,11 @@ namespace Sistema.DAL
 
                     conexao.Executa_Comando(cmd);
                 }
-                #endregion
+
+                #endregion LANÇA PAGAMENTO
 
                 #region LANÇA PARCELAMENTO
+
                 if (Pagamento.Parcelamento.Count > 0)
                     for (int i = 0; i <= Pagamento.Parcelamento.Count - 1; i++)
                     {
@@ -120,7 +125,8 @@ namespace Sistema.DAL
                             conexao.Executa_Comando(cmd);
                         }
                     }
-                #endregion
+
+                #endregion LANÇA PARCELAMENTO
 
                 conexao.Commit_Conexao();
 
@@ -133,12 +139,14 @@ namespace Sistema.DAL
                 cmd.Parameters.Clear();
 
                 #region RetornaID
+
                 sql = "SELECT MAX(ID) AS ID FROM Pagamento";
                 int aux_ID = Convert.ToInt32(conexao.Consulta(sql).Rows[0]["ID"]);
                 sql = " DBCC CHECKIDENT(Pagamento ,RESEED, " + aux_ID + ")";
                 cmd.CommandText = sql;
                 conexao.Executa_Comando(cmd);
-                #endregion
+
+                #endregion RetornaID
 
                 throw new Exception(ex.Message);
             }
