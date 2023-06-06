@@ -72,7 +72,7 @@ namespace Sistema.UI
         #region ESTRUTURA
 
         private DTO_Usuario_Parametros Usuario_Parametros;
-        private DTO.DTO_Log Conecxao;
+        private DTO_Log Conecxao;
         private DTO_Imagem Imagem;
         private DTO_Mobile Mobile;
         private DTO_Sistema Sistema;
@@ -80,21 +80,6 @@ namespace Sistema.UI
         #endregion ESTRUTURA
 
         #region ROTINAS
-
-        private void ID_conecxão()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT (MAX(ID) + 1) ID FROM LOG_ACESSO", sqlConn);
-
-            sqlConn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            int o = 0;
-            while (dr.Read())
-            {
-                id_Log_Acesso = Convert.ToInt32(dr["ID"].ToString());
-                o++;
-            }
-            sqlConn.Close();
-        }
 
         private void qtd_Usuario_Conectados()
         {
@@ -127,29 +112,16 @@ namespace Sistema.UI
 
         public void AbrirFormEnPanel(object Formhijo)
         {
-            //if (this.panelContenedor.Controls.Count > 0)
-            //    this.panelContenedor.Controls.RemoveAt(0);
-            //Form fh = Formhijo as Form;
-            //fh.TopLevel = false;
-            //fh.Dock = DockStyle.Fill;
-            ////this.Text = fh.Text;
-            //this.panelContenedor.Controls.Add(fh);
-            //this.panelContenedor.Tag = fh;
-            //fh.Show();
-
             Form fh = Formhijo as Form;
             fh.Show();
         }
 
         private void Inicia_Form()
         {
-            //  retorna_Pocisao_Menu();
-            ID_conecxão();
             qtd_Usuario_Conectados();
 
             UI_UsuarioConectado usuarioConectado = new UI_UsuarioConectado();
             usuarioConectado.Show();
-
 
             if (this.panelContenedor.Controls.Count > 0)
                 this.panelContenedor.Controls.RemoveAt(0);
@@ -291,44 +263,11 @@ namespace Sistema.UI
 
         private void frm_MDI_FormClosed(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                ((sender as Form).Tag as TabPage).Dispose();
-            }
-            catch (Exception)
-            {
-            }
-
-            string sql = "UPDATE LOG_ACESSO SET DATASAIDA = GETDATE()  WHERE ID = @ID ";
-
-            try
-            {
-                SqlCommand comando = new SqlCommand(sql, sqlConn);
-                comando.Parameters.Add(new SqlParameter("@ID", id_Log_Acesso));
-
-                sqlConn.Open();
-                comando.ExecuteNonQuery();
-                sqlConn.Close();
-
-                menu_Principal.Dock = DockStyle.Top;
-            }
-            catch
-            {
-                // throw new Exception(util_msg.msg_DAL_Erro_Grava);
-            }
             Application.Exit();
-        }
-
-        private void frm_MDI_MdiChildActivate(object sender, EventArgs e)
-        {
         }
 
         private void frm_MDI_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //DialogResult msgbox;
-            //msgbox = MessageBox.Show(util_msg.msg_FechaSistema, util_msg.Sistema, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            //if (msgbox == DialogResult.No)
-            //    e.Cancel = true;
             Application.Exit();
         }
 
@@ -3873,6 +3812,9 @@ namespace Sistema.UI
                 this.Dispose();
                 UI_Login UI_Login = new UI_Login();
                 UI_Login.Show();
+
+                UI_UsuarioConectado uI_UsuarioConectado = new UI_UsuarioConectado();
+                uI_UsuarioConectado.Dispose();
             }
         }
 

@@ -1,21 +1,24 @@
-﻿using Sistema.DTO;
+﻿using MySql.Data.MySqlClient;
+using Sistema.DTO;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Sistema.DAL.DLL
+namespace Sistema.DAL
 {
     public class DAL_LogAcesso
     {
         #region VARIAVEIS DE CLASSE
 
         private Conexao conexao;
+        private ConexaoMySQL conexaoMySQL;
 
         #endregion VARIAVEIS DE CLASSE
 
         #region VARIAVEIS DIVERSAS
 
         private SqlCommand cmd;
+        private MySqlCommand cmdMySql;
 
         private string sql;
         private string msg;
@@ -27,8 +30,53 @@ namespace Sistema.DAL.DLL
         private DTO_Usuario Usuario;
         private DTO_Usuario_Parametros Usuario_Parametros;
         private DTO_Log Log_Usuario;
+        private DTO_LogAcesso logAcesso;
 
         #endregion ESTRUTURA
+
+        #region CONSTRUTORES
+
+        public DAL_LogAcesso(DTO_LogAcesso logAcesso)
+        {
+            this.logAcesso = logAcesso;
+        }
+
+        #endregion CONSTRUTORES
+
+        public int Grava()
+        {
+            conexaoMySQL = new ConexaoMySQL();
+            cmdMySql = new MySqlCommand();
+
+            try
+            {
+                conexaoMySQL.Abre_Conecao();
+                sql  = "INSERT INTO LogAcesso ";
+                sql += "(NomeEmpresa, NomeUsuario, DataConexao, Terminal, VersaoSistema, VersaoBanco, ChaveBanco) ";
+                sql += "VALUES ";
+                sql += "(@NomeEmpresa, @NomeUsuario, @DataConexao, @Terminal, @VersaoSistema, @VersaoBanco, @ChaveBanco) ";
+                cmdMySql.CommandText = sql;
+                cmdMySql.Parameters.AddWithValue("@NomeEmpresa", logAcesso.NomeEmpresa);
+                cmdMySql.Parameters.AddWithValue("@NomeUsuario", logAcesso.NomeUsuario);
+                cmdMySql.Parameters.AddWithValue("@DataConexao", logAcesso.DataConexao);
+                cmdMySql.Parameters.AddWithValue("@Terminal", logAcesso.Terminal);
+                cmdMySql.Parameters.AddWithValue("@VersaoSistema", logAcesso.VersaoSistema);
+                cmdMySql.Parameters.AddWithValue("@VersaoBanco", logAcesso.VersaoBanco);
+                cmdMySql.Parameters.AddWithValue("@ChaveBanco", logAcesso.ChaveBanco);
+
+                conexaoMySQL.Executa_Comando(cmdMySql);
+
+                return logAcesso.ID;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conexaoMySQL.Fecha_Conexao();
+            }
+        }
 
         public DataTable Busca()
         {

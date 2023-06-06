@@ -1,14 +1,20 @@
-﻿using Sistema.DAL.DLL;
+﻿using Sistema.DAL;
+using Sistema.DTO;
 using System.Data;
 
-namespace Sistema.BLL.DLL
+namespace Sistema.BLL
 {
     public class BLL_LogAcesso
     {
-        private DAL_LogAcesso obj = new DAL_LogAcesso();
-
-        public DataTable Busca()
+        public int Grava(DTO_LogAcesso _LogAcesso)
         {
+            DAL_LogAcesso obj = new DAL_LogAcesso(_LogAcesso);
+            return obj.Grava();
+        }
+
+        public DataTable Busca(DTO_LogAcesso _LogAcesso)
+        {
+            DAL_LogAcesso obj = new DAL_LogAcesso(_LogAcesso);
             return obj.Busca();
         }
     }

@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ESTRUTURA\DTO_LogAcesso.cs" />
     <Compile Include="ESTRUTURA\DTO_Locacao_Produto.cs" />
     <Compile Include="ESTRUTURA\DTO_FichaProducao.cs" />
     <Compile Include="ESTRUTURA\DTO_Orcamento.cs" />

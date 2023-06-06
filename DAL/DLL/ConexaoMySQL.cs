@@ -2,7 +2,7 @@
 using System;
 using System.Data;
 
-namespace Sistema.DAL.DLL
+namespace Sistema.DAL
 {
     public class ConexaoMySQL
     {
@@ -14,12 +14,12 @@ namespace Sistema.DAL.DLL
         {
             try
             {
-                conexao = new MySqlConnection("server=srv643.hstgr.io;uid=u764159413_root;pwd=a7>m;X@E0gG;database=u764159413_Clever");
+                //conexao = new MySqlConnection("server=srv643.hstgr.io;uid=u764159413_root;pwd=Fdas*2018;database=u764159413_Clever");
+
+                var stringConn = String.Format("Persist Security Info=False;server=srv643.hstgr.io;database=u764159413_Clever;uid=u764159413_root;pwd=Fdas*2018");
+                conexao = new MySqlConnection(stringConn);
+
                 conexao.Open();
-                cmd = conexao.CreateCommand();
-                cmd.CommandText = "SET LANGUAGE PORTUGUESE";
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
             {

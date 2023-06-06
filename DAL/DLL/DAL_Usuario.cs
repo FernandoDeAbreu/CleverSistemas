@@ -248,7 +248,7 @@ namespace Sistema.DAL
             conexao = new Conexao();
             cmd = new SqlCommand();
             try
-            {
+                {
                 conexao.Abre_Conexao();
 
                 sql = "INSERT INTO ";

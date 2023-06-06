@@ -14,6 +14,9 @@ namespace Sistema.UI.UI_FORMS
         {
             InitializeComponent();
         }
+        #region VARIAVEIS DIVERSAS
+        int obj;
+        #endregion
 
         #region VARIAVEIS DE CLASSE
 
@@ -25,6 +28,7 @@ namespace Sistema.UI.UI_FORMS
         #region ESTRUTURA
 
         private DTO_Sistema Sistema;
+        private DTO_LogAcesso LogAcesso;
 
         #endregion ESTRUTURA
 
@@ -52,8 +56,9 @@ namespace Sistema.UI.UI_FORMS
             try
             {
                 BLL_LogAcesso = new BLL_LogAcesso();
+                LogAcesso = new DTO_LogAcesso();
                 DataTable _DT = new DataTable();
-                _DT = BLL_LogAcesso.Busca();
+                _DT = BLL_LogAcesso.Busca(LogAcesso);
 
                 lblNomeEmpresa.Text = _DT.Rows[0]["Nome_Razao"].ToString();
                 LblNomeUsuario.Text = _DT.Rows[0]["Descricao"].ToString();
@@ -66,6 +71,32 @@ namespace Sistema.UI.UI_FORMS
             }
         }
 
+        public void GravarMySqlRemoto()
+        {
+            try
+            {
+                BLL_LogAcesso = new BLL_LogAcesso();
+                LogAcesso = new DTO_LogAcesso();
+
+                LogAcesso.NomeEmpresa = lblNomeEmpresa.Text;
+                LogAcesso.NomeUsuario = LblNomeUsuario.Text;
+                LogAcesso.DataConexao = LblDataConexao.Text;
+                LogAcesso.Terminal = LblTerminal.Text;
+                LogAcesso.VersaoSistema = LblVersaoSistema.Text;
+                LogAcesso.VersaoBanco = LblVersaoBanco.Text;
+                LogAcesso.ChaveBanco = LblChaveBanco.Text;
+
+                obj = BLL_LogAcesso.Grava(LogAcesso);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(util_msg.msg_Erro + ex.Message, this.Text);
+
+            }
+        }
+
         private void UI_UsuarioConectado_FormClosing(object sender, FormClosingEventArgs e)
         {
             // e.Cancel = true; cancela o Fechamento do Form
@@ -74,10 +105,12 @@ namespace Sistema.UI.UI_FORMS
             notifyIcon.Visible = true;
         }
 
+        
         private void UI_UsuarioConectado_Load(object sender, EventArgs e)
         {
             PesquisarVersao();
             PesquisarLog();
+            GravarMySqlRemoto();
         }
     }
 }

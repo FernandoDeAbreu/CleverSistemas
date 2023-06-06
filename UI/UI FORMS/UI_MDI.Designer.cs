@@ -2300,7 +2300,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_MDI_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_MDI_FormClosed);
             this.Load += new System.EventHandler(this.frm_MDI_Load);
-            this.MdiChildActivate += new System.EventHandler(this.frm_MDI_MdiChildActivate);
             this.menu_Principal.ResumeLayout(false);
             this.menu_Principal.PerformLayout();
             this.panel_Form.ResumeLayout(false);

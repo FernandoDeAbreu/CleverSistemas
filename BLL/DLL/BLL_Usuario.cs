@@ -50,7 +50,7 @@ namespace Sistema.BLL
         {
             DAL_Usuario obj = new DAL_Usuario(_Log);
             obj.Grava_Log();
-        }
+            }
      
         public DataTable Busca(DTO_Usuario _Usuario)
         {
