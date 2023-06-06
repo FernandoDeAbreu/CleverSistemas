@@ -71,6 +71,9 @@ namespace Sistema.UI
 
             BLL_Pessoa = new BLL_Pessoa();
             Pessoa = new DTO_Pessoa();
+            BLL_Parametro = new BLL_Parametro();
+            Parametro = new DTO_Parametro();
+            Parametro.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
 
             #region INFORMAÇÕES DA EMPRESA
 
@@ -90,11 +93,6 @@ namespace Sistema.UI
             }
 
             #endregion INFORMAÇÕES DA EMPRESA
-
-            BLL_Parametro = new BLL_Parametro();
-            Parametro = new DTO_Parametro();
-
-            Parametro.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
 
             #region PARAMETRO FINANCEIRO
 
@@ -658,8 +656,6 @@ namespace Sistema.UI
             txt_Senha.SelectAll();
         }
 
-        #endregion TEXTBOX
-
         private void txt_Senha_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -667,5 +663,7 @@ namespace Sistema.UI
                 Inicia_Acesso();
             }
         }
+
+        #endregion TEXTBOX
     }
 }
