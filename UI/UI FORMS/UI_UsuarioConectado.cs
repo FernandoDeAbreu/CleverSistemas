@@ -13,6 +13,9 @@ namespace Sistema.UI.UI_FORMS
         public UI_UsuarioConectado()
         {
             InitializeComponent();
+            PesquisarVersao();
+            PesquisarLog();
+            GravarMySqlRemoto();
         }
         #region VARIAVEIS DIVERSAS
         int obj;

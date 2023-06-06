@@ -1,10 +1,8 @@
 ﻿using Sistema.BLL;
 using Sistema.DTO;
-using Sistema.UI.UI_FORMS;
 using Sistema.UTIL;
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -13,9 +11,6 @@ namespace Sistema.UI
 {
     public partial class UI_MDI : Form
     {
-        private SqlConnection sqlConn = new SqlConnection("Data Source=" + SQL.Servidor + ";Initial Catalog=" + SQL.Banco + ";Persist Security Info=True;User ID=sa;Password=" + SQL.Senha);
-        private int id_Log_Acesso;
-
         public UI_MDI()
         {
             InitializeComponent();
@@ -81,35 +76,6 @@ namespace Sistema.UI
 
         #region ROTINAS
 
-        private void qtd_Usuario_Conectados()
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("SELECT (COUNT(ID) + 1) QTD FROM LOG_ACESSO WHERE DATASAIDA IS NULL", sqlConn);
-
-                sqlConn.Open();
-                SqlDataReader dr = cmd.ExecuteReader();
-                int o = 0;
-                while (dr.Read())
-                {
-                    //if (Convert.ToInt32(dr["QTD"].ToString()) == 1)
-                    //{
-                    //    tss_Conectados.Text = "Existe " + dr["QTD"].ToString() + " Usuário logado.";
-                    //}
-                    //else
-                    //{
-                    //  tss_Conectados.Text = "Existem " + dr["QTD"].ToString() + " Usuários logados.";
-
-                    //}
-                    o++;
-                }
-                sqlConn.Close();
-            }
-            catch (Exception)
-            {
-            }
-        }
-
         public void AbrirFormEnPanel(object Formhijo)
         {
             Form fh = Formhijo as Form;
@@ -118,11 +84,6 @@ namespace Sistema.UI
 
         private void Inicia_Form()
         {
-            qtd_Usuario_Conectados();
-
-            UI_UsuarioConectado usuarioConectado = new UI_UsuarioConectado();
-            usuarioConectado.Show();
-
             if (this.panelContenedor.Controls.Count > 0)
                 this.panelContenedor.Controls.RemoveAt(0);
             UI_PAGINA_INICIAL a = new UI_PAGINA_INICIAL();
@@ -160,9 +121,6 @@ namespace Sistema.UI
                 }
             }
 
-            //lb_DescricaoDia.Text = util_dados.Config_Data(DateTime.Now, 1).ToString();
-            //tss_DescricaoData.Text = util_dados.Config_Data(DateTime.Now, 1).ToString();
-
             tss_Empresa.Text = Parametro_Empresa.Razao_Social_Empresa + "  Versão: " + Parametro_Sistema.Versao;
 
             this.Text = Parametro_Empresa.DescricaoEmpresa + " - " + util_msg.Sistema;
@@ -173,25 +131,6 @@ namespace Sistema.UI
             Tempo();
             MinutoAtualizacao.Enabled = true;
             MinutoAtualizacao.Start();
-
-            ////try
-            ////{
-            //    DataTable _DT_Imagem = new DataTable();
-            //    BLL_Imagem = new BLL_Imagem();
-            //    Imagem = new DTO_Imagem();
-            //    Imagem.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
-            //    Imagem.Tipo = 2;
-            //    _DT_Imagem = BLL_Imagem.Busca(Imagem);
-            //    byte[] bits = (byte[])(_DT_Imagem.Rows[0][0]);
-            //    MemoryStream memorybits = new MemoryStream(bits);
-            //    Bitmap ImagemConvertida = new Bitmap(memorybits);
-            //    img_Empresa.Image = ImagemConvertida;
-            //    tabControl1.BackgroundImage = ImagemConvertida;
-            ////}
-            ////catch (Exception)
-            ////{
-            ////    img_Empresa.Image = null;
-            ////}
         }
 
         private void Carrega_Permissao(ToolStripMenuItem MenuItem, DataTable _DT)
@@ -206,7 +145,6 @@ namespace Sistema.UI
                 else
                 {
                     MenuItem.Visible = false;
-                    //Atualiza_Permissao(MenuItem);
                 }
             }
             catch (Exception ex)
@@ -323,7 +261,6 @@ namespace Sistema.UI
                     MinutoAtualizacao.Enabled = false;
                     MessageBox.Show(util_msg.msg_Atualizacao, util_msg.Sistema);
                 }
-                qtd_Usuario_Conectados();
             }
             catch (Exception)
             {
@@ -3812,9 +3749,6 @@ namespace Sistema.UI
                 this.Dispose();
                 UI_Login UI_Login = new UI_Login();
                 UI_Login.Show();
-
-                UI_UsuarioConectado uI_UsuarioConectado = new UI_UsuarioConectado();
-                uI_UsuarioConectado.Dispose();
             }
         }
 
@@ -4130,132 +4064,6 @@ namespace Sistema.UI
             menu_Principal.Dock = DockStyle.Left;
             menu_Principal.BackColor = Color.Azure;
         }
-
-        #region POSIÇÃO DO MENU
-
-        private void retorna_Pocisao_Menu()
-        {
-            string posicao = "";
-
-            SqlCommand cmd = new SqlCommand("SELECT PosicaoMenu FROM Usuario where ID = " + Parametro_Usuario.ID_Usuario_Ativo, sqlConn);
-
-            sqlConn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            int o = 0;
-            while (dr.Read())
-            {
-                posicao = dr["PosicaoMenu"].ToString();
-                o++;
-            }
-            sqlConn.Close();
-
-            if (posicao == "TOPO")
-            {
-                menu_Principal.Dock = DockStyle.Top;
-            }
-            if (posicao == "ABAIXO")
-            {
-                menu_Principal.Dock = DockStyle.Bottom;
-            }
-            if (posicao == "DIREITA")
-            {
-                menu_Principal.Dock = DockStyle.Right;
-            }
-            if (posicao == "ESQUERDA")
-            {
-                menu_Principal.Dock = DockStyle.Left;
-            }
-        }
-
-        private void topoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string sql = "UPDATE USUARIO SET POSICAOMENU = @POSICAOMENU WHERE ID = @ID ";
-
-            //try
-            //{
-            SqlCommand comando = new SqlCommand(sql, sqlConn);
-            comando.Parameters.Add(new SqlParameter("@POSICAOMENU", "TOPO"));
-            comando.Parameters.Add(new SqlParameter("@ID", Parametro_Usuario.ID_Usuario_Ativo));
-
-            sqlConn.Open();
-            comando.ExecuteNonQuery();
-            sqlConn.Close();
-
-            menu_Principal.Dock = DockStyle.Top;
-            //}
-            //catch
-            //{
-            //    throw new Exception(util_msg.msg_DAL_Erro_Grava);
-            //}
-        }
-
-        private void direitaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string sql = "UPDATE USUARIO SET POSICAOMENU = @POSICAOMENU WHERE ID = @ID ";
-
-            //try
-            //{
-            SqlCommand comando = new SqlCommand(sql, sqlConn);
-            comando.Parameters.Add(new SqlParameter("@POSICAOMENU", "ESQUERDA"));
-            comando.Parameters.Add(new SqlParameter("@ID", Parametro_Usuario.ID_Usuario_Ativo));
-
-            sqlConn.Open();
-            comando.ExecuteNonQuery();
-            sqlConn.Close();
-
-            menu_Principal.Dock = DockStyle.Left;
-            //}
-            //catch
-            //{
-            //    throw new Exception(util_msg.msg_DAL_Erro_Grava);
-            //}
-        }
-
-        private void esquedaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string sql = "UPDATE USUARIO SET POSICAOMENU = @POSICAOMENU WHERE ID = @ID ";
-
-            //try
-            //{
-            SqlCommand comando = new SqlCommand(sql, sqlConn);
-            comando.Parameters.Add(new SqlParameter("@POSICAOMENU", "DIREITA"));
-            comando.Parameters.Add(new SqlParameter("@ID", Parametro_Usuario.ID_Usuario_Ativo));
-
-            sqlConn.Open();
-            comando.ExecuteNonQuery();
-            sqlConn.Close();
-
-            menu_Principal.Dock = DockStyle.Right;
-            //}
-            //catch
-            //{
-            //    throw new Exception(util_msg.msg_DAL_Erro_Grava);
-            //}
-        }
-
-        private void abaixoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string sql = "UPDATE USUARIO SET POSICAOMENU = @POSICAOMENU WHERE ID = @ID ";
-
-            //try
-            //{
-            SqlCommand comando = new SqlCommand(sql, sqlConn);
-            comando.Parameters.Add(new SqlParameter("@POSICAOMENU", "ABAIXO"));
-            comando.Parameters.Add(new SqlParameter("@ID", Parametro_Usuario.ID_Usuario_Ativo));
-
-            sqlConn.Open();
-            comando.ExecuteNonQuery();
-            sqlConn.Close();
-
-            menu_Principal.Dock = DockStyle.Bottom;
-            //}
-            //catch
-            //{
-            //    throw new Exception(util_msg.msg_DAL_Erro_Grava);
-            //}
-        }
-
-        #endregion POSIÇÃO DO MENU
 
         private void AtualizarBDToolStripMenuItem_Click(object sender, EventArgs e)
         {

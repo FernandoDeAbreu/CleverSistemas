@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Sistema.UTIL;
-using Sistema.DTO;
+﻿using Microsoft.Win32;
 using Sistema.BLL;
-using Microsoft.Win32;
-using System.IO;
-using System.Reflection;
+using Sistema.DTO;
+using Sistema.UI.UI_FORMS;
+using Sistema.UTIL;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Sistema.UI
 {
@@ -23,22 +17,27 @@ namespace Sistema.UI
         }
 
         #region VARIAVEIS DE CLASSE
-        BLL_Sistema BLL_Sistema;
-        BLL_Backup BLL_Backup;
-        BLL_Pessoa BLL_Pessoa;
-        BLL_Usuario BLL_Usuario;
-        BLL_Parametro BLL_Parametro;
-        #endregion
+
+        private BLL_Sistema BLL_Sistema;
+        private BLL_Backup BLL_Backup;
+        private BLL_Pessoa BLL_Pessoa;
+        private BLL_Usuario BLL_Usuario;
+        private BLL_Parametro BLL_Parametro;
+
+        #endregion VARIAVEIS DE CLASSE
 
         #region ESTRUTURA
-        DTO_Sistema Sistema;
-        DTO_Pessoa Pessoa;
-        DTO_Usuario Usuario;
-        DTO_Log Log;
-        DTO_Parametro Parametro;
-        #endregion
 
-        #region ROTINAS 
+        private DTO_Sistema Sistema;
+        private DTO_Pessoa Pessoa;
+        private DTO_Usuario Usuario;
+        private DTO_Log Log;
+        private DTO_Parametro Parametro;
+
+        #endregion ESTRUTURA
+
+        #region ROTINAS
+
         private void Inicia_Form()
         {
             try
@@ -74,6 +73,7 @@ namespace Sistema.UI
             Pessoa = new DTO_Pessoa();
 
             #region INFORMAÇÕES DA EMPRESA
+
             _DT = new DataTable();
             Pessoa.TipoPessoa = 2;
             Pessoa.ID = Parametro_Empresa.ID_Empresa_Ativa;
@@ -88,7 +88,8 @@ namespace Sistema.UI
                 Parametro_Empresa.CNPJ = _DT.Rows[0]["CNPJ_CPF"].ToString();
                 Parametro_Empresa.IE = _DT.Rows[0]["IE_RG"].ToString();
             }
-            #endregion
+
+            #endregion INFORMAÇÕES DA EMPRESA
 
             BLL_Parametro = new BLL_Parametro();
             Parametro = new DTO_Parametro();
@@ -96,6 +97,7 @@ namespace Sistema.UI
             Parametro.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
 
             #region PARAMETRO FINANCEIRO
+
             Parametro.Tipo = 1;
 
             _DT = new DataTable();
@@ -120,9 +122,11 @@ namespace Sistema.UI
                 Parametro_Financeiro.ID_Conta_CobrancaBancaria = Convert.ToInt32(_DT.Rows[0]["ID_Conta_CobrancaBancaria"]);
                 Parametro_Financeiro.ID_PagtoBoleto = Convert.ToInt32(_DT.Rows[0]["ID_PagtoBoleto"]);
             }
-            #endregion
+
+            #endregion PARAMETRO FINANCEIRO
 
             #region PARAMETRO DE VENDAS
+
             Parametro.Tipo = 2;
 
             _DT = new DataTable();
@@ -183,9 +187,11 @@ namespace Sistema.UI
                         break;
                 }
             }
-            #endregion
+
+            #endregion PARAMETRO DE VENDAS
 
             #region NF-e NFC-e
+
             Parametro.Tipo = 5;
 
             _DT = new DataTable();
@@ -207,9 +213,11 @@ namespace Sistema.UI
                 Parametro_NFe_NFC_SAT.Exibe_msgCreditoICMS = Convert.ToBoolean(_DT.Rows[0]["Exibe_msgCreditoICMS"]);
                 Parametro_NFe_NFC_SAT.Exibe_ReferenciaNFe = Convert.ToBoolean(_DT.Rows[0]["Exibe_ReferenciaNFe"]);
             }
-            #endregion
+
+            #endregion NF-e NFC-e
 
             #region CF-e SAT
+
             Parametro.Tipo = 6;
 
             _DT = new DataTable();
@@ -222,9 +230,11 @@ namespace Sistema.UI
             {
                 Parametro_NFe_NFC_SAT.TipoEquipamentoSAT = util_dados.Verifica_int(_DT.Rows[0]["TipoEquipamentoSAT"].ToString());
             }
-            #endregion
+
+            #endregion CF-e SAT
 
             #region ORDEM DE SERVIÇO
+
             Parametro.Tipo = 7;
 
             _DT = new DataTable();
@@ -242,9 +252,11 @@ namespace Sistema.UI
                 Parametro_OrdemServico.Descricao_Obs2 = _DT.Rows[0]["Descricao_Obs2"].ToString();
                 Parametro_OrdemServico.Imprime_OS_Equipamento = Convert.ToBoolean(_DT.Rows[0]["Imprime_OS_Equip"]);
             }
-            #endregion
+
+            #endregion ORDEM DE SERVIÇO
 
             #region CADASTRO PERSONALIZADOS
+
             Parametro.Tipo = 8;
 
             _DT = new DataTable();
@@ -273,9 +285,11 @@ namespace Sistema.UI
                 Parametro_CadastroPersonalizado.Info_Produto1 = _DT.Rows[0]["Info_Produto1"].ToString();
                 Parametro_CadastroPersonalizado.Info_Produto2 = _DT.Rows[0]["Info_Produto2"].ToString();
             }
-            #endregion
+
+            #endregion CADASTRO PERSONALIZADOS
 
             #region PARAMETROS DE CADASTRO
+
             Parametro.Tipo = 10;
 
             _DT = new DataTable();
@@ -295,7 +309,8 @@ namespace Sistema.UI
                 Parametro_Cadastro.Decimal_Produto_Quantidade = Convert.ToInt32(_DT.Rows[0]["Decimal_Produto_Quantidade"]);
                 Parametro_Cadastro.Decimal_Produto_Valor = Convert.ToInt32(_DT.Rows[0]["Decimal_Produto_Valor"]);
             }
-            #endregion
+
+            #endregion PARAMETROS DE CADASTRO
 
             if (aux != string.Empty)
                 MessageBox.Show(util_msg.msg_ParamNaoConfigurado + aux, this.Text);
@@ -357,6 +372,7 @@ namespace Sistema.UI
             _DT = BLL_Sistema.Busca(Sistema);
 
             #region ATUALIZA BANCO DE DADOS
+
             BLL_Sistema = new BLL_Sistema();
             Sistema = new DTO_Sistema();
 
@@ -375,7 +391,8 @@ namespace Sistema.UI
             //    MessageBox.Show(util_msg.msg_Erro + ex);
             //    Application.Exit();
             //}
-            #endregion
+
+            #endregion ATUALIZA BANCO DE DADOS
         }
 
         private void Verifica_Data_Sistema()
@@ -399,11 +416,11 @@ namespace Sistema.UI
             for (int i = 1; i <= 50; i++)
                 try
                 {
-                    if (util_dados.Verifica_int(util_dados.Decriptografa(RegKey.OpenSubKey("SystemSoft", true).GetValue(1 + "ID").ToString())) > 0)
+                    if (util_dados.Verifica_int(util_dados.Decriptografa(RegKey.OpenSubKey("SystemSoft", true).GetValue(i + "ID").ToString())) > 0)
                     {
                         _DT.Rows.Add();
-                        _DT.Rows[_DT.Rows.Count - 1]["ID"] = 1;
-                        _DT.Rows[_DT.Rows.Count - 1]["Descricao"] = RegKey.OpenSubKey("SystemSoft", true).GetValue(1 + "Empresa").ToString();
+                        _DT.Rows[_DT.Rows.Count - 1]["ID"] = i;
+                        _DT.Rows[_DT.Rows.Count - 1]["Descricao"] = RegKey.OpenSubKey("SystemSoft", true).GetValue(i + "Empresa").ToString();
 
                         _DT.AcceptChanges();
                     }
@@ -554,16 +571,13 @@ namespace Sistema.UI
                 {
                     UI.UI_MENU a = new UI_MENU();
                     a.Show();
-
                 }
-                else{
+                else
+                {
                     UI_MDI a = new UI_MDI();
                     a.Show();
                 }
-               
 
-
-             
                 this.Hide();
 
                 txt_Usuario.Clear();
@@ -575,15 +589,20 @@ namespace Sistema.UI
                 Log.Terminal = Environment.MachineName + @"\" + Environment.UserName;
 
                 BLL_Usuario.Grava_Log(Log);
+
+                UI_UsuarioConectado usuarioConectado = new UI_UsuarioConectado();
+                usuarioConectado.Hide();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(util_msg.msg_Erro + ex.Message, this.Text);
             }
         }
-        #endregion
+
+        #endregion ROTINAS
 
         #region FORM
+
         private void UI_Login_Load(object sender, EventArgs e)
         {
             Inicia_Form();
@@ -615,9 +634,10 @@ namespace Sistema.UI
                 UI_ConfiguraAcesso.ShowDialog();
             }
         }
-        #endregion
 
-        #region BUTTON    
+        #endregion FORM
+
+        #region BUTTON
 
         private void bt_Entrar_Click(object sender, EventArgs e)
         {
@@ -628,15 +648,17 @@ namespace Sistema.UI
         {
             Application.Exit();
         }
-        #endregion
+
+        #endregion BUTTON
 
         #region TEXTBOX
+
         private void txt_Senha_Enter(object sender, EventArgs e)
         {
             txt_Senha.SelectAll();
         }
 
-        #endregion
+        #endregion TEXTBOX
 
         private void txt_Senha_KeyDown(object sender, KeyEventArgs e)
         {
