@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Sistema.UTIL;
-using Sistema.DTO;
+﻿using Microsoft.Win32;
 using Sistema.BLL;
-using Microsoft.Win32;
-using System.IO;
-using System.Reflection;
-
+using Sistema.DTO;
+using Sistema.UTIL;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Sistema.UI
 {
@@ -22,21 +14,26 @@ namespace Sistema.UI
         {
             InitializeComponent();
         }
+
         #region VARIAVEIS DE CLASSE
-        BLL_Sistema BLL_Sistema;
-        BLL_Backup BLL_Backup;
-        BLL_Pessoa BLL_Pessoa;
-        BLL_Usuario BLL_Usuario;
-        BLL_Parametro BLL_Parametro;
-        #endregion
+
+        private BLL_Sistema BLL_Sistema;
+        private BLL_Backup BLL_Backup;
+        private BLL_Pessoa BLL_Pessoa;
+        private BLL_Usuario BLL_Usuario;
+        private BLL_Parametro BLL_Parametro;
+
+        #endregion VARIAVEIS DE CLASSE
 
         #region ESTRUTURA
-        DTO_Sistema Sistema;
-        DTO_Pessoa Pessoa;
-        DTO_Usuario Usuario;
-        DTO_Log Log;
-        DTO_Parametro Parametro;
-        #endregion
+
+        private DTO_Sistema Sistema;
+        private DTO_Pessoa Pessoa;
+        private DTO_Usuario Usuario;
+        private DTO_Log Log;
+        private DTO_Parametro Parametro;
+
+        #endregion ESTRUTURA
 
         protected override void OnLoad(EventArgs e)
         {
@@ -45,6 +42,7 @@ namespace Sistema.UI
             this.WindowState = FormWindowState.Maximized;
             this.BringToFront();
         }
+
         private void Inicia_Form()
         {
             try
@@ -57,7 +55,6 @@ namespace Sistema.UI
                 RegKey = RegKey.CreateSubKey("SystemSoft");//CRIA SUBCHAVE
                 RegKey.SetValue("Versao", Parametro_Sistema.Versao.Replace(".", ""));
                 RegKey.Close();
-
             }
             catch (Exception ex)
             {
@@ -80,6 +77,7 @@ namespace Sistema.UI
             _DT = BLL_Sistema.Busca(Sistema);
 
             #region ATUALIZA BANCO DE DADOS
+
             BLL_Sistema = new BLL_Sistema();
             Sistema = new DTO_Sistema();
 
@@ -98,7 +96,8 @@ namespace Sistema.UI
                 MessageBox.Show(util_msg.msg_Erro + ex);
                 Application.Exit();
             }
-            #endregion
+
+            #endregion ATUALIZA BANCO DE DADOS
         }
 
         private void Btn_confirmar_Click(object sender, EventArgs e)

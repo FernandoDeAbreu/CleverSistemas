@@ -548,6 +548,12 @@
     <Compile Include="UI FORMS\UI_TabelaValor.Designer.cs">
       <DependentUpon>UI_TabelaValor.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI FORMS\UI_UsuarioConectado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FORMS\UI_UsuarioConectado.Designer.cs">
+      <DependentUpon>UI_UsuarioConectado.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI FORMS\UI_Venda_Devolucao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1317,6 +1323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI FORMS\UI_TabelaValor.resx">
       <DependentUpon>UI_TabelaValor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI FORMS\UI_UsuarioConectado.resx">
+      <DependentUpon>UI_UsuarioConectado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI FORMS\UI_Venda_Devolucao.resx">
       <DependentUpon>UI_Venda_Devolucao.cs</DependentUpon>

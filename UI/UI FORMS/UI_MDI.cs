@@ -1,48 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
-using Sistema.BLL;
+﻿using Sistema.BLL;
 using Sistema.DTO;
+using Sistema.UI.UI_FORMS;
 using Sistema.UTIL;
+using System;
+using System.Data;
 using System.Data.SqlClient;
-using Microsoft.Win32;
+using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Sistema.UI
 {
     public partial class UI_MDI : Form
     {
-      
-        SqlConnection sqlConn = new SqlConnection("Data Source=" + SQL.Servidor + ";Initial Catalog=" + SQL.Banco + ";Persist Security Info=True;User ID=sa;Password=" + SQL.Senha);
-        int id_Log_Acesso;
+        private SqlConnection sqlConn = new SqlConnection("Data Source=" + SQL.Servidor + ";Initial Catalog=" + SQL.Banco + ";Persist Security Info=True;User ID=sa;Password=" + SQL.Senha);
+        private int id_Log_Acesso;
+
         public UI_MDI()
         {
             InitializeComponent();
             this.Size = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height - 30);
-
-
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
+        private static extern void ReleaseCapture();
+
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private static extern void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         private void BarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
         private void Iconcerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void Iconmaximizar_Click(object sender, EventArgs e)
         {
             this.Location = new Point(0, 0);
@@ -50,6 +46,7 @@ namespace Sistema.UI
             iconrestaurar.Visible = true;
             iconmaximizar.Visible = false;
         }
+
         private void Iconrestaurar_Click(object sender, EventArgs e)
         {
             this.Size = new System.Drawing.Size(950, 700);
@@ -57,33 +54,35 @@ namespace Sistema.UI
             iconrestaurar.Visible = false;
             iconmaximizar.Visible = true;
         }
+
         private void Iconminimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-
         }
 
         #region VARIAVEIS DE CLASSE
-        BLL_Usuario_Acesso BLL_Usuario_Acesso;
-        BLL_Imagem BLL_Imagem;
-        BLL_Venda_Mobile BLL_Venda_Mobile;
-        BLL_Sistema BLL_Sistema;
-        #endregion
+
+        private BLL_Usuario_Acesso BLL_Usuario_Acesso;
+        private BLL_Imagem BLL_Imagem;
+        private BLL_Venda_Mobile BLL_Venda_Mobile;
+        private BLL_Sistema BLL_Sistema;
+
+        #endregion VARIAVEIS DE CLASSE
 
         #region ESTRUTURA
-        DTO_Usuario_Parametros Usuario_Parametros;
-        DTO.DTO_Log Conecxao;
-        DTO_Imagem Imagem;
-        DTO_Mobile Mobile;
-        DTO_Sistema Sistema;
-        #endregion
+
+        private DTO_Usuario_Parametros Usuario_Parametros;
+        private DTO.DTO_Log Conecxao;
+        private DTO_Imagem Imagem;
+        private DTO_Mobile Mobile;
+        private DTO_Sistema Sistema;
+
+        #endregion ESTRUTURA
 
         #region ROTINAS
 
         private void ID_conecxão()
         {
-            
-
             SqlCommand cmd = new SqlCommand("SELECT (MAX(ID) + 1) ID FROM LOG_ACESSO", sqlConn);
 
             sqlConn.Open();
@@ -123,11 +122,7 @@ namespace Sistema.UI
             }
             catch (Exception)
             {
-
-               
             }
-
-           
         }
 
         public void AbrirFormEnPanel(object Formhijo)
@@ -144,14 +139,16 @@ namespace Sistema.UI
 
             Form fh = Formhijo as Form;
             fh.Show();
-
         }
 
         private void Inicia_Form()
         {
-          //  retorna_Pocisao_Menu();
+            //  retorna_Pocisao_Menu();
             ID_conecxão();
             qtd_Usuario_Conectados();
+
+            UI_UsuarioConectado usuarioConectado = new UI_UsuarioConectado();
+            usuarioConectado.Show();
 
 
             if (this.panelContenedor.Controls.Count > 0)
@@ -162,7 +159,6 @@ namespace Sistema.UI
             this.panelContenedor.Controls.Add(a);
             this.panelContenedor.Tag = a;
             a.Show();
-
 
             if (Parametro_Usuario.ID_Usuario_Ativo != 0)
             {
@@ -177,7 +173,6 @@ namespace Sistema.UI
 
                 foreach (ToolStripMenuItem MenuItem in this.menu_Principal.Items)
                 {
-                   
                     Carrega_Permissao(MenuItem, _DT);
                     foreach (ToolStripMenuItem subitem1 in MenuItem.DropDownItems)
                     {
@@ -195,19 +190,17 @@ namespace Sistema.UI
 
             //lb_DescricaoDia.Text = util_dados.Config_Data(DateTime.Now, 1).ToString();
             //tss_DescricaoData.Text = util_dados.Config_Data(DateTime.Now, 1).ToString();
-          
+
             tss_Empresa.Text = Parametro_Empresa.Razao_Social_Empresa + "  Versão: " + Parametro_Sistema.Versao;
 
             this.Text = Parametro_Empresa.DescricaoEmpresa + " - " + util_msg.Sistema;
 
             char Letra = char.ToUpper(Parametro_Usuario.Descricao_UsuarioAtivo[0]);
-            tss_Usuario.Text =  Letra + Parametro_Usuario.Descricao_UsuarioAtivo.Substring(1);
-         
-       
+            tss_Usuario.Text = Letra + Parametro_Usuario.Descricao_UsuarioAtivo.Substring(1);
+
             Tempo();
             MinutoAtualizacao.Enabled = true;
             MinutoAtualizacao.Start();
-
 
             ////try
             ////{
@@ -277,11 +270,12 @@ namespace Sistema.UI
         {
             Minuto.Enabled = true;
             Minuto.Start();
-            
         }
-        #endregion
+
+        #endregion ROTINAS
 
         #region FORM
+
         private void frm_MDI_Load(object sender, EventArgs e)
         {
             //Theme.ColorTable = new RibbonProfesionalRendererColorTableBlack();
@@ -289,13 +283,10 @@ namespace Sistema.UI
             //MdiClient ctlMDI = (MdiClient)this.Controls[this.Controls.Count - 1];
             //ctlMDI.BackColor = this.BackColor;
 
-
             Inicia_Form();
 
             iconrestaurar.Visible = true;
             iconmaximizar.Visible = false;
-
-           
         }
 
         private void frm_MDI_FormClosed(object sender, FormClosedEventArgs e)
@@ -306,8 +297,6 @@ namespace Sistema.UI
             }
             catch (Exception)
             {
-
-
             }
 
             string sql = "UPDATE LOG_ACESSO SET DATASAIDA = GETDATE()  WHERE ID = @ID ";
@@ -325,16 +314,13 @@ namespace Sistema.UI
             }
             catch
             {
-               // throw new Exception(util_msg.msg_DAL_Erro_Grava);
+                // throw new Exception(util_msg.msg_DAL_Erro_Grava);
             }
             Application.Exit();
         }
 
         private void frm_MDI_MdiChildActivate(object sender, EventArgs e)
         {
-           
-
-
         }
 
         private void frm_MDI_FormClosing(object sender, FormClosingEventArgs e)
@@ -344,11 +330,12 @@ namespace Sistema.UI
             //if (msgbox == DialogResult.No)
             //    e.Cancel = true;
             Application.Exit();
-
         }
-        #endregion
+
+        #endregion FORM
 
         #region TIMER
+
         private void Minuto_Tick(object sender, EventArgs e)
         {
             try
@@ -402,12 +389,14 @@ namespace Sistema.UI
             catch (Exception)
             {
             }
-            
         }
-        #endregion
+
+        #endregion TIMER
 
         #region MENU PRINCIPAL *CADASTRO*
+
         #region SUB MENU *USUÁRIO*
+
         private void CadastroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -422,8 +411,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Usuario UI_Usuario = new UI_Usuario();
-               AbrirFormEnPanel(UI_Usuario);
-               
+                AbrirFormEnPanel(UI_Usuario);
             }
         }
 
@@ -440,7 +428,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Usuario_Acesso UI_Usuario_Acesso = new UI_Usuario_Acesso();
-               AbrirFormEnPanel(UI_Usuario_Acesso);
+                AbrirFormEnPanel(UI_Usuario_Acesso);
             }
         }
 
@@ -457,10 +445,11 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Usuario_Comissao UI_Usuario_Comissao = new UI_Usuario_Comissao();
-               AbrirFormEnPanel(UI_Usuario_Comissao);
+                AbrirFormEnPanel(UI_Usuario_Comissao);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *USUÁRIO*
 
         private void relacionamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -477,7 +466,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Pessoa_Relacionamento UI_Pessoa_Relacionamento = new UI_Pessoa_Relacionamento();
-               AbrirFormEnPanel(UI_Pessoa_Relacionamento);
+                AbrirFormEnPanel(UI_Pessoa_Relacionamento);
             }
         }
 
@@ -505,7 +494,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 1;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -533,7 +522,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 6;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -561,7 +550,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 2;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -589,7 +578,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 3;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -617,7 +606,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 4;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -645,7 +634,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 5;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -663,7 +652,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Imovel UI_Imovel = new UI_Imovel();
-               AbrirFormEnPanel(UI_Imovel);
+                AbrirFormEnPanel(UI_Imovel);
             }
         }
 
@@ -691,7 +680,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 7;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -719,7 +708,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 8;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -747,11 +736,12 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 9;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
         #region SUBMENU *PRODUTO*
+
         private void cadastroToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -766,7 +756,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Servico UI_Produto_Servico = new UI_Produto_Servico();
-               AbrirFormEnPanel(UI_Produto_Servico);
+                AbrirFormEnPanel(UI_Produto_Servico);
             }
         }
 
@@ -784,10 +774,9 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Imposto UI_Produto_Imposto = new UI_Produto_Imposto();
-               AbrirFormEnPanel(UI_Produto_Imposto);
+                AbrirFormEnPanel(UI_Produto_Imposto);
             }
         }
-
 
         private void descontoAtacadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -814,7 +803,7 @@ namespace Sistema.UI
             {
                 UI_Produto_Desconto_Atacado UI_Produto_Desconto_Atacado = new UI_Produto_Desconto_Atacado();
                 UI_Produto_Desconto_Atacado.Tipo = Tipo_DescontoProduto.Desconto_Atacado;
-               AbrirFormEnPanel(UI_Produto_Desconto_Atacado);
+                AbrirFormEnPanel(UI_Produto_Desconto_Atacado);
             }
         }
 
@@ -843,13 +832,14 @@ namespace Sistema.UI
             {
                 UI_Produto_Desconto_Atacado UI_Produto_Desconto_Atacado = new UI_Produto_Desconto_Atacado();
                 UI_Produto_Desconto_Atacado.Tipo = Tipo_DescontoProduto.Desconto_Pessoa;
-               AbrirFormEnPanel(UI_Produto_Desconto_Atacado);
+                AbrirFormEnPanel(UI_Produto_Desconto_Atacado);
             }
         }
 
-        #endregion
+        #endregion SUBMENU *PRODUTO*
 
         #region SUB MENU *RELATÓRIOS*
+
         private void cadastroDePessoasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -864,7 +854,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Pessoa_Relatorio UI_Pessoa_Relatorio = new UI_Pessoa_Relatorio();
-               AbrirFormEnPanel(UI_Pessoa_Relatorio);
+                AbrirFormEnPanel(UI_Pessoa_Relatorio);
             }
         }
 
@@ -882,10 +872,11 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Pessoa_Etiqueta UI_Pessoa_Etiqueta = new UI_Pessoa_Etiqueta();
-               AbrirFormEnPanel(UI_Pessoa_Etiqueta);
+                AbrirFormEnPanel(UI_Pessoa_Etiqueta);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *RELATÓRIOS*
 
         private void enviarEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -901,12 +892,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Email UI_Email = new UI_Email();
-               AbrirFormEnPanel(UI_Email);
+                AbrirFormEnPanel(UI_Email);
             }
         }
-        #endregion
+
+        #endregion MENU PRINCIPAL *CADASTRO*
 
         #region MENU PRINCIPAL *IMOVEL*
+
         private void locaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -921,7 +914,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Locacao UI_Locacao = new UI_Locacao();
-               AbrirFormEnPanel(UI_Locacao);
+                AbrirFormEnPanel(UI_Locacao);
             }
         }
 
@@ -939,11 +932,12 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Locacao_Baixa UI_Locacao_Baixa = new UI_Locacao_Baixa();
-               AbrirFormEnPanel(UI_Locacao_Baixa);
+                AbrirFormEnPanel(UI_Locacao_Baixa);
             }
         }
 
         #region SUBMENU *ADMINISTRATIVO*
+
         private void contratoDeLocaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -958,7 +952,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Locacao_Contrato UI_Locacao_Contrato = new UI_Locacao_Contrato();
-               AbrirFormEnPanel(UI_Locacao_Contrato);
+                AbrirFormEnPanel(UI_Locacao_Contrato);
             }
         }
 
@@ -976,7 +970,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Imovel_ContratoServico UI_Imovel_ContratoServico = new UI_Imovel_ContratoServico();
-               AbrirFormEnPanel(UI_Imovel_ContratoServico);
+                AbrirFormEnPanel(UI_Imovel_ContratoServico);
             }
         }
 
@@ -994,18 +988,18 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Imovel_Proposta UI_Imovel_Proposta = new UI_Imovel_Proposta();
-               AbrirFormEnPanel(UI_Imovel_Proposta);
+                AbrirFormEnPanel(UI_Imovel_Proposta);
             }
         }
-        #endregion
-        #endregion
+
+        #endregion SUBMENU *ADMINISTRATIVO*
+
+        #endregion MENU PRINCIPAL *IMOVEL*
 
         #region MENU PRINCIPAL *EQUIPAMENTOS*
 
-
         private void locaçãoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-           
             bool aux = false;
             foreach (Form Frm in this.MdiChildren)
             {
@@ -1027,15 +1021,13 @@ namespace Sistema.UI
             }
             if (aux == false)
             {
-                Locacao.frm_Locacao locacao = new Locacao.frm_Locacao();               
-               AbrirFormEnPanel(locacao);
+                Locacao.frm_Locacao locacao = new Locacao.frm_Locacao();
+                AbrirFormEnPanel(locacao);
             }
-
         }
 
         private void geolocalizaçãoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             bool aux = false;
             foreach (Form Frm in this.MdiChildren)
             {
@@ -1059,15 +1051,14 @@ namespace Sistema.UI
             {
                 Locacao.frm_Locacao locacao = new Locacao.frm_Locacao();
                 locacao.tabPage2.Parent = null;
-               AbrirFormEnPanel(locacao);
+                AbrirFormEnPanel(locacao);
             }
-
         }
 
-
-        #endregion
+        #endregion MENU PRINCIPAL *EQUIPAMENTOS*
 
         #region MENU PRINCIPAL *ESTOQUE*
+
         private void compraDeProdutoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1093,7 +1084,7 @@ namespace Sistema.UI
             {
                 UI_Produto_Entrada UI_Produto_Entrada = new UI_Produto_Entrada();
                 UI_Produto_Entrada.Tipo = Tipo_Entrada_Produto.Compra;
-               AbrirFormEnPanel(UI_Produto_Entrada);
+                AbrirFormEnPanel(UI_Produto_Entrada);
             }
         }
 
@@ -1122,7 +1113,7 @@ namespace Sistema.UI
             {
                 UI_Produto_Entrada UI_Produto_Entrada = new UI_Produto_Entrada();
                 UI_Produto_Entrada.Tipo = Tipo_Entrada_Produto.Producao;
-               AbrirFormEnPanel(UI_Produto_Entrada);
+                AbrirFormEnPanel(UI_Produto_Entrada);
             }
         }
 
@@ -1141,7 +1132,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Entrada_XML UI_Produto_Entrada_XML = new UI_Produto_Entrada_XML();
-               AbrirFormEnPanel(UI_Produto_Entrada_XML);
+                AbrirFormEnPanel(UI_Produto_Entrada_XML);
             }
         }
 
@@ -1160,7 +1151,7 @@ namespace Sistema.UI
             {
                 UI_Produto_AtualizaValorXLS UI_Produto_AtualizaValorXLS = new UI_Produto_AtualizaValorXLS();
                 UI_Produto_AtualizaValorXLS.Tipo = 1;
-               AbrirFormEnPanel(UI_Produto_AtualizaValorXLS);
+                AbrirFormEnPanel(UI_Produto_AtualizaValorXLS);
             }
         }
 
@@ -1178,7 +1169,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_AjusteEstoque UI_Produto_AjusteEstoque = new UI_Produto_AjusteEstoque();
-               AbrirFormEnPanel(UI_Produto_AjusteEstoque);
+                AbrirFormEnPanel(UI_Produto_AjusteEstoque);
             }
         }
 
@@ -1197,7 +1188,7 @@ namespace Sistema.UI
             {
                 UI_Produto_AtualizaValorXLS UI_Produto_AtualizaValorXLS = new UI_Produto_AtualizaValorXLS();
                 UI_Produto_AtualizaValorXLS.Tipo = 2;
-               AbrirFormEnPanel(UI_Produto_AtualizaValorXLS);
+                AbrirFormEnPanel(UI_Produto_AtualizaValorXLS);
             }
         }
 
@@ -1215,7 +1206,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Grade UI_Grade = new UI_Grade();
-               AbrirFormEnPanel(UI_Grade);
+                AbrirFormEnPanel(UI_Grade);
             }
         }
 
@@ -1233,7 +1224,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_AjusteValor UI_Produto_AjusteValor = new UI_Produto_AjusteValor();
-               AbrirFormEnPanel(UI_Produto_AjusteValor);
+                AbrirFormEnPanel(UI_Produto_AjusteValor);
             }
         }
 
@@ -1251,7 +1242,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Balanco UI_Produto_Balanco = new UI_Produto_Balanco();
-               AbrirFormEnPanel(UI_Produto_Balanco);
+                AbrirFormEnPanel(UI_Produto_Balanco);
             }
         }
 
@@ -1269,11 +1260,12 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_EstoqueMovimento UI_Produto_EstoqueMovimento = new UI_Produto_EstoqueMovimento();
-               AbrirFormEnPanel(UI_Produto_EstoqueMovimento);
+                AbrirFormEnPanel(UI_Produto_EstoqueMovimento);
             }
         }
 
         #region SUB MENU *RELATÓRIOS*
+
         private void etiquetasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1288,7 +1280,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Etiqueta UI_Produto_Etiqueta = new UI_Produto_Etiqueta();
-               AbrirFormEnPanel(UI_Produto_Etiqueta);
+                AbrirFormEnPanel(UI_Produto_Etiqueta);
             }
         }
 
@@ -1307,7 +1299,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Relatorio UI_Produto_Relatorio = new UI_Produto_Relatorio();
-               AbrirFormEnPanel(UI_Produto_Relatorio);
+                AbrirFormEnPanel(UI_Produto_Relatorio);
             }
         }
 
@@ -1325,7 +1317,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_ResumoVenda UI_Produto_ResumoVenda = new UI_Produto_ResumoVenda();
-               AbrirFormEnPanel(UI_Produto_ResumoVenda);
+                AbrirFormEnPanel(UI_Produto_ResumoVenda);
             }
         }
 
@@ -1342,7 +1334,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Movimento UI_Produto_Movimento = new UI_Produto_Movimento();
-               AbrirFormEnPanel(UI_Produto_Movimento);
+                AbrirFormEnPanel(UI_Produto_Movimento);
             }
         }
 
@@ -1359,13 +1351,16 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Entrada_Relatorio UI_Produto_Entrada_Relatorio = new UI_Produto_Entrada_Relatorio();
-               AbrirFormEnPanel(UI_Produto_Entrada_Relatorio);
+                AbrirFormEnPanel(UI_Produto_Entrada_Relatorio);
             }
         }
-        #endregion
-        #endregion
+
+        #endregion SUB MENU *RELATÓRIOS*
+
+        #endregion MENU PRINCIPAL *ESTOQUE*
 
         #region MENU PRINCIPAL *FINANCEIRO*
+
         private void CaixaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1383,7 +1378,7 @@ namespace Sistema.UI
             {
                 UI_FluxoCaixa UI_FluxoCaixa = new UI_FluxoCaixa();
                 UI_FluxoCaixa.Tipo_Caixa = 2;
-               AbrirFormEnPanel(UI_FluxoCaixa);
+                AbrirFormEnPanel(UI_FluxoCaixa);
             }
         }
 
@@ -1403,7 +1398,7 @@ namespace Sistema.UI
             {
                 UI_FluxoCaixa UI_FluxoCaixa = new UI_FluxoCaixa();
                 UI_FluxoCaixa.Tipo_Caixa = 1;
-               AbrirFormEnPanel(UI_FluxoCaixa);
+                AbrirFormEnPanel(UI_FluxoCaixa);
             }
         }
 
@@ -1421,7 +1416,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Financeiro_Planejamento UI_Financeiro_Planejamento = new UI_Financeiro_Planejamento();
-               AbrirFormEnPanel(UI_Financeiro_Planejamento);
+                AbrirFormEnPanel(UI_Financeiro_Planejamento);
             }
         }
 
@@ -1440,7 +1435,7 @@ namespace Sistema.UI
             {
                 UI_CPagar UI_CPagar = new UI_CPagar();
                 UI_CPagar.Tipo = Tipo_Financeiro.Lancamento_Baixa;
-               AbrirFormEnPanel(UI_CPagar);
+                AbrirFormEnPanel(UI_CPagar);
             }
         }
 
@@ -1459,7 +1454,7 @@ namespace Sistema.UI
             {
                 UI_CReceber UI_CReceber = new UI_CReceber();
                 UI_CReceber.Tipo = Tipo_Financeiro.Lancamento_Baixa;
-               AbrirFormEnPanel(UI_CReceber);
+                AbrirFormEnPanel(UI_CReceber);
             }
         }
 
@@ -1478,7 +1473,7 @@ namespace Sistema.UI
             {
                 UI_CPagar UI_CPagar = new UI_CPagar();
                 UI_CPagar.Tipo = Tipo_Financeiro.Consulta;
-               AbrirFormEnPanel(UI_CPagar);
+                AbrirFormEnPanel(UI_CPagar);
             }
         }
 
@@ -1497,7 +1492,7 @@ namespace Sistema.UI
             {
                 UI_CReceber UI_CReceber = new UI_CReceber();
                 UI_CReceber.Tipo = Tipo_Financeiro.Consulta;
-               AbrirFormEnPanel(UI_CReceber);
+                AbrirFormEnPanel(UI_CReceber);
             }
         }
 
@@ -1515,7 +1510,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Cartao UI_Cartao = new UI_Cartao();
-               AbrirFormEnPanel(UI_Cartao);
+                AbrirFormEnPanel(UI_Cartao);
             }
         }
 
@@ -1533,7 +1528,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_CReceber_Cartao UI_CReceber_Cartao = new UI_CReceber_Cartao();
-               AbrirFormEnPanel(UI_CReceber_Cartao);
+                AbrirFormEnPanel(UI_CReceber_Cartao);
             }
         }
 
@@ -1552,11 +1547,12 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Cheque UI_Cheque = new UI_Cheque();
-               AbrirFormEnPanel(UI_Cheque);
+                AbrirFormEnPanel(UI_Cheque);
             }
         }
 
         #region SUB MENU *FATURAR*
+
         private void PedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1571,12 +1567,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Venda_Fatura UI_Venda_Fatura = new UI_Venda_Fatura();
-               AbrirFormEnPanel(UI_Venda_Fatura);
+                AbrirFormEnPanel(UI_Venda_Fatura);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *FATURAR*
 
         #region SUB MENU *COMISSÕES*
+
         private void PedidosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1591,12 +1589,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Venda_Comissao UI_Venda_Comissao = new UI_Venda_Comissao();
-               AbrirFormEnPanel(UI_Venda_Comissao);
+                AbrirFormEnPanel(UI_Venda_Comissao);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *COMISSÕES*
 
         #region SUB MENU *RELATÓRIOS*
+
         private void ContasAReceberToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1611,7 +1611,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_CReceber_Relatorio UI_CReceber_Relatorio = new UI_CReceber_Relatorio();
-               AbrirFormEnPanel(UI_CReceber_Relatorio);
+                AbrirFormEnPanel(UI_CReceber_Relatorio);
             }
         }
 
@@ -1629,7 +1629,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_CPagar_Relatorio UI_CPagar_Relatorio = new UI_CPagar_Relatorio();
-               AbrirFormEnPanel(UI_CPagar_Relatorio);
+                AbrirFormEnPanel(UI_CPagar_Relatorio);
             }
         }
 
@@ -1647,7 +1647,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_FluxoCaixa_Relatorio UI_FluxoCaixa_Relatorio = new UI_FluxoCaixa_Relatorio();
-               AbrirFormEnPanel(UI_FluxoCaixa_Relatorio);
+                AbrirFormEnPanel(UI_FluxoCaixa_Relatorio);
             }
         }
 
@@ -1665,7 +1665,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Cheque_Relatorio UI_Cheque_Relatorio = new UI_Cheque_Relatorio();
-               AbrirFormEnPanel(UI_Cheque_Relatorio);
+                AbrirFormEnPanel(UI_Cheque_Relatorio);
             }
         }
 
@@ -1683,7 +1683,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Boleto_Relatorio UI_Boleto_Relatorio = new UI_Boleto_Relatorio();
-               AbrirFormEnPanel(UI_Boleto_Relatorio);
+                AbrirFormEnPanel(UI_Boleto_Relatorio);
             }
         }
 
@@ -1701,7 +1701,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Carta_Cobranca UI_Carta_Cobranca = new UI_Carta_Cobranca();
-               AbrirFormEnPanel(UI_Carta_Cobranca);
+                AbrirFormEnPanel(UI_Carta_Cobranca);
             }
         }
 
@@ -1719,12 +1719,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Cartao_Relatorio UI_Cartao_Relatorio = new UI_Cartao_Relatorio();
-               AbrirFormEnPanel(UI_Cartao_Relatorio);
+                AbrirFormEnPanel(UI_Cartao_Relatorio);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *RELATÓRIOS*
 
         #region SUB MENU *COBRANÇA BANCÁRIA*
+
         private void gerarBoletosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1751,7 +1753,7 @@ namespace Sistema.UI
                 UI_Boleto UI_Boleto = new UI_Boleto();
                 UI_Boleto.Tipo = Tipo_Boleto.Gerar;
 
-               AbrirFormEnPanel(UI_Boleto);
+                AbrirFormEnPanel(UI_Boleto);
             }
         }
 
@@ -1781,7 +1783,7 @@ namespace Sistema.UI
                 UI_Boleto UI_Boleto = new UI_Boleto();
                 UI_Boleto.Tipo = Tipo_Boleto.Matricial;
 
-               AbrirFormEnPanel(UI_Boleto);
+                AbrirFormEnPanel(UI_Boleto);
             }
         }
 
@@ -1811,7 +1813,7 @@ namespace Sistema.UI
                 UI_Boleto UI_Boleto = new UI_Boleto();
                 UI_Boleto.Tipo = Tipo_Boleto.Baixa;
 
-               AbrirFormEnPanel(UI_Boleto);
+                AbrirFormEnPanel(UI_Boleto);
             }
         }
 
@@ -1822,7 +1824,6 @@ namespace Sistema.UI
             {
                 if (Frm is UI_Boleto_Remessa)
                 {
-
                     Frm.BringToFront();
                     aux = true;
                     return;
@@ -1831,7 +1832,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Boleto_Remessa UI_Boleto_Remessa = new UI_Boleto_Remessa();
-               AbrirFormEnPanel(UI_Boleto_Remessa);
+                AbrirFormEnPanel(UI_Boleto_Remessa);
             }
         }
 
@@ -1842,7 +1843,6 @@ namespace Sistema.UI
             {
                 if (Frm is UI_Boleto_Retorno)
                 {
-
                     Frm.BringToFront();
                     aux = true;
                     return;
@@ -1851,10 +1851,11 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Boleto_Retorno UI_Boleto_Retorno = new UI_Boleto_Retorno();
-               AbrirFormEnPanel(UI_Boleto_Retorno);
+                AbrirFormEnPanel(UI_Boleto_Retorno);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *COBRANÇA BANCÁRIA*
 
         private void ReciboAvulsoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1870,7 +1871,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Recibo UI_Recibo = new UI_Recibo();
-               AbrirFormEnPanel(UI_Recibo);
+                AbrirFormEnPanel(UI_Recibo);
             }
         }
 
@@ -1888,12 +1889,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Duplicata UI_Duplicata = new UI_Duplicata();
-               AbrirFormEnPanel(UI_Duplicata);
+                AbrirFormEnPanel(UI_Duplicata);
             }
         }
-        #endregion
+
+        #endregion MENU PRINCIPAL *FINANCEIRO*
 
         #region MENU PRINCIPAL *VENDAS*
+
         private void PedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1910,7 +1913,7 @@ namespace Sistema.UI
             {
                 UI_Venda UI_Venda = new UI_Venda();
                 UI_Venda.Tipo = 1;
-               AbrirFormEnPanel(UI_Venda);
+                AbrirFormEnPanel(UI_Venda);
             }
         }
 
@@ -1934,7 +1937,7 @@ namespace Sistema.UI
             {
                 UI_Venda UI_Venda = new UI_Venda();
                 UI_Venda.Tipo = 0;
-               AbrirFormEnPanel(UI_Venda);
+                AbrirFormEnPanel(UI_Venda);
             }
         }
 
@@ -1963,9 +1966,10 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Orcamento UI_Orcamento = new UI_Orcamento();
-               AbrirFormEnPanel(UI_Orcamento);
+                AbrirFormEnPanel(UI_Orcamento);
             }
         }
+
         private void frenteDeCaixaPDV2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UI.UI_FORMS.UI_PDV_II UI_PDV = new UI.UI_FORMS.UI_PDV_II();
@@ -1973,6 +1977,7 @@ namespace Sistema.UI
         }
 
         #region SUB MENU *MANUTENÇÃO DE VENDAS*
+
         private void impressãoDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -1999,7 +2004,7 @@ namespace Sistema.UI
                 UI_Venda_Manutacao UI_Venda_Manutacao = new UI_Venda_Manutacao();
                 UI_Venda_Manutacao.Tipo_Manutencao = Manutencao_Venda.Impressao;
 
-               AbrirFormEnPanel(UI_Venda_Manutacao);
+                AbrirFormEnPanel(UI_Venda_Manutacao);
             }
         }
 
@@ -2029,7 +2034,7 @@ namespace Sistema.UI
                 UI_Venda_Manutacao UI_Venda_Manutacao = new UI_Venda_Manutacao();
                 UI_Venda_Manutacao.Tipo_Manutencao = Manutencao_Venda.Cancelamento;
 
-               AbrirFormEnPanel(UI_Venda_Manutacao);
+                AbrirFormEnPanel(UI_Venda_Manutacao);
             }
         }
 
@@ -2048,7 +2053,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Venda_Conferencia UI_Venda_Conferencia = new UI_Venda_Conferencia();
-               AbrirFormEnPanel(UI_Venda_Conferencia);
+                AbrirFormEnPanel(UI_Venda_Conferencia);
             }
         }
 
@@ -2059,7 +2064,6 @@ namespace Sistema.UI
             {
                 if (Frm is UI_Venda_Devolucao)
                 {
-
                     Frm.BringToFront();
                     aux = true;
                     return;
@@ -2068,12 +2072,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Venda_Devolucao UI_Venda_Devolucao = new UI_Venda_Devolucao();
-               AbrirFormEnPanel(UI_Venda_Devolucao);
+                AbrirFormEnPanel(UI_Venda_Devolucao);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *MANUTENÇÃO DE VENDAS*
 
         #region SUB MENU *RELATÓRIOS*
+
         private void TransporteDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2089,7 +2095,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Venda_Transporte UI_Venda_Transporte = new UI_Venda_Transporte();
-               AbrirFormEnPanel(UI_Venda_Transporte);
+                AbrirFormEnPanel(UI_Venda_Transporte);
             }
         }
 
@@ -2107,7 +2113,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Venda_Relatorio UI_Venda_Relatorio = new UI_Venda_Relatorio();
-               AbrirFormEnPanel(UI_Venda_Relatorio);
+                AbrirFormEnPanel(UI_Venda_Relatorio);
             }
         }
 
@@ -2125,14 +2131,16 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Etiqueta_Producao UI_Etiqueta_Producao = new UI_Etiqueta_Producao();
-               AbrirFormEnPanel(UI_Etiqueta_Producao);
+                AbrirFormEnPanel(UI_Etiqueta_Producao);
             }
         }
 
-        #endregion
-        #endregion
+        #endregion SUB MENU *RELATÓRIOS*
+
+        #endregion MENU PRINCIPAL *VENDAS*
 
         #region MENU PRINCIPAL *NF-e*
+
         private void emitirNotaFiscalAvulsaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2156,7 +2164,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_NFe_Emissor_Completo UI_NFe_Emissor_Completo = new UI_NFe_Emissor_Completo();
-               AbrirFormEnPanel(UI_NFe_Emissor_Completo);
+                AbrirFormEnPanel(UI_NFe_Emissor_Completo);
             }
         }
 
@@ -2184,7 +2192,7 @@ namespace Sistema.UI
             {
                 UI_NFe_Emissor_Completo UI_NFe_Emissor_Completo = new UI_NFe_Emissor_Completo();
                 UI_NFe_Emissor_Completo.NF_Devolucao = true;
-               AbrirFormEnPanel(UI_NFe_Emissor_Completo);
+                AbrirFormEnPanel(UI_NFe_Emissor_Completo);
             }
         }
 
@@ -2203,7 +2211,7 @@ namespace Sistema.UI
             {
                 UI_Venda_NF UI_Venda_NF = new UI_Venda_NF();
                 UI_Venda_NF.Filtra_Empresa = true;
-               AbrirFormEnPanel(UI_Venda_NF);
+                AbrirFormEnPanel(UI_Venda_NF);
             }
         }
 
@@ -2222,7 +2230,7 @@ namespace Sistema.UI
             {
                 UI_Venda_NF UI_Venda_NF = new UI_Venda_NF();
                 UI_Venda_NF.Filtra_Empresa = false;
-               AbrirFormEnPanel(UI_Venda_NF);
+                AbrirFormEnPanel(UI_Venda_NF);
             }
         }
 
@@ -2241,7 +2249,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_NFe_Util UI_NFe_Util = new UI_NFe_Util();
-               AbrirFormEnPanel(UI_NFe_Util);
+                AbrirFormEnPanel(UI_NFe_Util);
             }
         }
 
@@ -2260,7 +2268,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_CFe_Util UI_CFe_Util = new UI_CFe_Util();
-               AbrirFormEnPanel(UI_CFe_Util);
+                AbrirFormEnPanel(UI_CFe_Util);
             }
         }
 
@@ -2287,7 +2295,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_NFCe_Emissor_Completo UI_NFCe_Emissor_Completo = new UI_NFCe_Emissor_Completo();
-               AbrirFormEnPanel(UI_NFCe_Emissor_Completo);
+                AbrirFormEnPanel(UI_NFCe_Emissor_Completo);
             }
         }
 
@@ -2305,11 +2313,12 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_NFe_InutilizaNumero UI_NFe_InutilizaNumero = new UI_NFe_InutilizaNumero();
-               AbrirFormEnPanel(UI_NFe_InutilizaNumero);
+                AbrirFormEnPanel(UI_NFe_InutilizaNumero);
             }
         }
 
         #region SUB MENU *RELATÓRIOS*
+
         private void notaFiscalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2326,7 +2335,7 @@ namespace Sistema.UI
             {
                 UI_NFe_CFe_Relatorio UI_NFe_CFe_Relatorio = new UI_NFe_CFe_Relatorio();
                 UI_NFe_CFe_Relatorio.Tipo = Tipo_NF_SAT.NFe;
-               AbrirFormEnPanel(UI_NFe_CFe_Relatorio);
+                AbrirFormEnPanel(UI_NFe_CFe_Relatorio);
             }
         }
 
@@ -2346,7 +2355,7 @@ namespace Sistema.UI
             {
                 UI_NFe_CFe_Relatorio UI_NFe_CFe_Relatorio = new UI_NFe_CFe_Relatorio();
                 UI_NFe_CFe_Relatorio.Tipo = Tipo_NF_SAT.SAT;
-               AbrirFormEnPanel(UI_NFe_CFe_Relatorio);
+                AbrirFormEnPanel(UI_NFe_CFe_Relatorio);
             }
         }
 
@@ -2364,14 +2373,18 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Sintegra UI_Sintegra = new UI_Sintegra();
-               AbrirFormEnPanel(UI_Sintegra);
+                AbrirFormEnPanel(UI_Sintegra);
             }
         }
-        #endregion
-        #endregion
+
+        #endregion SUB MENU *RELATÓRIOS*
+
+        #endregion MENU PRINCIPAL *NF-e*
 
         #region MENU PRINCIPAL *CONTÁBIL*
+
         #region SUB MENU *RELATÓRIOS*
+
         private void cadastroDeFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2386,7 +2399,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Pessoa_Relatorio_CadastroFuncionario UI_Pessoa_Relatorio_CadastroFuncionario = new UI_Pessoa_Relatorio_CadastroFuncionario();
-               AbrirFormEnPanel(UI_Pessoa_Relatorio_CadastroFuncionario);
+                AbrirFormEnPanel(UI_Pessoa_Relatorio_CadastroFuncionario);
             }
         }
 
@@ -2404,7 +2417,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_ContratoServico UI_ContratoServico = new UI_ContratoServico();
-               AbrirFormEnPanel(UI_ContratoServico);
+                AbrirFormEnPanel(UI_ContratoServico);
             }
         }
 
@@ -2422,12 +2435,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_FolhaPagto_Relatorio UI_FolhaPagto_Relatorio = new UI_FolhaPagto_Relatorio();
-               AbrirFormEnPanel(UI_FolhaPagto_Relatorio);
+                AbrirFormEnPanel(UI_FolhaPagto_Relatorio);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *RELATÓRIOS*
 
         #region SUB MENU *FOLHA DE PAGAMENTO*
+
         private void cadastroDeEventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2442,7 +2457,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Evento UI_Evento = new UI_Evento();
-               AbrirFormEnPanel(UI_Evento);
+                AbrirFormEnPanel(UI_Evento);
             }
         }
 
@@ -2460,12 +2475,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_FolhaPagto UI_FolhaPagto = new UI_FolhaPagto();
-               AbrirFormEnPanel(UI_FolhaPagto);
+                AbrirFormEnPanel(UI_FolhaPagto);
             }
         }
-        #endregion
+
+        #endregion SUB MENU *FOLHA DE PAGAMENTO*
 
         #region SUB MENU *CONTROLE DE DOCUMENTOS*
+
         private void gerarControleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2480,7 +2497,7 @@ namespace Sistema.UI
             {
                 UI_ControleDoc UI_ControleDoc = new UI_ControleDoc();
                 UI_ControleDoc.Tipo = 1;
-               AbrirFormEnPanel(UI_ControleDoc);
+                AbrirFormEnPanel(UI_ControleDoc);
             }
         }
 
@@ -2498,13 +2515,16 @@ namespace Sistema.UI
             {
                 UI_ControleDoc UI_ControleDoc = new UI_ControleDoc();
                 UI_ControleDoc.Tipo = 2;
-               AbrirFormEnPanel(UI_ControleDoc);
+                AbrirFormEnPanel(UI_ControleDoc);
             }
         }
-        #endregion
-        #endregion
+
+        #endregion SUB MENU *CONTROLE DE DOCUMENTOS*
+
+        #endregion MENU PRINCIPAL *CONTÁBIL*
 
         #region MENU PRINCIPAL *ORDEM DE SERVIÇO*
+
         private void OrdemDeServiçoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2520,7 +2540,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Ordem_Servico UI_Ordem_Servico = new UI_Ordem_Servico();
-               AbrirFormEnPanel(UI_Ordem_Servico);
+                AbrirFormEnPanel(UI_Ordem_Servico);
             }
         }
 
@@ -2539,11 +2559,12 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Ordem_Servico_Monitor UI_Ordem_Servico_Monitor = new UI_Ordem_Servico_Monitor();
-               AbrirFormEnPanel(UI_Ordem_Servico_Monitor);
+                AbrirFormEnPanel(UI_Ordem_Servico_Monitor);
             }
         }
 
         #region SUB MENU *RELATÓRIOS*
+
         private void ordemDeServiçoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2559,14 +2580,18 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Ordem_Servico_Relatorio UI_Ordem_Servico_Relatorio = new UI_Ordem_Servico_Relatorio();
-               AbrirFormEnPanel(UI_Ordem_Servico_Relatorio);
+                AbrirFormEnPanel(UI_Ordem_Servico_Relatorio);
             }
         }
-        #endregion
-        #endregion
+
+        #endregion SUB MENU *RELATÓRIOS*
+
+        #endregion MENU PRINCIPAL *ORDEM DE SERVIÇO*
 
         #region MENU PRINCIPAL *CONFIGURAÇÕES*
+
         #region SUBMENU *CADASTROS GERAIS*
+
         private void ClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2592,7 +2617,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Cliente;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2621,7 +2646,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Transportadora;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2650,7 +2675,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Fornecedor;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2679,7 +2704,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Funcionario;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2708,7 +2733,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Empresa;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2737,7 +2762,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Endereco;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2766,7 +2791,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Telefone;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2795,7 +2820,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_eMail;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2824,12 +2849,14 @@ namespace Sistema.UI
             {
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Cadastro_Personalizado;
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
-        #endregion
+
+        #endregion SUBMENU *CADASTROS GERAIS*
 
         #region SUBMENU *IMOVEL*
+
         private void tipoDeCustoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2855,7 +2882,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Custo_Imovel;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2884,12 +2911,14 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Imovel;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
-        #endregion
+
+        #endregion SUBMENU *IMOVEL*
 
         #region SUBMENU *PRODUTOS, VENDAS, NF-e*
+
         private void UnidadeProdutoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -2915,7 +2944,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Unidade;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2944,7 +2973,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Grade;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -2962,7 +2991,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_GrupoNivel UI_GrupoNivel = new UI_GrupoNivel();
-               AbrirFormEnPanel(UI_GrupoNivel);
+                AbrirFormEnPanel(UI_GrupoNivel);
             }
         }
 
@@ -2980,7 +3009,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_TabelaValor UI_TabelaValor = new UI_TabelaValor();
-               AbrirFormEnPanel(UI_TabelaValor);
+                AbrirFormEnPanel(UI_TabelaValor);
             }
         }
 
@@ -3009,7 +3038,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_DocumentoCompra;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -3020,7 +3049,6 @@ namespace Sistema.UI
             {
                 if (Frm is UI_CFOP)
                 {
-
                     Frm.BringToFront();
                     aux = true;
                     return;
@@ -3029,7 +3057,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_CFOP UI_CFOP = new UI_CFOP();
-               AbrirFormEnPanel(UI_CFOP);
+                AbrirFormEnPanel(UI_CFOP);
             }
         }
 
@@ -3058,7 +3086,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Comodato;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -3076,7 +3104,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Imposto UI_Imposto = new UI_Imposto();
-               AbrirFormEnPanel(UI_Imposto);
+                AbrirFormEnPanel(UI_Imposto);
             }
         }
 
@@ -3095,12 +3123,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_NFe_TipoEmissao UI_NFe_TipoEmissao = new UI_NFe_TipoEmissao();
-               AbrirFormEnPanel(UI_NFe_TipoEmissao);
+                AbrirFormEnPanel(UI_NFe_TipoEmissao);
             }
         }
-        #endregion
+
+        #endregion SUBMENU *PRODUTOS, VENDAS, NF-e*
 
         #region SUBMENU *FINANCEIRO*
+
         private void CaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -3126,7 +3156,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Caixa;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -3144,7 +3174,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_PlanoConta UI_PlanoConta = new UI_PlanoConta();
-               AbrirFormEnPanel(UI_PlanoConta);
+                AbrirFormEnPanel(UI_PlanoConta);
             }
         }
 
@@ -3162,7 +3192,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Pagamento UI_Pagamento = new UI_Pagamento();
-               AbrirFormEnPanel(UI_Pagamento);
+                AbrirFormEnPanel(UI_Pagamento);
             }
         }
 
@@ -3185,13 +3215,12 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Banco UI_Banco = new UI_Banco();
-               AbrirFormEnPanel(UI_Banco);
+                AbrirFormEnPanel(UI_Banco);
             }
         }
 
         private void cedenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             bool aux = false;
             foreach (Form Frm in this.MdiChildren)
             {
@@ -3209,12 +3238,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Cedente UI_Cedente = new UI_Cedente();
-               AbrirFormEnPanel(UI_Cedente);
+                AbrirFormEnPanel(UI_Cedente);
             }
         }
-        #endregion
+
+        #endregion SUBMENU *FINANCEIRO*
 
         #region SUBMENU *ORDEM DE SERVIÇO*
+
         private void AtendimentoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -3240,7 +3271,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Atendimento;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -3269,7 +3300,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Fabricante;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -3298,12 +3329,14 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_Equipamento;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
-        #endregion
+
+        #endregion SUBMENU *ORDEM DE SERVIÇO*
 
         #region SUBMENU *CONTÁBIL*
+
         private void tipoFolhaDePagamentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -3329,7 +3362,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_FolhaPagto;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -3358,7 +3391,7 @@ namespace Sistema.UI
             {
                 UI_Grupo UI_Grupo = new UI_Grupo();
                 UI_Grupo.Tipo = Tipo_Grupo.Tipo_DocumentoContabil;
-               AbrirFormEnPanel(UI_Grupo);
+                AbrirFormEnPanel(UI_Grupo);
             }
         }
 
@@ -3375,12 +3408,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_ControleDoc_Tipo UI_ControleDoc_Tipo = new UI_ControleDoc_Tipo();
-               AbrirFormEnPanel(UI_ControleDoc_Tipo);
+                AbrirFormEnPanel(UI_ControleDoc_Tipo);
             }
         }
-        #endregion
+
+        #endregion SUBMENU *CONTÁBIL*
 
         #region SUBMENU *MUNICIPIOS*
+
         private void PaísToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -3396,7 +3431,7 @@ namespace Sistema.UI
             {
                 UI_Municipio UI_Municipio = new UI_Municipio();
                 UI_Municipio.Tipo_Municipio = 1;
-               AbrirFormEnPanel(UI_Municipio);
+                AbrirFormEnPanel(UI_Municipio);
             }
         }
 
@@ -3415,7 +3450,7 @@ namespace Sistema.UI
             {
                 UI_Municipio UI_Municipio = new UI_Municipio();
                 UI_Municipio.Tipo_Municipio = 2;
-               AbrirFormEnPanel(UI_Municipio);
+                AbrirFormEnPanel(UI_Municipio);
             }
         }
 
@@ -3434,12 +3469,14 @@ namespace Sistema.UI
             {
                 UI_Municipio UI_Municipio = new UI_Municipio();
                 UI_Municipio.Tipo_Municipio = 3;
-               AbrirFormEnPanel(UI_Municipio);
+                AbrirFormEnPanel(UI_Municipio);
             }
         }
-        #endregion
+
+        #endregion SUBMENU *MUNICIPIOS*
 
         #region SUBMENU *PARAMETROS*
+
         private void financeiroToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -3466,7 +3503,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Financeiro;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3484,7 +3521,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_NCM UI_NCM = new UI_NCM();
-               AbrirFormEnPanel(UI_NCM);
+                AbrirFormEnPanel(UI_NCM);
             }
         }
 
@@ -3514,7 +3551,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Vendas;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3544,7 +3581,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.OrdemServico;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3574,7 +3611,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Mobile;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3604,7 +3641,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Usuario;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3634,7 +3671,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Parametro_Cadastro;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3664,7 +3701,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.NFe_NFC_e;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3694,7 +3731,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.SAT;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3724,7 +3761,7 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Imagens;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
 
@@ -3754,13 +3791,16 @@ namespace Sistema.UI
                 UI_Parametro UI_Parametro = new UI_Parametro();
                 UI_Parametro.Tipo = Tipo_Parametro.Config_eMail;
 
-               AbrirFormEnPanel(UI_Parametro);
+                AbrirFormEnPanel(UI_Parametro);
             }
         }
-        #endregion
-        #endregion
+
+        #endregion SUBMENU *PARAMETROS*
+
+        #endregion MENU PRINCIPAL *CONFIGURAÇÕES*
 
         #region MENU PRINCIPAL *MANUTENÇÃO*
+
         private void AssistênciaRemotaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(Parametro_Sistema.Caminho_Sistema + @"Sistema\teamviewer.exe");
@@ -3786,7 +3826,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_ManutencaoBD UI_ManutencaoBD = new UI_ManutencaoBD();
-               AbrirFormEnPanel(UI_ManutencaoBD);
+                AbrirFormEnPanel(UI_ManutencaoBD);
             }
         }
 
@@ -3804,12 +3844,14 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Backup UI_Backup = new UI_Backup();
-               AbrirFormEnPanel(UI_Backup);
+                AbrirFormEnPanel(UI_Backup);
             }
         }
-        #endregion
+
+        #endregion MENU PRINCIPAL *MANUTENÇÃO*
 
         #region MENU PRINCIPAL *SAIR*
+
         private void EncerrarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -3833,9 +3875,11 @@ namespace Sistema.UI
                 UI_Login.Show();
             }
         }
-        #endregion
+
+        #endregion MENU PRINCIPAL *SAIR*
 
         #region MENU ACESSO RAPIDO
+
         private void tsb_CadastroCliente_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -3860,7 +3904,7 @@ namespace Sistema.UI
             {
                 UI_Pessoa UI_Pessoa = new UI_Pessoa();
                 UI_Pessoa.TipoPessoa = 1;
-               AbrirFormEnPanel(UI_Pessoa);
+                AbrirFormEnPanel(UI_Pessoa);
             }
         }
 
@@ -3878,7 +3922,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Produto_Servico UI_Produto_Servico = new UI_Produto_Servico();
-               AbrirFormEnPanel(UI_Produto_Servico);
+                AbrirFormEnPanel(UI_Produto_Servico);
             }
         }
 
@@ -3903,7 +3947,7 @@ namespace Sistema.UI
             {
                 UI_Venda UI_Venda = new UI_Venda();
                 UI_Venda.Tipo = 1;
-               AbrirFormEnPanel(UI_Venda);
+                AbrirFormEnPanel(UI_Venda);
             }
         }
 
@@ -3928,7 +3972,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Orcamento ui = new UI_Orcamento();
-               AbrirFormEnPanel(ui);
+                AbrirFormEnPanel(ui);
             }
         }
 
@@ -3947,7 +3991,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_Ordem_Servico UI_Ordem_Servico = new UI_Ordem_Servico();
-               AbrirFormEnPanel(UI_Ordem_Servico);
+                AbrirFormEnPanel(UI_Ordem_Servico);
             }
         }
 
@@ -3966,7 +4010,7 @@ namespace Sistema.UI
             {
                 UI_FluxoCaixa UI_FluxoCaixa = new UI_FluxoCaixa();
                 UI_FluxoCaixa.Tipo_Caixa = 2;
-               AbrirFormEnPanel(UI_FluxoCaixa);
+                AbrirFormEnPanel(UI_FluxoCaixa);
             }
         }
 
@@ -3985,7 +4029,7 @@ namespace Sistema.UI
             {
                 UI_CPagar UI_CPagar = new UI_CPagar();
                 UI_CPagar.Tipo = Tipo_Financeiro.Lancamento_Baixa;
-               AbrirFormEnPanel(UI_CPagar);
+                AbrirFormEnPanel(UI_CPagar);
             }
         }
 
@@ -4004,7 +4048,7 @@ namespace Sistema.UI
             {
                 UI_CReceber UI_CReceber = new UI_CReceber();
                 UI_CReceber.Tipo = Tipo_Financeiro.Lancamento_Baixa;
-               AbrirFormEnPanel(UI_CReceber);
+                AbrirFormEnPanel(UI_CReceber);
             }
         }
 
@@ -4023,7 +4067,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_CFe_Util UI_CFe_Util = new UI_CFe_Util();
-               AbrirFormEnPanel(UI_CFe_Util);
+                AbrirFormEnPanel(UI_CFe_Util);
             }
         }
 
@@ -4042,7 +4086,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_NFe_Util UI_NFe_Util = new UI_NFe_Util();
-               AbrirFormEnPanel(UI_NFe_Util);
+                AbrirFormEnPanel(UI_NFe_Util);
             }
         }
 
@@ -4067,7 +4111,8 @@ namespace Sistema.UI
         {
             Application.Exit();
         }
-        #endregion
+
+        #endregion MENU ACESSO RAPIDO
 
         private void combustívelToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4092,11 +4137,10 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_FROTA_COMBUSTIVEL combustivel = new UI_FROTA_COMBUSTIVEL();
-               AbrirFormEnPanel(combustivel);
+                AbrirFormEnPanel(combustivel);
             }
-
-
         }
+
         private void veículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool aux = false;
@@ -4120,7 +4164,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_FROTA_VEICULOS combustivel = new UI_FROTA_VEICULOS();
-               AbrirFormEnPanel(combustivel);
+                AbrirFormEnPanel(combustivel);
             }
         }
 
@@ -4128,17 +4172,15 @@ namespace Sistema.UI
         {
             UI_Pessoa UI_Pessoa = new UI_Pessoa();
             UI_Pessoa.TipoPessoa = 1;
-           AbrirFormEnPanel(UI_Pessoa);
+            AbrirFormEnPanel(UI_Pessoa);
         }
 
         private void tabForms_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -4165,7 +4207,6 @@ namespace Sistema.UI
             }
             sqlConn.Close();
 
-
             if (posicao == "TOPO")
             {
                 menu_Principal.Dock = DockStyle.Top;
@@ -4184,11 +4225,8 @@ namespace Sistema.UI
             }
         }
 
-
-
         private void topoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             string sql = "UPDATE USUARIO SET POSICAOMENU = @POSICAOMENU WHERE ID = @ID ";
 
             //try
@@ -4275,11 +4313,7 @@ namespace Sistema.UI
             //}
         }
 
-
-
-
-
-        #endregion
+        #endregion POSIÇÃO DO MENU
 
         private void AtualizarBDToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4304,7 +4338,7 @@ namespace Sistema.UI
             if (aux == false)
             {
                 UI_AtualizarBanco atualizar = new UI_AtualizarBanco();
-               AbrirFormEnPanel(atualizar);
+                AbrirFormEnPanel(atualizar);
             }
         }
 
@@ -4321,8 +4355,8 @@ namespace Sistema.UI
             }
             if (aux == false)
             {
-                UI_FROTA_ABASTECIMENTO UI_Abastecimento= new UI_FROTA_ABASTECIMENTO();
-               AbrirFormEnPanel(UI_Abastecimento);
+                UI_FROTA_ABASTECIMENTO UI_Abastecimento = new UI_FROTA_ABASTECIMENTO();
+                AbrirFormEnPanel(UI_Abastecimento);
             }
         }
 
@@ -4337,7 +4371,5 @@ namespace Sistema.UI
             tss_Usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(193)))), ((int)(((byte)(255)))));
             pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(193)))), ((int)(((byte)(255)))));
         }
-
-        
     }
 }
