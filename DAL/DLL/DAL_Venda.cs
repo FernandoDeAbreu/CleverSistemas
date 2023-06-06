@@ -511,6 +511,8 @@ namespace Sistema.DAL
 
                 conexao.Executa_Comando(cmd);
 
+                #region EXCLUIR CONTAS A RECEBER
+
                 sql = "DELETE FROM ";
                 sql += "CReceber ";
                 sql += "WHERE ";
@@ -519,6 +521,9 @@ namespace Sistema.DAL
                 cmd.Parameters.AddWithValue("@ID_Venda", Venda.ID);
 
                 conexao.Executa_Comando(cmd);
+
+                #endregion EXCLUIR CONTAS A RECEBER
+
             }
             catch (Exception ex)
             {
