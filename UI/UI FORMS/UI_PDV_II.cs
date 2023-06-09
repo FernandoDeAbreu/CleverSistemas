@@ -1,82 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
-using Sistema.DTO;
+﻿using Microsoft.Reporting.WinForms;
 using Sistema.BLL;
+using Sistema.DTO;
 using Sistema.UTIL;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.IO;
-using System.Data.SqlClient;
-using System.Drawing.Drawing2D;
-using System.IO;
-using System.Text;
+using System.Windows.Forms;
 
 namespace Sistema.UI.UI_FORMS
 {
     public partial class UI_PDV_II : Form
     {
-        SqlConnection sqlConn = new SqlConnection("Data Source=" + SQL.Servidor + ";Initial Catalog=" + SQL.Banco + ";Persist Security Info=True;User ID=sa;Password=" + SQL.Senha);
-        string codProd;
-        string idPessoa = "1";
-        decimal subtotal = 0;
-        string idUltimaVenda;
+        private SqlConnection sqlConn = new SqlConnection("Data Source=" + SQL.Servidor + ";Initial Catalog=" + SQL.Banco + ";Persist Security Info=True;User ID=sa;Password=" + SQL.Senha);
+        private string codProd;
+        private string idPessoa = "1";
+        private decimal subtotal = 0;
+        private string idUltimaVenda;
         public string pagamentoEfetuado;
         public string Moeda;
-        string descricaoGrupo;
-        string contadorDeVendas = "";
+        private string descricaoGrupo;
+        private string contadorDeVendas = "";
+
         public UI_PDV_II()
         {
             InitializeComponent();
         }
 
         #region VARIAVEIS DE CLASSE
-        BLL_Produto BLL_Produto;
-        BLL_Venda BLL_Venda;
-        BLL_Pessoa BLL_Pessoa;
-        BLL_Parametro BLL_Parametro;
-        BLL_Usuario BLL_Usuario;
-        BLL_Imagem BLL_Imagem;
 
-        #endregion
+        private BLL_Produto BLL_Produto;
+        private BLL_Venda BLL_Venda;
+        private BLL_Pessoa BLL_Pessoa;
+        private BLL_Parametro BLL_Parametro;
+        private BLL_Usuario BLL_Usuario;
+        private BLL_Imagem BLL_Imagem;
+
+        #endregion VARIAVEIS DE CLASSE
 
         #region ESTRUTURA
-        DTO_Produto Produto;
-        DTO_Produto_Item Produto_Item;
-        DTO_Pessoa Pessoa;
-        DTO_Venda Venda;
-        DTO_Produto_Estoque Produto_Estoque;
-        DTO_Pessoa_Endereco Endereco;
-        DTO_Pessoa_Telefone Telefone;
-        DTO_Pessoa_Email Email;
-        DTO_Parametro Parametro;
-        DTO_Usuario Usuario;
-        DTO_Imagem Imagem;
-        
-        
-        #endregion
+
+        private DTO_Produto Produto;
+        private DTO_Produto_Item Produto_Item;
+        private DTO_Pessoa Pessoa;
+        private DTO_Venda Venda;
+        private DTO_Produto_Estoque Produto_Estoque;
+        private DTO_Pessoa_Endereco Endereco;
+        private DTO_Pessoa_Telefone Telefone;
+        private DTO_Pessoa_Email Email;
+        private DTO_Parametro Parametro;
+        private DTO_Usuario Usuario;
+        private DTO_Imagem Imagem;
+
+        #endregion ESTRUTURA
 
         #region TIMER
-
 
         private void DataHora_Tick(object sender, EventArgs e)
         {
             lb_Data.Text = DateTime.Now.ToShortDateString();
             lb_Horario.Text = DateTime.Now.ToLongTimeString();
-          
         }
-        #endregion
+
+        #endregion TIMER
 
         public class Panel : System.Windows.Forms.Panel
         {
-            public int BorderRadius { get ; private set; }
+            public int BorderRadius { get; private set; }
 
-            
             protected override void OnPaint(PaintEventArgs e)
             {
                 Color bc = Color.Black;
@@ -88,10 +82,10 @@ namespace Sistema.UI.UI_FORMS
                 base.OnPaint(e);
                 formatter.LineAlignment = StringAlignment.Center;
                 formatter.Alignment = StringAlignment.Center;
-              //  RectangleF rectangle = new RectangleF(0,0, e.ClipRectangle.Width, e.ClipRectangle.Height);
+                //  RectangleF rectangle = new RectangleF(0,0, e.ClipRectangle.Width, e.ClipRectangle.Height);
 
                 //e.Graphics.FillRectangle(new SolidBrush(bg), e.ClipRectangle);
-               // ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, bc, ButtonBorderStyle.None);
+                // ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, bc, ButtonBorderStyle.None);
                 //  e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(fc), rectangle, formatter);
 
                 // BorderRadius é uma variável do tipo inteiro que define a quantidade que a borda deve ser arredondada.
@@ -102,32 +96,23 @@ namespace Sistema.UI.UI_FORMS
                 }
             }
         }
+
         private void carregarGrid()
         {
-
             this.flowLayoutPanel1.Controls.Clear();
-
 
             SqlCommand cmd = new SqlCommand(
               " SELECT * FROM V_Produto_Venda where DescricaoGrupo " + descricaoGrupo + "", sqlConn);
-           
-
 
             sqlConn.Open();
 
             SqlDataReader dr = cmd.ExecuteReader();
-          
+
             while (dr.Read())
             {
-
-
-
                 //string myFile = dr["IMAGEM"].ToString();
                 //Image newImage = Image.FromFile(myFile);
                 //b.BackgroundImage = newImage;
-
-               
-
 
                 Panel panelProduto = new Panel();
                 Label lblPrecoProd = new Label();
@@ -135,19 +120,19 @@ namespace Sistema.UI.UI_FORMS
                 PictureBox pictureBoxProduto = new PictureBox();
 
                 // panelProduto
-                // 
+                //
                 panelProduto.Controls.Add(lblPrecoProd);
                 panelProduto.Controls.Add(lblDescrProduto);
                 panelProduto.Controls.Add(pictureBoxProduto);
                 panelProduto.Location = new System.Drawing.Point(3, 3);
-                panelProduto.Name = dr["ID"].ToString(); 
+                panelProduto.Name = dr["ID"].ToString();
                 panelProduto.Size = new System.Drawing.Size(186, 84);
                 panelProduto.TabIndex = 0;
                 panelProduto.BackColor = System.Drawing.Color.White;
 
-                // 
+                //
                 // pictureBoxProduto
-                // 
+                //
                 pictureBoxProduto.Location = new System.Drawing.Point(3, 3);
                 pictureBoxProduto.Name = dr["ID"].ToString();
                 pictureBoxProduto.Size = new System.Drawing.Size(66, 78);
@@ -155,7 +140,6 @@ namespace Sistema.UI.UI_FORMS
                 pictureBoxProduto.TabStop = false;
                 pictureBoxProduto.Enabled = false;
                 pictureBoxProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-
 
                 try
                 {
@@ -169,9 +153,9 @@ namespace Sistema.UI.UI_FORMS
                     pictureBoxProduto.BackgroundImage = null;
                 }
 
-                // 
+                //
                 // lblDescrProduto
-                // 
+                //
                 lblDescrProduto.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
                 lblDescrProduto.Location = new System.Drawing.Point(75, 3);
                 lblDescrProduto.Name = "lblDescrProduto";
@@ -180,9 +164,9 @@ namespace Sistema.UI.UI_FORMS
                 lblDescrProduto.Text = dr["DESCRICAO"].ToString();
                 lblDescrProduto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 lblDescrProduto.Enabled = false;
-                // 
+                //
                 // lblPrecoProd
-                // 
+                //
                 lblPrecoProd.AutoSize = true;
                 lblPrecoProd.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
                 lblPrecoProd.Location = new System.Drawing.Point(141, 62);
@@ -192,16 +176,16 @@ namespace Sistema.UI.UI_FORMS
                 lblPrecoProd.Text = dr["ValorVenda"].ToString();
                 lblPrecoProd.Enabled = false;
                 lblPrecoProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-                // 
+                //
 
                 panelProduto.Click += new EventHandler(b_Click);
 
                 this.flowLayoutPanel1.Controls.Add(panelProduto);
-
             }
 
             sqlConn.Close();
         }
+
         private void pesquisarGrupoNivel()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM GRUPONIVEL G WHERE G.Nivel > 1", sqlConn);
@@ -221,7 +205,7 @@ namespace Sistema.UI.UI_FORMS
 
                 o++;
             }
-           
+
             sqlConn.Close();
 
             descricaoGrupo = dg_GrupoNivel.CurrentRow.Cells[2].Value.ToString();
@@ -229,6 +213,7 @@ namespace Sistema.UI.UI_FORMS
             descricaoGrupo = " = '" + descricaoGrupo + "'";
             carregarGrid();
         }
+
         private void pesquisarProduto()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM V_Produto_Venda where id = " + codProd, sqlConn);
@@ -242,21 +227,21 @@ namespace Sistema.UI.UI_FORMS
             while (dr.Read())
             {
                 dg_Itens.Rows.Add();
-                dg_Itens.Rows[o].Cells["col_Item"].Value              = o + 1;
-                dg_Itens.Rows[o].Cells["col_ID_Produto"].Value        = dr["ID"].ToString();
+                dg_Itens.Rows[o].Cells["col_Item"].Value = o + 1;
+                dg_Itens.Rows[o].Cells["col_ID_Produto"].Value = dr["ID"].ToString();
                 dg_Itens.Rows[o].Cells["col_Descricao_Produto"].Value = dr["Descricao"].ToString();
-                dg_Itens.Rows[o].Cells["col_InfoAdicional1"].Value    = dr["InfoAdicional1"].ToString();
-                dg_Itens.Rows[o].Cells["col_Quantidade"].Value        = "1";
-                dg_Itens.Rows[o].Cells["col_Valor"].Value             = dr["ValorVenda"].ToString();
-                dg_Itens.Rows[o].Cells["col_ValorTotal"].Value        = dr["ValorVenda"].ToString();
-                dg_Itens.Rows[o].Cells["Col_ValorCusto"].Value        = dr["CustoFinal"].ToString();
-
+                dg_Itens.Rows[o].Cells["col_InfoAdicional1"].Value = dr["InfoAdicional1"].ToString();
+                dg_Itens.Rows[o].Cells["col_Quantidade"].Value = "1";
+                dg_Itens.Rows[o].Cells["col_Valor"].Value = dr["ValorVenda"].ToString();
+                dg_Itens.Rows[o].Cells["col_ValorTotal"].Value = dr["ValorVenda"].ToString();
+                dg_Itens.Rows[o].Cells["Col_ValorCusto"].Value = dr["CustoFinal"].ToString();
 
                 o++;
             }
 
             sqlConn.Close();
         }
+
         private void Carrega_Parametro()
         {
             BLL_Parametro = new BLL_Parametro();
@@ -285,6 +270,7 @@ namespace Sistema.UI.UI_FORMS
                 Parametro_Venda.Consulta_RapidaProduto = Convert.ToBoolean(_DT.Rows[0]["Consulta_RapidaProduto"]);
             }
         }
+
         private void totalizador()
         {
             subtotal = 0;
@@ -294,8 +280,8 @@ namespace Sistema.UI.UI_FORMS
                 subtotal = subtotal + Convert.ToDecimal(dg_Itens.Rows[i].Cells["col_Valor"].Value);
                 lblTotal.Text = Convert.ToString(subtotal);
             }
-
         }
+
         private void Limpa_Campos()
         {
             codProd = null;
@@ -305,6 +291,7 @@ namespace Sistema.UI.UI_FORMS
             dg_Itens.Rows.Clear();
             pagamentoEfetuado = null;
         }
+
         private void Inicia_Form()
         {
             this.Text = "PONTO DE VENDA";
@@ -313,15 +300,13 @@ namespace Sistema.UI.UI_FORMS
             DataHora.Start();
 
             Carrega_Parametro();
-            
+
             Limpa_Campos();
             pesquisarGrupoNivel();
             retornarSeqVenda();
-           // carregarGrid();
-
-
-
+            // carregarGrid();
         }
+
         private void Imprime(int ID_Venda)
         {
             if (ID_Venda == 0)
@@ -442,24 +427,24 @@ namespace Sistema.UI.UI_FORMS
             PrintDialog EscolheImpressora = new PrintDialog();
             //if (EscolheImpressora.ShowDialog() == DialogResult.OK)
             //{
-                PrintDocument documento = new PrintDocument();
-                documento.PrinterSettings.PrinterName = EscolheImpressora.PrinterSettings.PrinterName;
-                documento.PrinterSettings.Copies = 2;
-                util_Impressao imp = util_Impressao.Novo(rpt);
+            PrintDocument documento = new PrintDocument();
+            documento.PrinterSettings.PrinterName = EscolheImpressora.PrinterSettings.PrinterName;
+            documento.PrinterSettings.Copies = 2;
+            util_Impressao imp = util_Impressao.Novo(rpt);
 
-                if (Parametro_Venda.TipoImpressoraTermica == 1)
-                    imp.Imprimir(documento, Tipo_Impressao.Termica);
-                else
-                    imp.Imprimir(documento, Tipo_Impressao.Retrato);
-                imp = null;
+            if (Parametro_Venda.TipoImpressoraTermica == 1)
+                imp.Imprimir(documento, Tipo_Impressao.Termica);
+            else
+                imp.Imprimir(documento, Tipo_Impressao.Retrato);
+            imp = null;
             //}
         }
+
         private void ResumoVenda()
         {
             try
             {
                 UI_Visualiza_Relatorio rpt = new UI_Visualiza_Relatorio();
-
 
                 string rpt_Nome = "rpt_Venda_ResumoSimples.rdlc";
 
@@ -592,12 +577,14 @@ namespace Sistema.UI.UI_FORMS
                 MessageBox.Show(util_msg.msg_Erro + ex.Message, this.Text);
             }
         }
+
         private void UI_PDV_II_Load(object sender, EventArgs e)
         {
             Inicia_Form();
             try
             {
                 #region LOGO RELATÓRIO
+
                 BLL_Imagem = new BLL_Imagem();
                 Imagem = new DTO_Imagem();
                 Imagem.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
@@ -611,10 +598,10 @@ namespace Sistema.UI.UI_FORMS
                 MemoryStream memorybits = new MemoryStream(bits);
                 Bitmap ImagemConvertida = new Bitmap(memorybits);
 
-
-                #endregion
+                #endregion LOGO RELATÓRIO
 
                 #region LOGO EMPRESA
+
                 Imagem = new DTO_Imagem();
                 Imagem.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
                 Imagem.Tipo = 2;
@@ -627,14 +614,15 @@ namespace Sistema.UI.UI_FORMS
                 memorybits = new MemoryStream(bits);
                 ImagemConvertida = new Bitmap(memorybits);
                 pBox_Imagen_Principal.Image = ImagemConvertida;
-                #endregion
+
+                #endregion LOGO EMPRESA
             }
             catch (Exception ex)
             {
                 MessageBox.Show(util_msg.msg_Erro + ex.Message, this.Text);
             }
-           
         }
+
         private void b_Click(object sender, EventArgs e)
         {
             Panel b = sender as Panel;
@@ -642,11 +630,13 @@ namespace Sistema.UI.UI_FORMS
             pesquisarProduto();
             totalizador();
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             dg_Itens.Rows.Clear();
             totalizador();
         }
+
         private void btnRemoverItem_Click(object sender, EventArgs e)
         {
             if (dg_Itens.RowCount == 0)
@@ -660,14 +650,13 @@ namespace Sistema.UI.UI_FORMS
                 {
                     dg_Itens.Rows[i].Cells["Col_Item"].Value = i + 1;
                 }
-
             }
             catch (Exception)
             {
-
             }
             totalizador();
         }
+
         private void retornaUltimaVenda()
         {
             SqlCommand cmd = new SqlCommand("SELECT MAX(ID) FROM VENDA", sqlConn);
@@ -676,7 +665,6 @@ namespace Sistema.UI.UI_FORMS
 
             SqlDataReader dr = cmd.ExecuteReader();
 
-
             while (dr.Read())
             {
                 idUltimaVenda = dr[0].ToString();
@@ -684,18 +672,19 @@ namespace Sistema.UI.UI_FORMS
 
             sqlConn.Close();
         }
+
         private void gravarSeqVenda()
         {
             //definição do comando sql
             string sql = "UPDATE Venda_Sequencia SET SEQ = SEQ+1";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
-           
+
             sqlConn.Open();
             comando.ExecuteNonQuery();
             sqlConn.Close();
-
         }
+
         private void zerarSeqVenda()
         {
             //definição do comando sql
@@ -706,8 +695,8 @@ namespace Sistema.UI.UI_FORMS
             sqlConn.Open();
             comando.ExecuteNonQuery();
             sqlConn.Close();
-
         }
+
         private void retornarSeqVenda()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM Venda_Sequencia", sqlConn);
@@ -716,20 +705,17 @@ namespace Sistema.UI.UI_FORMS
 
             SqlDataReader dr = cmd.ExecuteReader();
 
-
             while (dr.Read())
             {
                 contadorDeVendas = dr[1].ToString();
                 label1.Text = "Venda Balcão Nº " + contadorDeVendas;
-
             }
 
             sqlConn.Close();
-
         }
+
         private void gravarVenda()
         {
-
             //definição do comando sql
             string sql = " INSERT INTO VENDA     ( ID_EMPRESA             " +
                                                 " ,TIPOPESSOA             " +
@@ -778,41 +764,38 @@ namespace Sistema.UI.UI_FORMS
                                                 " ,@SEQVENDA  )            ";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
-            comando.Parameters.Add(new SqlParameter("ID_EMPRESA"            , "1"));
-            comando.Parameters.Add(new SqlParameter("TIPOPESSOA"            , "1"));
-            comando.Parameters.Add(new SqlParameter("ID_Pessoa"             , idPessoa));
-            comando.Parameters.Add(new SqlParameter("Data"                  , DateTime.Now.ToShortDateString()));
-            comando.Parameters.Add(new SqlParameter("Entrega"               , DateTime.Now.ToShortDateString()));
-            comando.Parameters.Add(new SqlParameter("Informacao"            , "PDV Gourmet"));
-            comando.Parameters.Add(new SqlParameter("ID_UsuarioComissao1"   ,  "1"));
-            comando.Parameters.Add(new SqlParameter("ID_UsuarioComissao2"   ,  "0"));
-            comando.Parameters.Add(new SqlParameter("DataFatura"            , DateTime.Now.ToShortDateString()));
-            comando.Parameters.Add(new SqlParameter("Comprador"             , ""));
-            comando.Parameters.Add(new SqlParameter("Faturado"              , "1"));
-            comando.Parameters.Add(new SqlParameter("NFe"                   , "0"));
-            comando.Parameters.Add(new SqlParameter("ID_Pagamento"          , "0"));
-            comando.Parameters.Add(new SqlParameter("ID_Parcelamento"       , "0"));
-            comando.Parameters.Add(new SqlParameter("Cancelado"             , "0"));
-            comando.Parameters.Add(new SqlParameter("Situacao_Entrega"      , "0"));
-            comando.Parameters.Add(new SqlParameter("Situacao_Conferencia"  , "0"));
+            comando.Parameters.Add(new SqlParameter("ID_EMPRESA", "1"));
+            comando.Parameters.Add(new SqlParameter("TIPOPESSOA", "1"));
+            comando.Parameters.Add(new SqlParameter("ID_Pessoa", idPessoa));
+            comando.Parameters.Add(new SqlParameter("Data", DateTime.Now.ToShortDateString()));
+            comando.Parameters.Add(new SqlParameter("Entrega", DateTime.Now.ToShortDateString()));
+            comando.Parameters.Add(new SqlParameter("Informacao", "PDV Gourmet"));
+            comando.Parameters.Add(new SqlParameter("ID_UsuarioComissao1", "1"));
+            comando.Parameters.Add(new SqlParameter("ID_UsuarioComissao2", "0"));
+            comando.Parameters.Add(new SqlParameter("DataFatura", DateTime.Now.ToShortDateString()));
+            comando.Parameters.Add(new SqlParameter("Comprador", ""));
+            comando.Parameters.Add(new SqlParameter("Faturado", "1"));
+            comando.Parameters.Add(new SqlParameter("NFe", "0"));
+            comando.Parameters.Add(new SqlParameter("ID_Pagamento", "0"));
+            comando.Parameters.Add(new SqlParameter("ID_Parcelamento", "0"));
+            comando.Parameters.Add(new SqlParameter("Cancelado", "0"));
+            comando.Parameters.Add(new SqlParameter("Situacao_Entrega", "0"));
+            comando.Parameters.Add(new SqlParameter("Situacao_Conferencia", "0"));
             comando.Parameters.Add(new SqlParameter("ID_Usuario_Conferencia", ""));
-            comando.Parameters.Add(new SqlParameter("CPF_CNPJ"              , ""));
-            comando.Parameters.Add(new SqlParameter("ID_NFe"                , ""));
-            comando.Parameters.Add(new SqlParameter("ID_CFe"                , ""));
-            comando.Parameters.Add(new SqlParameter("SEQVENDA"              , contadorDeVendas));
-
+            comando.Parameters.Add(new SqlParameter("CPF_CNPJ", ""));
+            comando.Parameters.Add(new SqlParameter("ID_NFe", ""));
+            comando.Parameters.Add(new SqlParameter("ID_CFe", ""));
+            comando.Parameters.Add(new SqlParameter("SEQVENDA", contadorDeVendas));
 
             sqlConn.Open();
             comando.ExecuteNonQuery();
             sqlConn.Close();
-
         }
+
         private void gravarVenda_Item()
         {
-
             for (int i = 0; i < dg_Itens.RowCount; i++)
             {
-
                 string sql = " INSERT INTO Venda_Item (       " +
                                    "  ID_Produto            " +
                                    " ,ID_Venda              " +
@@ -841,21 +824,18 @@ namespace Sistema.UI.UI_FORMS
                                    " ,@Quantidade_Conferido )";
 
                 SqlCommand comando = new SqlCommand(sql, sqlConn);
-                comando.Parameters.Add(new SqlParameter("ID_Produto"           , Convert.ToInt32(dg_Itens.Rows[i].Cells["col_ID_Produto"].Value)));
-                comando.Parameters.Add(new SqlParameter("ID_Venda"             , idUltimaVenda));
-                comando.Parameters.Add(new SqlParameter("Quantidade"           , Convert.ToInt32(dg_Itens.Rows[i].Cells["col_Quantidade"].Value)));
-                comando.Parameters.Add(new SqlParameter("ID_Tabela"            , Convert.ToInt32("1")));
-                comando.Parameters.Add(new SqlParameter("ValorProduto"         , Convert.ToDecimal(dg_Itens.Rows[i].Cells["col_Valor"].Value)));
-                comando.Parameters.Add(new SqlParameter("Informacao"           , dg_Itens.Rows[i].Cells["col_InfoAdicional1"].Value));
-                comando.Parameters.Add(new SqlParameter("ValorVenda"           , Convert.ToDecimal(dg_Itens.Rows[i].Cells["col_Valor"].Value)));
-                comando.Parameters.Add(new SqlParameter("TipoSaida"            , Convert.ToInt32("0")));
-                comando.Parameters.Add(new SqlParameter("ID_Grade"             , Convert.ToInt32("1")));
-                comando.Parameters.Add(new SqlParameter("ValorCusto"           , Convert.ToDecimal(dg_Itens.Rows[i].Cells["Col_ValorCusto"].Value)));
-                comando.Parameters.Add(new SqlParameter("Quantidade_Entregue"  , Convert.ToInt32(dg_Itens.Rows[i].Cells["col_Quantidade"].Value)));
-                comando.Parameters.Add(new SqlParameter("Quantidade_Conferido" , Convert.ToInt32("0")));
-
-
-
+                comando.Parameters.Add(new SqlParameter("ID_Produto", Convert.ToInt32(dg_Itens.Rows[i].Cells["col_ID_Produto"].Value)));
+                comando.Parameters.Add(new SqlParameter("ID_Venda", idUltimaVenda));
+                comando.Parameters.Add(new SqlParameter("Quantidade", Convert.ToInt32(dg_Itens.Rows[i].Cells["col_Quantidade"].Value)));
+                comando.Parameters.Add(new SqlParameter("ID_Tabela", Convert.ToInt32("1")));
+                comando.Parameters.Add(new SqlParameter("ValorProduto", Convert.ToDecimal(dg_Itens.Rows[i].Cells["col_Valor"].Value)));
+                comando.Parameters.Add(new SqlParameter("Informacao", dg_Itens.Rows[i].Cells["col_InfoAdicional1"].Value));
+                comando.Parameters.Add(new SqlParameter("ValorVenda", Convert.ToDecimal(dg_Itens.Rows[i].Cells["col_Valor"].Value)));
+                comando.Parameters.Add(new SqlParameter("TipoSaida", Convert.ToInt32("0")));
+                comando.Parameters.Add(new SqlParameter("ID_Grade", Convert.ToInt32("1")));
+                comando.Parameters.Add(new SqlParameter("ValorCusto", Convert.ToDecimal(dg_Itens.Rows[i].Cells["Col_ValorCusto"].Value)));
+                comando.Parameters.Add(new SqlParameter("Quantidade_Entregue", Convert.ToInt32(dg_Itens.Rows[i].Cells["col_Quantidade"].Value)));
+                comando.Parameters.Add(new SqlParameter("Quantidade_Conferido", Convert.ToInt32("0")));
 
                 sqlConn.Open();
                 comando.ExecuteNonQuery();
@@ -863,6 +843,7 @@ namespace Sistema.UI.UI_FORMS
                 //definição do comando sql
             }
         }
+
         private void gravarCReceber()
         {
             //definição do comando sql
@@ -920,39 +901,37 @@ namespace Sistema.UI.UI_FORMS
                                    " ,@ID_OS     )        ";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
-            comando.Parameters.Add(new SqlParameter("Descricao"         , "PEDIDO Nº" + idUltimaVenda));
-            comando.Parameters.Add(new SqlParameter("ID_Venda"          , idUltimaVenda));
-            comando.Parameters.Add(new SqlParameter("ID_EMPRESA"        , "1"));
-            comando.Parameters.Add(new SqlParameter("ID_Conta"          , "2"));
-            comando.Parameters.Add(new SqlParameter("GrupoConta"        , ""));
-            comando.Parameters.Add(new SqlParameter("Situacao "         , "2"));
-            comando.Parameters.Add(new SqlParameter("Documento"         , idUltimaVenda));
-            comando.Parameters.Add(new SqlParameter("Emissao"           , DateTime.Now.ToShortDateString()));
-            comando.Parameters.Add(new SqlParameter("Vencimento"        , DateTime.Now.ToShortDateString()));
-            comando.Parameters.Add(new SqlParameter("TIPOPESSOA"        , "1"));
-            comando.Parameters.Add(new SqlParameter("ID_Pessoa"         , idPessoa));
-            comando.Parameters.Add(new SqlParameter("Valor "            , Convert.ToDecimal(lblTotal.Text)));
-            comando.Parameters.Add(new SqlParameter("Parcelado"         , "0"));
-            comando.Parameters.Add(new SqlParameter("QuantidadeParcela" , "1"));
-            comando.Parameters.Add(new SqlParameter("Parcela"           , "1"));
-            comando.Parameters.Add(new SqlParameter("DataBaixa"         , DateTime.Now.ToShortDateString()));
-            comando.Parameters.Add(new SqlParameter("Desconto"          , Convert.ToDecimal("0,00")));
-            comando.Parameters.Add(new SqlParameter("Acrescimo"         , Convert.ToDecimal("0,00")));
-            comando.Parameters.Add(new SqlParameter("Caixa"             , ""));
-            comando.Parameters.Add(new SqlParameter("ID_Pagamento"      , ""));
-            comando.Parameters.Add(new SqlParameter("InformacaoBaixa"   , ""));
-            comando.Parameters.Add(new SqlParameter("Controle"          , "0"));
-            comando.Parameters.Add(new SqlParameter("Boleto"            , "0"));
-            comando.Parameters.Add(new SqlParameter("ID_PrevisaoPagto"  , Moeda));
-            comando.Parameters.Add(new SqlParameter("ID_OS"             , "0"));
-
-
+            comando.Parameters.Add(new SqlParameter("Descricao", "PEDIDO Nº" + idUltimaVenda));
+            comando.Parameters.Add(new SqlParameter("ID_Venda", idUltimaVenda));
+            comando.Parameters.Add(new SqlParameter("ID_EMPRESA", "1"));
+            comando.Parameters.Add(new SqlParameter("ID_Conta", "2"));
+            comando.Parameters.Add(new SqlParameter("GrupoConta", ""));
+            comando.Parameters.Add(new SqlParameter("Situacao ", "2"));
+            comando.Parameters.Add(new SqlParameter("Documento", idUltimaVenda));
+            comando.Parameters.Add(new SqlParameter("Emissao", DateTime.Now.ToShortDateString()));
+            comando.Parameters.Add(new SqlParameter("Vencimento", DateTime.Now.ToShortDateString()));
+            comando.Parameters.Add(new SqlParameter("TIPOPESSOA", "1"));
+            comando.Parameters.Add(new SqlParameter("ID_Pessoa", idPessoa));
+            comando.Parameters.Add(new SqlParameter("Valor ", Convert.ToDecimal(lblTotal.Text)));
+            comando.Parameters.Add(new SqlParameter("Parcelado", "0"));
+            comando.Parameters.Add(new SqlParameter("QuantidadeParcela", "1"));
+            comando.Parameters.Add(new SqlParameter("Parcela", "1"));
+            comando.Parameters.Add(new SqlParameter("DataBaixa", DateTime.Now.ToShortDateString()));
+            comando.Parameters.Add(new SqlParameter("Desconto", Convert.ToDecimal("0,00")));
+            comando.Parameters.Add(new SqlParameter("Acrescimo", Convert.ToDecimal("0,00")));
+            comando.Parameters.Add(new SqlParameter("Caixa", ""));
+            comando.Parameters.Add(new SqlParameter("ID_Pagamento", ""));
+            comando.Parameters.Add(new SqlParameter("InformacaoBaixa", ""));
+            comando.Parameters.Add(new SqlParameter("Controle", "0"));
+            comando.Parameters.Add(new SqlParameter("Boleto", "0"));
+            comando.Parameters.Add(new SqlParameter("ID_PrevisaoPagto", Moeda));
+            comando.Parameters.Add(new SqlParameter("ID_OS", "0"));
 
             sqlConn.Open();
             comando.ExecuteNonQuery();
             sqlConn.Close();
-
         }
+
         private void btnPagamento_Click(object sender, EventArgs e)
         {
             if (lblTotal.Text != "0,00")
@@ -967,7 +946,7 @@ namespace Sistema.UI.UI_FORMS
                     retornarSeqVenda();
                     gravarVenda();
                     retornaUltimaVenda();
-                   
+
                     gravarVenda_Item();
                     gravarCReceber();
                     Imprime(Convert.ToInt32(idUltimaVenda));
@@ -975,12 +954,12 @@ namespace Sistema.UI.UI_FORMS
                     retornarSeqVenda();
                 }
             }
-            
         }
+
         private void UI_PDV_II_KeyDown(object sender, KeyEventArgs e)
         {
-           
         }
+
         private void btnProximo_Click(object sender, EventArgs e)
         {
             string cellAtual = dg_GrupoNivel.CurrentRow.Cells[1].Value.ToString();
@@ -1005,8 +984,8 @@ namespace Sistema.UI.UI_FORMS
 
             descricaoGrupo = " = '" + descricaoGrupo + "'";
             carregarGrid();
-
         }
+
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             string cellAtual = dg_GrupoNivel.CurrentRow.Cells[1].Value.ToString();
@@ -1023,7 +1002,7 @@ namespace Sistema.UI.UI_FORMS
             }
             catch (Exception)
             {
-                dg_GrupoNivel.CurrentCell = dg_GrupoNivel.Rows[dg_GrupoNivel.RowCount-1].Cells[0];
+                dg_GrupoNivel.CurrentCell = dg_GrupoNivel.Rows[dg_GrupoNivel.RowCount - 1].Cells[0];
             }
             descricaoGrupo = dg_GrupoNivel.CurrentRow.Cells[2].Value.ToString();
 
@@ -1032,6 +1011,7 @@ namespace Sistema.UI.UI_FORMS
             descricaoGrupo = " = '" + descricaoGrupo + "'";
             carregarGrid();
         }
+
         private void btnTodos_Click(object sender, EventArgs e)
         {
             label2.Text = "TODOS";
@@ -1039,9 +1019,10 @@ namespace Sistema.UI.UI_FORMS
             descricaoGrupo = " <> '' ";
             carregarGrid();
         }
+
         private void label1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja Zerar Sequencia de vendas?","Clever Sistemas",  MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja Zerar Sequencia de vendas?", "Clever Sistemas", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 zerarSeqVenda();
                 retornarSeqVenda();
