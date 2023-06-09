@@ -586,7 +586,7 @@ namespace Sistema.UI
                 BLL_Usuario.Grava_Log(Log);
 
                 UI_UsuarioConectado usuarioConectado = new UI_UsuarioConectado();
-                usuarioConectado.Show();
+                usuarioConectado.Hide();
             }
             catch (Exception ex)
             {

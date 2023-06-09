@@ -13,7 +13,7 @@ namespace Sistema.DAL
         //ULTIMA ALTERAÇÃO: 09/06/2023
 
         public int UltimaVersaoDB = 256;
-        public int UltimaVersaoSistema = 1349;
+        public int UltimaVersaoSistema = 1350;
 
         #region VARIAVEIS DIVERSAS
         Conexao conexao;
