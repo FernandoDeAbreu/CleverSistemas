@@ -44,8 +44,6 @@ namespace Sistema.UI
             {
                 this.Text = "Bem - vindo ao Clever Software";
 
-                lb_Versao.Text = lb_Versao.Text + Parametro_Sistema.Versao;
-
                 RegistryKey RegKey = Registry.CurrentUser.OpenSubKey("Software", true);
                 RegKey = RegKey.CreateSubKey("SystemSoft");//CRIA SUBCHAVE
                 RegKey.SetValue("Versao", Parametro_Sistema.Versao.Replace(".", ""));
@@ -374,21 +372,27 @@ namespace Sistema.UI
             BLL_Sistema = new BLL_Sistema();
             Sistema = new DTO_Sistema();
 
-            int aux = BLL_Sistema.Versao();
+            int getUltimaVersaoDB = BLL_Sistema.VersaoBD();
+            int getUltmaVersaoSistema = BLL_Sistema.VersaoSistema();
             int VersaoBD = Convert.ToInt32(_DT.Rows[0]["BD"]);
+            int VersaoSistema = Convert.ToInt32(_DT.Rows[0]["Versao"]);
 
             Sistema.VersaoAtualBanco = VersaoBD;
+            Sistema.VersaoAtualSistema = VersaoSistema;
 
-            //try
-            //{
-            //    if (VersaoBD < aux)
-            //        BLL_Sistema.Atualiza(Sistema);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(util_msg.msg_Erro + ex);
-            //    Application.Exit();
-            //}
+            try
+            {
+                if (VersaoBD < getUltimaVersaoDB)
+                    BLL_Sistema.Atualiza(Sistema);
+
+                if (VersaoSistema < getUltmaVersaoSistema)
+                    BLL_Sistema.Grava(Sistema);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(util_msg.msg_Erro + ex);
+                Application.Exit();
+            }
 
             #endregion ATUALIZA BANCO DE DADOS
         }
@@ -565,16 +569,9 @@ namespace Sistema.UI
                 Parametro_Empresa.DescricaoEmpresa = cb_Empresa.Text;
 
                 Carrega_Parametro_Usuario();
-                if (checkBox1.Checked == true)
-                {
-                    UI.UI_MENU a = new UI_MENU();
-                    a.Show();
-                }
-                else
-                {
-                    UI_MDI a = new UI_MDI();
-                    a.Show();
-                }
+
+                UI_MDI a = new UI_MDI();
+                a.Show();
 
                 this.Hide();
 

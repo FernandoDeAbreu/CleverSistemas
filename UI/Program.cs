@@ -15,7 +15,8 @@ namespace Sistema.UI
             Application.SetCompatibleTextRenderingDefault(false);
 
             //  Application.Run(new UI.UI_FORMS.UI_PDV_II_FINALIZAR());
-            Application.Run(new UI.UI_Login());
+            //Application.Run(new UI.UI_AtualizarSistema());
+              Application.Run(new UI.UI_Login());
         }
     }
 }

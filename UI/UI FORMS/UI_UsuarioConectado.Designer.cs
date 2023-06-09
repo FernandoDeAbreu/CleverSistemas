@@ -46,6 +46,10 @@
             this.LblTerminal = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblVersaoDisponivelSistema = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblVersaoDisponivelBanco = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +73,7 @@
             // LblNomeUsuario
             // 
             this.LblNomeUsuario.AutoSize = true;
-            this.LblNomeUsuario.Location = new System.Drawing.Point(112, 30);
+            this.LblNomeUsuario.Location = new System.Drawing.Point(112, 29);
             this.LblNomeUsuario.Name = "LblNomeUsuario";
             this.LblNomeUsuario.Size = new System.Drawing.Size(71, 13);
             this.LblNomeUsuario.TabIndex = 3;
@@ -78,7 +82,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 30);
+            this.label3.Location = new System.Drawing.Point(12, 29);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 2;
@@ -87,7 +91,7 @@
             // LblVersaoSistema
             // 
             this.LblVersaoSistema.AutoSize = true;
-            this.LblVersaoSistema.Location = new System.Drawing.Point(112, 93);
+            this.LblVersaoSistema.Location = new System.Drawing.Point(112, 89);
             this.LblVersaoSistema.Name = "LblVersaoSistema";
             this.LblVersaoSistema.Size = new System.Drawing.Size(95, 13);
             this.LblVersaoSistema.TabIndex = 5;
@@ -96,7 +100,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 93);
+            this.label4.Location = new System.Drawing.Point(12, 89);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 13);
             this.label4.TabIndex = 4;
@@ -105,7 +109,7 @@
             // LblDataConexao
             // 
             this.LblDataConexao.AutoSize = true;
-            this.LblDataConexao.Location = new System.Drawing.Point(112, 51);
+            this.LblDataConexao.Location = new System.Drawing.Point(112, 49);
             this.LblDataConexao.Name = "LblDataConexao";
             this.LblDataConexao.Size = new System.Drawing.Size(75, 13);
             this.LblDataConexao.TabIndex = 7;
@@ -114,7 +118,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 51);
+            this.label6.Location = new System.Drawing.Point(12, 49);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 13);
             this.label6.TabIndex = 6;
@@ -129,7 +133,7 @@
             // LblVersaoBanco
             // 
             this.LblVersaoBanco.AutoSize = true;
-            this.LblVersaoBanco.Location = new System.Drawing.Point(112, 114);
+            this.LblVersaoBanco.Location = new System.Drawing.Point(112, 109);
             this.LblVersaoBanco.Name = "LblVersaoBanco";
             this.LblVersaoBanco.Size = new System.Drawing.Size(89, 13);
             this.LblVersaoBanco.TabIndex = 9;
@@ -138,7 +142,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 114);
+            this.label5.Location = new System.Drawing.Point(12, 109);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 13);
             this.label5.TabIndex = 8;
@@ -147,7 +151,7 @@
             // LblChaveBanco
             // 
             this.LblChaveBanco.AutoSize = true;
-            this.LblChaveBanco.Location = new System.Drawing.Point(112, 135);
+            this.LblChaveBanco.Location = new System.Drawing.Point(112, 129);
             this.LblChaveBanco.Name = "LblChaveBanco";
             this.LblChaveBanco.Size = new System.Drawing.Size(87, 13);
             this.LblChaveBanco.TabIndex = 11;
@@ -156,7 +160,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 135);
+            this.label8.Location = new System.Drawing.Point(12, 129);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 13);
             this.label8.TabIndex = 10;
@@ -165,7 +169,7 @@
             // LblTerminal
             // 
             this.LblTerminal.AutoSize = true;
-            this.LblTerminal.Location = new System.Drawing.Point(112, 72);
+            this.LblTerminal.Location = new System.Drawing.Point(112, 69);
             this.LblTerminal.Name = "LblTerminal";
             this.LblTerminal.Size = new System.Drawing.Size(47, 13);
             this.LblTerminal.TabIndex = 13;
@@ -174,7 +178,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 72);
+            this.label7.Location = new System.Drawing.Point(12, 69);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 13);
             this.label7.TabIndex = 12;
@@ -184,12 +188,53 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblVersaoDisponivelSistema
+            // 
+            this.lblVersaoDisponivelSistema.AutoSize = true;
+            this.lblVersaoDisponivelSistema.Location = new System.Drawing.Point(166, 149);
+            this.lblVersaoDisponivelSistema.Name = "lblVersaoDisponivelSistema";
+            this.lblVersaoDisponivelSistema.Size = new System.Drawing.Size(95, 13);
+            this.lblVersaoDisponivelSistema.TabIndex = 15;
+            this.lblVersaoDisponivelSistema.Text = "Versão do Sistema";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 149);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(148, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Versão disponivel do Sistema:";
+            // 
+            // lblVersaoDisponivelBanco
+            // 
+            this.lblVersaoDisponivelBanco.AutoSize = true;
+            this.lblVersaoDisponivelBanco.Location = new System.Drawing.Point(166, 169);
+            this.lblVersaoDisponivelBanco.Name = "lblVersaoDisponivelBanco";
+            this.lblVersaoDisponivelBanco.Size = new System.Drawing.Size(95, 13);
+            this.lblVersaoDisponivelBanco.TabIndex = 17;
+            this.lblVersaoDisponivelBanco.Text = "Versão do Sistema";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 169);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(139, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Versão disponivel do Banco";
             // 
             // UI_UsuarioConectado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblVersaoDisponivelBanco);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lblVersaoDisponivelSistema);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.LblTerminal);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.LblChaveBanco);
@@ -235,5 +280,9 @@
         private System.Windows.Forms.Label LblTerminal;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblVersaoDisponivelSistema;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblVersaoDisponivelBanco;
+        private System.Windows.Forms.Label label10;
     }
 }

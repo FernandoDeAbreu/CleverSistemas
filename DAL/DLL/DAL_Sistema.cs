@@ -10,9 +10,10 @@ namespace Sistema.DAL
 {
     public class DAL_Sistema
     {
-        //ULTIMA ALTERAÇÃO: 06/03/2017
+        //ULTIMA ALTERAÇÃO: 09/06/2023
 
-        public int UltimaVersao = 256;
+        public int UltimaVersaoDB = 256;
+        public int UltimaVersaoSistema = 1347;
 
         #region VARIAVEIS DIVERSAS
         Conexao conexao;
@@ -10200,7 +10201,7 @@ namespace Sistema.DAL
                     #endregion
 
                 }
-                cmd.CommandText = "UPDATE Versao SET BD = " + intVersao;
+                cmd.CommandText = $"UPDATE Versao SET Versao = {UltimaVersaoSistema}, BD = {UltimaVersaoDB}";
                 conexao.Executa_Comando(cmd);
             }
             catch (Exception ex)
@@ -10220,7 +10221,7 @@ namespace Sistema.DAL
             try
             {
                 conexao.Abre_Conexao();
-
+                Sistema.ID = 1;
                 if (Sistema.ID == 0)
                 {
                     sql = "INSERT INTO Versao ";
@@ -10242,8 +10243,8 @@ namespace Sistema.DAL
                     sql += "ID = @ID ";
                     cmd.CommandText = sql;
                     cmd.Parameters.AddWithValue("@ID", Sistema.ID);
-                    cmd.Parameters.AddWithValue("@Versao", Sistema.VersaoSistema);
-                    cmd.Parameters.AddWithValue("@BD", Sistema.VersaoBanco);
+                    cmd.Parameters.AddWithValue("@Versao", UltimaVersaoSistema);
+                    cmd.Parameters.AddWithValue("@BD", UltimaVersaoDB);
                     conexao.Executa_Comando(cmd);
                 }
             }
@@ -10331,7 +10332,7 @@ namespace Sistema.DAL
         {
             try
             {
-                for (int i = Sistema.VersaoAtualBanco + 1; i <= UltimaVersao; i++)
+                for (int i = Sistema.VersaoAtualBanco + 1; i <= UltimaVersaoDB; i++)
                     Atualiza(i);
             }
             catch (Exception ex)
@@ -10342,7 +10343,11 @@ namespace Sistema.DAL
 
         public int Versao()
         {
-            return UltimaVersao;
+            return UltimaVersaoDB;
+        }
+        public int VersaoSistema()
+        {
+            return UltimaVersaoSistema;
         }
 
         public string Executa_Comando()

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
+﻿using Sistema.DAL;
 using Sistema.DTO;
-using Sistema.DAL;
-using Sistema.UTIL;
+using System.Data;
 
 namespace Sistema.BLL
 {
@@ -13,14 +8,6 @@ namespace Sistema.BLL
     {
         public void Grava(DTO_Sistema _Sistema)
         {
-            string msg = string.Empty;
-
-            if (_Sistema.VersaoBanco == 0 && _Sistema.VersaoSistema == 0)
-                msg += "Versão Banco / Versão Sistema";
-
-            if (msg != string.Empty)
-                throw new Exception(util_msg.msg_BLL_CampoIncorreto + msg);
-
             DAL_Sistema obj = new DAL_Sistema(_Sistema);
             obj.Grava();
         }
@@ -52,10 +39,16 @@ namespace Sistema.BLL
             obj.Verifica_Conexao();
         }
 
-        public int Versao()
+        public int VersaoBD()
         {
             DAL_Sistema obj = new DAL_Sistema();
             return obj.Versao();
+        }
+
+        public int VersaoSistema()
+        {
+            DAL_Sistema obj = new DAL_Sistema();
+            return obj.VersaoSistema();
         }
 
         public string Executa_Comando(DTO_Sistema _Sistema)

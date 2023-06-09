@@ -9,6 +9,7 @@ namespace Sistema.DTO
     {
         public int ID { get; set; }
         public int VersaoSistema { get; set; }
+        public int VersaoAtualSistema { get; set; }
         public int VersaoBanco { get; set; }
         public int VersaoAtualBanco { get; set; }
 

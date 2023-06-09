@@ -17,5 +17,11 @@ namespace Sistema.BLL
             DAL_LogAcesso obj = new DAL_LogAcesso(_LogAcesso);
             return obj.Busca();
         }
+
+        public DataTable BuscaNovaVersao(DTO_LogAcesso _Sistema)
+        {
+            DAL_LogAcesso obj = new DAL_LogAcesso(_Sistema);
+            return obj.BuscaNovaVersao();
+        }
     }
 }

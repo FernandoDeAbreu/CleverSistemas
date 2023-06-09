@@ -81,7 +81,7 @@ namespace Sistema.UI
             BLL_Sistema = new BLL_Sistema();
             Sistema = new DTO_Sistema();
 
-            int aux = BLL_Sistema.Versao();
+            int aux = BLL_Sistema.VersaoBD();
             int VersaoBD = Convert.ToInt32(_DT.Rows[0]["BD"]);
 
             Sistema.VersaoAtualBanco = VersaoBD;

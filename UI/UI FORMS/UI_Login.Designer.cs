@@ -34,14 +34,12 @@
             this.txt_Usuario = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.cb_Empresa = new System.Windows.Forms.ComboBox();
-            this.lb_Versao = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bt_Cancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -92,7 +90,7 @@
             this.Label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Label3.Location = new System.Drawing.Point(67, 115);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(55, 16);
+            this.Label3.Size = new System.Drawing.Size(54, 16);
             this.Label3.TabIndex = 19;
             this.Label3.Text = "SENHA";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,19 +107,6 @@
             this.cb_Empresa.Size = new System.Drawing.Size(313, 24);
             this.cb_Empresa.TabIndex = 1;
             // 
-            // lb_Versao
-            // 
-            this.lb_Versao.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Versao.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Versao.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lb_Versao.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lb_Versao.Location = new System.Drawing.Point(4, 349);
-            this.lb_Versao.Name = "lb_Versao";
-            this.lb_Versao.Size = new System.Drawing.Size(236, 23);
-            this.lb_Versao.TabIndex = 20;
-            this.lb_Versao.Text = "VERSÃO: ";
-            this.lb_Versao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Label2
             // 
             this.Label2.AutoSize = true;
@@ -131,7 +116,7 @@
             this.Label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Label2.Location = new System.Drawing.Point(53, 79);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(69, 16);
+            this.Label2.Size = new System.Drawing.Size(68, 16);
             this.Label2.TabIndex = 22;
             this.Label2.Text = "USUÁRIO";
             this.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -145,7 +130,7 @@
             this.Label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Label1.Location = new System.Drawing.Point(48, 43);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(74, 16);
+            this.Label1.Size = new System.Drawing.Size(73, 16);
             this.Label1.TabIndex = 21;
             this.Label1.Text = "EMPRESA";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,18 +185,6 @@
             this.pictureBox1.TabIndex = 28;
             this.pictureBox1.TabStop = false;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(467, 354);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(67, 20);
-            this.checkBox1.TabIndex = 29;
-            this.checkBox1.Text = "Ribbon";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Visible = false;
-            // 
             // UI_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -219,11 +192,9 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(541, 380);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lb_Versao);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -242,7 +213,6 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -252,13 +222,11 @@
         internal System.Windows.Forms.TextBox txt_Usuario;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.ComboBox cb_Empresa;
-        internal System.Windows.Forms.Label lb_Versao;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Panel panel1;
         internal System.Windows.Forms.Button bt_Cancelar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

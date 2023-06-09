@@ -51,7 +51,7 @@ namespace Sistema.DAL
             try
             {
                 conexaoMySQL.Abre_Conecao();
-                sql  = "INSERT INTO LogAcesso ";
+                sql = "INSERT INTO LogAcesso ";
                 sql += "(NomeEmpresa, NomeUsuario, DataConexao, Terminal, VersaoSistema, VersaoBanco, ChaveBanco) ";
                 sql += "VALUES ";
                 sql += "(@NomeEmpresa, @NomeUsuario, @DataConexao, @Terminal, @VersaoSistema, @VersaoBanco, @ChaveBanco) ";
@@ -101,6 +101,30 @@ namespace Sistema.DAL
             finally
             {
                 conexao.Fecha_Conexao();
+            }
+        }
+
+        public DataTable BuscaNovaVersao()
+        {
+            conexaoMySQL = new ConexaoMySQL();
+            try
+            {
+                conexaoMySQL.Abre_Conecao();
+                sql = "SELECT ";
+                sql += "U.NovaVersaoSistema, U.NovaVersaoBanco ";
+                sql += "FROM ";
+                sql += "NovaVersao U ";
+                sql += "ORDER BY U.ID DESC LIMIT 1";
+
+                return conexaoMySQL.Consulta(sql);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conexaoMySQL.Fecha_Conexao();
             }
         }
     }

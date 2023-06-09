@@ -130,8 +130,8 @@
   <data name="bt_Validar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Validar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sintegra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sintegra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Novo Moscote Clever" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Novo Moscote Clever.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TelaExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TelaExcel.JPG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,9 +160,6 @@
   <data name="upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\upload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cart_full" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cart_full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="bt_Imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -180,6 +177,9 @@
   </data>
   <data name="bt_Localizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Localizar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_Recibo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_Recibo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="page_gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\page_gear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,15 +220,6 @@
   <data name="bt_Word" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Word.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SAT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SAT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cash_terminal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cash_terminal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -238,11 +229,11 @@
   <data name="Pedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pedido.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bt_ConfigRede" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_ConfigRede.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bt_Transmitir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Transmitir.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="database_gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\database_gear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Apagar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Apagar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,14 +241,14 @@
   <data name="bt_Pesquisa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Pesquisa.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_Salvar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_Salvar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="gas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_email" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_email.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cash_register_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cash_register_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_PesquisaPessoa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_PesquisaPessoa1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Atualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Atualizar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -273,6 +264,9 @@
   </data>
   <data name="bt_Sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Sair.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_Assinar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_Assinar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_pdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_pdf.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -313,20 +307,26 @@
   <data name="bt_ExportarXML" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_ExportarXML.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="money_dollar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_dollar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bt_PesquisaPessoa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_PesquisaPessoa.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_ConfigRede" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_ConfigRede.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bt_Salvar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_Salvar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_Assinar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_Assinar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="database_gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\database_gear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fechar1616" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fechar1616.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Produto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Produto.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bt_Excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_Excel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Selecionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Selecionar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -340,29 +340,32 @@
   <data name="application_cascade" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\application_cascade.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="New Logo Clever1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\New Logo Clever.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bt_Proximo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Proximo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="money_dollar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\money_dollar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SAT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SAT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Anterior1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Anterior1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_Excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_Excel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bt_email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_email.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_RemoveProduto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_RemoveProduto.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="New Logo Clever1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\New Logo Clever.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Adicionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Adicionar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_PesquisaPessoa1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_PesquisaPessoa1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sintegra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sintegra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="business_user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\business_user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -373,8 +376,8 @@
   <data name="bt_Proximo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Proximo1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cash_register_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cash_register_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cart_full" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cart_full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Suporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Suporte.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -397,8 +400,8 @@
   <data name="bt_Correios" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Correios.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bt_Recibo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_Recibo.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="New Logo Clever" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\New Logo Clever.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -409,7 +412,7 @@
   <data name="unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unchecked.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Novo Moscote Clever" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Novo Moscote Clever.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="585e4829cb11b227491c338d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\585e4829cb11b227491c338d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
