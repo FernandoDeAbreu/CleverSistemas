@@ -699,7 +699,7 @@ namespace Sistema.UI.UI_FORMS
         private void zerarSeqVenda()
         {
             //definição do comando sql
-            string sql = "UPDATE Venda_Sequencia SET SEQ = 1";
+            string sql = "UPDATE Venda_Sequencia SET SEQ = 0";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
 
