@@ -17,6 +17,8 @@ namespace Sistema.UI
             this.Size = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height - 30);
         }
 
+
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private static extern void ReleaseCapture();
 
@@ -84,6 +86,8 @@ namespace Sistema.UI
 
         private void Inicia_Form()
         {
+            BLL_Sistema = new BLL_Sistema();
+
             if (this.panelContenedor.Controls.Count > 0)
                 this.panelContenedor.Controls.RemoveAt(0);
             UI_PAGINA_INICIAL a = new UI_PAGINA_INICIAL();
@@ -118,10 +122,15 @@ namespace Sistema.UI
                             }
                         }
                     }
-                }
+                 }
             }
 
-            tss_Empresa.Text = Parametro_Empresa.Razao_Social_Empresa + "  Versão: " + Parametro_Sistema.Versao;
+           
+            Sistema = new DTO_Sistema();
+            Sistema.ID = 1;
+            var dtSistema = BLL_Sistema.Busca(Sistema);
+
+            tss_Empresa.Text = Parametro_Empresa.Razao_Social_Empresa + $"  Versão: {dtSistema.Rows[0]["Versao"]}.{dtSistema.Rows[0]["BD"]}";
 
             this.Text = Parametro_Empresa.DescricaoEmpresa + " - " + util_msg.Sistema;
 
