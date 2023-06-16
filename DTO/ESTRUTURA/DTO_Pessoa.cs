@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Sistema.UTIL;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sistema.UTIL;
 
 namespace Sistema.DTO
 {
@@ -11,11 +9,15 @@ namespace Sistema.DTO
         public int ID { get; set; }
 
         #region CLIENTE
+
         public int ID_Usuario { get; set; }
-        #endregion
+
+        #endregion CLIENTE
 
         #region CLIENTE E FORNECEDOR
+
         private string referencia;
+
         public string Referencia
         {
             get
@@ -28,12 +30,15 @@ namespace Sistema.DTO
 
             set { referencia = value; }
         }
-        #endregion
+
+        #endregion CLIENTE E FORNECEDOR
 
         #region FUNCIONARIO
+
         public double Salario { get; set; }
 
         private string carteiraprofissional;
+
         public string CarteiraProfissional
         {
             get
@@ -48,6 +53,7 @@ namespace Sistema.DTO
         }
 
         private string pis;
+
         public string PIS
         {
             get
@@ -60,7 +66,8 @@ namespace Sistema.DTO
 
             set { pis = value; }
         }
-        #endregion
+
+        #endregion FUNCIONARIO
 
         public bool MultiEmpresa { get; set; }
         public int ID_Empresa { get; set; }
@@ -85,6 +92,7 @@ namespace Sistema.DTO
         public int TipoDocumento { get; set; }
 
         private string cnpj_cpf;
+
         public string CNPJ_CPF
         {
             get
@@ -99,6 +107,7 @@ namespace Sistema.DTO
         }
 
         private string matricula;
+
         public string Matricula
         {
             get
@@ -114,10 +123,10 @@ namespace Sistema.DTO
             {
                 matricula = value;
             }
-
         }
 
         private string nome_razao;
+
         public string Nome_Razao
         {
             get
@@ -132,6 +141,7 @@ namespace Sistema.DTO
         }
 
         private string nomefantasia;
+
         public string NomeFantasia
         {
             get
@@ -146,6 +156,7 @@ namespace Sistema.DTO
         }
 
         private string contato;
+
         public string Contato
         {
             get
@@ -160,6 +171,7 @@ namespace Sistema.DTO
         }
 
         private string ie_rg;
+
         public string IE_RG
         {
             get
@@ -174,6 +186,7 @@ namespace Sistema.DTO
         }
 
         private string im;
+
         public string IM
         {
             get
@@ -191,6 +204,7 @@ namespace Sistema.DTO
         public DateTime Nascimento_Fundacao { get; set; }
 
         private string informacao;
+
         public string Informacao
         {
             get
@@ -207,6 +221,7 @@ namespace Sistema.DTO
         public int ID_Grupo { get; set; }
 
         private string ramo_profissao;
+
         public string Ramo_Profissao
         {
             get
@@ -221,6 +236,7 @@ namespace Sistema.DTO
         }
 
         private string descricao1;
+
         public string Descricao1
         {
             get
@@ -235,6 +251,7 @@ namespace Sistema.DTO
         }
 
         private string descricao2;
+
         public string Descricao2
         {
             get
@@ -249,6 +266,7 @@ namespace Sistema.DTO
         }
 
         private string descricao3;
+
         public string Descricao3
         {
             get
@@ -269,6 +287,7 @@ namespace Sistema.DTO
         public bool Situacao { get; set; }
 
         private string cei;
+
         public string CEI
         {
             get
@@ -288,6 +307,7 @@ namespace Sistema.DTO
         public bool FiltraSituacao { get; set; }
 
         private string conjuge;
+
         public string Conjuge
         {
             get
@@ -302,6 +322,7 @@ namespace Sistema.DTO
         }
 
         private string cpf_conjuge;
+
         public string CPF_Conjuge
         {
             get
@@ -316,6 +337,7 @@ namespace Sistema.DTO
         }
 
         private string rg_conjuge;
+
         public string RG_Conjuge
         {
             get
@@ -330,6 +352,7 @@ namespace Sistema.DTO
         }
 
         private string profissao_conjuge;
+
         public string Profissao_Conjuge
         {
             get
@@ -344,6 +367,7 @@ namespace Sistema.DTO
         }
 
         private string informacao_venda;
+
         public string Informacao_Venda
         {
             get
@@ -358,6 +382,7 @@ namespace Sistema.DTO
         }
 
         private string dia_faturamento;
+
         public string Dia_Faturamento
         {
             get
@@ -376,6 +401,7 @@ namespace Sistema.DTO
         public int TipoPessoa_EmpresaResponsavel { get; set; }
 
         private List<DTO_Pessoa_Endereco> endereco;
+
         public List<DTO_Pessoa_Endereco> Endereco
         {
             get
@@ -389,6 +415,7 @@ namespace Sistema.DTO
         }
 
         private List<DTO_Pessoa_Telefone> telefone;
+
         public List<DTO_Pessoa_Telefone> Telefone
         {
             get
@@ -402,6 +429,7 @@ namespace Sistema.DTO
         }
 
         private List<DTO_Pessoa_Email> email;
+
         public List<DTO_Pessoa_Email> Email
         {
             get
@@ -415,6 +443,7 @@ namespace Sistema.DTO
         }
 
         private List<DTO_Pessoa_EmpresaResponsavel> pessoa_empresaresponsavel;
+
         public List<DTO_Pessoa_EmpresaResponsavel> Pessoa_EmpresaResponsavel
         {
             get
@@ -428,6 +457,7 @@ namespace Sistema.DTO
         }
 
         #region CONSULTA
+
         public string ListaID { get; set; }
 
         /// <summary>
@@ -437,6 +467,7 @@ namespace Sistema.DTO
         public int Classifica { get; set; }
 
         private string pesquisatelefone { get; set; }
+
         public string PesquisaTelefone
         {
             get
@@ -451,6 +482,7 @@ namespace Sistema.DTO
         }
 
         private string pesquisalogradouro { get; set; }
+
         public string PesquisaLogradouro
         {
             get
@@ -463,7 +495,8 @@ namespace Sistema.DTO
 
             set { pesquisalogradouro = value; }
         }
-        #endregion
+
+        #endregion CONSULTA
     }
 
     public class DTO_Pessoa_Endereco
@@ -473,6 +506,7 @@ namespace Sistema.DTO
         public int Tipo { get; set; }
 
         private string logradouro;
+
         public string Logradouro
         {
             get
@@ -487,6 +521,7 @@ namespace Sistema.DTO
         }
 
         private string numero;
+
         public string Numero
         {
             get
@@ -501,6 +536,7 @@ namespace Sistema.DTO
         }
 
         private string complemento;
+
         public string Complemento
         {
             get
@@ -515,6 +551,7 @@ namespace Sistema.DTO
         }
 
         private string bairro;
+
         public string Bairro
         {
             get
@@ -531,6 +568,7 @@ namespace Sistema.DTO
         public int ID_Municipio { get; set; }
 
         private string cep;
+
         public string CEP
         {
             get
@@ -550,6 +588,7 @@ namespace Sistema.DTO
         public string Descricao_Municipio { get; set; }
         public string DescricaoTipo { get; set; }
     }
+
     public class DTO_Pessoa_Telefone
     {
         public int ID { get; set; }
@@ -557,6 +596,7 @@ namespace Sistema.DTO
         public int Tipo { get; set; }
 
         private string ddd;
+
         public string DDD
         {
             get
@@ -571,6 +611,7 @@ namespace Sistema.DTO
         }
 
         private string numero;
+
         public string Numero
         {
             get
@@ -585,6 +626,7 @@ namespace Sistema.DTO
         }
 
         private string informacao;
+
         public string Informacao
         {
             get
@@ -600,12 +642,14 @@ namespace Sistema.DTO
 
         public string DescricaoTipo { get; set; }
     }
+
     public class DTO_Pessoa_Email
     {
         public int ID { get; set; }
         public bool Principal { get; set; }
         public int Tipo { get; set; }
         private string email;
+
         public string Email
         {
             get
@@ -620,6 +664,7 @@ namespace Sistema.DTO
         }
 
         private string informacao;
+
         public string Informacao
         {
             get
@@ -635,12 +680,12 @@ namespace Sistema.DTO
 
         public string DescricaoTipo { get; set; }
     }
+
     public class DTO_Pessoa_EmpresaResponsavel
     {
         public int ID { get; set; }
         public int TipoPessoa { get; set; }
         public int ID_Pessoa { get; set; }
         public string Descricao { get; set; }
-
     }
 }

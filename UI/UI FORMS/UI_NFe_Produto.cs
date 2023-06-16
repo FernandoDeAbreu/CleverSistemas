@@ -23,6 +23,7 @@ namespace Sistema.UI
         BLL_Produto BLL_Produto;
         BLL_TabelaValor BLL_TabelaValor;
         BLL_CFOP BLL_CFOP;
+        BLL_Pessoa BLL_Empresa;
         #endregion
 
         #region VARIAVEIS DIVERSAS
@@ -36,6 +37,7 @@ namespace Sistema.UI
         #endregion
 
         #region ESTRUTURA
+        DTO_Pessoa Empresa;
         DTO_Produto Produto;
         DTO_TabelaValor TabelaValor;
         DTO_CFOP CFOP;
@@ -983,6 +985,9 @@ namespace Sistema.UI
         {
             try
             {
+                BLL_Empresa = new BLL_Pessoa();
+                Empresa = new DTO_Pessoa();
+
                 BLL_Produto = new BLL_Produto();
                 Produto = new DTO_Produto();
 

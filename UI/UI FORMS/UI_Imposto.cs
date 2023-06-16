@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Linq;
-using Sistema.BLL;
+﻿using Sistema.BLL;
 using Sistema.DTO;
 using Sistema.UTIL;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Sistema.UI
 {
@@ -1049,7 +1046,7 @@ namespace Sistema.UI
                             aux--;
                             break;
                     }
-                    #endregion
+                #endregion
             }
 
             return intUF;
@@ -1168,7 +1165,7 @@ namespace Sistema.UI
 
             _lst_Tributacao.Add(Tributacao);
 
-          _lst_Tributacao = _lst_Tributacao.OrderBy(c => c.DescricaoTipoEmissao).ToList();
+            _lst_Tributacao = _lst_Tributacao.OrderBy(c => c.DescricaoTipoEmissao).ToList();
 
             Carrega_DG_Tributacao();
 
@@ -1244,7 +1241,7 @@ namespace Sistema.UI
                     txt_ID.Text = obj.ToString();
                     MessageBox.Show(util_msg.msg_Grava, this.Text);
                 }
-                       }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(util_msg.msg_Erro + ex.Message, this.Text);

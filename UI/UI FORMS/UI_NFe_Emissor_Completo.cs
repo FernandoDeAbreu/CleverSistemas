@@ -1977,7 +1977,7 @@ namespace Sistema.UI
         {
             try
             {
-                if ((int)cb_UF.SelectedValue > 0)
+                if (cb_UF.SelectedValue != null && int.TryParse(cb_UF.SelectedValue.ToString(), out int selectedValue) && selectedValue > 0)
                 {
                     BLL_Municipio = new BLL_Municipio();
                     Municipio = new DTO_Municipio();

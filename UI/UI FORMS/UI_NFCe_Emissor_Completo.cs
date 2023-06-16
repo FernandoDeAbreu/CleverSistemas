@@ -1039,7 +1039,7 @@ namespace Sistema.UI
             NF_ESTRUTURA.ID = util_dados.Verifica_int(txt_ID.Text);
             NF_ESTRUTURA.ID_NFe = Convert.ToInt32(txt_ID_NFe.Text);
             NF_ESTRUTURA.Serie = Convert.ToInt32(txt_Serie.Text);
-            NF_ESTRUTURA.Modelo = 55;
+            NF_ESTRUTURA.Modelo = 65;
 
             NF_ESTRUTURA.DataEmissao = Convert.ToDateTime(mk_DataEmissao.Text);
             NF_ESTRUTURA.DataSaida = Convert.ToDateTime(mk_DataEmissao.Text);

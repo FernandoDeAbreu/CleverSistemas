@@ -309,12 +309,12 @@ namespace Sistema.UI
                 }
 
             bool aux = false;
-            foreach (Form Frm in this.ParentForm.MdiChildren)
-                if (Frm is UI_NFe_Emissor_Completo)
-                {
-                    Frm.Close();
-                    aux = false;
-                }
+            //foreach (Form Frm in this.ParentForm.MdiChildren)
+            //    if (Frm is UI_NFe_Emissor_Completo)
+            //    {
+            //        Frm.Close();
+            //        aux = false;
+            //    }
 
             if (aux == false)
             {
