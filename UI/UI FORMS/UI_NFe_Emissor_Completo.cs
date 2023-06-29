@@ -12,6 +12,7 @@ using System.Xml;
 using Sistema.BLL;
 using Sistema.DTO;
 using Sistema.UTIL;
+using Sistema.NFe;
 
 namespace Sistema.UI
 {
@@ -2864,22 +2865,20 @@ namespace Sistema.UI
                     DialogResult msgbox = MessageBox.Show(util_msg.msg_EnviarNFeSefaz, this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                     if (msgbox == DialogResult.Yes)
                     {
+                        NFe_ProcessaNFe3 _ProcessaNFe;
+                        _ProcessaNFe = new NFe_ProcessaNFe3();
 
-                        bool aux = false;
-                        foreach (Form Frm in this.ParentForm.MdiChildren)
+
+                        switch (NF.Modelo)
                         {
-                            if (Frm is UI_NFe_Util)
-                            {
-                                Frm.BringToFront();
-                                aux = true;
-                                return;
-                            }
+                            case 65:
+                                _ProcessaNFe.Processa_NFCe(Convert.ToInt32(NF.ID_NFe), UTIL.ProcessoNF.Validar);
+                                break;
+                            case 55:
+                                _ProcessaNFe.Processa_NFe(Convert.ToInt32(NF.ID_NFe), UTIL.ProcessoNF.Validar);
+                                break;
                         }
-                        if (aux == false)
-                        {
-                            UI_NFe_Util UI_NFe_Util = new UI_NFe_Util();
-                            util_dados.CarregaForm(UI_NFe_Util, this.ParentForm);
-                        }
+
                         this.Close();
                     }
                 }

@@ -5314,6 +5314,55 @@ namespace Sistema.NFe
             }
         }
 
+        public void Processa_NFCe(int ID_NFe, ProcessoNF _Processo, string _XMLGerar = "")
+        {
+            try
+            {
+                Chave = "";
+
+                XmlDocument xdoc;
+
+                switch (_Processo)
+                {
+                    #region VALIDAR NFCe
+                    case ProcessoNF.Validar:
+                        xdoc = new XmlDocument();
+                        xdoc = Gera_Estrutura_XML_NFCe(ID_NFe);
+                        Assina_XML(xdoc);
+
+                        NFe = new DTO_NF();
+                        BLL_NF = new BLL_NF();
+
+                        NFe.Situacao = util_Param.NFe_Assinada;
+                        NFe.ID = ID_NFe;
+                        NFe.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
+
+                        BLL_NF.Altera_Situacao(NFe);
+                        break;
+                    #endregion
+
+                    #region TRANSMISSÃO DE NFCe
+                    case ProcessoNF.Transmitir:
+                        xdoc = new XmlDocument();
+                        xdoc = Gera_Estrutura_XML_NFCe(ID_NFe);
+                        Assina_XML(xdoc);
+
+                        string XML_aux = Parametro_NFe_NFC_SAT.Caminho_NFe + util_Param.XML_Assinado + Chave + NFe_extxml.Nfe;
+
+                        NFe_Recepcao3 _Recep = new NFe_Recepcao3();
+                        string retorno = _Recep.Transmite_XML(XML_aux, Parametro_NFe_NFC_SAT.CertificadoDigital);
+
+                        Ler_Retorno(XML_aux, retorno, RetornoNFe.EnvioLote, ID_NFe);
+                        break;
+                        #endregion
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         private void Envia_Email(string _xml)
         {
             try
