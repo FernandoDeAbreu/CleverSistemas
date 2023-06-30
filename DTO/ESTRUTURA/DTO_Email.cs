@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sistema.UTIL;
+﻿using Sistema.UTIL;
+using System;
 
 namespace Sistema.DTO
 {
@@ -13,6 +10,7 @@ namespace Sistema.DTO
         public DateTime Data { get; set; }
 
         private string para;
+
         public string Para
         {
             get
@@ -27,6 +25,7 @@ namespace Sistema.DTO
         }
 
         private string cc;
+
         public string CC
         {
             get
@@ -41,6 +40,7 @@ namespace Sistema.DTO
         }
 
         private string cco;
+
         public string CCO
         {
             get
@@ -55,6 +55,7 @@ namespace Sistema.DTO
         }
 
         private string assunto;
+
         public string Assunto
         {
             get
@@ -69,6 +70,7 @@ namespace Sistema.DTO
         }
 
         private string conteudo;
+
         public string Conteudo
         {
             get
@@ -83,6 +85,7 @@ namespace Sistema.DTO
         }
 
         private string anexo;
+
         public string Anexo
         {
             get
@@ -97,6 +100,7 @@ namespace Sistema.DTO
         }
 
         private DTO_Data consulta_data;
+
         public DTO_Data Consulta_Data
         {
             get

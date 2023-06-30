@@ -68,6 +68,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFe.Wsdl", "ZEUS\NFe.Wsdl\N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFe.Wsdl.Standard", "ZEUS\NFe.Wsdl.Standard\NFe.Wsdl.Standard.csproj", "{A8DC00E7-7FC4-4360-8603-C627149AD435}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleverWeb", "CleverWeb\CleverWeb.csproj", "{685FB151-C4D2-4248-88B5-EF27C487F785}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{57992B83-3FFE-409F-BF46-80192B220CAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -380,6 +384,18 @@ Global
 		{A8DC00E7-7FC4-4360-8603-C627149AD435}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A8DC00E7-7FC4-4360-8603-C627149AD435}.Release|x86.ActiveCfg = Release|Any CPU
 		{A8DC00E7-7FC4-4360-8603-C627149AD435}.Release|x86.Build.0 = Release|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Debug|x86.Build.0 = Debug|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Release|x86.ActiveCfg = Release|Any CPU
+		{685FB151-C4D2-4248-88B5-EF27C487F785}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -406,6 +422,7 @@ Global
 		{C4DBF892-698F-4072-B0BE-684B71137B22} = {C0796E86-9C3A-47CF-A36E-95ABBB15D21A}
 		{DB65A039-C000-4D23-AD0B-E1B9FB80DDBD} = {C0796E86-9C3A-47CF-A36E-95ABBB15D21A}
 		{A8DC00E7-7FC4-4360-8603-C627149AD435} = {C0796E86-9C3A-47CF-A36E-95ABBB15D21A}
+		{685FB151-C4D2-4248-88B5-EF27C487F785} = {57992B83-3FFE-409F-BF46-80192B220CAC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C6CC7F1-F16C-4106-A51C-F39F41D2A9F5}

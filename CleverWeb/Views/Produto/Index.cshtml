@@ -1,0 +1,233 @@
+﻿@model IEnumerable<CleverWeb.Models.ProdutoServico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MultiEmpresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrupoNivel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Referencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fabricante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Informacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Barra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Barratributavel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ncm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutrosCustos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidadeTributavel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Validade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Garantia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExTipi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClasseEnquadramento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cnpjprodutor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustoFinal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdGrupo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PesoB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PesoL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorIpi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ControleEstoque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoEspecifico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodAnp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InfoAdicional1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InfoAdicional2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Abc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCest)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MultiEmpresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmpresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrupoNivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Referencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabricante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Informacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barratributavel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ncm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutrosCustos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnidadeTributavel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Validade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Garantia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Situacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExTipi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClasseEnquadramento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cnpjprodutor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustoFinal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGrupo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PesoB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PesoL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorIpi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ControleEstoque)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoEspecifico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodAnp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InfoAdicional1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InfoAdicional2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCest)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
