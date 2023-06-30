@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Data;
-using Microsoft.Reporting.WinForms;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Sistema.BLL;
+﻿using Sistema.BLL;
 using Sistema.DTO;
 using Sistema.UTIL;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Globalization;
+using System.Windows.Forms;
 
 namespace Sistema.UI
 {
@@ -21,32 +18,41 @@ namespace Sistema.UI
         }
 
         #region VARIAVEIS DE CLASSE
-        BLL_Pessoa BLL_Pessoa;
-        BLL_Venda BLL_Venda;
-        #endregion
+
+        private BLL_Pessoa BLL_Pessoa;
+        private BLL_Venda BLL_Venda;
+
+        #endregion VARIAVEIS DE CLASSE
 
         #region VARIAVEIS DIVERSAS
-        DataTable DT;
-        DataTable DTPessoa;
-        DateTime ValidaData;
 
-        List<DTO_Produto_Item> lst_Produto;
+        private DataTable DT;
+        private DataTable DTPessoa;
+        private DateTime ValidaData;
 
-        bool Ativo = false;
-        bool Seleciona;
-        #endregion
+        private List<DTO_Produto_Item> lst_Produto;
+
+        private bool Ativo = false;
+        private bool Seleciona;
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_Pessoa Pessoa;
-        DTO_Venda Venda;
-        DTO_Produto_Item Produto_Item;
-        #endregion
+
+        private DTO_Pessoa Pessoa;
+        private DTO_Venda Venda;
+        private DTO_Produto_Item Produto_Item;
+
+        #endregion ESTRUTURA
 
         #region PROPRIEDADES
+
         public bool Filtra_Empresa { get; set; }
-        #endregion
+
+        #endregion PROPRIEDADES
 
         #region ROTINAS
+
         private void Inicia_Form()
         {
             tabctl.TabPages.Remove(TabPage2);
@@ -215,9 +221,11 @@ namespace Sistema.UI
             cb_ID_Pessoa.SelectedValue = UI_Pessoa_Consulta.ID_Pessoa;
             cb_ID_Pessoa.Focus();
         }
-        #endregion
+
+        #endregion ROTINAS
 
         #region MODIFICADORES
+
         public override void Pesquisa()
         {
             LimpaCampo();
@@ -308,47 +316,38 @@ namespace Sistema.UI
                     _aux++;
                 }
 
-            bool aux = false;
-            //foreach (Form Frm in this.ParentForm.MdiChildren)
-            //    if (Frm is UI_NFe_Emissor_Completo)
-            //    {
-            //        Frm.Close();
-            //        aux = false;
-            //    }
+            _aux = 0;
+            string lst_ID_Venda = string.Empty;
 
-            if (aux == false)
-            {
-                _aux = 0;
-                string lst_ID_Venda = string.Empty;
+            for (int i = 0; i <= dg_Vendas.Rows.Count - 1; i++)
+                if (Convert.ToBoolean(dg_Vendas.Rows[i].Cells["col_Seleciona"].Value) == true)
+                {
+                    lst_ID_Venda += dg_Vendas.Rows[i].Cells["col_ID"].Value + ", ";
+                    _aux++;
+                }
 
-                for (int i = 0; i <= dg_Vendas.Rows.Count - 1; i++)
-                    if (Convert.ToBoolean(dg_Vendas.Rows[i].Cells["col_Seleciona"].Value) == true)
-                    {
-                        lst_ID_Venda += dg_Vendas.Rows[i].Cells["col_ID"].Value + ", ";
-                        _aux++;
-                    }
+            if (lst_ID_Venda == string.Empty)
+                return;
 
-                if (lst_ID_Venda == string.Empty)
-                    return;
+            lst_ID_Venda = lst_ID_Venda.Substring(0, lst_ID_Venda.Length - 2);
 
-                lst_ID_Venda = lst_ID_Venda.Substring(0, lst_ID_Venda.Length - 2);
+            UI_NFe_Emissor_Completo UI_NFe_Emissor_Completo = new UI_NFe_Emissor_Completo();
+            UI_NFe_Emissor_Completo.NF_Venda = true;
 
-                UI_NFe_Emissor_Completo UI_NFe_Emissor_Completo = new UI_NFe_Emissor_Completo();
-                UI_NFe_Emissor_Completo.NF_Venda = true;
+            if (_aux > 1)
+                UI_NFe_Emissor_Completo.lst_ID_Venda = Venda.lst_ID_Venda;
+            else
+                UI_NFe_Emissor_Completo.ID_Pedido = Convert.ToInt32(lst_ID_Venda);
 
-                if (_aux > 1)
-                    UI_NFe_Emissor_Completo.lst_ID_Venda = Venda.lst_ID_Venda;
-                else
-                    UI_NFe_Emissor_Completo.ID_Pedido = Convert.ToInt32(lst_ID_Venda);
-
-                util_dados.CarregaForm(UI_NFe_Emissor_Completo, this.ParentForm);
-            }
+            util_dados.CarregaForm(UI_NFe_Emissor_Completo, this.ParentForm);
 
             Pesquisa();
         }
-        #endregion
+
+        #endregion MODIFICADORES
 
         #region FORM
+
         private void UI_Venda_Fatura_Load(object sender, EventArgs e)
         {
             Inicia_Form();
@@ -379,16 +378,20 @@ namespace Sistema.UI
                     e.Handled = true;
             }
         }
-        #endregion
+
+        #endregion FORM
 
         #region COMBOBOX
+
         private void cb_TipoPessoa_SelectedValueChanged(object sender, EventArgs e)
         {
             CarregaPessoa();
         }
-        #endregion
+
+        #endregion COMBOBOX
 
         #region MASKEDBOX
+
         private void mk_DataInicial_Leave(object sender, EventArgs e)
         {
             DateTime.TryParseExact(mk_DataInicial.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out ValidaData);
@@ -409,11 +412,12 @@ namespace Sistema.UI
                 mk_DataFinal.Text = Convert.ToString(DateTime.Now);
                 mk_DataFinal.Focus();
             }
-
         }
-        #endregion
+
+        #endregion MASKEDBOX
 
         #region DATAGRID
+
         private void dg_Vendas_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex == 0)
@@ -435,7 +439,6 @@ namespace Sistema.UI
                     {
                         e.Graphics.FillRectangle(backColorBrush, e.CellBounds);
                     }
-
 
                     e.Graphics.DrawLine(Pens.DarkGray, e.CellBounds.Left, e.CellBounds.Bottom - 1, e.CellBounds.Right, e.CellBounds.Bottom - 1);
                     e.Graphics.DrawLine(Pens.DarkGray, e.CellBounds.Left, e.CellBounds.Top, e.CellBounds.Right, e.CellBounds.Top);
@@ -478,6 +481,7 @@ namespace Sistema.UI
         {
             Busca_Item();
         }
-        #endregion
+
+        #endregion DATAGRID
     }
 }

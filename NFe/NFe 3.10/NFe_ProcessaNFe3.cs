@@ -10,6 +10,26 @@ using Sistema.DTO;
 using System.Data;
 using Sistema.UTIL;
 using GenCode128;
+using NFe.Classes;
+using NFe.Classes.Informacoes;
+using NFe.Classes.Informacoes.Cobranca;
+using NFe.Classes.Informacoes.Destinatario;
+using NFe.Classes.Informacoes.Detalhe;
+using NFe.Classes.Informacoes.Detalhe.Tributacao;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Estadual.Tipos;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal;
+using NFe.Classes.Informacoes.Detalhe.Tributacao.Federal.Tipos;
+using NFe.Classes.Informacoes.Emitente;
+using NFe.Classes.Informacoes.Identificacao;
+using NFe.Classes.Informacoes.Identificacao.Tipos;
+using NFe.Classes.Informacoes.Observacoes;
+using NFe.Classes.Informacoes.Pagamento;
+using NFe.Classes.Informacoes.Total;
+using NFe.Classes.Informacoes.Transporte;
+using NFe.Classes.Servicos.ConsultaCadastro;
+using NFe.Classes.Servicos.Tipos;
+
 
 namespace Sistema.NFe
 {
@@ -2782,16 +2802,13 @@ namespace Sistema.NFe
 
                 DR["ide_Id"] = 0;
                 DR["infNFe_Id"] = 0;
-
                 DR["cUF"] = DR_Emit["ID_UF"];
                 DR["cNF"] = DR_NF["ID"].ToString().PadLeft(8, '0');
                 DR["natOp"] = DR_NF["NaturezaOperacao"];
-                DR["indPag"] = DR_NF["FormaPagto"];
                 DR["mod"] = DR_NF["Modelo"];
                 DR["serie"] = DR_NF["Serie"].ToString().Trim();
                 DR["nNF"] = DR_NF["ID_NFe"];
                 DR["dhEmi"] = util_dados.Config_Data(Convert.ToDateTime(DR_NF["DataEmissao"]), 13);
-                //DR["dhSaiEnt"] = util_dados.Config_Data(Convert.ToDateTime(DR_NF["DataSaida"]), 13);
                 DR["tpNF"] = DR_NF["TipoDocumento"];
                 DR["idDest"] = "1";
                 DR["cMunFG"] = DR_Emit["ID_Municipio"];
@@ -2818,10 +2835,7 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["serie"].ToString(), "Série", ObOp.Obrigatorio, 1, 3);
                 this.ChecaCampo(DR["nNF"].ToString(), "Número NF", ObOp.Obrigatorio, 1, 9);
                 this.ChecaCampo(DR["dhEmi"].ToString(), "Data Emissão", ObOp.Obrigatorio, 25, 25);
-                //this.ChecaCampo(DR["dhSaiEnt"].ToString(), "Data Saída", ObOp.Opcional, 25, 25);
-                //this.ChecaCampo(DR["hSaiEnt"].ToString(), "Hora Saída", ObOp.Opcional, 8, 8);
                 this.ChecaCampo(DR["tpNF"].ToString(), "Tipo de Emissão", ObOp.Obrigatorio, 1, 1);
-                //this.ChecaCampo(DR["idDest"].ToString(), "Destino de Operação", ObOp.Obrigatorio, 1, 1);
                 this.ChecaCampo(DR["cMunFG"].ToString(), "Município Emissor", ObOp.Obrigatorio, 7, 7);
                 this.ChecaCampo(DR["tpImp"].ToString(), "Tipo de Impressão", ObOp.Obrigatorio, 1, 1);
                 this.ChecaCampo(DR["tpEmis"].ToString(), "Tipo de Emissão", ObOp.Obrigatorio, 1, 1);
@@ -5338,6 +5352,12 @@ namespace Sistema.NFe
                         NFe.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
 
                         BLL_NF.Altera_Situacao(NFe);
+
+                        string XML_aux = Parametro_NFe_NFC_SAT.Caminho_NFe + util_Param.XML_Assinado + Chave + NFe_extxml.Nfe;
+
+
+                        
+
                         break;
                     #endregion
 
@@ -5347,7 +5367,7 @@ namespace Sistema.NFe
                         xdoc = Gera_Estrutura_XML_NFCe(ID_NFe);
                         Assina_XML(xdoc);
 
-                        string XML_aux = Parametro_NFe_NFC_SAT.Caminho_NFe + util_Param.XML_Assinado + Chave + NFe_extxml.Nfe;
+                        XML_aux = Parametro_NFe_NFC_SAT.Caminho_NFe + util_Param.XML_Assinado + Chave + NFe_extxml.Nfe;
 
                         NFe_Recepcao3 _Recep = new NFe_Recepcao3();
                         string retorno = _Recep.Transmite_XML(XML_aux, Parametro_NFe_NFC_SAT.CertificadoDigital);
@@ -5356,6 +5376,8 @@ namespace Sistema.NFe
                         break;
                         #endregion
                 }
+
+             
             }
             catch (Exception ex)
             {

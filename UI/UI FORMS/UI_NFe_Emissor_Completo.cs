@@ -1,18 +1,14 @@
-﻿using System;
+﻿using Sistema.BLL;
+using Sistema.DTO;
+using Sistema.NFe;
+using Sistema.UTIL;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using System.Xml;
-using Sistema.BLL;
-using Sistema.DTO;
-using Sistema.UTIL;
-using Sistema.NFe;
 
 namespace Sistema.UI
 {
@@ -24,78 +20,87 @@ namespace Sistema.UI
         }
 
         #region VARIAVEIS DE CLASSE
-        BLL_NF_TipoEmissao BLL_NF_TipoEmissao;
-        BLL_CReceber BLL_CReceber;
-        BLL_Pessoa BLL_Pessoa;
-        BLL_Parametro BLL_Parametro;
-        BLL_Venda BLL_Venda;
-        BLL_NF BLL_NF;
-        BLL_Municipio BLL_Municipio;
-        BLL_OS BLL_OS;
-        #endregion
+
+        private BLL_NF_TipoEmissao BLL_NF_TipoEmissao;
+        private BLL_CReceber BLL_CReceber;
+        private BLL_Pessoa BLL_Pessoa;
+        private BLL_Parametro BLL_Parametro;
+        private BLL_Venda BLL_Venda;
+        private BLL_NF BLL_NF;
+        private BLL_Municipio BLL_Municipio;
+        private BLL_OS BLL_OS;
+
+        #endregion VARIAVEIS DE CLASSE
 
         #region VARIAVEIS DIVERSAS
-        DataTable DT;
 
-        DataTable DT_Pessoa;
-        DataTable DT_TipoEmissao;
-        DataTable DTPessoa;
-        DataTable DTEndereco;
-        DataTable DTTelefone;
+        private DataTable DT;
 
-        DataRow DR;
-        DataRow DRPessoa;
-        DataRow DREndereco;
-        DataRow DRTelefone;
+        private DataTable DT_Pessoa;
+        private DataTable DT_TipoEmissao;
+        private DataTable DTPessoa;
+        private DataTable DTEndereco;
+        private DataTable DTTelefone;
 
-        int obj;
+        private DataRow DR;
+        private DataRow DRPessoa;
+        private DataRow DREndereco;
+        private DataRow DRTelefone;
 
-        bool Edita_Vol = false;
-        bool Edita_Dup = false;
+        private int obj;
 
-        DateTime ValidaData;
-        #endregion
+        private bool Edita_Vol = false;
+        private bool Edita_Dup = false;
+
+        private DateTime ValidaData;
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_CReceber CReceber;
-        DTO_Pessoa Pessoa;
-        DTO_Pessoa_Endereco Endereco;
-        DTO_Pessoa_Telefone Telefone;
-        DTO_Pessoa_Email Email;
-        DTO_Parametro Parametro;
-        DTO_Venda Venda;
-        DTO_OS OS;
 
-        DTO_NF_TipoEmissao NF_TipoEmissao;
-        DTO_Municipio Municipio;
-        DTO_Produto Produto;
-        DTO_Produto_Estoque Produto_Estoque;
-        DTO_Produto_Item Produto_Item;
-        DTO_TabelaValor TabelaValor;
-        DTO_NF_Transporte NF_Transporte;
-        DTO_NF_Volume NF_Volume;
-        DTO_NF_Cobranca NF_Cobranca;
-        DTO_NF_Duplicata NF_Duplicata;
-        DTO_NF_Ent_Ret NF_Ent_Ret;
+        private DTO_CReceber CReceber;
+        private DTO_Pessoa Pessoa;
+        private DTO_Pessoa_Endereco Endereco;
+        private DTO_Pessoa_Telefone Telefone;
+        private DTO_Pessoa_Email Email;
+        private DTO_Parametro Parametro;
+        private DTO_Venda Venda;
+        private DTO_OS OS;
+
+        private DTO_NF_TipoEmissao NF_TipoEmissao;
+        private DTO_Municipio Municipio;
+        private DTO_Produto Produto;
+        private DTO_Produto_Estoque Produto_Estoque;
+        private DTO_Produto_Item Produto_Item;
+        private DTO_TabelaValor TabelaValor;
+        private DTO_NF_Transporte NF_Transporte;
+        private DTO_NF_Volume NF_Volume;
+        private DTO_NF_Cobranca NF_Cobranca;
+        private DTO_NF_Duplicata NF_Duplicata;
+        private DTO_NF_Ent_Ret NF_Ent_Ret;
 
         /// <summary>
         /// ESTRUTURA PRINCIPAL
         /// </summary>
-        DTO_NF NF_ESTRUTURA;
+        private DTO_NF NF_ESTRUTURA;
 
-        DTO_NF NF;
-        #endregion
+        private DTO_NF NF;
+
+        #endregion ESTRUTURA
 
         #region PROPRIEDADES
+
         public bool NF_Venda { get; set; }
         public bool NF_OS { get; set; }
         public bool NF_Devolucao { get; set; }
         public int ID_Pedido { get; set; }
         public int ID_OS { get; set; }
         public string lst_ID_Venda { get; set; }
-        #endregion
+
+        #endregion PROPRIEDADES
 
         #region ROTINAS
+
         private void Inicia_Form()
         {
             this.Text = "EMISSÃO DE NF-e";
@@ -184,6 +189,7 @@ namespace Sistema.UI
             DataTable _DT;
 
             #region PAGAMENTO
+
             DataTable _Pagamento;
             _Pagamento = new DataTable();
             _Pagamento.Columns.Add("ID");
@@ -205,9 +211,11 @@ namespace Sistema.UI
             _Pagamento.Rows.Add(DR);
             _Pagamento.AcceptChanges();
             util_dados.CarregaCombo(_Pagamento, "Descricao", "ID", cb_FormaPagto);
-            #endregion
+
+            #endregion PAGAMENTO
 
             #region ENTREGA_RETIRADA
+
             DataTable _Ent_Ret;
             _Ent_Ret = new DataTable();
             _Ent_Ret.Columns.Add("ID");
@@ -225,9 +233,11 @@ namespace Sistema.UI
             _Ent_Ret.AcceptChanges();
             util_dados.CarregaCombo(_Ent_Ret, "Descricao", "ID", cb_Entrega);
             cb_Entrega.SelectedIndex = -1;
-            #endregion
+
+            #endregion ENTREGA_RETIRADA
 
             #region TIPO NOTA FISCAL
+
             DataTable _TipoNF;
             _TipoNF = new DataTable();
             _TipoNF.Columns.Add("ID");
@@ -244,9 +254,11 @@ namespace Sistema.UI
             _TipoNF.Rows.Add(DR);
             _TipoNF.AcceptChanges();
             util_dados.CarregaCombo(_TipoNF, "Descricao", "ID", cb_TipoDocumento);
-            #endregion
+
+            #endregion TIPO NOTA FISCAL
 
             #region FINALIDADE EMISSÃO
+
             DataTable _FinalidadeEmissao;
             _FinalidadeEmissao = new DataTable();
             _FinalidadeEmissao.Columns.Add("ID");
@@ -273,9 +285,11 @@ namespace Sistema.UI
             _FinalidadeEmissao.Rows.Add(DR);
             _FinalidadeEmissao.AcceptChanges();
             util_dados.CarregaCombo(_FinalidadeEmissao, "Descricao", "ID", cb_FinalidadeEmissao);
-            #endregion
+
+            #endregion FINALIDADE EMISSÃO
 
             #region MODALIDADE FRETE
+
             DataTable _ModFrete;
             _ModFrete = new DataTable();
             _ModFrete.Columns.Add("ID");
@@ -302,9 +316,11 @@ namespace Sistema.UI
             _ModFrete.Rows.Add(DR);
             _ModFrete.AcceptChanges();
             util_dados.CarregaCombo(_ModFrete, "Descricao", "ID", cb_TipoFrete);
-            #endregion
+
+            #endregion MODALIDADE FRETE
 
             #region TIPO EMISSÃO NOTA
+
             BLL_NF_TipoEmissao = new BLL_NF_TipoEmissao();
             NF_TipoEmissao = new DTO_NF_TipoEmissao();
 
@@ -314,9 +330,11 @@ namespace Sistema.UI
 
             _DT = BLL_NF_TipoEmissao.Busca(NF_TipoEmissao);
             util_dados.CarregaCombo(_DT, "Descricao", "ID", cb_Tipo_NF);
-            #endregion
+
+            #endregion TIPO EMISSÃO NOTA
 
             #region TIPO DE ATENDIMENTO
+
             DataTable _PresencaConsumidor;
             _PresencaConsumidor = new DataTable();
             _PresencaConsumidor.Columns.Add("ID");
@@ -348,9 +366,11 @@ namespace Sistema.UI
             _PresencaConsumidor.Rows.Add(DR);
             _PresencaConsumidor.AcceptChanges();
             util_dados.CarregaCombo(_PresencaConsumidor, "Descricao", "ID", cb_PresencaConsumidor);
-            #endregion
+
+            #endregion TIPO DE ATENDIMENTO
 
             #region SITUAÇÃO PESQUISA
+
             _DT = new DataTable();
 
             List<string> aux = new List<string> { "TODAS", "ASSINADA", "AUTORIZADA",
@@ -359,7 +379,8 @@ namespace Sistema.UI
 
             _DT = util_dados.CarregaComboDinamico(0, aux);
             util_dados.CarregaCombo(_DT, "Descricao", "ID", cb_SituacaoNFeP);
-            #endregion
+
+            #endregion SITUAÇÃO PESQUISA
 
             _DT = new DataTable();
             _DT = util_Param.Tipo_Pessoa();
@@ -461,6 +482,7 @@ namespace Sistema.UI
                 _DT = BLL_NF.Busca_NF(_NF);
 
                 #region DADOS DA NOTA FISCAL
+
                 NF_ESTRUTURA.ID = Convert.ToInt32(_DT.Rows[0]["ID"]);
                 NF_ESTRUTURA.ID_Empresa = Convert.ToInt32(_DT.Rows[0]["ID_Empresa"]);
                 NF_ESTRUTURA.Serie = Convert.ToInt32(_DT.Rows[0]["Serie"]);
@@ -503,9 +525,11 @@ namespace Sistema.UI
                 NF_ESTRUTURA.InformacaoAdicional = _DT.Rows[0]["InformacaoAdicional"].ToString();
                 NF_ESTRUTURA.DescricaoSituacao = _DT.Rows[0]["DescricaoSituacao"].ToString();
                 NF_ESTRUTURA.InformacaoFisco = _DT.Rows[0]["InformacaoFisco"].ToString();
-                #endregion
+
+                #endregion DADOS DA NOTA FISCAL
 
                 #region AUTORIZACAO XML
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_AutorizadoXML(_NF);
 
@@ -522,9 +546,11 @@ namespace Sistema.UI
                         NF_ESTRUTURA.Autorizacao_XML.Add(_AutorizaXML);
                     }
                 }
-                #endregion
+
+                #endregion AUTORIZACAO XML
 
                 #region NOTAS REFERENCIADAS
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_Referenciada(_NF);
 
@@ -559,9 +585,11 @@ namespace Sistema.UI
                         NF_ESTRUTURA.Referenciada.Add(_Referenciada);
                     }
                 }
-                #endregion
+
+                #endregion NOTAS REFERENCIADAS
 
                 #region ENTRADA RETIRADA
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_Ent_Ret(_NF);
 
@@ -582,9 +610,11 @@ namespace Sistema.UI
 
                     NF_ESTRUTURA.Ent_Ret.Add(_Ent_Ret);
                 }
-                #endregion
+
+                #endregion ENTRADA RETIRADA
 
                 #region VOLUMES
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_Volume(_NF);
 
@@ -606,9 +636,11 @@ namespace Sistema.UI
                         NF_ESTRUTURA.Volume.Add(_Volume);
                     }
                 }
-                #endregion
+
+                #endregion VOLUMES
 
                 #region TRANSPORTADORA
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_Transp(_NF);
 
@@ -633,9 +665,11 @@ namespace Sistema.UI
                         NF_ESTRUTURA.Transporte.Add(_Transporte);
                     }
                 }
-                #endregion
+
+                #endregion TRANSPORTADORA
 
                 #region COBRANÇA
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_Cobranca(_NF);
 
@@ -655,9 +689,11 @@ namespace Sistema.UI
                         NF_ESTRUTURA.Cobranca.Add(_Cobranca);
                     }
                 }
-                #endregion
+
+                #endregion COBRANÇA
 
                 #region DUPLICATA
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_Duplicata(_NF);
 
@@ -676,9 +712,11 @@ namespace Sistema.UI
                         NF_ESTRUTURA.Duplicata.Add(_Duplicata);
                     }
                 }
-                #endregion
+
+                #endregion DUPLICATA
 
                 #region ITENS
+
                 _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF_Item(_NF);
 
@@ -759,6 +797,7 @@ namespace Sistema.UI
                         _Item.ValorCOFINS = Convert.ToDouble(_DT.Rows[i]["ValorCOFINS"]);
 
                         #region IMPORTAÇÃO
+
                         DataTable _DT_Importacao = new DataTable();
                         _NF.ID_NF_Item = _Item.ID;
                         _DT_Importacao = BLL_NF.Busca_NF_Importacao(_NF);
@@ -780,6 +819,7 @@ namespace Sistema.UI
                                 _Importacao.Codigo = _DT_Importacao.Rows[y]["Codigo"].ToString();
 
                                 #region ADIÇÃO
+
                                 DataTable _DT_Adicao = new DataTable();
                                 _NF.ID_NF_Importacao = _Importacao.ID;
                                 _DT_Adicao = BLL_NF.Busca_NF_Adicao(_NF);
@@ -800,17 +840,20 @@ namespace Sistema.UI
                                         _Importacao.Adicao.Add(_Adicao);
                                     }
                                 }
-                                #endregion
+
+                                #endregion ADIÇÃO
 
                                 _Item.Importacao.Add(_Importacao);
                             }
                         }
-                        #endregion
+
+                        #endregion IMPORTAÇÃO
 
                         NF_ESTRUTURA.Itens.Add(_Item);
                     }
                 }
-                #endregion
+
+                #endregion ITENS
 
                 cb_TipoPessoa.SelectedValue = NF_ESTRUTURA.TipoPessoa;
                 cb_ID_Pessoa.SelectedValue = NF_ESTRUTURA.ID_Pessoa;
@@ -865,6 +908,7 @@ namespace Sistema.UI
                 Venda.Tipo_NF = Convert.ToInt32(cb_Tipo_NF.SelectedValue);
 
                 #region BUSCA ITEM VENDA
+
                 DTO_NF_Itens _NF_Item;
                 DataTable _DT_Item = new DataTable();
                 _DT_Item = BLL_Venda.Busca_Item_NF(Venda);
@@ -875,6 +919,7 @@ namespace Sistema.UI
                         _NF_Item = new DTO_NF_Itens();
 
                         #region CRIA BASE DE CALCULO
+
                         double vlr_Produto = Convert.ToDouble(_DT_Item.Rows[i]["ValorProduto"]);
                         double vlr_Desconto = Convert.ToDouble(_DT_Item.Rows[i]["Desconto"]);
                         double vlr_Seguro = 0;
@@ -886,7 +931,8 @@ namespace Sistema.UI
                         double vlr_TotalProduto = Quantidade * ((vlr_Produto + vlr_Acrescimo) - vlr_Desconto);
 
                         double vlr_BC = (vlr_TotalProduto + vlr_Seguro + vlr_Frete);
-                        #endregion
+
+                        #endregion CRIA BASE DE CALCULO
 
                         _NF_Item.ID = 0;
                         _NF_Item.ID_Produto = Convert.ToInt32(_DT_Item.Rows[i]["ID_Produto"]);
@@ -938,6 +984,7 @@ namespace Sistema.UI
                                     case "70":
                                         _NF_Item.CST = "60";
                                         break;
+
                                     default:
                                         _NF_Item.CST = _DT_Item.Rows[i]["CST"].ToString();
                                         break;
@@ -953,10 +1000,12 @@ namespace Sistema.UI
                                     case "101":
                                         _NF_Item.CSOSN = "102";
                                         break;
+
                                     case "201":
                                     case "202":
                                         _NF_Item.CSOSN = "500";
                                         break;
+
                                     default:
                                         _NF_Item.CSOSN = _DT_Item.Rows[i]["CST"].ToString();
                                         break;
@@ -977,7 +1026,9 @@ namespace Sistema.UI
                         _NF_Item.MargemVLAdicionado = Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]);
 
                         if (Parametro_NFe_NFC_SAT.Regime_Tributario == 3)
+
                             #region REGIME NORMAL
+
                             switch (_NF_Item.CST)
                             {
                                 case "0":
@@ -988,6 +1039,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = 0;
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "10":
                                     _NF_Item.ValorBC = vlr_BC;
                                     _NF_Item.ValorBCST = util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
@@ -996,6 +1048,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = util_dados.CalculaAliquota(_NF_Item.ValorBCST, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]));
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "20":
                                     _NF_Item.ValorBC = util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
                                     _NF_Item.ValorBCST = 0;
@@ -1005,6 +1058,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
+
                                 case "30":
                                     _NF_Item.ValorBC = 0;
                                     _NF_Item.ValorBCST = util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
@@ -1014,6 +1068,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
+
                                 case "40":
                                 case "41":
                                 case "50":
@@ -1025,6 +1080,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
+
                                 case "51":
                                     _NF_Item.ValorBC = 0;  //CONFIGURAR DEPOIS
                                     _NF_Item.ValorBCST = 0; //CONFIGURAR DEPOIS
@@ -1036,6 +1092,7 @@ namespace Sistema.UI
                                     _NF_Item.PercentualDiferimento = 0; //CONFIGURAR DEPOIS
                                     _NF_Item.ValorICMSDeferido = 0; //CONFIGURAR DEPOIS
                                     break;
+
                                 case "60":
                                     _NF_Item.ValorBC = 0;
                                     _NF_Item.ValorBCST = 0;
@@ -1044,6 +1101,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = 0;
                                     _NF_Item.ValorICMSSTRet = util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                     break;
+
                                 case "70":
                                 case "90":
                                     _NF_Item.ValorBC = util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
@@ -1055,20 +1113,26 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
                             }
-                        #endregion
+
+                        #endregion REGIME NORMAL
+
                         else
+
                             #region SIMPLES NACIONAL
+
                             switch (_NF_Item.CSOSN)
                             {
                                 case "101":
                                     _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                     _NF_Item.ValorCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
                                     break;
+
                                 case "102":
                                 case "103":
                                 case "300":
                                 case "400":
                                     break;
+
                                 case "201":
                                     _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                     _NF_Item.ValorCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
@@ -1079,6 +1143,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = util_dados.CalculaAliquotaST(vlr_BC, _NF_Item.ValorBCST, _NF_Item.AliquotaICMS, _NF_Item.AliquotaICMSST);
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "202":
                                 case "203":
                                     _NF_Item.ValorBC = 0;
@@ -1088,6 +1153,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = util_dados.CalculaAliquotaST(vlr_BC, _NF_Item.ValorBCST, _NF_Item.AliquotaICMS, _NF_Item.AliquotaICMSST);
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "500":
                                     _NF_Item.ValorBC = 0;
                                     _NF_Item.ValorBCST = 0;
@@ -1096,6 +1162,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = 0;
                                     _NF_Item.ValorICMSSTRet = util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                     break;
+
                                 case "900":
                                     _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                     _NF_Item.ValorCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
@@ -1107,7 +1174,8 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
                             }
-                        #endregion
+
+                        #endregion SIMPLES NACIONAL
 
                         _NF_Item.ValorBCII = 0;
                         _NF_Item.ValorDesII = 0;
@@ -1132,9 +1200,11 @@ namespace Sistema.UI
                 Exibe_Item();
 
                 Calcula_NF();
-                #endregion
+
+                #endregion BUSCA ITEM VENDA
 
                 #region BUSCA FATURA
+
                 BLL_CReceber = new BLL_CReceber();
                 CReceber = new DTO_CReceber();
 
@@ -1145,7 +1215,6 @@ namespace Sistema.UI
 
                 if (_DT.Rows.Count > 0)
                 {
-
                     if (NF_ESTRUTURA.Duplicata == null)
                         NF_ESTRUTURA.Duplicata = new List<DTO_NF_Duplicata>();
 
@@ -1168,7 +1237,8 @@ namespace Sistema.UI
 
                     Exibe_Duplicata();
                 }
-                #endregion
+
+                #endregion BUSCA FATURA
             }
             catch (Exception ex)
             {
@@ -1218,6 +1288,7 @@ namespace Sistema.UI
                 Venda.Tipo_NF = Convert.ToInt32(cb_Tipo_NF.SelectedValue);
 
                 #region BUSCA ITEM VENDA
+
                 DTO_NF_Itens _NF_Item;
                 DataTable _DT_Item;
                 bool _aux = false;
@@ -1244,6 +1315,7 @@ namespace Sistema.UI
                                     //NF_ESTRUTURA.Itens[iii].Quantidade = NF_ESTRUTURA.Itens[iii].Quantidade + Convert.ToDouble(_DT_Item.Rows[i]["Quantidade"]);
 
                                     #region CRIA BASE DE CALCULO
+
                                     vlr_Produto = Convert.ToDouble(_DT_Item.Rows[i]["ValorProduto"]);
                                     vlr_Desconto = Convert.ToDouble(_DT_Item.Rows[i]["Desconto"]);
                                     vlr_Seguro = 0;
@@ -1255,7 +1327,8 @@ namespace Sistema.UI
                                     vlr_TotalProduto = Quantidade * ((vlr_Produto + vlr_Acrescimo) - vlr_Desconto);
 
                                     vlr_BC = (vlr_TotalProduto + vlr_Seguro + vlr_Frete);
-                                    #endregion
+
+                                    #endregion CRIA BASE DE CALCULO
 
                                     if (Parametro_NFe_NFC_SAT.Exibe_Desconto == true)
                                     {
@@ -1274,35 +1347,43 @@ namespace Sistema.UI
                                     NF_ESTRUTURA.Itens[iii].ValorIPI = NF_ESTRUTURA.Itens[iii].ValorIPI + (vlr_BC * (Convert.ToDouble(_DT_Item.Rows[i]["AliquotaIPI"]) / 100));
 
                                     if (Parametro_NFe_NFC_SAT.Regime_Tributario == 3)
+
                                         #region REGIME NORMAL
+
                                         switch (NF_ESTRUTURA.Itens[iii].CST)
                                         {
                                             case "0":
                                                 NF_ESTRUTURA.Itens[iii].ValorBC = NF_ESTRUTURA.Itens[iii].ValorBC + vlr_BC;
                                                 NF_ESTRUTURA.Itens[iii].ValorICMS = NF_ESTRUTURA.Itens[iii].ValorICMS + util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                                 break;
+
                                             case "10":
                                                 NF_ESTRUTURA.Itens[iii].ValorBC = NF_ESTRUTURA.Itens[iii].ValorBC + vlr_BC;
                                                 NF_ESTRUTURA.Itens[iii].ValorBCST = NF_ESTRUTURA.Itens[iii].ValorBCST + util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
                                                 NF_ESTRUTURA.Itens[iii].ValorICMS = NF_ESTRUTURA.Itens[iii].ValorICMS + util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSST = NF_ESTRUTURA.Itens[iii].ValorICMSST + util_dados.CalculaAliquota(NF_ESTRUTURA.Itens[iii].ValorBCST, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]));
                                                 break;
+
                                             case "20":
                                                 NF_ESTRUTURA.Itens[iii].ValorBC = NF_ESTRUTURA.Itens[iii].ValorBC + util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
                                                 NF_ESTRUTURA.Itens[iii].ValorICMS = NF_ESTRUTURA.Itens[iii].ValorICMS + util_dados.CalculaAliquota(NF_ESTRUTURA.Itens[iii].ValorBC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                                 break;
+
                                             case "30":
                                                 NF_ESTRUTURA.Itens[iii].ValorBCST = NF_ESTRUTURA.Itens[iii].ValorBCST + util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSST = NF_ESTRUTURA.Itens[iii].ValorICMSST + util_dados.CalculaAliquota(NF_ESTRUTURA.Itens[iii].ValorBCST, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]));
                                                 break;
+
                                             case "51":
                                                 NF_ESTRUTURA.Itens[iii].ValorBC = NF_ESTRUTURA.Itens[iii].ValorBC + util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
                                                 NF_ESTRUTURA.Itens[iii].ValorICMS = NF_ESTRUTURA.Itens[iii].ValorICMS + util_dados.CalculaAliquota(NF_ESTRUTURA.Itens[iii].ValorBC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                                 break;
+
                                             case "60":
                                                 NF_ESTRUTURA.Itens[iii].ValorBCSTRet = NF_ESTRUTURA.Itens[iii].ValorBCSTRet + vlr_BC;
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSSTRet = NF_ESTRUTURA.Itens[iii].ValorICMSSTRet + util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                                 break;
+
                                             case "70":
                                             case "90":
                                                 NF_ESTRUTURA.Itens[iii].ValorBC = NF_ESTRUTURA.Itens[iii].ValorBC + util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
@@ -1311,28 +1392,36 @@ namespace Sistema.UI
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSST = NF_ESTRUTURA.Itens[iii].ValorICMSST + util_dados.CalculaAliquota(NF_ESTRUTURA.Itens[iii].ValorBCST, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]));
                                                 break;
                                         }
-                                    #endregion
+
+                                    #endregion REGIME NORMAL
+
                                     else
+
                                         #region SIMPLES NACIONAL
+
                                         switch (NF_ESTRUTURA.Itens[iii].CSOSN)
                                         {
                                             case "101":
                                                 NF_ESTRUTURA.Itens[iii].ValorCredito = NF_ESTRUTURA.Itens[iii].ValorCredito + util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
                                                 break;
+
                                             case "201":
                                                 NF_ESTRUTURA.Itens[iii].ValorCredito = NF_ESTRUTURA.Itens[iii].ValorCredito + util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
                                                 NF_ESTRUTURA.Itens[iii].ValorBCST = NF_ESTRUTURA.Itens[iii].ValorBCST + util_dados.CalculaBCST(vlr_BC, NF_ESTRUTURA.Itens[iii].AliquotaICMSST, NF_ESTRUTURA.Itens[iii].MargemVLAdicionado, NF_ESTRUTURA.Itens[iii].PercentualReducaoST);
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSST = NF_ESTRUTURA.Itens[iii].ValorICMSST + util_dados.CalculaAliquotaST(vlr_BC, NF_ESTRUTURA.Itens[iii].ValorBCST, NF_ESTRUTURA.Itens[iii].AliquotaICMS, NF_ESTRUTURA.Itens[iii].AliquotaICMSST);
                                                 break;
+
                                             case "202":
                                             case "203":
                                                 NF_ESTRUTURA.Itens[iii].ValorBCST = NF_ESTRUTURA.Itens[iii].ValorBCST + util_dados.CalculaBCST(vlr_BC, NF_ESTRUTURA.Itens[iii].AliquotaICMSST, NF_ESTRUTURA.Itens[iii].MargemVLAdicionado, NF_ESTRUTURA.Itens[iii].PercentualReducaoST);
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSST = NF_ESTRUTURA.Itens[iii].ValorICMSST + util_dados.CalculaAliquotaST(vlr_BC, NF_ESTRUTURA.Itens[iii].ValorBCST, NF_ESTRUTURA.Itens[iii].AliquotaICMS, NF_ESTRUTURA.Itens[iii].AliquotaICMSST);
                                                 break;
+
                                             case "500":
                                                 NF_ESTRUTURA.Itens[iii].ValorBCSTRet = NF_ESTRUTURA.Itens[iii].ValorBCSTRet + vlr_BC;
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSSTRet = NF_ESTRUTURA.Itens[iii].ValorICMSSTRet + util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                                 break;
+
                                             case "900":
                                                 NF_ESTRUTURA.Itens[iii].ValorCredito = NF_ESTRUTURA.Itens[iii].ValorCredito + util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
                                                 NF_ESTRUTURA.Itens[iii].ValorBC = NF_ESTRUTURA.Itens[iii].ValorBC + util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
@@ -1341,7 +1430,8 @@ namespace Sistema.UI
                                                 NF_ESTRUTURA.Itens[iii].ValorICMSST = NF_ESTRUTURA.Itens[iii].ValorICMSST + util_dados.CalculaAliquotaST(vlr_BC, NF_ESTRUTURA.Itens[iii].ValorBCST, NF_ESTRUTURA.Itens[iii].AliquotaICMS, NF_ESTRUTURA.Itens[iii].AliquotaICMSST);
                                                 break;
                                         }
-                                    #endregion
+
+                                    #endregion SIMPLES NACIONAL
 
                                     NF_ESTRUTURA.Itens[iii].ValorPIS = NF_ESTRUTURA.Itens[iii].ValorPIS + util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaPIS"]));
 
@@ -1353,7 +1443,6 @@ namespace Sistema.UI
                                     _aux = true;
                                     break;
                                 }
-
                             }
 
                             if (_aux == true)
@@ -1363,6 +1452,7 @@ namespace Sistema.UI
                                 _NF_Item = new DTO_NF_Itens();
 
                                 #region CRIA BASE DE CALCULO
+
                                 vlr_Produto = Convert.ToDouble(_DT_Item.Rows[i]["ValorProduto"]);
                                 vlr_Desconto = Convert.ToDouble(_DT_Item.Rows[i]["Desconto"]);
                                 vlr_Seguro = 0;
@@ -1374,7 +1464,8 @@ namespace Sistema.UI
                                 vlr_TotalProduto = Quantidade * ((vlr_Produto + vlr_Acrescimo) - vlr_Desconto);
 
                                 vlr_BC = (vlr_TotalProduto + vlr_Seguro + vlr_Frete);
-                                #endregion
+
+                                #endregion CRIA BASE DE CALCULO
 
                                 _NF_Item.ID = 0;
                                 _NF_Item.ID_Produto = Convert.ToInt32(_DT_Item.Rows[i]["ID_Produto"]);
@@ -1383,7 +1474,6 @@ namespace Sistema.UI
 
                                 _NF_Item.Descricao = _DT_Item.Rows[i]["DescricaoProduto"].ToString();
                                 _NF_Item.ID_Grade = Convert.ToInt32(_DT_Item.Rows[i]["ID_Grade"]);
-
 
                                 if (Parametro_NFe_NFC_SAT.Exibe_Desconto == true)
                                 {
@@ -1427,6 +1517,7 @@ namespace Sistema.UI
                                             case "70":
                                                 _NF_Item.CST = "60";
                                                 break;
+
                                             default:
                                                 _NF_Item.CST = _DT_Item.Rows[i]["CST"].ToString();
                                                 break;
@@ -1442,10 +1533,12 @@ namespace Sistema.UI
                                             case "101":
                                                 _NF_Item.CSOSN = "102";
                                                 break;
+
                                             case "201":
                                             case "202":
                                                 _NF_Item.CSOSN = "500";
                                                 break;
+
                                             default:
                                                 _NF_Item.CSOSN = _DT_Item.Rows[i]["CST"].ToString();
                                                 break;
@@ -1466,7 +1559,9 @@ namespace Sistema.UI
                                 _NF_Item.MargemVLAdicionado = Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]);
 
                                 if (Parametro_NFe_NFC_SAT.Regime_Tributario == 3)
+
                                     #region REGIME NORMAL
+
                                     switch (_NF_Item.CST)
                                     {
                                         case "0":
@@ -1477,6 +1572,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSST = 0;
                                             _NF_Item.ValorICMSSTRet = 0;
                                             break;
+
                                         case "10":
                                             _NF_Item.ValorBC = vlr_BC;
                                             _NF_Item.ValorBCST = util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
@@ -1485,6 +1581,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSST = util_dados.CalculaAliquota(_NF_Item.ValorBCST, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]));
                                             _NF_Item.ValorICMSSTRet = 0;
                                             break;
+
                                         case "20":
                                             _NF_Item.ValorBC = util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
                                             _NF_Item.ValorBCST = 0;
@@ -1494,6 +1591,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSSTRet = 0;
                                             _NF_Item.ValorICMSDesonerado = 0;
                                             break;
+
                                         case "30":
                                             _NF_Item.ValorBC = 0;
                                             _NF_Item.ValorBCST = util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
@@ -1503,6 +1601,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSSTRet = 0;
                                             _NF_Item.ValorICMSDesonerado = 0;
                                             break;
+
                                         case "40":
                                         case "41":
                                         case "50":
@@ -1514,6 +1613,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSSTRet = 0;
                                             _NF_Item.ValorICMSDesonerado = 0;
                                             break;
+
                                         case "51":
                                             _NF_Item.ValorBC = util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
                                             _NF_Item.ValorBCST = 0;
@@ -1525,6 +1625,7 @@ namespace Sistema.UI
                                             _NF_Item.PercentualDiferimento = 0; //CONFIGURAR DEPOIS
                                             _NF_Item.ValorICMSDeferido = 0; //CONFIGURAR DEPOIS
                                             break;
+
                                         case "60":
                                             _NF_Item.ValorBC = 0;
                                             _NF_Item.ValorBCST = 0;
@@ -1533,6 +1634,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSST = 0;
                                             _NF_Item.ValorICMSSTRet = util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                             break;
+
                                         case "70":
                                         case "90":
                                             _NF_Item.ValorBC = util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
@@ -1544,20 +1646,26 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSDesonerado = 0;
                                             break;
                                     }
-                                #endregion
+
+                                #endregion REGIME NORMAL
+
                                 else
+
                                     #region SIMPLES NACIONAL
+
                                     switch (_NF_Item.CSOSN)
                                     {
                                         case "101":
                                             _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                             _NF_Item.ValorCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
                                             break;
+
                                         case "102":
                                         case "103":
                                         case "300":
                                         case "400":
                                             break;
+
                                         case "201":
                                             _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                             _NF_Item.ValorCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
@@ -1568,6 +1676,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSST = util_dados.CalculaAliquotaST(vlr_BC, _NF_Item.ValorBCST, _NF_Item.AliquotaICMS, _NF_Item.AliquotaICMSST);
                                             _NF_Item.ValorICMSSTRet = 0;
                                             break;
+
                                         case "202":
                                         case "203":
                                             _NF_Item.ValorBC = 0;
@@ -1577,6 +1686,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSST = util_dados.CalculaAliquotaST(vlr_BC, _NF_Item.ValorBCST, _NF_Item.AliquotaICMS, _NF_Item.AliquotaICMSST);
                                             _NF_Item.ValorICMSSTRet = 0;
                                             break;
+
                                         case "500":
                                             _NF_Item.ValorBC = 0;
                                             _NF_Item.ValorBCST = 0;
@@ -1585,6 +1695,7 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSST = 0;
                                             _NF_Item.ValorICMSSTRet = util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                             break;
+
                                         case "900":
                                             _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                             _NF_Item.AliquotaCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
@@ -1596,7 +1707,8 @@ namespace Sistema.UI
                                             _NF_Item.ValorICMSSTRet = 0;
                                             break;
                                     }
-                                #endregion
+
+                                #endregion SIMPLES NACIONAL
 
                                 _NF_Item.ValorBCII = 0;
                                 _NF_Item.ValorDesII = 0;
@@ -1623,7 +1735,8 @@ namespace Sistema.UI
                     Exibe_Item();
 
                     Calcula_NF();
-                    #endregion
+
+                    #endregion BUSCA ITEM VENDA
                 }
             }
             catch (Exception ex)
@@ -1663,6 +1776,7 @@ namespace Sistema.UI
                 OS.Tipo_NF = Convert.ToInt32(cb_Tipo_NF.SelectedValue);
 
                 #region BUSCA ITEM VENDA
+
                 DTO_NF_Itens _NF_Item;
                 DataTable _DT_Item = new DataTable();
                 _DT_Item = BLL_OS.Busca_Item_NF(OS);
@@ -1673,6 +1787,7 @@ namespace Sistema.UI
                         _NF_Item = new DTO_NF_Itens();
 
                         #region CRIA BASE DE CALCULO
+
                         double vlr_Produto = Convert.ToDouble(_DT_Item.Rows[i]["ValorProduto"]);
                         double vlr_Desconto = Convert.ToDouble(_DT_Item.Rows[i]["Desconto"]);
                         double vlr_Seguro = 0;
@@ -1684,7 +1799,8 @@ namespace Sistema.UI
                         double vlr_TotalProduto = Quantidade * ((vlr_Produto + vlr_Acrescimo) - vlr_Desconto);
 
                         double vlr_BC = (vlr_TotalProduto + vlr_Seguro + vlr_Frete);
-                        #endregion
+
+                        #endregion CRIA BASE DE CALCULO
 
                         _NF_Item.ID = 0;
                         _NF_Item.ID_Produto = Convert.ToInt32(_DT_Item.Rows[i]["ID_Produto"]);
@@ -1693,7 +1809,6 @@ namespace Sistema.UI
 
                         _NF_Item.Descricao = _DT_Item.Rows[i]["DescricaoProduto"].ToString();
                         _NF_Item.ID_Grade = Convert.ToInt32(_DT_Item.Rows[i]["ID_Grade"]);
-
 
                         if (Parametro_NFe_NFC_SAT.Exibe_Desconto == true)
                         {
@@ -1737,6 +1852,7 @@ namespace Sistema.UI
                                     case "70":
                                         _NF_Item.CST = "60";
                                         break;
+
                                     default:
                                         _NF_Item.CST = _DT_Item.Rows[i]["CST"].ToString();
                                         break;
@@ -1752,10 +1868,12 @@ namespace Sistema.UI
                                     case "101":
                                         _NF_Item.CSOSN = "102";
                                         break;
+
                                     case "201":
                                     case "202":
                                         _NF_Item.CSOSN = "500";
                                         break;
+
                                     default:
                                         _NF_Item.CSOSN = _DT_Item.Rows[i]["CST"].ToString();
                                         break;
@@ -1776,7 +1894,9 @@ namespace Sistema.UI
                         _NF_Item.MargemVLAdicionado = Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]);
 
                         if (Parametro_NFe_NFC_SAT.Regime_Tributario == 3)
+
                             #region REGIME NORMAL
+
                             switch (_NF_Item.CST)
                             {
                                 case "0":
@@ -1787,6 +1907,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = 0;
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "10":
                                     _NF_Item.ValorBC = vlr_BC;
                                     _NF_Item.ValorBCST = util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
@@ -1795,6 +1916,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = util_dados.CalculaAliquota(_NF_Item.ValorBCST, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]));
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "20":
                                     _NF_Item.ValorBC = util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
                                     _NF_Item.ValorBCST = 0;
@@ -1804,6 +1926,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
+
                                 case "30":
                                     _NF_Item.ValorBC = 0;
                                     _NF_Item.ValorBCST = util_dados.CalculaBCST(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMSST"]), Convert.ToDouble(_DT_Item.Rows[i]["MargemVAdicionado"]), Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducaoST"]));
@@ -1813,6 +1936,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
+
                                 case "40":
                                 case "41":
                                 case "50":
@@ -1824,6 +1948,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
+
                                 case "51":
                                     _NF_Item.ValorBC = 0;  //CONFIGURAR DEPOIS
                                     _NF_Item.ValorBCST = 0; //CONFIGURAR DEPOIS
@@ -1835,6 +1960,7 @@ namespace Sistema.UI
                                     _NF_Item.PercentualDiferimento = 0; //CONFIGURAR DEPOIS
                                     _NF_Item.ValorICMSDeferido = 0; //CONFIGURAR DEPOIS
                                     break;
+
                                 case "60":
                                     _NF_Item.ValorBC = 0;
                                     _NF_Item.ValorBCST = 0;
@@ -1843,6 +1969,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = 0;
                                     _NF_Item.ValorICMSSTRet = util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                     break;
+
                                 case "70":
                                 case "90":
                                     _NF_Item.ValorBC = util_dados.CalculaBC(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["PercentualReducao"]));
@@ -1854,20 +1981,26 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSDesonerado = 0;
                                     break;
                             }
-                        #endregion
+
+                        #endregion REGIME NORMAL
+
                         else
+
                             #region SIMPLES NACIONAL
+
                             switch (_NF_Item.CSOSN)
                             {
                                 case "101":
                                     _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                     _NF_Item.ValorCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
                                     break;
+
                                 case "102":
                                 case "103":
                                 case "300":
                                 case "400":
                                     break;
+
                                 case "201":
                                     _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                     _NF_Item.ValorCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
@@ -1878,6 +2011,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = util_dados.CalculaAliquotaST(vlr_BC, _NF_Item.ValorBCST, _NF_Item.AliquotaICMS, _NF_Item.AliquotaICMSST);
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "202":
                                 case "203":
                                     _NF_Item.ValorBC = 0;
@@ -1887,6 +2021,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = util_dados.CalculaAliquotaST(vlr_BC, _NF_Item.ValorBCST, _NF_Item.AliquotaICMS, _NF_Item.AliquotaICMSST);
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
+
                                 case "500":
                                     _NF_Item.ValorBC = 0;
                                     _NF_Item.ValorBCST = 0;
@@ -1895,6 +2030,7 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSST = 0;
                                     _NF_Item.ValorICMSSTRet = util_dados.CalculaAliquota(vlr_BC, Convert.ToDouble(_DT_Item.Rows[i]["AliquotaICMS"]));
                                     break;
+
                                 case "900":
                                     _NF_Item.AliquotaCredito = Parametro_NFe_NFC_SAT.AliquotaICMS;
                                     _NF_Item.AliquotaCredito = util_dados.CalculaAliquota(vlr_BC, Parametro_NFe_NFC_SAT.AliquotaICMS);
@@ -1906,7 +2042,8 @@ namespace Sistema.UI
                                     _NF_Item.ValorICMSSTRet = 0;
                                     break;
                             }
-                        #endregion
+
+                        #endregion SIMPLES NACIONAL
 
                         _NF_Item.ValorBCII = 0;
                         _NF_Item.ValorDesII = 0;
@@ -1931,9 +2068,11 @@ namespace Sistema.UI
                 Exibe_Item();
 
                 Calcula_NF();
-                #endregion
+
+                #endregion BUSCA ITEM VENDA
 
                 #region BUSCA FATURA
+
                 BLL_CReceber = new BLL_CReceber();
                 CReceber = new DTO_CReceber();
 
@@ -1966,7 +2105,8 @@ namespace Sistema.UI
 
                     Exibe_Duplicata();
                 }
-                #endregion
+
+                #endregion BUSCA FATURA
             }
             catch (Exception ex)
             {
@@ -2035,7 +2175,7 @@ namespace Sistema.UI
             NF_ESTRUTURA.ID = util_dados.Verifica_int(txt_ID.Text);
             NF_ESTRUTURA.ID_NFe = Convert.ToInt32(txt_ID_NFe.Text);
             NF_ESTRUTURA.Serie = Convert.ToInt32(txt_Serie.Text);
-            NF_ESTRUTURA.Modelo = 55;
+            NF_ESTRUTURA.Modelo = 65;
             NF_ESTRUTURA.ID_Venda = ID_Pedido;
             NF_ESTRUTURA.ID_OS = ID_OS;
 
@@ -2122,7 +2262,6 @@ namespace Sistema.UI
                     NF_Transporte.CNPJ_CPF = util_dados.Conf_strDoc_NFe(DRPessoa["CNPJ_CPF"]);
                     NF_Transporte.IE = util_dados.Conf_strDoc_NFe(DRPessoa["IE_RG"]);
                     NF_Transporte.Nome = Convert.ToString(DRPessoa["Descricao"]);
-
 
                     if (DTEndereco.Rows.Count > 0)
                     {
@@ -2233,7 +2372,6 @@ namespace Sistema.UI
                     else
                         ck_ConsumidorFinal.Checked = true;
                 }
-
 
                 Endereco.Principal = true;
                 Pessoa.Endereco.Add(Endereco);
@@ -2444,7 +2582,6 @@ namespace Sistema.UI
         {
             dg_Dup.Rows.Clear();
 
-
             if (NF_ESTRUTURA.Duplicata != null &&
                 NF_ESTRUTURA.Duplicata.Count > 0)
             {
@@ -2592,7 +2729,7 @@ namespace Sistema.UI
             DG.DataSource = null;
 
             txt_InformacaoAdicional.Clear();
-            
+
             mk_DataEmissao.Text = DateTime.Now.ToString();
             mk_DataSaida.Text = DateTime.Now.ToString();
 
@@ -2725,7 +2862,6 @@ namespace Sistema.UI
                 UI_Pessoa_Consulta.OcultaNovoCadastro = true;
                 UI_Pessoa_Consulta.TipoPessoa = Convert.ToInt32(cb_TipoPessoaP.SelectedValue);
 
-
                 UI_Pessoa_Consulta.ShowDialog();
 
                 if (UI_Pessoa_Consulta.ID_Pessoa == 0)
@@ -2761,7 +2897,7 @@ namespace Sistema.UI
                 NF.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
                 NF.ID_NFe = Convert.ToInt32(txt_ID_NFe.Text);
                 NF.Serie = Convert.ToInt32(txt_Serie.Text);
-                NF.Modelo = 55;
+                //NF.Modelo = 55;
 
                 if (BLL_NF.Busca_NF(NF).Rows.Count > 0)
                 {
@@ -2777,7 +2913,7 @@ namespace Sistema.UI
                 NF.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
                 NF.ID_NFe = Convert.ToInt32(txt_ID_NFe.Text);
                 NF.Serie = Convert.ToInt32(txt_Serie.Text);
-                NF.Modelo = 55;
+               // NF.Modelo = 55;
 
                 DataTable _DT = new DataTable();
                 _DT = BLL_NF.Busca_NF(NF);
@@ -2794,9 +2930,11 @@ namespace Sistema.UI
 
             return true;
         }
-        #endregion
+
+        #endregion ROTINAS
 
         #region MODIFICADORES
+
         public override void Gravar()
         {
             if (!Verifica_NF())
@@ -2868,12 +3006,12 @@ namespace Sistema.UI
                         NFe_ProcessaNFe3 _ProcessaNFe;
                         _ProcessaNFe = new NFe_ProcessaNFe3();
 
-
                         switch (NF.Modelo)
                         {
                             case 65:
                                 _ProcessaNFe.Processa_NFCe(Convert.ToInt32(NF.ID_NFe), UTIL.ProcessoNF.Validar);
                                 break;
+
                             case 55:
                                 _ProcessaNFe.Processa_NFe(Convert.ToInt32(NF.ID_NFe), UTIL.ProcessoNF.Validar);
                                 break;
@@ -2908,7 +3046,7 @@ namespace Sistema.UI
 
                 NF.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
                 NF.Serie = util_dados.Verifica_int(txt_SerieNFeP.Text);
-                NF.Modelo = 55;
+                //NF.Modelo = 55;
                 NF.ID_NFe = util_dados.Verifica_int(txt_ID_NFeP.Text);
                 NF.Chave = txt_ChavedeAcessoNFeP.Text;
                 NF.Situacao = Convert.ToInt32(cb_SituacaoNFeP.SelectedValue);
@@ -2965,9 +3103,11 @@ namespace Sistema.UI
             tabctl.SelectedTab = TabPage1;
             tabControl2.SelectedTab = tabPage6;
         }
-        #endregion
+
+        #endregion MODIFICADORES
 
         #region BUTTON
+
         private void bt_Adiciona_NF_Ref_Click(object sender, EventArgs e)
         {
             if (!Verifica_NF())
@@ -3507,10 +3647,11 @@ namespace Sistema.UI
         {
             ExibeRegistro();
         }
-        
-        #endregion
+
+        #endregion BUTTON
 
         #region FORM
+
         private void UI_NFe_Emissor_Completo_Load(object sender, EventArgs e)
         {
             Inicia_Form();
@@ -3525,7 +3666,6 @@ namespace Sistema.UI
                 KeyAscii = Convert.ToInt16(util_dados.NumDecimal(KeyAscii));
                 if (KeyAscii == 0)
                     e.Handled = true;
-
             }
             if (txt_Qt_Vol.Focused == true)
             {
@@ -3548,9 +3688,11 @@ namespace Sistema.UI
             if (e.KeyCode == Keys.F7)
                 Consulta_Pessoa();
         }
-        #endregion
+
+        #endregion FORM
 
         #region COMBOBOX
+
         private void cb_TipoPessoa_SelectedValueChanged(object sender, EventArgs e)
         {
             Carrega_Pessoa(1);
@@ -3611,7 +3753,7 @@ namespace Sistema.UI
 
                 _NF.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
                 _NF.Serie = Convert.ToInt32(DT_TipoEmissao.Rows[0]["Serie"]);
-                _NF.Modelo = 55;
+               // _NF.Modelo = 55;
 
                 if (util_dados.Verifica_int(txt_ID.Text) == 0)
                     txt_ID_NFe.Text = BLL_NF.Busca_ID_NF(_NF).ToString();
@@ -3674,9 +3816,11 @@ namespace Sistema.UI
                 }
             }
         }
-        #endregion
+
+        #endregion COMBOBOX
 
         #region MASKEDBOX
+
         private void mk_DataEmissao_Leave(object sender, EventArgs e)
         {
             DateTime.TryParseExact(mk_DataEmissao.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out ValidaData);
@@ -3686,7 +3830,6 @@ namespace Sistema.UI
                 mk_DataEmissao.Text = Convert.ToString(DateTime.Now);
                 mk_DataEmissao.Focus();
             }
-
         }
 
         private void mk_DataSaida_Leave(object sender, EventArgs e)
@@ -3698,7 +3841,6 @@ namespace Sistema.UI
                 mk_DataSaida.Text = Convert.ToString(DateTime.Now);
                 mk_DataSaida.Focus();
             }
-
         }
 
         private void mk_DataInicial_Leave(object sender, EventArgs e)
@@ -3710,7 +3852,6 @@ namespace Sistema.UI
                 mk_DataInicial.Text = Convert.ToString(DateTime.Now);
                 mk_DataInicial.Focus();
             }
-
         }
 
         private void mk_DataFinal_Leave(object sender, EventArgs e)
@@ -3722,7 +3863,6 @@ namespace Sistema.UI
                 mk_DataFinal.Text = Convert.ToString(DateTime.Now);
                 mk_DataFinal.Focus();
             }
-
         }
 
         private void mk_Venc_Dup_Leave(object sender, EventArgs e)
@@ -3737,17 +3877,17 @@ namespace Sistema.UI
                 mk_Venc_Dup.Text = Convert.ToString(DateTime.Now);
                 mk_Venc_Dup.Focus();
             }
-
-
         }
 
         private void mk_Placa_Leave(object sender, EventArgs e)
         {
             mk_Placa.Text = mk_Placa.Text.ToUpper();
         }
-        #endregion
+
+        #endregion MASKEDBOX
 
         #region TEXTBOX
+
         private void txt_CNPJ_CPF_Entrega_Leave(object sender, EventArgs e)
         {
             if (txt_CNPJ_CPF_Entrega.Text.Trim() == string.Empty)
@@ -3897,11 +4037,7 @@ namespace Sistema.UI
                     break;
             }
         }
-        #endregion
 
-        private void tabPage7_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion TEXTBOX
     }
 }

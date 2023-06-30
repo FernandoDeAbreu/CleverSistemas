@@ -367,7 +367,7 @@ namespace Sistema.UTIL
         /// </summary>
         public static int Regime_Tributario;
 
-        public static string Schema = "3.10";
+        public static string Schema = "4.00";
 
         public static int AmbienteNFe;
         public static string Caminho_NFe;

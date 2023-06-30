@@ -55,6 +55,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DFe.Classes, Version=2023.6.29.1402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.6.29.1402\lib\netstandard2.0\DFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="DFe.Utils, Version=2023.6.29.1402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.6.29.1402\lib\netstandard2.0\DFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="DFe.Wsdl, Version=2023.6.29.1402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.6.29.1402\lib\netstandard2.0\DFe.Wsdl.dll</HintPath>
+    </Reference>
     <Reference Include="GenCode128">
       <HintPath>..\..\..\OneDrive\Documentos\Clever\Clever Sistema II\Projeto Alese\Projeto\NFe\bin\Debug\GenCode128.dll</HintPath>
     </Reference>
@@ -76,8 +85,17 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
-    <Reference Include="NFe">
-      <HintPath>..\..\..\OneDrive\Documentos\Clever\Clever Sistema II\Projeto Alese\Projeto\NFe\bin\Debug\NFe.dll</HintPath>
+    <Reference Include="NFe.Classes, Version=2023.6.29.1402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.6.29.1402\lib\netstandard2.0\NFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Servicos, Version=2023.6.29.1402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.6.29.1402\lib\netstandard2.0\NFe.Servicos.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Utils, Version=2023.6.29.1402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.6.29.1402\lib\netstandard2.0\NFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Wsdl.Standard, Version=2023.6.29.1402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zeus.Net.NFe.NFCe.2023.6.29.1402\lib\netstandard2.0\NFe.Wsdl.Standard.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
