@@ -265,7 +265,7 @@ public partial class BdSystemContext : DbContext
 
     public virtual DbSet<VProdutoServico> VProdutoServicos { get; set; }
 
-    public virtual DbSet<VProdutoVendum> VProdutoVenda { get; set; }
+    public virtual DbSet<VProdutoVenda> VProdutoVenda { get; set; }
 
     public virtual DbSet<VResumoLocacao> VResumoLocacaos { get; set; }
 
@@ -3243,7 +3243,7 @@ public partial class BdSystemContext : DbContext
                 .HasColumnName("ValorST");
         });
 
-        modelBuilder.Entity<VProdutoVendum>(entity =>
+        modelBuilder.Entity<VProdutoVenda>(entity =>
         {
             entity
                 .HasNoKey()

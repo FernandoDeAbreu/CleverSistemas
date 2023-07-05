@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CleverWeb.Models;
 
-public partial class VProdutoVendum
+public partial class VProdutoVenda
 {
     public bool? Ativo { get; set; }
 

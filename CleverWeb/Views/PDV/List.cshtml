@@ -1,0 +1,10 @@
+﻿@model IEnumerable<CleverWeb.Models.VProdutoVenda>
+<div>
+    <h2>Todos os Lanches</h2>
+</div>
+@foreach(var item in Model){
+    <div>
+        <h4>@item.Descricao</h4>
+        <h3>Valor: @item.ValorVenda</h3>
+    </div>
+}

@@ -1,4 +1,6 @@
 using CleverWeb.Models;
+using CleverWeb.Repository;
+using CleverWeb.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,7 @@ builder.Services.AddDbContext<BdSystemContext>(options =>
 {
     options.UseSqlServer(connection);
 });
+builder.Services.AddTransient<IProdutoServicoRepository, ProdutoServicoRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
