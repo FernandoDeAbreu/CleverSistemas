@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleverWeb.Shared;
+using System;
 using System.Collections.Generic;
 
 namespace CleverWeb.Models;
@@ -37,9 +38,9 @@ public partial class ProdutoServico
 
     public int? Garantia { get; set; }
 
-    public int? Situacao { get; set; }
+    public bool? Situacao { get; set; }
 
-    public int? Tipo { get; set; }
+    public TipoProdutoEnum Tipo { get; set; }
 
     public int? ExTipi { get; set; }
 

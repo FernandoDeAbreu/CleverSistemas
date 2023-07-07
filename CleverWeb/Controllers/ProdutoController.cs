@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CleverWeb.Models;
+using CleverWeb.Shared;
 
 namespace CleverWeb.Controllers
 {
@@ -19,11 +20,49 @@ namespace CleverWeb.Controllers
         }
 
         // GET: Produto
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
-              return _context.ProdutoServicos != null ? 
-                          View(await _context.ProdutoServicos.ToListAsync()) :
-                          Problem("Entity set 'BdSystemContext.ProdutoServicos'  is null.");
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["DescricaoParm"] = String.IsNullOrEmpty(sortOrder) ? "descricao_desc" : "";
+            ViewData["ReferenciaParm"] = sortOrder == "Referencia" ? "referencia_desc" : "Referencia";
+
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+
+            var produtoServico = from s in _context.ProdutoServicos
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                produtoServico = produtoServico.Where(s => s.Descricao.Contains(searchString)
+                                       || s.Referencia.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "descricao_desc":
+                    produtoServico = produtoServico.OrderByDescending(s => s.Descricao);
+                    break;
+                case "Referencia":
+                    produtoServico = produtoServico.OrderBy(s => s.Referencia);
+                    break;
+                case "referencia_desc":
+                    produtoServico = produtoServico.OrderByDescending(s => s.Fabricante);
+                    break;
+                default:
+                    produtoServico = produtoServico.OrderBy(s => s.Id);
+                    break;
+            }
+            int pageSize = 10;
+            return View(await PaginatedList<ProdutoServico>.CreateAsync(produtoServico.AsNoTracking(), pageNumber ?? 1, pageSize));
+
+          
         }
 
         // GET: Produto/Details/5
