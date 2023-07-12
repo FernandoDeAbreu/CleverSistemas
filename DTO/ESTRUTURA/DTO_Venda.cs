@@ -70,6 +70,7 @@ namespace Sistema.DTO
         /// </summary>
         public int Situacao_Conferencia { get; set; }
         public int ID_Usuario_Conferencia { get; set; }
+        public int ID_Usuario_Sistema { get; set; }
         public string CPF_CNPJ { get; set; }
         public List<DTO_Produto_Item> Item { get; set; }
 

@@ -51,11 +51,11 @@ namespace Sistema.DAL
                     sql = "INSERT INTO Venda ";
                     sql += "(ID_Empresa, TipoPessoa, ID_Pessoa, Data, Entrega, Informacao, ID_UsuarioComissao1, ";
                     sql += "ID_UsuarioComissao2, DataFatura, Comprador, Faturado, NFe, ";
-                    sql += "ID_Pagamento, ID_Parcelamento, Cancelado, Situacao_Entrega, Situacao_Conferencia, CPF_CNPJ) ";
+                    sql += "ID_Pagamento, ID_Parcelamento, Cancelado, Situacao_Entrega, Situacao_Conferencia, CPF_CNPJ, ID_Usuario_Sistema) ";
                     sql += "VALUES ";
                     sql += "(@ID_Empresa, @TipoPessoa, @ID_Pessoa, @Data, @Entrega, @Informacao, @ID_UsuarioComissao1, ";
                     sql += "@ID_UsuarioComissao2, @DataFatura, @Comprador, @Faturado, @NFe, ";
-                    sql += "@ID_Pagamento, @ID_Parcelamento, @Cancelado, @Situacao_Entrega, @Situacao_Conferencia, @CPF_CNPJ) ";
+                    sql += "@ID_Pagamento, @ID_Parcelamento, @Cancelado, @Situacao_Entrega, @Situacao_Conferencia, @CPF_CNPJ, @ID_Usuario_Sistema) ";
                     cmd.CommandText = sql;
                     cmd.Parameters.AddWithValue("@ID_Empresa", Venda.ID_Empresa);
                     cmd.Parameters.AddWithValue("@TipoPessoa", Venda.TipoPessoa);
@@ -75,6 +75,7 @@ namespace Sistema.DAL
                     cmd.Parameters.AddWithValue("@Situacao_Entrega", Venda.Situacao_Entrega);
                     cmd.Parameters.AddWithValue("@Situacao_Conferencia", Venda.Situacao_Conferencia);
                     cmd.Parameters.AddWithValue("@CPF_CNPJ", Venda.CPF_CNPJ);
+                    cmd.Parameters.AddWithValue("@ID_Usuario_Sistema", Venda.ID_Usuario_Sistema);
                     Venda.ID = conexao.Executa_ComandoID(cmd);
                 }
                 else

@@ -207,7 +207,7 @@ namespace Sistema.NFe
 
                 DS_NFe = new DataSet();
 
-                DS_NFe.ReadXmlSchema(Parametro_Sistema.Caminho_Sistema + util_Param.Schemas + "nfe_v3.10.xsd");
+                DS_NFe.ReadXmlSchema(Parametro_Sistema.Caminho_Sistema + util_Param.Schemas + "nfe_v4.00");
                 DS_NFe.EnforceConstraints = false;
 
                 #region DADOS DA NOTA FISCAL ELETRÔNICA
@@ -242,7 +242,6 @@ namespace Sistema.NFe
                 DR["cUF"] = DR_Emit["ID_UF"];
                 DR["cNF"] = DR_NF["ID"].ToString().PadLeft(8, '0');
                 DR["natOp"] = DR_NF["NaturezaOperacao"];
-                //DR["indPag"] = DR_NF["FormaPagto"];
                 DR["mod"] = DR_NF["Modelo"];
                 DR["serie"] = DR_NF["Serie"].ToString().Trim();
                 DR["nNF"] = DR_NF["ID_NFe"];
@@ -2771,7 +2770,7 @@ namespace Sistema.NFe
 
                 DS_NFe = new DataSet();
 
-                DS_NFe.ReadXmlSchema(Parametro_Sistema.Caminho_Sistema + util_Param.Schemas + "nfe_v3.10.xsd");
+                DS_NFe.ReadXmlSchema(Parametro_Sistema.Caminho_Sistema + util_Param.Schemas + "nfe_v4.00.xsd");
                 DS_NFe.EnforceConstraints = false;
 
                 #region DADOS DA NOTA FISCAL ELETRÔNICA
@@ -3998,29 +3997,26 @@ namespace Sistema.NFe
                 #endregion
 
                 #region INFORMAÇÕES SOBRE PAGAMENTO
-                //DT = new DataTable();
-                //DT = BLL_NF.Busca_NF_Duplicata(NFe);
 
-                // if (DT.Rows.Count > 0)
-                //    for (int i = 0; i <= DT.Rows.Count - 1; i++)
-                //    {
+
+
                 DR = DS_NFe.Tables["pag"].NewRow();
+                DR["pag_Id"] = Qt_Produto.ToString();
+                DR["vTroco"] = util_dados.ConfigNumDecimal(DR_NF["ValorTotal"], 12);
+                DS_NFe.Tables["pag"].Rows.Add(DR);
 
-                DR["pag_Id"] = 0;
-                DR["infNFe_Id"] = 0;
-                //DR_Pag = DT.Rows[i];
-
-                //DR["tPag"] = DR_Pag["TipoPagto"].ToString().TrimEnd();
-                // DR["vPag"] = util_dados.ConfigNumDecimal(DR_Fat["Valor"], 12);
-
+                DR = DS_NFe.Tables["detPag"].NewRow();
+                DR["pag_Id"] = Qt_Produto.ToString();
                 DR["tPag"] = "01";
                 DR["vPag"] = util_dados.ConfigNumDecimal(20, 12);
+                DS_NFe.Tables["detPag"].Rows.Add(DR);
 
-                DS_NFe.Tables["pag"].Rows.Add(DR);
+
+
 
                 this.ChecaCampo(DR["tPag"].ToString(), "tPag", ObOp.Opcional, 2, 2);
                 this.ChecaCampo(DR["vPag"].ToString(), "vPag", ObOp.Opcional, 1, 15, 2);
-                //   }             
+
                 #endregion
 
                 #region CONFIGURA CAMPOS ANTES DE GERAR O XML

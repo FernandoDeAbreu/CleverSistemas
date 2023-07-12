@@ -43,6 +43,8 @@ namespace Sistema.UI.UI_FORMS
             this.tboxValorTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CboxFormaPagamento = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button13 = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -52,8 +54,6 @@ namespace Sistema.UI.UI_FORMS
             this.tboxValorPago = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnFinalizar = new System.Windows.Forms.Button();
-            this.CboxFormaPagamento = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -258,7 +258,7 @@ namespace Sistema.UI.UI_FORMS
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.CboxFormaPagamento);
@@ -277,6 +277,33 @@ namespace Sistema.UI.UI_FORMS
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1021, 725);
             this.panel1.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(18, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(225, 30);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Forma de pagamento";
+            // 
+            // CboxFormaPagamento
+            // 
+            this.CboxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboxFormaPagamento.Font = new System.Drawing.Font("Segoe UI Semibold", 35F, System.Drawing.FontStyle.Bold);
+            this.CboxFormaPagamento.FormattingEnabled = true;
+            this.CboxFormaPagamento.Items.AddRange(new object[] {
+            "Dinheiro",
+            "PIX",
+            "Cartão de Crédito",
+            "Cartão de Débito"});
+            this.CboxFormaPagamento.Location = new System.Drawing.Point(15, 123);
+            this.CboxFormaPagamento.Name = "CboxFormaPagamento";
+            this.CboxFormaPagamento.Size = new System.Drawing.Size(540, 70);
+            this.CboxFormaPagamento.TabIndex = 26;
+            this.CboxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.CboxFormaPagamento_SelectedValueChanged);
             // 
             // panel2
             // 
@@ -401,33 +428,6 @@ namespace Sistema.UI.UI_FORMS
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.UseVisualStyleBackColor = false;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
-            // 
-            // CboxFormaPagamento
-            // 
-            this.CboxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CboxFormaPagamento.Font = new System.Drawing.Font("Segoe UI Semibold", 35F, System.Drawing.FontStyle.Bold);
-            this.CboxFormaPagamento.FormattingEnabled = true;
-            this.CboxFormaPagamento.Items.AddRange(new object[] {
-            "Dinheiro",
-            "PIX",
-            "Cartão de Crédito",
-            "Cartão de Débito"});
-            this.CboxFormaPagamento.Location = new System.Drawing.Point(15, 123);
-            this.CboxFormaPagamento.Name = "CboxFormaPagamento";
-            this.CboxFormaPagamento.Size = new System.Drawing.Size(540, 70);
-            this.CboxFormaPagamento.TabIndex = 26;
-            this.CboxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.CboxFormaPagamento_SelectedValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(18, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(225, 30);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Forma de pagamento";
             // 
             // UI_PDV_II_FINALIZAR
             // 

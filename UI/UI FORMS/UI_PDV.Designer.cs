@@ -615,12 +615,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1004, 648);
+            this.Controls.Add(this.cb_ID_UsuarioComissao1);
             this.Controls.Add(this.pBox_Imagen_Principal);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_Quantidade2);
-            this.Controls.Add(this.cb_ID_UsuarioComissao1);
             this.Controls.Add(this.lb_Comissao1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txt_Desconto);

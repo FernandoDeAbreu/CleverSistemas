@@ -188,29 +188,37 @@ namespace Sistema.UI.UI_FORMS
 
         private void pesquisarGrupoNivel()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM GRUPONIVEL G WHERE G.Nivel > 1", sqlConn);
-
-            sqlConn.Open();
-
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            int o = dg_GrupoNivel.Rows.Count;
-
-            while (dr.Read())
+            try
             {
-                dg_GrupoNivel.Rows.Add();
-                dg_GrupoNivel.Rows[o].Cells["col_ID"].Value = dr["ID"].ToString();
-                dg_GrupoNivel.Rows[o].Cells["col_Codigo"].Value = dr["Codigo"].ToString();
-                dg_GrupoNivel.Rows[o].Cells["col_Descricao"].Value = dr["Descricao"].ToString();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM GRUPONIVEL G WHERE G.Nivel > 1", sqlConn);
 
-                o++;
+                sqlConn.Open();
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                int o = dg_GrupoNivel.Rows.Count;
+
+                while (dr.Read())
+                {
+                    dg_GrupoNivel.Rows.Add();
+                    dg_GrupoNivel.Rows[o].Cells["col_ID"].Value = dr["ID"].ToString();
+                    dg_GrupoNivel.Rows[o].Cells["col_Codigo"].Value = dr["Codigo"].ToString();
+                    dg_GrupoNivel.Rows[o].Cells["col_Descricao"].Value = dr["Descricao"].ToString();
+
+                    o++;
+                }
+
+                sqlConn.Close();
+
+                descricaoGrupo = dg_GrupoNivel.CurrentRow.Cells[2].Value.ToString();
+                label2.Text = descricaoGrupo;
+                descricaoGrupo = " = '" + descricaoGrupo + "'";
+            }
+            catch (Exception)
+            {
+                carregarGrid();
             }
 
-            sqlConn.Close();
-
-            descricaoGrupo = dg_GrupoNivel.CurrentRow.Cells[2].Value.ToString();
-            label2.Text = descricaoGrupo;
-            descricaoGrupo = " = '" + descricaoGrupo + "'";
             carregarGrid();
         }
 
@@ -738,6 +746,7 @@ namespace Sistema.UI.UI_FORMS
                                                 " ,CPF_CNPJ               " +
                                                 " ,ID_NFe                 " +
                                                 " ,ID_CFe                 " +
+                                                " ,ID_Usuario_Sistema     " +
                                                 " ,SEQVENDA )               " +
                                                 " VALUES (                " +
                                                 "  @ID_EMPRESA             " +
@@ -761,6 +770,7 @@ namespace Sistema.UI.UI_FORMS
                                                 " ,@CPF_CNPJ               " +
                                                 " ,@ID_NFe                 " +
                                                 " ,@ID_CFe                 " +
+                                                " ,@ID_Usuario_Sistema     " +
                                                 " ,@SEQVENDA  )            ";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
@@ -785,6 +795,7 @@ namespace Sistema.UI.UI_FORMS
             comando.Parameters.Add(new SqlParameter("CPF_CNPJ", ""));
             comando.Parameters.Add(new SqlParameter("ID_NFe", ""));
             comando.Parameters.Add(new SqlParameter("ID_CFe", ""));
+            comando.Parameters.Add(new SqlParameter("ID_Usuario_Sistema", Parametro_Usuario.ID_Usuario_Ativo));
             comando.Parameters.Add(new SqlParameter("SEQVENDA", contadorDeVendas));
 
             sqlConn.Open();

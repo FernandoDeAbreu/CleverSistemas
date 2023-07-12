@@ -76,7 +76,7 @@ namespace Sistema.UI.UI_FORMS
             // lblTotal
             // 
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.White;
             this.lblTotal.Location = new System.Drawing.Point(4, 603);
@@ -96,7 +96,7 @@ namespace Sistema.UI.UI_FORMS
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(603, 605);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(134, 118);
+            this.btnCancelar.Size = new System.Drawing.Size(149, 118);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "CANCELAR PEDIDO";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -110,9 +110,9 @@ namespace Sistema.UI.UI_FORMS
             this.btnRemoverItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoverItem.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold);
             this.btnRemoverItem.ForeColor = System.Drawing.Color.White;
-            this.btnRemoverItem.Location = new System.Drawing.Point(743, 605);
+            this.btnRemoverItem.Location = new System.Drawing.Point(758, 605);
             this.btnRemoverItem.Name = "btnRemoverItem";
-            this.btnRemoverItem.Size = new System.Drawing.Size(134, 118);
+            this.btnRemoverItem.Size = new System.Drawing.Size(149, 118);
             this.btnRemoverItem.TabIndex = 4;
             this.btnRemoverItem.Text = "REMOVER ITEM";
             this.btnRemoverItem.UseVisualStyleBackColor = false;
@@ -127,9 +127,9 @@ namespace Sistema.UI.UI_FORMS
             this.btnPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPagamento.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold);
             this.btnPagamento.ForeColor = System.Drawing.Color.White;
-            this.btnPagamento.Location = new System.Drawing.Point(883, 605);
+            this.btnPagamento.Location = new System.Drawing.Point(913, 605);
             this.btnPagamento.Name = "btnPagamento";
-            this.btnPagamento.Size = new System.Drawing.Size(257, 118);
+            this.btnPagamento.Size = new System.Drawing.Size(227, 118);
             this.btnPagamento.TabIndex = 5;
             this.btnPagamento.Text = "PAGAMENTO";
             this.btnPagamento.UseVisualStyleBackColor = false;
@@ -455,7 +455,7 @@ namespace Sistema.UI.UI_FORMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Purple;
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ClientSize = new System.Drawing.Size(1152, 735);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnTodos);

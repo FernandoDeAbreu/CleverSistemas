@@ -763,6 +763,7 @@ namespace Sistema.UI
                 Venda.DataFatura = DateTime.Now;
 
                 Venda.Informacao = "PDV";
+                Venda.ID_Usuario_Sistema = Parametro_Usuario.ID_Usuario_Ativo;
 
                 if (cb_ID_UsuarioComissao1.SelectedValue != null)
                     Venda.ID_UsuarioComissao1 = util_dados.Verifica_int(cb_ID_UsuarioComissao1.SelectedValue.ToString());
