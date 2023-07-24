@@ -137,6 +137,9 @@ namespace Sistema.UI
             char Letra = char.ToUpper(Parametro_Usuario.Descricao_UsuarioAtivo[0]);
             tss_Usuario.Text = Letra + Parametro_Usuario.Descricao_UsuarioAtivo.Substring(1);
 
+            frenteDeCaixaPDVToolStripMenuItem.Text = "PDV - Frente de Caixa";
+            frenteDeCaixaPDV2ToolStripMenuItem.Text = "PDV - Frente de Caixa";
+
             Tempo();
             MinutoAtualizacao.Enabled = true;
             MinutoAtualizacao.Start();

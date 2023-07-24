@@ -34,8 +34,6 @@
             this.cb_ID_Pessoa = new System.Windows.Forms.ComboBox();
             this.Label52 = new System.Windows.Forms.Label();
             this.txt_IDPedido = new System.Windows.Forms.TextBox();
-            this.mk_DataInicial = new System.Windows.Forms.MaskedTextBox();
-            this.mk_DataFinal = new System.Windows.Forms.MaskedTextBox();
             this.Label25 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,6 +52,8 @@
             this.txt_DiasVenda = new System.Windows.Forms.TextBox();
             this.gb_VendaInativo = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
+            this.mk_DataInicial = new System.Windows.Forms.DateTimePicker();
+            this.mk_DataFinal = new System.Windows.Forms.DateTimePicker();
             this.TabPage1.SuspendLayout();
             this.tabctl.SuspendLayout();
             this.TabPage2.SuspendLayout();
@@ -145,32 +145,6 @@
             this.txt_IDPedido.TabIndex = 8;
             this.txt_IDPedido.Tag = "T";
             // 
-            // mk_DataInicial
-            // 
-            this.mk_DataInicial.BackColor = System.Drawing.SystemColors.Window;
-            this.mk_DataInicial.Location = new System.Drawing.Point(208, 41);
-            this.mk_DataInicial.Mask = "00/00/0000";
-            this.mk_DataInicial.Name = "mk_DataInicial";
-            this.mk_DataInicial.Size = new System.Drawing.Size(101, 21);
-            this.mk_DataInicial.TabIndex = 6;
-            this.mk_DataInicial.Tag = "T";
-            this.mk_DataInicial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mk_DataInicial.ValidatingType = typeof(System.DateTime);
-            this.mk_DataInicial.Leave += new System.EventHandler(this.mk_DataInicial_Leave);
-            // 
-            // mk_DataFinal
-            // 
-            this.mk_DataFinal.BackColor = System.Drawing.SystemColors.Window;
-            this.mk_DataFinal.Location = new System.Drawing.Point(338, 41);
-            this.mk_DataFinal.Mask = "00/00/0000";
-            this.mk_DataFinal.Name = "mk_DataFinal";
-            this.mk_DataFinal.Size = new System.Drawing.Size(101, 21);
-            this.mk_DataFinal.TabIndex = 7;
-            this.mk_DataFinal.Tag = "T";
-            this.mk_DataFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mk_DataFinal.ValidatingType = typeof(System.DateTime);
-            this.mk_DataFinal.Leave += new System.EventHandler(this.mk_DataFinal_Leave);
-            // 
             // Label25
             // 
             this.Label25.AutoSize = true;
@@ -260,11 +234,11 @@
             // 
             // gb_Periodo
             // 
+            this.gb_Periodo.Controls.Add(this.mk_DataFinal);
+            this.gb_Periodo.Controls.Add(this.mk_DataInicial);
             this.gb_Periodo.Controls.Add(this.cb_Periodo);
             this.gb_Periodo.Controls.Add(this.Label25);
             this.gb_Periodo.Controls.Add(this.label3);
-            this.gb_Periodo.Controls.Add(this.mk_DataInicial);
-            this.gb_Periodo.Controls.Add(this.mk_DataFinal);
             this.gb_Periodo.Controls.Add(this.txt_IDPedido);
             this.gb_Periodo.Controls.Add(this.Label52);
             this.gb_Periodo.Location = new System.Drawing.Point(12, 69);
@@ -360,12 +334,29 @@
             this.label27.TabIndex = 692;
             this.label27.Text = "F7 (Pesquisa avançada)";
             // 
+            // mk_DataInicial
+            // 
+            this.mk_DataInicial.Font = new System.Drawing.Font("Arial", 9F);
+            this.mk_DataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.mk_DataInicial.Location = new System.Drawing.Point(206, 41);
+            this.mk_DataInicial.Name = "mk_DataInicial";
+            this.mk_DataInicial.Size = new System.Drawing.Size(101, 21);
+            this.mk_DataInicial.TabIndex = 688;
+            // 
+            // mk_DataFinal
+            // 
+            this.mk_DataFinal.Font = new System.Drawing.Font("Arial", 9F);
+            this.mk_DataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.mk_DataFinal.Location = new System.Drawing.Point(336, 41);
+            this.mk_DataFinal.Name = "mk_DataFinal";
+            this.mk_DataFinal.Size = new System.Drawing.Size(101, 21);
+            this.mk_DataFinal.TabIndex = 689;
+            // 
             // UI_Venda_Relatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(950, 700);
             this.ControlBox = false;
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "UI_Venda_Relatorio";
             this.Load += new System.EventHandler(this.UI_Venda_Relatorio_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UI_Venda_Relatorio_KeyDown);
@@ -390,8 +381,6 @@
         internal System.Windows.Forms.ComboBox cb_ID_Pessoa;
         internal System.Windows.Forms.Label Label52;
         internal System.Windows.Forms.TextBox txt_IDPedido;
-        internal System.Windows.Forms.MaskedTextBox mk_DataInicial;
-        internal System.Windows.Forms.MaskedTextBox mk_DataFinal;
         internal System.Windows.Forms.Label Label25;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Label label2;
@@ -410,5 +399,7 @@
         internal System.Windows.Forms.Label label27;
         internal System.Windows.Forms.ComboBox cb_Periodo;
         internal System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker mk_DataFinal;
+        private System.Windows.Forms.DateTimePicker mk_DataInicial;
     }
 }

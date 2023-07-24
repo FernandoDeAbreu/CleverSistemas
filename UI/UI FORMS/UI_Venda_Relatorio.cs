@@ -75,9 +75,6 @@ namespace Sistema.UI
             bt_Grava.Visible = false;
             bt_Edita.Visible = false;
 
-            mk_DataInicial.Text = util_dados.Config_Data(DateTime.Now, 11).ToString();
-            mk_DataFinal.Text = util_dados.Config_Data(DateTime.Now, 12).ToString();
-
             lb_Comissao1.Text = Parametro_Venda.Descricao_Comissao;
         }
 
