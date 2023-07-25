@@ -418,11 +418,11 @@ namespace Sistema.UI
             for (int i = 1; i <= 50; i++)
                 try
                 {
-                    if (util_dados.Verifica_int(util_dados.Decriptografa(RegKey.OpenSubKey("SystemSoft", true).GetValue(i + "ID").ToString())) > 0)
+                    if (util_dados.Verifica_int(util_dados.Decriptografa(RegKey.OpenSubKey("SystemSoft", true).GetValue(1 + "ID").ToString())) > 0)
                     {
                         _DT.Rows.Add();
-                        _DT.Rows[_DT.Rows.Count - 1]["ID"] = i;
-                        _DT.Rows[_DT.Rows.Count - 1]["Descricao"] = RegKey.OpenSubKey("SystemSoft", true).GetValue(i + "Empresa").ToString();
+                        _DT.Rows[_DT.Rows.Count - 1]["ID"] = 1;
+                        _DT.Rows[_DT.Rows.Count - 1]["Descricao"] = RegKey.OpenSubKey("SystemSoft", true).GetValue(1 + "Empresa").ToString();
 
                         _DT.AcceptChanges();
                     }

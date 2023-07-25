@@ -12,7 +12,7 @@ namespace Sistema.DAL
     {
         //ULTIMA ALTERAÇÃO: 09/06/2023
 
-        public int UltimaVersaoDB = 257;
+        public int UltimaVersaoDB = 258;
         public int UltimaVersaoSistema = 1351;
 
         #region VARIAVEIS DIVERSAS
@@ -10208,8 +10208,17 @@ namespace Sistema.DAL
                         conexao.Executa_Comando(cmd);
 
                         break;
-                        #endregion
+                    #endregion
+                    #region 258
+                    case 258:
 
+                        sql = "ALTER TABLE VENDA_SEQUENCIA ";
+                        sql += "ADD ID_Usuario_Sistema int ";
+                        cmd.CommandText = sql;
+                        conexao.Executa_Comando(cmd);
+
+                        break;
+                        #endregion
                 }
                 cmd.CommandText = $"UPDATE Versao SET Versao = {UltimaVersaoSistema}, BD = {UltimaVersaoDB}";
                 conexao.Executa_Comando(cmd);

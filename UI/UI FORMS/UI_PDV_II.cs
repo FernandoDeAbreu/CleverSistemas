@@ -23,7 +23,7 @@ namespace Sistema.UI.UI_FORMS
         public string pagamentoEfetuado;
         public string Moeda;
         private string descricaoGrupo;
-        private string contadorDeVendas = "";
+        private int contadorDeVendas = 0;
 
         public UI_PDV_II()
         {
@@ -419,7 +419,7 @@ namespace Sistema.UI.UI_FORMS
 
             ReportParameter p1 = new ReportParameter("FormaPagto", Financeiro);
             ReportParameter p2 = new ReportParameter("TotalPedido", util_dados.ConfigNumDecimal(lblTotal.Text, 3));
-            ReportParameter p3 = new ReportParameter("Vendedor", contadorDeVendas);
+            ReportParameter p3 = new ReportParameter("Vendedor", Convert.ToString(contadorDeVendas));
 
             rpt.DataSources.Add(ds_Empresa);
             rpt.DataSources.Add(ds_Pedido);
@@ -684,10 +684,11 @@ namespace Sistema.UI.UI_FORMS
         private void gravarSeqVenda()
         {
             //definição do comando sql
-            string sql = "UPDATE Venda_Sequencia SET SEQ = SEQ+1";
+            string sql = "INSERT INTO VENDA_SEQUENCIA (SEQ, ID_Usuario_Sistema) VALUES (@SEQ, @ID_Usuario_Sistema)";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
-
+            comando.Parameters.Add(new SqlParameter("ID_Usuario_Sistema", Parametro_Usuario.ID_Usuario_Ativo));
+            comando.Parameters.Add(new SqlParameter("SEQ", contadorDeVendas + 1 ));
             sqlConn.Open();
             comando.ExecuteNonQuery();
             sqlConn.Close();
@@ -696,10 +697,11 @@ namespace Sistema.UI.UI_FORMS
         private void zerarSeqVenda()
         {
             //definição do comando sql
-            string sql = "UPDATE Venda_Sequencia SET SEQ = 0";
+            string sql = "INSERT INTO VENDA_SEQUENCIA (SEQ, ID_Usuario_Sistema) VALUES (@SEQ, @ID_Usuario_Sistema)";
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
-
+            comando.Parameters.Add(new SqlParameter("ID_Usuario_Sistema", Parametro_Usuario.ID_Usuario_Ativo));
+            comando.Parameters.Add(new SqlParameter("SEQ", "0"));
             sqlConn.Open();
             comando.ExecuteNonQuery();
             sqlConn.Close();
@@ -707,7 +709,7 @@ namespace Sistema.UI.UI_FORMS
 
         private void retornarSeqVenda()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Venda_Sequencia", sqlConn);
+            SqlCommand cmd = new SqlCommand($"SELECT TOP 1 * FROM Venda_Sequencia WHERE  ID_Usuario_Sistema = {Parametro_Usuario.ID_Usuario_Ativo}  ORDER BY ID DESC ", sqlConn);
 
             sqlConn.Open();
 
@@ -715,8 +717,8 @@ namespace Sistema.UI.UI_FORMS
 
             while (dr.Read())
             {
-                contadorDeVendas = dr[1].ToString();
-                label1.Text = "Venda Balcão Nº " + contadorDeVendas;
+                contadorDeVendas = Convert.ToInt32(dr[1].ToString());
+                label1.Text = "Venda Balcão Nº " + (contadorDeVendas + 1);
             }
 
             sqlConn.Close();
