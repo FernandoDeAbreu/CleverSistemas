@@ -162,8 +162,8 @@ namespace Sistema.UI.UI_FORMS
                     //  System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
                     PesquisarVersao();
                     PesquisarLog();
-                    GravarMySqlRemoto();
-                    BuscaNovaVersao();
+                    //GravarMySqlRemoto();
+                    //BuscaNovaVersao();
                    
                 }
             }

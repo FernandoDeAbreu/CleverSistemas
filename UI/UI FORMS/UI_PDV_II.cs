@@ -782,7 +782,7 @@ namespace Sistema.UI.UI_FORMS
             comando.Parameters.Add(new SqlParameter("Data", DateTime.Now.ToShortDateString()));
             comando.Parameters.Add(new SqlParameter("Entrega", DateTime.Now.ToShortDateString()));
             comando.Parameters.Add(new SqlParameter("Informacao", "PDV Gourmet"));
-            comando.Parameters.Add(new SqlParameter("ID_UsuarioComissao1", "1"));
+            comando.Parameters.Add(new SqlParameter("ID_UsuarioComissao1", Parametro_Usuario.ID_Usuario_Ativo));
             comando.Parameters.Add(new SqlParameter("ID_UsuarioComissao2", "0"));
             comando.Parameters.Add(new SqlParameter("DataFatura", DateTime.Now.ToShortDateString()));
             comando.Parameters.Add(new SqlParameter("Comprador", ""));
