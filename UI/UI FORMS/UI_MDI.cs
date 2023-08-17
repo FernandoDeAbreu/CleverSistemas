@@ -4,6 +4,7 @@ using Sistema.UTIL;
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -16,8 +17,6 @@ namespace Sistema.UI
             InitializeComponent();
             this.Size = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height - 30);
         }
-
-
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private static extern void ReleaseCapture();
@@ -88,14 +87,41 @@ namespace Sistema.UI
         {
             BLL_Sistema = new BLL_Sistema();
 
-            if (this.panelContenedor.Controls.Count > 0)
-                this.panelContenedor.Controls.RemoveAt(0);
-            UI_PAGINA_INICIAL a = new UI_PAGINA_INICIAL();
-            a.TopLevel = false;
-            a.Dock = DockStyle.Fill;
-            this.panelContenedor.Controls.Add(a);
-            this.panelContenedor.Tag = a;
-            a.Show();
+        
+
+            #region LOGO RELATÓRIO
+
+            BLL_Imagem = new BLL_Imagem();
+            Imagem = new DTO_Imagem();
+            Imagem.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
+            Imagem.Tipo = 1;
+
+            DataTable _DT = new DataTable();
+
+            _DT = BLL_Imagem.Busca(Imagem);
+            byte[] bits = (byte[])(_DT.Rows[0][0]);
+
+            MemoryStream memorybits = new MemoryStream(bits);
+            Bitmap ImagemConvertida = new Bitmap(memorybits);
+
+            #endregion LOGO RELATÓRIO
+
+            #region LOGO EMPRESA
+
+            Imagem = new DTO_Imagem();
+            Imagem.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
+            Imagem.Tipo = 2;
+
+            _DT = new DataTable();
+
+            _DT = BLL_Imagem.Busca(Imagem);
+
+            bits = (byte[])(_DT.Rows[0][0]);
+            memorybits = new MemoryStream(bits);
+            ImagemConvertida = new Bitmap(memorybits);
+            panelContenedor.Panel2.BackgroundImage = ImagemConvertida;
+
+            #endregion LOGO EMPRESA
 
             if (Parametro_Usuario.ID_Usuario_Ativo != 0)
             {
@@ -105,7 +131,6 @@ namespace Sistema.UI
                 Usuario_Parametros.ID_Usuario = Parametro_Usuario.ID_Usuario_Ativo;
                 Usuario_Parametros.Menu = string.Empty;
 
-                DataTable _DT = new DataTable();
                 _DT = BLL_Usuario_Acesso.Busca(Usuario_Parametros);
 
                 foreach (ToolStripMenuItem MenuItem in this.menu_Principal.Items)
@@ -122,10 +147,9 @@ namespace Sistema.UI
                             }
                         }
                     }
-                 }
+                }
             }
 
-           
             Sistema = new DTO_Sistema();
             Sistema.ID = 1;
             var dtSistema = BLL_Sistema.Busca(Sistema);

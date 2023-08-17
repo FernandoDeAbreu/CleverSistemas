@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UI_Produto_Servico));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gb_Cadastro = new System.Windows.Forms.GroupBox();
             this.bt_PesquisaConta = new System.Windows.Forms.Button();
             this.mk_Cod_Grupo = new System.Windows.Forms.MaskedTextBox();
@@ -538,10 +538,10 @@
             // 
             // col_MargemVenda
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.col_MargemVenda.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.col_MargemVenda.DefaultCellStyle = dataGridViewCellStyle11;
             this.col_MargemVenda.HeaderText = "MARGEM DE VENDA";
             this.col_MargemVenda.Name = "col_MargemVenda";
             this.col_MargemVenda.ReadOnly = true;
@@ -551,10 +551,10 @@
             // col_ValorVenda
             // 
             this.col_ValorVenda.DataPropertyName = "ValorVenda";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.col_ValorVenda.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.col_ValorVenda.DefaultCellStyle = dataGridViewCellStyle12;
             this.col_ValorVenda.HeaderText = "VALOR VENDA";
             this.col_ValorVenda.Name = "col_ValorVenda";
             this.col_ValorVenda.ReadOnly = true;
@@ -564,9 +564,9 @@
             // col_UltimoReajuste
             // 
             this.col_UltimoReajuste.DataPropertyName = "ultimoReajuste";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.col_UltimoReajuste.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.NullValue = null;
+            this.col_UltimoReajuste.DefaultCellStyle = dataGridViewCellStyle13;
             this.col_UltimoReajuste.HeaderText = "ÚLT. REAJUSTE";
             this.col_UltimoReajuste.Name = "col_UltimoReajuste";
             this.col_UltimoReajuste.ReadOnly = true;
@@ -935,10 +935,10 @@
             // col_Comissao
             // 
             this.col_Comissao.DataPropertyName = "Comissao";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.col_Comissao.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.col_Comissao.DefaultCellStyle = dataGridViewCellStyle14;
             this.col_Comissao.HeaderText = "COMISSÃO";
             this.col_Comissao.Name = "col_Comissao";
             this.col_Comissao.ReadOnly = true;
@@ -1005,7 +1005,7 @@
             this.Imagem.Location = new System.Drawing.Point(7, 62);
             this.Imagem.Name = "Imagem";
             this.Imagem.Size = new System.Drawing.Size(251, 207);
-            this.Imagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Imagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Imagem.TabIndex = 1;
             this.Imagem.TabStop = false;
             // 
@@ -1463,8 +1463,8 @@
             // col_DescricaoGrade
             // 
             this.col_DescricaoGrade.DataPropertyName = "DescricaoGrade";
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            this.col_DescricaoGrade.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            this.col_DescricaoGrade.DefaultCellStyle = dataGridViewCellStyle15;
             this.col_DescricaoGrade.HeaderText = "DESCRIÇÃO GRADE";
             this.col_DescricaoGrade.Name = "col_DescricaoGrade";
             this.col_DescricaoGrade.ReadOnly = true;
@@ -1473,8 +1473,8 @@
             // 
             // col_Cod_Interno
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            this.col_Cod_Interno.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            this.col_Cod_Interno.DefaultCellStyle = dataGridViewCellStyle16;
             this.col_Cod_Interno.HeaderText = "CÓD. INTERNO";
             this.col_Cod_Interno.Name = "col_Cod_Interno";
             this.col_Cod_Interno.ReadOnly = true;
@@ -1484,10 +1484,10 @@
             // col_EstoqueMinimo
             // 
             this.col_EstoqueMinimo.DataPropertyName = "EstoqueMinimo";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.col_EstoqueMinimo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N2";
+            dataGridViewCellStyle17.NullValue = null;
+            this.col_EstoqueMinimo.DefaultCellStyle = dataGridViewCellStyle17;
             this.col_EstoqueMinimo.HeaderText = "EST. MÍNIMO";
             this.col_EstoqueMinimo.Name = "col_EstoqueMinimo";
             this.col_EstoqueMinimo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -1495,9 +1495,9 @@
             // col_EstoqueIdeal
             // 
             this.col_EstoqueIdeal.DataPropertyName = "EstoqueIdeal";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            this.col_EstoqueIdeal.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N2";
+            this.col_EstoqueIdeal.DefaultCellStyle = dataGridViewCellStyle18;
             this.col_EstoqueIdeal.HeaderText = "EST. IDEAL";
             this.col_EstoqueIdeal.Name = "col_EstoqueIdeal";
             this.col_EstoqueIdeal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -1505,9 +1505,9 @@
             // col_EstoqueAtual
             // 
             this.col_EstoqueAtual.DataPropertyName = "EstoqueAtual";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            this.col_EstoqueAtual.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N2";
+            this.col_EstoqueAtual.DefaultCellStyle = dataGridViewCellStyle19;
             this.col_EstoqueAtual.HeaderText = "EST. ATUAL";
             this.col_EstoqueAtual.Name = "col_EstoqueAtual";
             this.col_EstoqueAtual.ReadOnly = true;
@@ -1652,9 +1652,9 @@
             // 
             // col_Qt_Estrutura
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Format = "N3";
-            this.col_Qt_Estrutura.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Format = "N3";
+            this.col_Qt_Estrutura.DefaultCellStyle = dataGridViewCellStyle20;
             this.col_Qt_Estrutura.HeaderText = "QUANTIDADE";
             this.col_Qt_Estrutura.Name = "col_Qt_Estrutura";
             this.col_Qt_Estrutura.ReadOnly = true;
@@ -1701,7 +1701,7 @@
             this.txt_InfoAdicional2.Location = new System.Drawing.Point(7, 96);
             this.txt_InfoAdicional2.MaxLength = 60;
             this.txt_InfoAdicional2.Name = "txt_InfoAdicional2";
-            this.txt_InfoAdicional2.Size = new System.Drawing.Size(273, 21);
+            this.txt_InfoAdicional2.Size = new System.Drawing.Size(656, 21);
             this.txt_InfoAdicional2.TabIndex = 2;
             this.txt_InfoAdicional2.Tag = "T";
             this.txt_InfoAdicional2.Leave += new System.EventHandler(this.txt_Referencia_Leave);
@@ -1721,7 +1721,7 @@
             this.txt_InfoAdicional1.Location = new System.Drawing.Point(7, 37);
             this.txt_InfoAdicional1.MaxLength = 60;
             this.txt_InfoAdicional1.Name = "txt_InfoAdicional1";
-            this.txt_InfoAdicional1.Size = new System.Drawing.Size(273, 21);
+            this.txt_InfoAdicional1.Size = new System.Drawing.Size(653, 21);
             this.txt_InfoAdicional1.TabIndex = 1;
             this.txt_InfoAdicional1.Tag = "T";
             this.txt_InfoAdicional1.Leave += new System.EventHandler(this.txt_Referencia_Leave);
@@ -2223,7 +2223,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(950, 700);
             this.ControlBox = false;
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "UI_Produto_Servico";
             this.Load += new System.EventHandler(this.UI_Produto_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UI_Produto_KeyDown);

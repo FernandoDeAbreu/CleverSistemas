@@ -5,15 +5,14 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Sistema.UI.UI_FORMS
+namespace CleverUpdater
 {
-    public partial class UI_UsuarioConectado : Form
+    public partial class frmUpdater : Form
     {
-        public UI_UsuarioConectado()
+        public frmUpdater()
         {
             InitializeComponent();
         }
-
         private int time = 0;
         private bool open = true;
 
@@ -110,24 +109,24 @@ namespace Sistema.UI.UI_FORMS
                 lblVersaoDisponivelSistema.Text = _DT.Rows[0]["NovaVersaoSistema"].ToString();
                 lblVersaoDisponivelBanco.Text = _DT.Rows[0]["NovaVersaoBanco"].ToString();
 
-                //if (Convert.ToInt32(lblVersaoDisponivelSistema.Text) > Convert.ToInt32(LblVersaoSistema.Text))
-                //{
-                //    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                //    {
-                //        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
-                //        Application.Exit();
-                //        return;
-                //    }
-                //}
-                //if (Convert.ToInt32(lblVersaoDisponivelBanco.Text) > Convert.ToInt32(LblVersaoBanco.Text))
-                //{
-                //    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                //    {
-                //        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
-                //        Application.Exit();
-                //        return;
-                //    }
-                //}
+                if (Convert.ToInt32(lblVersaoDisponivelSistema.Text) > Convert.ToInt32(LblVersaoSistema.Text))
+                {
+                    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
+                        Application.Exit();
+                        return;
+                    }
+                }
+                if (Convert.ToInt32(lblVersaoDisponivelBanco.Text) > Convert.ToInt32(LblVersaoBanco.Text))
+                {
+                    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
+                        Application.Exit();
+                        return;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -135,7 +134,7 @@ namespace Sistema.UI.UI_FORMS
             }
         }
 
-        private void UI_UsuarioConectado_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmUpdater_FormClosing(object sender, FormClosingEventArgs e)
         {
             // e.Cancel = true; cancela o Fechamento do Form
             Hide();
@@ -143,7 +142,7 @@ namespace Sistema.UI.UI_FORMS
             notifyIcon.Visible = true;
         }
 
-        private void UI_UsuarioConectado_Load(object sender, EventArgs e)
+        private void frmUpdater_Load(object sender, EventArgs e)
         {
             PesquisarVersao();
             PesquisarLog();

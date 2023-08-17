@@ -142,6 +142,9 @@
   <data name="bt_Concluido" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Concluido.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="configuracao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\configuracao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bt_Servidor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Servidor.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,6 +162,9 @@
   </data>
   <data name="upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\upload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="585e4829cb11b227491c338d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\585e4829cb11b227491c338d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,6 +226,9 @@
   <data name="bt_Word" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Word.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cash_terminal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cash_terminal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -228,9 +237,6 @@
   </data>
   <data name="Pedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pedido.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bt_ConfigRede" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bt_ConfigRede.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bt_Transmitir" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Transmitir.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -400,8 +406,8 @@
   <data name="bt_Correios" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bt_Correios.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\download.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bt_ConfigRede" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bt_ConfigRede.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="New Logo Clever" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\New Logo Clever.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -412,7 +418,7 @@
   <data name="unchecked" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unchecked.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="585e4829cb11b227491c338d" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\585e4829cb11b227491c338d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ferramenta-de-configuracao-do-gears" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ferramenta-de-configuracao-do-gears.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -683,6 +683,16 @@ namespace Sistema.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap configuracao {
+            get {
+                object obj = ResourceManager.GetObject("configuracao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap database_gear {
             get {
                 object obj = ResourceManager.GetObject("database_gear", resourceCulture);
@@ -756,6 +766,16 @@ namespace Sistema.UI.Properties {
         internal static System.Drawing.Bitmap fechar1616 {
             get {
                 object obj = ResourceManager.GetObject("fechar1616", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ferramenta_de_configuracao_do_gears {
+            get {
+                object obj = ResourceManager.GetObject("ferramenta-de-configuracao-do-gears", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

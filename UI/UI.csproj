@@ -979,12 +979,6 @@
     <Compile Include="UI FORMS\UI_PDV_MENU.Designer.cs">
       <DependentUpon>UI_PDV_MENU.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI FORMS\UI_PAGINA_INICIAL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI FORMS\UI_PAGINA_INICIAL.Designer.cs">
-      <DependentUpon>UI_PAGINA_INICIAL.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI FORMS\UI_FROTA_VEICULOS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1197,9 +1191,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI FORMS\UI_ManutencaoBD.resx">
       <DependentUpon>UI_ManutencaoBD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI FORMS\UI_PAGINA_INICIAL.resx">
-      <DependentUpon>UI_PAGINA_INICIAL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI FORMS\UI_PDV_II.resx">
       <DependentUpon>UI_PDV_II.cs</DependentUpon>
@@ -1791,6 +1782,8 @@
     <None Include="Resources\degrade.png" />
     <None Include="Resources\Novo Moscote Clever.png" />
     <None Include="Resources\585e4829cb11b227491c338d.png" />
+    <None Include="Resources\configuracao.png" />
+    <None Include="Resources\ferramenta-de-configuracao-do-gears.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

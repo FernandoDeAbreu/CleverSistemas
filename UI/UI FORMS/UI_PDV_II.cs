@@ -24,6 +24,8 @@ namespace Sistema.UI.UI_FORMS
         public string Moeda;
         private string descricaoGrupo;
         private int contadorDeVendas = 0;
+        private bool exibirPromocao = false;
+        private int id_Tabela = 1;
 
         public UI_PDV_II()
         {
@@ -61,8 +63,8 @@ namespace Sistema.UI.UI_FORMS
 
         private void DataHora_Tick(object sender, EventArgs e)
         {
-            lb_Data.Text = DateTime.Now.ToShortDateString();
-            lb_Horario.Text = DateTime.Now.ToLongTimeString();
+            //lb_Data.Text = DateTime.Now.ToShortDateString();
+            //lb_Horario.Text = DateTime.Now.ToLongTimeString();
         }
 
         #endregion TIMER
@@ -100,9 +102,16 @@ namespace Sistema.UI.UI_FORMS
         private void carregarGrid()
         {
             this.flowLayoutPanel1.Controls.Clear();
+            if (descricaoGrupo == null)
+                descricaoGrupo = "is not null";
 
-            SqlCommand cmd = new SqlCommand(
-              " SELECT * FROM V_Produto_Venda where DescricaoGrupo " + descricaoGrupo + "", sqlConn);
+            var sql1 = "SELECT * FROM V_Produto_Venda where DescricaoGrupo " + descricaoGrupo + " order by ID_Tabela desc,  ID";
+            var sql2 = "SELECT * FROM V_Produto_Venda where DescricaoGrupo " + descricaoGrupo + " and ID_Tabela = 1";
+
+            if (!exibirPromocao)
+                sql1 = sql2;
+
+            SqlCommand cmd = new SqlCommand(sql1, sqlConn);
 
             sqlConn.Open();
 
@@ -129,6 +138,8 @@ namespace Sistema.UI.UI_FORMS
                 panelProduto.Size = new System.Drawing.Size(186, 84);
                 panelProduto.TabIndex = 0;
                 panelProduto.BackColor = System.Drawing.Color.White;
+                if (exibirPromocao && dr["ID_Tabela"].ToString() != "1")
+                    panelProduto.BackColor = Color.Red;
 
                 //
                 // pictureBoxProduto
@@ -212,7 +223,14 @@ namespace Sistema.UI.UI_FORMS
 
                 descricaoGrupo = dg_GrupoNivel.CurrentRow.Cells[2].Value.ToString();
                 label2.Text = descricaoGrupo;
-                descricaoGrupo = " = '" + descricaoGrupo + "'";
+                if (descricaoGrupo != null)
+                {
+                    descricaoGrupo = " = '" + descricaoGrupo + "'";
+                }
+                else
+                {
+                    descricaoGrupo = "is not null";
+                }
             }
             catch (Exception)
             {
@@ -224,7 +242,7 @@ namespace Sistema.UI.UI_FORMS
 
         private void pesquisarProduto()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM V_Produto_Venda where id = " + codProd, sqlConn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM V_Produto_Venda where ID_Tabela = " + id_Tabela + " and id = " + codProd, sqlConn);
 
             sqlConn.Open();
 
@@ -633,8 +651,14 @@ namespace Sistema.UI.UI_FORMS
 
         private void b_Click(object sender, EventArgs e)
         {
+            id_Tabela = 1;
+
             Panel b = sender as Panel;
             codProd = b.Name;
+
+            if (b.BackColor != Color.White)
+                id_Tabela = 2;
+
             pesquisarProduto();
             totalizador();
         }
@@ -688,7 +712,7 @@ namespace Sistema.UI.UI_FORMS
 
             SqlCommand comando = new SqlCommand(sql, sqlConn);
             comando.Parameters.Add(new SqlParameter("ID_Usuario_Sistema", Parametro_Usuario.ID_Usuario_Ativo));
-            comando.Parameters.Add(new SqlParameter("SEQ", contadorDeVendas + 1 ));
+            comando.Parameters.Add(new SqlParameter("SEQ", contadorDeVendas + 1));
             sqlConn.Open();
             comando.ExecuteNonQuery();
             sqlConn.Close();
@@ -1040,6 +1064,19 @@ namespace Sistema.UI.UI_FORMS
                 zerarSeqVenda();
                 retornarSeqVenda();
             }
+        }
+
+        private void bntConfiguracao_Click(object sender, EventArgs e)
+        {
+            if (exibirPromocao)
+            {
+                exibirPromocao = false;
+            }
+            else
+            {
+                exibirPromocao = true;
+            }
+            carregarGrid();
         }
     }
 }
