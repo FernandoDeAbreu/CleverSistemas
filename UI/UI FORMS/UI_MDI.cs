@@ -119,7 +119,7 @@ namespace Sistema.UI
             bits = (byte[])(_DT.Rows[0][0]);
             memorybits = new MemoryStream(bits);
             ImagemConvertida = new Bitmap(memorybits);
-            panelContenedor.Panel2.BackgroundImage = ImagemConvertida;
+            panelContenedor.BackgroundImage = ImagemConvertida;
 
             #endregion LOGO EMPRESA
 

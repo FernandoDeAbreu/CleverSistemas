@@ -258,8 +258,7 @@
             this.iconcerrar = new System.Windows.Forms.PictureBox();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
-            this.panelContenedor = new System.Windows.Forms.SplitContainer();
-            this.lbl_BasedeConhecimento = new System.Windows.Forms.Label();
+            this.panelContenedor = new System.Windows.Forms.Panel();
             equipamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_Principal.SuspendLayout();
             this.panel_Form.SuspendLayout();
@@ -270,9 +269,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconrestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconmaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelContenedor)).BeginInit();
-            this.panelContenedor.Panel1.SuspendLayout();
-            this.panelContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // equipamentoToolStripMenuItem
@@ -2223,35 +2219,12 @@
             this.panelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelContenedor.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.panelContenedor.Location = new System.Drawing.Point(-1, 74);
+            this.panelContenedor.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelContenedor.Location = new System.Drawing.Point(-1, 73);
             this.panelContenedor.Name = "panelContenedor";
-            // 
-            // panelContenedor.Panel1
-            // 
-            this.panelContenedor.Panel1.Controls.Add(this.lbl_BasedeConhecimento);
-            // 
-            // panelContenedor.Panel2
-            // 
-            this.panelContenedor.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panelContenedor.Size = new System.Drawing.Size(950, 596);
-            this.panelContenedor.SplitterDistance = 145;
-            this.panelContenedor.TabIndex = 1;
-            // 
-            // lbl_BasedeConhecimento
-            // 
-            this.lbl_BasedeConhecimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_BasedeConhecimento.AutoSize = true;
-            this.lbl_BasedeConhecimento.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_BasedeConhecimento.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.lbl_BasedeConhecimento.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbl_BasedeConhecimento.Image = global::Sistema.UI.Properties.Resources.bt_Localizar;
-            this.lbl_BasedeConhecimento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_BasedeConhecimento.Location = new System.Drawing.Point(4, 573);
-            this.lbl_BasedeConhecimento.Name = "lbl_BasedeConhecimento";
-            this.lbl_BasedeConhecimento.Size = new System.Drawing.Size(186, 16);
-            this.lbl_BasedeConhecimento.TabIndex = 0;
-            this.lbl_BasedeConhecimento.Text = "    Base de Conhecimento";
+            this.panelContenedor.Size = new System.Drawing.Size(951, 592);
+            this.panelContenedor.TabIndex = 0;
             // 
             // UI_MDI
             // 
@@ -2283,10 +2256,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconrestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconmaximizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).EndInit();
-            this.panelContenedor.Panel1.ResumeLayout(false);
-            this.panelContenedor.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelContenedor)).EndInit();
-            this.panelContenedor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2519,7 +2488,6 @@
         private System.Windows.Forms.Label tss_Empresa;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem frenteDeCaixaPDV2ToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer panelContenedor;
-        private System.Windows.Forms.Label lbl_BasedeConhecimento;
+        private System.Windows.Forms.Panel panelContenedor;
     }
 }
