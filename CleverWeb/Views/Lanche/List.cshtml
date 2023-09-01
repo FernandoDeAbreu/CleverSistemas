@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CleverWeb.Models.VProdutoVenda>
+
+<div>
+    <h2>Todos os Itens</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card col-sm-2 col-md-2 col-lg-2">
+                @if (item.Imagem != null && item.Imagem.Length > 0)
+                {
+                        <p><img class="imgPproduto mx-auto d-block" src="@Url.Action("ExibirImagem", "Lanche", new { id = item.Id })" alt="Imagem" /></p>
+                }
+                @if (item.IdTabela != 1)
+                {
+                    <p class="promo">Promoção</p>
+                }
+                <p>@item.Descricao</p>
+                <p>R$ @item.ValorVenda</p>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .imgPproduto {
+        width: 100px;
+        height: 100px;
+        object-fit: scale-down;
+    }
+    .card{
+        margin: 5px;
+    }
+    .promo{
+        background-color: red;
+        color: white;
+        text-align: center;
+        border-radius: 20px;
+    }
+</style>
+

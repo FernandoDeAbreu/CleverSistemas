@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CleverWeb.Models;
 
-public partial class Vendum
+public partial class Venda
 {
     public int Id { get; set; }
 

@@ -297,7 +297,7 @@ public partial class BdSystemContext : DbContext
 
     public virtual DbSet<VendaSequencium> VendaSequencia { get; set; }
 
-    public virtual DbSet<Vendum> Venda { get; set; }
+    public virtual DbSet<Venda> Venda { get; set; }
 
     public virtual DbSet<Versao> Versaos { get; set; }
 
@@ -3810,7 +3810,7 @@ public partial class BdSystemContext : DbContext
             entity.Property(e => e.Seq).HasColumnName("SEQ");
         });
 
-        modelBuilder.Entity<Vendum>(entity =>
+        modelBuilder.Entity<Venda>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_PedidoVenda");
 

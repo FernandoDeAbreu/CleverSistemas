@@ -101,38 +101,38 @@ namespace Sistema.UI.UI_FORMS
 
         public void BuscaNovaVersao()
         {
-            try
-            {
-                BLL_LogAcesso = new BLL_LogAcesso();
-                LogAcesso = new DTO_LogAcesso();
-                DataTable _DT = new DataTable();
-                _DT = BLL_LogAcesso.BuscaNovaVersao(LogAcesso);
-                lblVersaoDisponivelSistema.Text = _DT.Rows[0]["NovaVersaoSistema"].ToString();
-                lblVersaoDisponivelBanco.Text = _DT.Rows[0]["NovaVersaoBanco"].ToString();
+            //try
+            //{
+            //    BLL_LogAcesso = new BLL_LogAcesso();
+            //    LogAcesso = new DTO_LogAcesso();
+            //    DataTable _DT = new DataTable();
+            //    _DT = BLL_LogAcesso.BuscaNovaVersao(LogAcesso);
+            //    lblVersaoDisponivelSistema.Text = _DT.Rows[0]["NovaVersaoSistema"].ToString();
+            //    lblVersaoDisponivelBanco.Text = _DT.Rows[0]["NovaVersaoBanco"].ToString();
 
-                //if (Convert.ToInt32(lblVersaoDisponivelSistema.Text) > Convert.ToInt32(LblVersaoSistema.Text))
-                //{
-                //    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                //    {
-                //        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
-                //        Application.Exit();
-                //        return;
-                //    }
-                //}
-                //if (Convert.ToInt32(lblVersaoDisponivelBanco.Text) > Convert.ToInt32(LblVersaoBanco.Text))
-                //{
-                //    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                //    {
-                //        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
-                //        Application.Exit();
-                //        return;
-                //    }
-                //}
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(util_msg.msg_Erro + ex.Message, this.Text); throw;
-            }
+            //    //if (Convert.ToInt32(lblVersaoDisponivelSistema.Text) > Convert.ToInt32(LblVersaoSistema.Text))
+            //    //{
+            //    //    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //    //    {
+            //    //        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
+            //    //        Application.Exit();
+            //    //        return;
+            //    //    }
+            //    //}
+            //    //if (Convert.ToInt32(lblVersaoDisponivelBanco.Text) > Convert.ToInt32(LblVersaoBanco.Text))
+            //    //{
+            //    //    if (MessageBox.Show("Existem atualizações disponíveis para o seu sistema, Deseja atualizar agora?", "Clever Sistema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //    //    {
+            //    //        System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
+            //    //        Application.Exit();
+            //    //        return;
+            //    //    }
+            //    //}
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(util_msg.msg_Erro + ex.Message, this.Text); throw;
+            //}
         }
 
         private void UI_UsuarioConectado_FormClosing(object sender, FormClosingEventArgs e)
@@ -151,22 +151,24 @@ namespace Sistema.UI.UI_FORMS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            time++;
+            /*COMENTADO ATÉ EU VER UMA FORMA MELHOR DE GRAVAR LOG REMOTO -CONTA DA HOSTINGER EXPIROU- */
 
-            if (time > 10)
-            {
-                if (open)
-                {
-                    time = 0;
-                    open = false;
-                    //  System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
-                    PesquisarVersao();
-                    PesquisarLog();
-                    GravarMySqlRemoto();
-                    BuscaNovaVersao();
+            //time++;
 
-                }
-            }
+            //if (time > 10)
+            //{
+            //    if (open)
+            //    {
+            //        time = 0;
+            //        open = false;
+            //        //  System.Diagnostics.Process.Start("C:\\Clever\\CleverUpdate.exe");
+            //        PesquisarVersao();
+            //        PesquisarLog();
+            //        GravarMySqlRemoto();
+            //        BuscaNovaVersao();
+
+            //    }
+            //}
         }
     }
 }

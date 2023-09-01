@@ -1,0 +1,47 @@
+﻿@model VendaMobileViewModel
+
+<div class="Container">
+    <div class="row">
+        <div>
+            <h4>Itens do pedido:</h4>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Quantidade</th>
+                    <th>Produto</th>
+                    <th class="text-right">Preço</th>
+                    <th class="text-right">Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.VendaMobile.vendaItemMobiles)
+                {
+                    <tr>
+                        <td class="text-center">@item.Quantidade</td>
+                        <td class="text-center">@item.VProdutoVenda.Descricao</td>
+                        <td class="text-center">@item.VProdutoVenda.ValorVenda</td>
+                        <td class="text-right">@((item.VProdutoVenda.ValorVenda * item.Quantidade))</td>
+                        <td class="text-center">
+                            <a class="btn btn-danger bi bi-trash3 btn-sm" asp-controller="VendaMobile" asp-action="RemoverItemDoPedido" asp-route-produtoId="@item.VProdutoVenda.Id"></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td class ="text-right">@Model.VendaMobileTotal</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-right">
+            <div class="btn-group">
+                <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+                &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-primary" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+            </div>
+        </div>
+    </div>
+</div>

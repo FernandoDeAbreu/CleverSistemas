@@ -18,4 +18,6 @@ public partial class VendaItemMobile
     public int? TipoSaida { get; set; }
 
     public string? Imei { get; set; }
+
+    public VProdutoVenda VProdutoVenda { get; set;}
 }

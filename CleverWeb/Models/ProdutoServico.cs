@@ -28,7 +28,7 @@ public partial class ProdutoServico
 
     public string? Ncm { get; set; }
 
-    public decimal? ValorCompra { get; set; }
+    public decimal ValorCompra { get; set; }
 
     public decimal? OutrosCustos { get; set; }
 
