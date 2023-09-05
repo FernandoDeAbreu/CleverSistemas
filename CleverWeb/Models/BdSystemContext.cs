@@ -3775,6 +3775,10 @@ public partial class BdSystemContext : DbContext
                 .HasColumnName("IMEI");
             entity.Property(e => e.Informacao).HasMaxLength(200);
             entity.Property(e => e.Quantidade).HasColumnType("decimal(10, 2)");
+
+            entity.HasOne(e => e.ProdutoServico).WithMany(p => p.VendaItemMobile)
+                .HasForeignKey(d => d.IdVenda)
+                .HasConstraintName("FK__Venda_Mob__ID_Ve__116A8EFB");
         });
 
         modelBuilder.Entity<VendaMobile>(entity =>

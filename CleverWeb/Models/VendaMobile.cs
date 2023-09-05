@@ -109,7 +109,7 @@ public partial class VendaMobile
     {
         var total = _context.VendaItemMobiles
             .Where(c => c.IdVenda == IdVenda)
-            .Select(c => c.VProdutoVenda.ValorVenda * c.Quantidade).Sum();
+            .Select(c => c.ProdutoServico.ValorVenda * c.Quantidade).Sum();
         return total;
     }
 }

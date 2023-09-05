@@ -20,11 +20,11 @@
                 {
                     <tr>
                         <td class="text-center">@item.Quantidade</td>
-                        <td class="text-center">@item.VProdutoVenda.Descricao</td>
-                        <td class="text-center">@item.VProdutoVenda.ValorVenda</td>
-                        <td class="text-right">@((item.VProdutoVenda.ValorVenda * item.Quantidade))</td>
+                        <td class="text-center">@item.ProdutoServico.Descricao</td>
+                        <td class="text-center">@item.ProdutoServico.ValorVenda</td>
+                        <td class="text-right">@((item.ProdutoServico.ValorVenda * item.Quantidade))</td>
                         <td class="text-center">
-                            <a class="btn btn-danger bi bi-trash3 btn-sm" asp-controller="VendaMobile" asp-action="RemoverItemDoPedido" asp-route-produtoId="@item.VProdutoVenda.Id"></a>
+                            <a class="btn btn-danger bi bi-trash3 btn-sm" asp-controller="VendaMobile" asp-action="RemoverItemDoPedido" asp-route-produtoId="@item.ProdutoServico.Id"></a>
                         </td>
                     </tr>
                 }

@@ -82,4 +82,6 @@ public partial class VProdutoVenda
     public string? DescricaoGrupo { get; set; }
 
     public string? CodGrupo { get; set; }
+
+    public virtual ICollection<VendaItemMobile> VendaItemMobile { get; set; } = new List<VendaItemMobile>();
 }

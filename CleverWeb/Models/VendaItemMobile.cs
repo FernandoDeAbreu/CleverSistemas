@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleverWeb.ViewModel;
+using System;
 using System.Collections.Generic;
 
 namespace CleverWeb.Models;
@@ -19,5 +20,5 @@ public partial class VendaItemMobile
 
     public string? Imei { get; set; }
 
-    public VProdutoVenda VProdutoVenda { get; set;}
+    public virtual ProdutoServicoViewModel ProdutoServico { get; set;}
 }
