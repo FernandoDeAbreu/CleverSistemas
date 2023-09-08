@@ -199,7 +199,7 @@ namespace Sistema.NFe
                 bool ContribuinteICMS_Isento = false;
 
                 #region BUSCA INFORMAÇÃO DA NF-e
-                NFe.ID = ID_NFe;
+                NFe.ID_NFe = ID_NFe;
                 NFe.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
 
                 DR_NF = BLL_NF.Busca_NF(NFe).Rows[0];
@@ -5344,7 +5344,7 @@ namespace Sistema.NFe
                         BLL_NF = new BLL_NF();
 
                         NFe.Situacao = util_Param.NFe_Assinada;
-                        NFe.ID = ID_NFe;
+                        NFe.ID_NFe = ID_NFe;
                         NFe.ID_Empresa = Parametro_Empresa.ID_Empresa_Ativa;
 
                         BLL_NF.Altera_Situacao(NFe);

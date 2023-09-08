@@ -3009,7 +3009,9 @@ namespace Sistema.UI
                         switch (NF.Modelo)
                         {
                             case 65:
-                                _ProcessaNFe.Processa_NFCe(Convert.ToInt32(NF.ID_NFe), UTIL.ProcessoNF.Validar);
+                              //  _ProcessaNFe.Processa_NFCe(Convert.ToInt32(NF.ID_NFe), UTIL.ProcessoNF.Validar);
+                                _ProcessaNFe.Processa_NFe(Convert.ToInt32(NF.ID_NFe), UTIL.ProcessoNF.Validar);
+
                                 break;
 
                             case 55:
