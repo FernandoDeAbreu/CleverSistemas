@@ -527,6 +527,7 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["xPais"].ToString(), "Pais Emitente", ObOp.Opcional, 1, 60);
                 this.ChecaCampo(DR["fone"].ToString(), "Fone Emitente", ObOp.Opcional, 1, 14);
                 #endregion
+
                 #endregion
 
                 #region AVULSA(IMPLEMENTAR DEPOIS)
@@ -2808,6 +2809,7 @@ namespace Sistema.NFe
                 DR["serie"] = DR_NF["Serie"].ToString().Trim();
                 DR["nNF"] = DR_NF["ID_NFe"];
                 DR["dhEmi"] = util_dados.Config_Data(Convert.ToDateTime(DR_NF["DataEmissao"]), 13);
+                DR["dhSaiEnt"] = util_dados.Config_Data(Convert.ToDateTime(DR_NF["DataEmissao"]), 13);
                 DR["tpNF"] = DR_NF["TipoDocumento"];
                 DR["idDest"] = "1";
                 DR["cMunFG"] = DR_Emit["ID_Municipio"];
@@ -2834,6 +2836,7 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["serie"].ToString(), "Série", ObOp.Obrigatorio, 1, 3);
                 this.ChecaCampo(DR["nNF"].ToString(), "Número NF", ObOp.Obrigatorio, 1, 9);
                 this.ChecaCampo(DR["dhEmi"].ToString(), "Data Emissão", ObOp.Obrigatorio, 25, 25);
+                this.ChecaCampo(DR["dhSaiEnt"].ToString(), "Data Emissão", ObOp.Obrigatorio, 25, 25);
                 this.ChecaCampo(DR["tpNF"].ToString(), "Tipo de Emissão", ObOp.Obrigatorio, 1, 1);
                 this.ChecaCampo(DR["cMunFG"].ToString(), "Município Emissor", ObOp.Obrigatorio, 7, 7);
                 this.ChecaCampo(DR["tpImp"].ToString(), "Tipo de Impressão", ObOp.Obrigatorio, 1, 1);
@@ -2912,7 +2915,6 @@ namespace Sistema.NFe
                 DR["CEP"] = util_dados.Conf_strDoc_NFe(DR_Emit["CEP"]);
                 DR["cPais"] = DR_Emit["ID_Pais"];
                 DR["xPais"] = DR_Emit["Pais"];
-                DR["fone"] = util_dados.Conf_strDoc_NFe(DR_Emit["DDD"].ToString() + DR_Emit["NumeroTelefone"].ToString());
 
                 DS_NFe.Tables["enderEmit"].Rows.Add(DR);
 
@@ -2926,8 +2928,8 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["CEP"].ToString(), "CEP Emitente", ObOp.Obrigatorio, 8, 8);
                 this.ChecaCampo(DR["cPais"].ToString(), "Pais Emitente", ObOp.Opcional, 4, 4);
                 this.ChecaCampo(DR["xPais"].ToString(), "Pais Emitente", ObOp.Opcional, 1, 60);
-                this.ChecaCampo(DR["fone"].ToString(), "Fone Emitente", ObOp.Opcional, 1, 14);
                 #endregion
+
                 #endregion
 
                 #region DESTINATÁRIO
@@ -2979,9 +2981,8 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["indIEDest"].ToString(), "Identificador IE", ObOp.Obrigatorio, 1, 1);
 
                 #region ENDEREÇO DESTINATÁRIO
-                /*
-                DR = DS_NFe.Tables["enderDest"].NewRow();
 
+                DR = DS_NFe.Tables["enderDest"].NewRow();
                 DR["dest_Id"] = 0;
                 DR["xLgr"] = DR_Dest["Logradouro"].ToString().TrimEnd(); ;
                 DR["nro"] = DR_Dest["NumeroEndereco"].ToString().TrimEnd(); ;
@@ -3026,14 +3027,41 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["xPais"].ToString(), "xPais", ObOp.Opcional, 1, 60);
                 this.ChecaCampo(DR["fone"].ToString(), "fone", ObOp.Opcional, 1, 14);
 
-                //SE FOR EXPORTAÇÃO NÃO TEM CNPJ NEM IE
                 if (DR["UF"].ToString() == "EX")
                 {
                     DS_NFe.Tables["dest"].Rows[0]["IE"] = "";
                     DS_NFe.Tables["dest"].Rows[0]["CNPJ"] = "";
                 }
-                */
+
                 #endregion
+                #endregion
+
+                #region RETIRADA
+
+                DR = DS_NFe.Tables["retirada"].NewRow();
+
+                DR["infNFe_Id"] = 0;
+
+                CNPJ_CPF = "";
+                CNPJ_CPF = util_dados.Conf_strDoc_NFe(DR_Emit["CNPJ_CPF"].ToString());
+
+                if (CNPJ_CPF.Length == 14)
+                    DR["CNPJ"] = CNPJ_CPF;
+                if (CNPJ_CPF.Length == 11)
+                    DR["CPF"] = CNPJ_CPF;
+
+                DR["xNome"] = DR_Emit["Nome_Razao"].ToString().TrimEnd();             
+                DR["xLgr"] = DR_Emit["Logradouro"].ToString().TrimEnd();
+                DR["nro"] = DR_Emit["NumeroEndereco"].ToString().TrimEnd();
+                if (DR_Emit["Complemento"].ToString().Trim() != string.Empty)
+                    DR["xCpl"] = DR_Emit["Complemento"].ToString().TrimEnd();
+                DR["xBairro"] = DR_Emit["Bairro"].ToString().TrimEnd();
+                DR["cMun"] = DR_Emit["ID_Municipio"];
+                DR["xMun"] = DR_Emit["Municipio"];
+                DR["UF"] = DR_Emit["UF"];
+
+                DS_NFe.Tables["retirada"].Rows.Add(DR);
+
                 #endregion
 
                 #region AUTORIZAÇÃO XML
@@ -3181,45 +3209,12 @@ namespace Sistema.NFe
                         #region IMPOSTO
                         DR = DS_NFe.Tables["imposto"].NewRow();
 
-                        double AliqNacFederal = util_dados.Verifica_Double(DR_Item["AliqNacFederal"].ToString());
-                        double AliqImpFederal = util_dados.Verifica_Double(DR_Item["AliqImpFederal"].ToString());
-                        double AliqEstadudal = util_dados.Verifica_Double(DR_Item["AliqEstadual"].ToString());
-
-                        double TotalAliqNac = AliqNacFederal + AliqEstadudal;
-                        double TotalAliqImp = AliqImpFederal + AliqEstadudal;
-
-                        if (Convert.ToInt32(DR_Item["Origem"]) == 0 ||
-                           Convert.ToInt32(DR_Item["Origem"]) == 3 ||
-                            Convert.ToInt32(DR_Item["Origem"]) == 4 ||
-                            Convert.ToInt32(DR_Item["Origem"]) == 5)
-                        {
-                            if (TotalAliqNac > 0)
-                            {
-                                DR["vTotTrib"] = util_dados.ConfigNumDecimal(util_dados.Calcula_Porcentagem(TotalAliqNac, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"]))), 12);
-                                vTotalTrib += util_dados.Calcula_Porcentagem(TotalAliqNac, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"])));
-                                vTotalTribFereral += util_dados.Calcula_Porcentagem(AliqNacFederal, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"])));
-                                VTotalTribEstadual += util_dados.Calcula_Porcentagem(AliqEstadudal, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"])));
-                            }
-                            else
-                                DR["vTotTrib"] = util_dados.ConfigNumDecimal("0", 12);
-                        }
-                        else
-                            if (TotalAliqImp > 0)
-                        {
-                            DR["vTotTrib"] = util_dados.ConfigNumDecimal(util_dados.Calcula_Porcentagem(TotalAliqImp, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"]))), 12);
-                            vTotalTrib += util_dados.Calcula_Porcentagem(TotalAliqImp, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"])));
-                            vTotalTribFereral += util_dados.Calcula_Porcentagem(AliqImpFederal, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"])));
-                            VTotalTribEstadual += util_dados.Calcula_Porcentagem(AliqEstadudal, (Convert.ToDouble(DR_Item["Quantidade"]) * Convert.ToDouble(DR_Item["ValorUnitario"])));
-                        }
-                        else
-                            DR["vTotTrib"] = util_dados.ConfigNumDecimal("0", 12);
+                      
 
                         DR["imposto_Id"] = i + 1;
                         DR["det_Id"] = i + 1;
 
                         DS_NFe.Tables["imposto"].Rows.Add(DR);
-
-                        this.ChecaCampo(DR["vTotTrib"].ToString(), "vTotTrib", ObOp.Obrigatorio, 1, 15, 2);
 
                         #region ICMS NORMAL E ST
                         DR = DS_NFe.Tables["ICMS"].NewRow();
@@ -3719,6 +3714,7 @@ namespace Sistema.NFe
                             }
                         }
                         #endregion
+
                         #endregion
                         #endregion
                     }
