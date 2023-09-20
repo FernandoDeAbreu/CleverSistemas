@@ -3095,9 +3095,6 @@ namespace Sistema.NFe
                 #endregion
 
                 #region DETALHAMENTO DE PRODUTOS E SERVIÇOS
-                double vTotalTrib = 0;
-                double vTotalTribFereral = 0;
-                double VTotalTribEstadual = 0;
 
                 DT = new DataTable();
                 DT = BLL_NF.Busca_NF_Item(NFe);
@@ -3903,19 +3900,23 @@ namespace Sistema.NFe
                 DR["vBC"] = util_dados.ConfigNumDecimal(DR_NF["ValorBC"], 12);
                 DR["vICMS"] = util_dados.ConfigNumDecimal(DR_NF["ValorICMS"], 12);
                 DR["vICMSDeson"] = util_dados.ConfigNumDecimal(DR_NF["ValorICMSDesonerado"], 12);
+                DR["vFCP"] = util_dados.ConfigNumDecimal(0, 12);
                 DR["vBCST"] = util_dados.ConfigNumDecimal(DR_NF["ValorBCST"], 12);
                 DR["vST"] = util_dados.ConfigNumDecimal(DR_NF["ValorST"], 12);
+                DR["vFCPST"] = util_dados.ConfigNumDecimal(0, 12);
+                DR["vFCPSTRet"] = util_dados.ConfigNumDecimal(0, 12);
                 DR["vProd"] = util_dados.ConfigNumDecimal(DR_NF["ValorProduto"], 12);
                 DR["vFrete"] = util_dados.ConfigNumDecimal(DR_NF["ValorFrete"], 12);
                 DR["vSeg"] = util_dados.ConfigNumDecimal(DR_NF["ValorSeguro"], 12);
                 DR["vDesc"] = util_dados.ConfigNumDecimal(DR_NF["ValorDesconto"], 12);
                 DR["vII"] = util_dados.ConfigNumDecimal(DR_NF["ValorImportacao"], 12);
                 DR["vIPI"] = util_dados.ConfigNumDecimal(DR_NF["ValorIPI"], 12);
+                DR["vIPIDevol"] = util_dados.ConfigNumDecimal(0, 12);
                 DR["vPIS"] = util_dados.ConfigNumDecimal(DR_NF["ValorPIS"], 12);
                 DR["vCOFINS"] = util_dados.ConfigNumDecimal(DR_NF["ValorCOFINS"], 12);
                 DR["vOutro"] = util_dados.ConfigNumDecimal(DR_NF["ValorOutro"], 12);
                 DR["vNF"] = util_dados.ConfigNumDecimal(DR_NF["ValorTotal"], 12);
-                DR["vTotTrib"] = util_dados.ConfigNumDecimal(vTotalTrib, 12);
+                DR["vTotTrib"] = util_dados.ConfigNumDecimal(DR_NF["ValorTotal"], 12);
 
                 DS_NFe.Tables["ICMSTot"].Rows.Add(DR);
 
@@ -3933,7 +3934,6 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["vCOFINS"].ToString(), "vCOFINS", ObOp.Obrigatorio, 1, 15, 2);
                 this.ChecaCampo(DR["vOutro"].ToString(), "vOutro", ObOp.Obrigatorio, 1, 15, 2);
                 this.ChecaCampo(DR["vNF"].ToString(), "vNF", ObOp.Obrigatorio, 1, 15, 2);
-                this.ChecaCampo(DR["vTotTrib"].ToString(), "vNF", ObOp.Obrigatorio, 1, 15, 2);
                 #endregion
 
                 #region TOTAIS REFERENTE A ISSQN
@@ -3998,11 +3998,11 @@ namespace Sistema.NFe
 
                 DR = DS_NFe.Tables["pag"].NewRow();
                 DR["pag_Id"] = Qt_Produto.ToString();
-                DR["vTroco"] = util_dados.ConfigNumDecimal(DR_NF["ValorTotal"], 12);
                 DS_NFe.Tables["pag"].Rows.Add(DR);
 
                 DR = DS_NFe.Tables["detPag"].NewRow();
                 DR["pag_Id"] = Qt_Produto.ToString();
+                DR["indPag"] = Qt_Produto.ToString();
                 DR["tPag"] = "01";
                 DR["vPag"] = util_dados.ConfigNumDecimal(20, 12);
                 DS_NFe.Tables["detPag"].Rows.Add(DR);
@@ -4014,7 +4014,7 @@ namespace Sistema.NFe
                 this.ChecaCampo(DR["vPag"].ToString(), "vPag", ObOp.Opcional, 1, 15, 2);
 
                 #endregion
-
+                           
                 #region CONFIGURA CAMPOS ANTES DE GERAR O XML
                 string _tpEmis = DS_NFe.Tables["ide"].Rows[0]["tpEmis"].ToString();
 

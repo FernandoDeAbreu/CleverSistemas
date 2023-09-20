@@ -13,240 +13,97 @@
     <div class="card-body pt-3">
         <form asp-action="Create" class="row g-3">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <p>Cabeçalho</p>
             <div class="col-md-2">
                 <label asp-for="Tipo" class="control-label"></label>
-                <select asp-for="Tipo" class="form-control" asp-items="@Html.GetEnumSelectList<TipoProdutoEnum>()"></select>
+                <select asp-for="Tipo" class="form-control" asp-items="@Html.GetEnumSelectList<TipoProduto>()"></select>
                 <span asp-validation-for="Tipo" class="text-danger"></span>
             </div>
-            <div class="col-md-2">
-                <div class="form-check">
-                    <input asp-for="Situacao" class="form-check-input" asp-items="@Html.CheckBox("isActive",true)" />
-                    <label asp-for="Situacao" class="control-label"></label>
-                </div>
-            </div>
-
             <div class="col-md-12">
                 <label asp-for="Descricao" class="control-label"></label>
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
-
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label asp-for="Referencia" class="control-label"></label>
                 <input asp-for="Referencia" class="form-control" />
                 <span asp-validation-for="Referencia" class="text-danger"></span>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label asp-for="Barra" class="control-label"></label>
                 <input asp-for="Barra" class="form-control" />
                 <span asp-validation-for="Barra" class="text-danger"></span>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-8">
                 <label asp-for="Fabricante" class="control-label"></label>
                 <input asp-for="Fabricante" class="form-control" />
                 <span asp-validation-for="Fabricante" class="text-danger"></span>
             </div>
-            <div class="col-md-3">
-                <label asp-for="UnidadeTributavel" class="control-label"></label>
-                <input asp-for="UnidadeTributavel" class="form-control" />
-                <span asp-validation-for="UnidadeTributavel" class="text-danger"></span>
-            </div>
-
-            <div class="col-md-3">
-                <label asp-for="PesoB" class="control-label"></label>
-                <input asp-for="PesoB" class="form-control" />
-                <span asp-validation-for="PesoB" class="text-danger"></span>
-            </div>
-            <div class="col-md-3">
-                <label asp-for="PesoL" class="control-label"></label>
-                <input asp-for="PesoL" class="form-control" />
-                <span asp-validation-for="PesoL" class="text-danger"></span>
-            </div>
-            <div class="col-md-3">
-                <label asp-for="Validade" class="control-label"></label>
-                <input asp-for="Validade" class="form-control" />
-                <span asp-validation-for="Validade" class="text-danger"></span>
-            </div>
-            <div class="col-md-3">
-                <label asp-for="Garantia" class="control-label"></label>
-                <input asp-for="Garantia" class="form-control" />
-                <span asp-validation-for="Garantia" class="text-danger"></span>
-            </div>
-
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <label asp-for="Informacao" class="control-label"></label>
                 <input asp-for="Informacao" class="form-control" />
                 <span asp-validation-for="Informacao" class="text-danger"></span>
             </div>
-
+            <p>Custos</p>
             <div class="col-md-2">
-                <label asp-for="GrupoNivel" class="control-label"></label>
-                <input asp-for="GrupoNivel" class="form-control" />
-                <span asp-validation-for="GrupoNivel" class="text-danger"></span>
-            </div>
-
-
-            <div class="col-md-12">
-
-                <div class="card">
-                    <div class="card-body pt-3">
-                        <!-- Bordered Tabs -->
-                        <ul class="nav nav-tabs nav-tabs-bordered">
-
-                            <li class="nav-item">
-                                <label class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-custos">Custos</label>
-                            </li>
-
-                            <li class="nav-item">
-                                <label class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-Comissao">Comissões</label>
-                            </li>
-
-                            <li class="nav-item">
-                                <label class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-Fornecedor">Fiscal</label>
-                            </li>
-
-                            <li class="nav-item">
-                                <label class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-Estoque">Estoque</label>
-                            </li>
-
-                            <li class="nav-item">
-                                <label class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-InformacoesAdd">Informações</label>
-                            </li>
-
-                        </ul>
-                        <div class="tab-content pt-2">
-
-                            <div class="tab-pane  show active pt-3" id="tab-custos">
-
-                                <div class="col-md-2">
-                                    <label asp-for="ValorCompra" class="control-label"></label>
-                                    <input asp-for="ValorCompra" class="form-control" />
-                                    <span asp-validation-for="ValorCompra" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="OutrosCustos" class="control-label"></label>
-                                    <input asp-for="OutrosCustos" class="form-control" />
-                                    <span asp-validation-for="OutrosCustos" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="ValorIpi" class="control-label"></label>
-                                    <input asp-for="ValorIpi" class="form-control" />
-                                    <span asp-validation-for="ValorIpi" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="ValorSt" class="control-label"></label>
-                                    <input asp-for="ValorSt" class="form-control" />
-                                    <span asp-validation-for="ValorSt" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="CustoFinal" class="control-label"></label>
-                                    <input asp-for="CustoFinal" class="form-control" />
-                                    <span asp-validation-for="CustoFinal" class="text-danger"></span>
-                                </div>
-
-                            </div>
-
-                            <div class="tab-pane  pt-3" id="tab-Comissao">
-
-                                <div class="col-md-2">
-                                    <label asp-for="Imagem" class="control-label"></label>
-                                    <input asp-for="Imagem" class="form-control" />
-                                    <span asp-validation-for="Imagem" class="text-danger"></span>
-                                </div>
-
-                            </div>
-
-                            <div class="tab-pane  pt-3" id="tab-Fornecedor">
-
-                                <div class="col-md-2">
-                                    <label asp-for="Barratributavel" class="control-label"></label>
-                                    <input asp-for="Barratributavel" class="form-control" />
-                                    <span asp-validation-for="Barratributavel" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="Ncm" class="control-label"></label>
-                                    <input asp-for="Ncm" class="form-control" />
-                                    <span asp-validation-for="Ncm" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="IdGrupo" class="control-label"></label>
-                                    <input asp-for="IdGrupo" class="form-control" />
-                                    <span asp-validation-for="IdGrupo" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="Cnpjprodutor" class="control-label"></label>
-                                    <input asp-for="Cnpjprodutor" class="form-control" />
-                                    <span asp-validation-for="Cnpjprodutor" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="ExTipi" class="control-label"></label>
-                                    <input asp-for="ExTipi" class="form-control" />
-                                    <span asp-validation-for="ExTipi" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="IdCest" class="control-label"></label>
-                                    <input asp-for="IdCest" class="form-control" />
-                                    <span asp-validation-for="IdCest" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="CodAnp" class="control-label"></label>
-                                    <input asp-for="CodAnp" class="form-control" />
-                                    <span asp-validation-for="CodAnp" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="ProdutoEspecifico" class="control-label"></label>
-                                    <input asp-for="ProdutoEspecifico" class="form-control" />
-                                    <span asp-validation-for="ProdutoEspecifico" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="ClasseEnquadramento" class="control-label"></label>
-                                    <input asp-for="ClasseEnquadramento" class="form-control" />
-                                    <span asp-validation-for="ClasseEnquadramento" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane  pt-3" id="tab-Estoque">
-                                <div class="col-md-2">
-                                    <label asp-for="ControleEstoque" class="control-label"></label>
-                                    <input asp-for="ControleEstoque" class="form-control" />
-                                    <span asp-validation-for="ControleEstoque" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane  pt-3" id="tab-InformacoesAdd">
-                                <div class="col-md-2">
-                                    <label asp-for="InfoAdicional1" class="control-label"></label>
-                                    <input asp-for="InfoAdicional1" class="form-control" />
-                                    <span asp-validation-for="InfoAdicional1" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="InfoAdicional2" class="control-label"></label>
-                                    <input asp-for="InfoAdicional2" class="form-control" />
-                                    <span asp-validation-for="InfoAdicional2" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-2">
-                                    <label asp-for="Abc" class="control-label"></label>
-                                    <input asp-for="Abc" class="form-control" />
-                                    <span asp-validation-for="Abc" class="text-danger"></span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
+                <label asp-for="ValorCompra" class="control-label"></label>
+                <input asp-for="ValorCompra" class="form-control" type="number" id="ValorCompra" />
+                <span asp-validation-for="ValorCompra" class="text-danger"></span>
             </div>
             <div class="col-md-2">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="OutrosCustos" class="control-label"></label>
+                <input asp-for="OutrosCustos" class="form-control" type="number" id="OutrosCustos" />
+                <span asp-validation-for="OutrosCustos" class="text-danger"></span>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="ValorIpi" class="control-label"></label>
+                <input asp-for="ValorIpi" class="form-control" type="number" id="ValorIpi" />
+                <span asp-validation-for="ValorIpi" class="text-danger"></span>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="ValorSt" class="control-label"></label>
+                <input asp-for="ValorSt" class="form-control" type="number" id="ValorSt" />
+                <span asp-validation-for="ValorSt" class="text-danger"></span>
+            </div>
+            <div class="col-md-2">
+                <label asp-for="CustoFinal" class="control-label"></label>
+                <input asp-for="CustoFinal" class="form-control" id="CustoFinal" readonly />
+                <span asp-validation-for="CustoFinal" class="text-danger"></span>
+            </div>
+            <div class="col-md-12 d-flex justify-content-end" style="margin-top: 20px">
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-primary" style="margin-left: 10px" />
             </div>
         </form>
     </div>
 </div>
+<script>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    const valorCompraInput = document.getElementById('ValorCompra');
+    const valorOutrosCustosInput = document.getElementById('OutrosCustos');
+    const valorIpiInput = document.getElementById('ValorIpi');
+    const valorStInput = document.getElementById('ValorSt');
+    const custoFinalInput = document.getElementById('CustoFinal');
+
+
+    valorCompraInput.addEventListener('change', calcularCustoFinal);
+    valorOutrosCustosInput.addEventListener('change', calcularCustoFinal);
+    valorIpiInput.addEventListener('change', calcularCustoFinal);
+    valorStInput.addEventListener('change', calcularCustoFinal);
+
+
+    function calcularCustoFinal() {
+
+        const valorCompra = parseFloat(valorCompraInput.value) || 0;
+        const valorOutrosCustos = parseFloat(valorOutrosCustosInput.value) || 0;
+        const valorIpi = parseFloat(valorIpiInput.value) || 0;
+        const valorSt = parseFloat(valorStInput.value) || 0;
+
+
+        const soma = valorCompra + valorOutrosCustos + valorIpi + valorSt;
+
+
+        custoFinalInput.value = soma.toFixed(2);
+    }
+</script>
 

@@ -1,6 +1,5 @@
 ﻿using CleverWeb.Shared;
-using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CleverWeb.Models;
 
@@ -14,23 +13,44 @@ public partial class ProdutoServico
 
     public string? GrupoNivel { get; set; }
 
+    [Required]
+    [Display(Name = "Descrição")]
     public string? Descricao { get; set; }
 
+    [Required]
+    [Display(Name = "Referência")]
     public string? Referencia { get; set; }
 
+    [Display(Name = "Fabricante")]
     public string? Fabricante { get; set; }
 
+    [Display(Name = "Informação")]
     public string? Informacao { get; set; }
 
+    [Required]
+    [Display(Name = "Código de barras")]
     public string? Barra { get; set; }
 
     public string? Barratributavel { get; set; }
 
     public string? Ncm { get; set; }
 
+    [Required]
+    [Display(Name = "Valor Compra R$")]
     public decimal ValorCompra { get; set; }
 
+    [Display(Name = "Outros Custo R$")]
     public decimal? OutrosCustos { get; set; }
+
+    [Display(Name = "Valor IPI R$")]
+    public decimal? ValorIpi { get; set; }
+
+    [Display(Name = "Valor ST R$")]
+    public decimal? ValorSt { get; set; }
+
+    [Required]
+    [Display(Name = "Custo Final R$")]
+    public decimal? CustoFinal { get; set; }
 
     public int? UnidadeTributavel { get; set; }
 
@@ -40,15 +60,13 @@ public partial class ProdutoServico
 
     public bool? Situacao { get; set; }
 
-    public TipoProdutoEnum Tipo { get; set; }
+    public TipoProduto Tipo { get; set; }
 
     public int? ExTipi { get; set; }
 
     public string? ClasseEnquadramento { get; set; }
 
     public string? Cnpjprodutor { get; set; }
-
-    public decimal? CustoFinal { get; set; }
 
     public int? IdGrupo { get; set; }
 
@@ -58,15 +76,11 @@ public partial class ProdutoServico
 
     public decimal? PesoL { get; set; }
 
-    public decimal? ValorIpi { get; set; }
-
     public bool? ControleEstoque { get; set; }
 
     public bool? ProdutoEspecifico { get; set; }
 
     public int? CodAnp { get; set; }
-
-    public decimal? ValorSt { get; set; }
 
     public string? InfoAdicional1 { get; set; }
 

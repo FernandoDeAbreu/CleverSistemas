@@ -20,4 +20,5 @@ public partial class Banco
     public int IdCaixa { get; set; }
 
     public decimal Limite { get; set; }
+    public bool ativo { get; set; }
 }
