@@ -228,23 +228,6 @@
             this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Minuto = new System.Windows.Forms.Timer(this.components);
             this.MinutoAtualizacao = new System.Windows.Forms.Timer(this.components);
-            this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
-            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.btn_Cliente = new System.Windows.Forms.RibbonButton();
-            this.btn_CadastrarProduto = new System.Windows.Forms.RibbonButton();
-            this.btn_PDV = new System.Windows.Forms.RibbonButton();
-            this.btn_pedido = new System.Windows.Forms.RibbonButton();
-            this.btn_Orcamento = new System.Windows.Forms.RibbonButton();
-            this.btn_OS = new System.Windows.Forms.RibbonButton();
-            this.btn_Caixa = new System.Windows.Forms.RibbonButton();
-            this.btn_Cpagar = new System.Windows.Forms.RibbonButton();
-            this.btn_Creceber = new System.Windows.Forms.RibbonButton();
-            this.btn_Gerenciador_CFe = new System.Windows.Forms.RibbonButton();
-            this.btn_GerencicadorNFe = new System.Windows.Forms.RibbonButton();
-            this.btn_TrocarUsuario = new System.Windows.Forms.RibbonButton();
-            this.btn_Sair = new System.Windows.Forms.RibbonButton();
-            this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
-            this.ribbonTab4 = new System.Windows.Forms.RibbonTab();
             this.panel_Form = new System.Windows.Forms.Panel();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.btnlogoInicio = new System.Windows.Forms.PictureBox();
@@ -256,8 +239,6 @@
             this.iconrestaurar = new System.Windows.Forms.PictureBox();
             this.iconmaximizar = new System.Windows.Forms.PictureBox();
             this.iconcerrar = new System.Windows.Forms.PictureBox();
-            this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
-            this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
             this.panelContenedor = new System.Windows.Forms.Panel();
             equipamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_Principal.SuspendLayout();
@@ -1921,118 +1902,6 @@
             this.MinutoAtualizacao.Interval = 500000;
             this.MinutoAtualizacao.Tick += new System.EventHandler(this.MinutoAtualizacao_Tick);
             // 
-            // ribbonTab1
-            // 
-            this.ribbonTab1.Panels.Add(this.ribbonPanel1);
-            this.ribbonTab1.Text = "Página inicial";
-            // 
-            // ribbonPanel1
-            // 
-            this.ribbonPanel1.ButtonMoreEnabled = false;
-            this.ribbonPanel1.ButtonMoreVisible = false;
-            this.ribbonPanel1.Items.Add(this.btn_Cliente);
-            this.ribbonPanel1.Items.Add(this.btn_CadastrarProduto);
-            this.ribbonPanel1.Items.Add(this.btn_PDV);
-            this.ribbonPanel1.Items.Add(this.btn_pedido);
-            this.ribbonPanel1.Items.Add(this.btn_Orcamento);
-            this.ribbonPanel1.Items.Add(this.btn_OS);
-            this.ribbonPanel1.Items.Add(this.btn_Caixa);
-            this.ribbonPanel1.Items.Add(this.btn_Cpagar);
-            this.ribbonPanel1.Items.Add(this.btn_Creceber);
-            this.ribbonPanel1.Items.Add(this.btn_Gerenciador_CFe);
-            this.ribbonPanel1.Items.Add(this.btn_GerencicadorNFe);
-            this.ribbonPanel1.Items.Add(this.btn_TrocarUsuario);
-            this.ribbonPanel1.Items.Add(this.btn_Sair);
-            this.ribbonPanel1.Text = "Acesso rápido";
-            // 
-            // btn_Cliente
-            // 
-            this.btn_Cliente.Image = global::Sistema.UI.Properties.Resources.business_user;
-            this.btn_Cliente.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_Cliente.SmallImage")));
-            this.btn_Cliente.Text = "Cliente";
-            this.btn_Cliente.Click += new System.EventHandler(this.tsb_CadastroCliente_Click);
-            // 
-            // btn_CadastrarProduto
-            // 
-            this.btn_CadastrarProduto.Image = global::Sistema.UI.Properties.Resources.package;
-            this.btn_CadastrarProduto.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_CadastrarProduto.SmallImage")));
-            this.btn_CadastrarProduto.Text = "Produto";
-            // 
-            // btn_PDV
-            // 
-            this.btn_PDV.Image = global::Sistema.UI.Properties.Resources.cash_register_right;
-            this.btn_PDV.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_PDV.SmallImage")));
-            this.btn_PDV.Text = "Checkout";
-            // 
-            // btn_pedido
-            // 
-            this.btn_pedido.Image = global::Sistema.UI.Properties.Resources.cash_terminal;
-            this.btn_pedido.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_pedido.SmallImage")));
-            this.btn_pedido.Text = "Pedido";
-            // 
-            // btn_Orcamento
-            // 
-            this.btn_Orcamento.Image = ((System.Drawing.Image)(resources.GetObject("btn_Orcamento.Image")));
-            this.btn_Orcamento.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_Orcamento.SmallImage")));
-            this.btn_Orcamento.Text = "Orçamento";
-            this.btn_Orcamento.Click += new System.EventHandler(this.PermissõesToolStripMenuItem_Click);
-            // 
-            // btn_OS
-            // 
-            this.btn_OS.Image = ((System.Drawing.Image)(resources.GetObject("btn_OS.Image")));
-            this.btn_OS.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_OS.SmallImage")));
-            this.btn_OS.Text = "Ordem Serviço";
-            // 
-            // btn_Caixa
-            // 
-            this.btn_Caixa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Caixa.Image")));
-            this.btn_Caixa.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_Caixa.SmallImage")));
-            this.btn_Caixa.Text = "Caixa";
-            // 
-            // btn_Cpagar
-            // 
-            this.btn_Cpagar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Cpagar.Image")));
-            this.btn_Cpagar.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_Cpagar.SmallImage")));
-            this.btn_Cpagar.Text = "Despesa";
-            // 
-            // btn_Creceber
-            // 
-            this.btn_Creceber.Image = ((System.Drawing.Image)(resources.GetObject("btn_Creceber.Image")));
-            this.btn_Creceber.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_Creceber.SmallImage")));
-            this.btn_Creceber.Text = "Receita";
-            // 
-            // btn_Gerenciador_CFe
-            // 
-            this.btn_Gerenciador_CFe.Image = ((System.Drawing.Image)(resources.GetObject("btn_Gerenciador_CFe.Image")));
-            this.btn_Gerenciador_CFe.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_Gerenciador_CFe.SmallImage")));
-            this.btn_Gerenciador_CFe.Text = "CF-e";
-            // 
-            // btn_GerencicadorNFe
-            // 
-            this.btn_GerencicadorNFe.Image = ((System.Drawing.Image)(resources.GetObject("btn_GerencicadorNFe.Image")));
-            this.btn_GerencicadorNFe.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_GerencicadorNFe.SmallImage")));
-            this.btn_GerencicadorNFe.Text = "NF-e";
-            // 
-            // btn_TrocarUsuario
-            // 
-            this.btn_TrocarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btn_TrocarUsuario.Image")));
-            this.btn_TrocarUsuario.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_TrocarUsuario.SmallImage")));
-            this.btn_TrocarUsuario.Text = "Reiniciar";
-            // 
-            // btn_Sair
-            // 
-            this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
-            this.btn_Sair.SmallImage = ((System.Drawing.Image)(resources.GetObject("btn_Sair.SmallImage")));
-            this.btn_Sair.Text = "Sair";
-            // 
-            // ribbonTab3
-            // 
-            this.ribbonTab3.Text = "Cadastro";
-            // 
-            // ribbonTab4
-            // 
-            this.ribbonTab4.Text = "Imóvel";
-            // 
             // panel_Form
             // 
             this.panel_Form.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -2199,20 +2068,6 @@
             this.iconcerrar.TabIndex = 5;
             this.iconcerrar.TabStop = false;
             this.iconcerrar.Click += new System.EventHandler(this.Iconcerrar_Click);
-            // 
-            // ribbonButton1
-            // 
-            this.ribbonButton1.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.Image")));
-            this.ribbonButton1.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
-            this.ribbonButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton1.SmallImage")));
-            this.ribbonButton1.Text = "ribbonButton1";
-            // 
-            // ribbonButton2
-            // 
-            this.ribbonButton2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.Image")));
-            this.ribbonButton2.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Compact;
-            this.ribbonButton2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton2.SmallImage")));
-            this.ribbonButton2.Text = "ribbonButton2";
             // 
             // panelContenedor
             // 
@@ -2418,25 +2273,6 @@
         private System.Windows.Forms.ToolStripMenuItem entradaDeProdutoPorXMLNFeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cartãoDeCréditoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajusteDeEstoqueCorreçãoToolStripMenuItem;
-        private System.Windows.Forms.RibbonButton btn_Cliente;
-        private System.Windows.Forms.RibbonButton ribbonButton1;
-        private System.Windows.Forms.RibbonButton ribbonButton2;
-        private System.Windows.Forms.RibbonButton btn_CadastrarProduto;
-        private System.Windows.Forms.RibbonButton btn_PDV;
-        private System.Windows.Forms.RibbonButton btn_Orcamento;
-        private System.Windows.Forms.RibbonButton btn_OS;
-        private System.Windows.Forms.RibbonButton btn_Caixa;
-        private System.Windows.Forms.RibbonButton btn_Cpagar;
-        private System.Windows.Forms.RibbonButton btn_Creceber;
-        private System.Windows.Forms.RibbonButton btn_Gerenciador_CFe;
-        private System.Windows.Forms.RibbonButton btn_GerencicadorNFe;
-        private System.Windows.Forms.RibbonButton btn_TrocarUsuario;
-        private System.Windows.Forms.RibbonButton btn_Sair;
-        private System.Windows.Forms.RibbonTab ribbonTab1;
-        private System.Windows.Forms.RibbonPanel ribbonPanel1;
-        private System.Windows.Forms.RibbonButton btn_pedido;
-        private System.Windows.Forms.RibbonTab ribbonTab3;
-        private System.Windows.Forms.RibbonTab ribbonTab4;
         private System.Windows.Forms.ToolStripMenuItem locaçãoToolStripMenuItem1;
         internal System.Windows.Forms.ToolStripMenuItem CadastroToolStripMenuItem1;
         internal System.Windows.Forms.ToolStripMenuItem UsuáriosToolStripMenuItem;
