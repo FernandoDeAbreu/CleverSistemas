@@ -14,9 +14,7 @@ namespace Sistema.DAL
         {
             try
             {
-                //conexao = new MySqlConnection("server=srv643.hstgr.io;uid=u764159413_root;pwd=Fdas*2018;database=u764159413_Clever");
-
-                var stringConn = String.Format("Persist Security Info=False;server=srv643.hstgr.io;database=u764159413_Clever;uid=u764159413_root;pwd=Fdas*2018");
+                var stringConn = String.Format("");
                 conexao = new MySqlConnection(stringConn);
 
                 conexao.Open();

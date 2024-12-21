@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using Sistema.DAL;
+﻿using Sistema.DAL;
 using Sistema.DTO;
 using Sistema.UTIL;
+using System;
+using System.Data;
 
 namespace Sistema.BLL
 {
@@ -418,6 +415,7 @@ namespace Sistema.BLL
             DAL_Produto_Entrada obj = new DAL_Produto_Entrada(_Produto_Entrada);
             return obj.Busca_Produto_Entrada_Detalhado();
         }
+
         public void Exclui(DTO_Produto_Entrada _Produto_Entrada)
         {
             if (_Produto_Entrada.ID == 0)
@@ -440,7 +438,6 @@ namespace Sistema.BLL
         {
             public int Grava(DTO_Locacao_Produto _Locacao_Produto)
             {
-
                 DAL_Produto_Locacao obj = new DAL_Produto_Locacao(_Locacao_Produto);
                 return obj.Grava_Locacao();
             }

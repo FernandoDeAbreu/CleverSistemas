@@ -1,33 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Sistema.DTO;
+using Sistema.UTIL;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using Sistema.DTO;
-using Sistema.UTIL;
 
 namespace Sistema.DAL
 {
     public class DAL_Produto
     {
         #region VARIAVEIS DIVERSAS
-        Conexao conexao;
 
-        string sql;
-        SqlCommand cmd;
-        #endregion
+        private Conexao conexao;
+
+        private string sql;
+        private SqlCommand cmd;
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_Produto Produto;
-        #endregion
+
+        private DTO_Produto Produto;
+
+        #endregion ESTRUTURA
 
         #region CONSTRUTORES
+
         public DAL_Produto(DTO_Produto _Produto)
         {
             this.Produto = _Produto;
         }
-        #endregion
+
+        #endregion CONSTRUTORES
 
         public int Grava()
         {
@@ -40,6 +43,7 @@ namespace Sistema.DAL
                 conexao.Begin_Conexao();
 
                 #region PRODUTO
+
                 if (Produto.ID == 0)
                 {
                     sql = "INSERT INTO Produto_Servico ";
@@ -101,7 +105,6 @@ namespace Sistema.DAL
 
                         conexao.Executa_Comando(cmd);
                     }
-
                 }
                 else
                 {
@@ -171,9 +174,11 @@ namespace Sistema.DAL
 
                     conexao.Executa_Comando(cmd);
                 }
-                #endregion
+
+                #endregion PRODUTO
 
                 #region IMAGEM
+
                 if (Produto.Imagem != null)
                 {
                     cmd = new SqlCommand();
@@ -188,9 +193,11 @@ namespace Sistema.DAL
 
                     conexao.Executa_Comando(cmd);
                 }
-                #endregion
+
+                #endregion IMAGEM
 
                 #region FORNECEDOR
+
                 if (Produto.Fornecedor != null)
                     for (int i = 0; i <= Produto.Fornecedor.Count - 1; i++)
                     {
@@ -222,9 +229,11 @@ namespace Sistema.DAL
 
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion FORNECEDOR
 
                 #region VALOR
+
                 if (Produto.Valor != null)
                     for (int i = 0; i <= Produto.Valor.Count - 1; i++)
                     {
@@ -258,9 +267,11 @@ namespace Sistema.DAL
                         }
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion VALOR
 
                 #region COMISSÃO
+
                 if (Produto.Comissao != null)
                     for (int i = 0; i <= Produto.Comissao.Count - 1; i++)
                     {
@@ -292,9 +303,11 @@ namespace Sistema.DAL
                         }
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion COMISSÃO
 
                 #region ESTOQUE
+
                 if (Produto.Estoque != null)
                     for (int i = 0; i <= Produto.Estoque.Count - 1; i++)
                     {
@@ -334,9 +347,11 @@ namespace Sistema.DAL
                         }
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion ESTOQUE
 
                 #region ESTRUTURA
+
                 if (Produto.Estrutura != null)
                     for (int i = 0; i <= Produto.Estrutura.Count - 1; i++)
                     {
@@ -370,9 +385,11 @@ namespace Sistema.DAL
                         }
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion ESTRUTURA
 
                 #region PARAMETROS
+
                 cmd = new SqlCommand();
 
                 sql = "UPDATE Produto_Parametro SET ";
@@ -388,7 +405,8 @@ namespace Sistema.DAL
                 cmd.Parameters.AddWithValue("@Ativo", Produto.Ativo);
 
                 conexao.Executa_Comando(cmd);
-                #endregion
+
+                #endregion PARAMETROS
 
                 conexao.Commit_Conexao();
 
@@ -401,12 +419,14 @@ namespace Sistema.DAL
                 cmd.Parameters.Clear();
 
                 #region RetornaID
+
                 sql = "SELECT MAX(ID) AS ID FROM Produto_Servico ";
                 int aux_ID = Convert.ToInt32(conexao.Consulta(sql).Rows[0]["ID"]);
                 sql = " DBCC CHECKIDENT(Produto_Servico, RESEED, " + aux_ID + ")";
                 cmd.CommandText = sql;
                 conexao.Executa_Comando(cmd);
-                #endregion
+
+                #endregion RetornaID
 
                 throw new Exception(ex.Message);
             }
@@ -427,8 +447,6 @@ namespace Sistema.DAL
 
                 DataTable _DT = new DataTable();
                 DataTable _DT_Estoque = new DataTable();
-
-
 
                 sql = "SELECT ID FROM Produto_Servico ";
                 _DT = conexao.Consulta(sql);
@@ -858,6 +876,7 @@ namespace Sistema.DAL
                 conexao.Executa_Comando(cmd);
 
                 #region VALOR DE VENDA
+
                 if (Produto.Valor.Count > 0)
                     for (int i = 0; i <= Produto.Valor.Count - 1; i++)
                     {
@@ -893,7 +912,8 @@ namespace Sistema.DAL
                         }
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion VALOR DE VENDA
             }
             catch (Exception ex)
             {
@@ -1014,7 +1034,6 @@ namespace Sistema.DAL
             }
             finally
             {
-
                 conexao.Fecha_Conexao();
             }
         }
@@ -1131,6 +1150,7 @@ namespace Sistema.DAL
                 switch (Produto.Consulta_Etiqueta)
                 {
                     #region ETIQUETA PRODUTO AVULSO
+
                     case 1:
                         sql = "SELECT ";
                         sql += "P.ID, P.Descricao, P.Barra, P.InfoAdicional1, P.InfoAdicional2, P.ABC, ";
@@ -1174,12 +1194,13 @@ namespace Sistema.DAL
                         if (Produto.Consulta_Ativo == true)
                             sql += "AND P.Ativo = '" + Produto.Ativo + "' ";
 
-
                         sql += "ORDER BY P.Descricao ";
                         break;
-                    #endregion
+
+                    #endregion ETIQUETA PRODUTO AVULSO
 
                     #region ETIQUETA PRODUTO ENTRADA
+
                     case 2:
                         sql = "SELECT ";
                         sql += "P.ID, P.Descricao, P.Barra, P.InfoAdicional1, P.InfoAdicional2, P.ABC, ";
@@ -1231,9 +1252,11 @@ namespace Sistema.DAL
 
                         sql += "ORDER BY P.Descricao ";
                         break;
-                    #endregion
+
+                    #endregion ETIQUETA PRODUTO ENTRADA
 
                     #region ETIQUETA PRODUTO ESTOQUE
+
                     case 3:
                         sql = "SELECT ";
                         sql += "P.ID, P.Descricao, P.Barra, P.InfoAdicional1, P.InfoAdicional2, P.ABC,  ";
@@ -1281,9 +1304,11 @@ namespace Sistema.DAL
 
                         sql += "ORDER BY P.Descricao ";
                         break;
-                    #endregion
+
+                    #endregion ETIQUETA PRODUTO ESTOQUE
 
                     #region ETIQUETA PRODUTO ENTRADA QUANTIDADE ESTOQUE
+
                     case 4:
                         sql = "SELECT ";
                         sql += "P.ID, P.Descricao, P.Barra, P.InfoAdicional1, P.InfoAdicional2, P.ABC, ";
@@ -1335,7 +1360,8 @@ namespace Sistema.DAL
 
                         sql += "ORDER BY P.Descricao ";
                         break;
-                        #endregion
+
+                        #endregion ETIQUETA PRODUTO ENTRADA QUANTIDADE ESTOQUE
                 }
 
                 return conexao.Consulta(sql);
@@ -1768,7 +1794,6 @@ namespace Sistema.DAL
 
                 if (conexao.Consulta(sql).Rows.Count == 0)
                     return null;
-
                 else
                 {
                     sql = "SELECT ";
@@ -2232,10 +2257,8 @@ namespace Sistema.DAL
                 if (Produto.Barra != string.Empty)
                     sql += "AND Barra = '" + Produto.Barra + "' ";
 
-
                 if (Produto.Referencia != string.Empty)
                     sql += "AND Referencia = '" + Produto.Referencia + "' ";
-
 
                 if (Produto.Consulta_Emissao.Filtra == true)
                     sql += "AND CONVERT(DATE, Data) BETWEEN CONVERT(DATE, '" + Produto.Consulta_Emissao.Inicial + "') AND CONVERT(DATE, '" + Produto.Consulta_Emissao.Final + "') ";
@@ -2335,6 +2358,7 @@ namespace Sistema.DAL
                 conexao.Abre_Conexao();
 
                 #region CONSULTA PRODUTO EM OUTROS MODULOS
+
                 sql = "SELECT ";
                 sql += "ID_Produto ";
                 sql += "FROM ";
@@ -2379,7 +2403,8 @@ namespace Sistema.DAL
                 sql += "ID_Produto = " + Produto.ID;
                 if (conexao.Consulta(sql).Rows.Count > 0)
                     msg += "VENDAS A FATURAR (MOBILE)\n";
-                #endregion
+
+                #endregion CONSULTA PRODUTO EM OUTROS MODULOS
 
                 conexao.Begin_Conexao();
 
@@ -2646,25 +2671,33 @@ namespace Sistema.DAL
     public class DAL_Produto_Entrada
     {
         #region VARIAVEIS DE CLASSE
-        Conexao conexao;
-        #endregion
+
+        private Conexao conexao;
+
+        #endregion VARIAVEIS DE CLASSE
 
         #region VARIAVEIS DIVERSAS
+
         private static string sql;
         private SqlCommand cmd;
-        string msg;
-        #endregion
+        private string msg;
+
+        #endregion VARIAVEIS DIVERSAS
 
         #region ESTRUTURA
-        DTO_Produto_Entrada Produto_Entrada;
-        #endregion
+
+        private DTO_Produto_Entrada Produto_Entrada;
+
+        #endregion ESTRUTURA
 
         #region CONSTRUTORES
+
         public DAL_Produto_Entrada(DTO_Produto_Entrada _Produto_Entrada)
         {
             this.Produto_Entrada = _Produto_Entrada;
         }
-        #endregion
+
+        #endregion CONSTRUTORES
 
         public int Grava()
         {
@@ -2736,6 +2769,7 @@ namespace Sistema.DAL
                     throw new Exception();
 
                 #region GRAVA ITEM
+
                 if (Produto_Entrada.Item != null && Produto_Entrada.Item.Count > 0)
                     for (int i = 0; i <= Produto_Entrada.Item.Count - 1; i++)
                     {
@@ -2814,7 +2848,8 @@ namespace Sistema.DAL
                                 conexao.Executa_Comando(cmd);
                             }
                     }
-                #endregion
+
+                #endregion GRAVA ITEM
 
                 conexao.Commit_Conexao();
 
@@ -2826,12 +2861,14 @@ namespace Sistema.DAL
                 cmd.Parameters.Clear();
 
                 #region RetornaID
+
                 sql = "SELECT MAX(ID) AS ID FROM Produto_Entrada";
                 int aux_ID = Convert.ToInt32(conexao.Consulta(sql).Rows[0]["ID"]);
                 sql = " DBCC CHECKIDENT(Produto_Entrada, RESEED, " + aux_ID + ")";
                 cmd.CommandText = sql;
                 conexao.Executa_Comando(cmd);
-                #endregion
+
+                #endregion RetornaID
 
                 throw new Exception(ex.Message);
             }
@@ -2884,6 +2921,7 @@ namespace Sistema.DAL
                 conexao.Begin_Conexao();
 
                 #region LANÇA ESTOQUE
+
                 if (Produto_Entrada.Item != null && Produto_Entrada.Item.Count > 0)
                     for (int i = 0; i <= Produto_Entrada.Item.Count - 1; i++)
                     {
@@ -2904,9 +2942,11 @@ namespace Sistema.DAL
 
                         conexao.Executa_Comando(cmd);
                     }
-                #endregion
+
+                #endregion LANÇA ESTOQUE
 
                 #region ATUALIZA VALOR VENDA / MARGEM
+
                 if (Produto_Entrada.Item != null && Produto_Entrada.Item.Count > 0)
                     for (int i = 0; i <= Produto_Entrada.Item.Count - 1; i++)
                     {
@@ -2940,9 +2980,9 @@ namespace Sistema.DAL
                         cmd.Parameters.AddWithValue("@ValorVenda", Produto_Entrada.Item[i].ValorVenda);
                         cmd.Parameters.AddWithValue("@MargemVenda", Produto_Entrada.Item[i].Margem);
                         conexao.Executa_Comando(cmd);
-
                     }
-                #endregion
+
+                #endregion ATUALIZA VALOR VENDA / MARGEM
 
                 conexao.Commit_Conexao();
             }
@@ -3261,6 +3301,7 @@ namespace Sistema.DAL
                 conexao.Executa_Comando(cmd);
 
                 #region RETORNA ESTOQUE
+
                 if (Produto_Entrada.Item != null && Produto_Entrada.Item.Count > 0)
                     for (int i = 0; i <= Produto_Entrada.Item.Count - 1; i++)
                         if (Produto_Entrada.Item[i].ID != 0)
@@ -3278,7 +3319,8 @@ namespace Sistema.DAL
                             cmd.Parameters.AddWithValue("@ID_Grade", Produto_Entrada.Item[i].ID_Grade);
                             conexao.Executa_Comando(cmd);
                         }
-                #endregion
+
+                #endregion RETORNA ESTOQUE
 
                 conexao.Commit_Conexao();
             }
@@ -3332,18 +3374,23 @@ namespace Sistema.DAL
     public class DAL_Produto_Locacao
     {
         #region PRODUTO LOCAÇÃO
-        Conexao conexao;
-        SqlCommand cmd;
 
-        string sql;
-        string msg;
-        #endregion
+        private Conexao conexao;
+        private SqlCommand cmd;
+
+        private string sql;
+        private string msg;
+
+        #endregion PRODUTO LOCAÇÃO
 
         #region ESTRUTURA
-        DTO_Locacao_Produto Locacao_Produto;
-        #endregion
+
+        private DTO_Locacao_Produto Locacao_Produto;
+
+        #endregion ESTRUTURA
 
         #region CONSTRUTOR
+
         public DAL_Produto_Locacao(DTO_Locacao_Produto _Locacao_Produto)
         {
             Locacao_Produto = _Locacao_Produto;
@@ -3353,7 +3400,7 @@ namespace Sistema.DAL
         {
             return Locacao_Produto.ID;
         }
-        #endregion
 
+        #endregion CONSTRUTOR
     }
 }

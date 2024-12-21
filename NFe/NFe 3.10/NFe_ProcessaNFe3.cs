@@ -65,6 +65,7 @@ namespace Sistema.NFe
         DataRow DR_Imp;
         DataRow DR_Adicao;
         DataRow DR;
+        DataRow DR_Proc;
 
         StringWriter txt_XML;
 
@@ -207,7 +208,7 @@ namespace Sistema.NFe
 
                 DS_NFe = new DataSet();
 
-                DS_NFe.ReadXmlSchema(Parametro_Sistema.Caminho_Sistema + util_Param.Schemas + "nfe_v4.00");
+                DS_NFe.ReadXmlSchema(Parametro_Sistema.Caminho_Sistema + util_Param.Schemas + "nfe_v4.00.xsd");
                 DS_NFe.EnforceConstraints = false;
 
                 #region DADOS DA NOTA FISCAL ELETRÔNICA
@@ -2775,6 +2776,8 @@ namespace Sistema.NFe
                 DS_NFe.EnforceConstraints = false;
 
                 #region DADOS DA NOTA FISCAL ELETRÔNICA
+
+              
                 DR = DS_NFe.Tables["infNFe"].NewRow();
 
                 DR["id"] = "0"; //IDENTIFICAÇÃO DA NOTA
@@ -3205,12 +3208,8 @@ namespace Sistema.NFe
 
                         #region IMPOSTO
                         DR = DS_NFe.Tables["imposto"].NewRow();
-
-                      
-
                         DR["imposto_Id"] = i + 1;
                         DR["det_Id"] = i + 1;
-
                         DS_NFe.Tables["imposto"].Rows.Add(DR);
 
                         #region ICMS NORMAL E ST
@@ -3885,6 +3884,7 @@ namespace Sistema.NFe
                         #endregion
                     }
                 #endregion
+
                 #endregion
 
                 #region TOTAIS
@@ -3995,21 +3995,24 @@ namespace Sistema.NFe
                 #region INFORMAÇÕES SOBRE PAGAMENTO
 
 
-
                 DR = DS_NFe.Tables["pag"].NewRow();
-                DR["pag_Id"] = Qt_Produto.ToString();
+                DR["infNFe_Id"] = 0;
+                DR["vTroco"] = "01";
                 DS_NFe.Tables["pag"].Rows.Add(DR);
 
+
                 DR = DS_NFe.Tables["detPag"].NewRow();
-                DR["pag_Id"] = Qt_Produto.ToString();
                 DR["indPag"] = Qt_Produto.ToString();
                 DR["tPag"] = "01";
                 DR["vPag"] = util_dados.ConfigNumDecimal(20, 12);
+                DR["pag_Id"] = 0;
                 DS_NFe.Tables["detPag"].Rows.Add(DR);
 
 
-
-
+                DR = DS_NFe.Tables["nfeProc"].NewRow();
+                DR["versao"] = Parametro_NFe_NFC_SAT.Schema;
+                DS_NFe.Tables["nfeProc"].Rows.Add(DR);
+                
                 this.ChecaCampo(DR["tPag"].ToString(), "tPag", ObOp.Opcional, 2, 2);
                 this.ChecaCampo(DR["vPag"].ToString(), "vPag", ObOp.Opcional, 1, 15, 2);
 
@@ -4026,6 +4029,7 @@ namespace Sistema.NFe
 
                 DS_NFe.Tables["ide"].Rows[0]["cDV"] = DV_NF;
                 DS_NFe.Tables["infNFe"].Rows[0]["Id"] = "NFe" + Chave;
+
 
                 /* #region VERIFICA TIPO DE OPERAÇÃO (INTERNA OU INTERESTADUAL)
                  if (DS_NFe.Tables["enderEmit"].Rows[0]["UF"].ToString().Trim() == DS_NFe.Tables["enderDest"].Rows[0]["UF"].ToString().Trim())
